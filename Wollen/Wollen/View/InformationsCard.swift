@@ -79,6 +79,7 @@ struct InformationsCard: View {
         .padding(15)
         .background(Color(red: 248/256, green: 248/256, blue: 248/256))
         .cornerRadius(10)
+        .shadow(radius: 5)
     }
 }
 

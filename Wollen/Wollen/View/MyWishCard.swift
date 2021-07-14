@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct MyWishCard: View {
-    
-    @State private var downloadAmount = 10.0
+    // de 0.0 a 1.0
+    @State private var downloadAmount: Float = 0.7
     
     var body: some View {
         VStack(alignment: .leading, spacing: nil, content: {
@@ -20,15 +20,31 @@ struct MyWishCard: View {
                 .cornerRadius(10)
             Text("Nome")
                 .font(.custom("Avenir", size: 16))
-            ProgressView(value: downloadAmount, total: 100)
-                .frame(minWidth: 0, idealWidth: 180, maxWidth: 180, minHeight: 0, idealHeight: 0, maxHeight: 0, alignment: .center)
-                .scaleEffect(x: 1, y: 4, anchor: .center)
-                .padding()
+            ProgressBar(value: $downloadAmount).frame(minWidth: 0, idealWidth: 220, maxWidth: 220, minHeight: 0, idealHeight: 20, maxHeight: 20, alignment: .center)
+                .padding(.bottom, 5)
 
         })
-        .padding(5)
+        .padding(10)
         .background(Color(red: 248/256, green: 248/256, blue: 248/256))
         .cornerRadius(10)
+//        .shadow(radius: 5)
+    }
+}
+
+struct ProgressBar: View {
+    @Binding var value: Float
+    
+    var body: some View {
+        GeometryReader { geometry in
+            ZStack (alignment: .leading) {
+                Rectangle().frame(width: geometry.size.width , height: geometry.size.height)
+                    .opacity(0.3)
+                    .foregroundColor(Color(UIColor.systemTeal))
+                Rectangle().frame(width: min(CGFloat(self.value)*geometry.size.width, geometry.size.width), height: geometry.size.height)
+                        .foregroundColor(Color(UIColor.systemBlue))
+                    .cornerRadius(10)
+            }.cornerRadius(45.0)
+        }
     }
 }
 
