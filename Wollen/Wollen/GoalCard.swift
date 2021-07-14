@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct GoalCard: View {
     
@@ -16,8 +17,9 @@ struct GoalCard: View {
     @State private var goalBy: GoalBy = .value
     @State private var frequency: FrequencyTypes = .weekly
     @State private var duration: DurationTypes = .weeks
-    @State private var valueTextField = ""
+    @State private var valueTextField: String = "R$ 100,00"
     @State private var quantityDuration = 1
+    var maxWidth = UIScreen().bounds.width
     
     var body: some View {
         VStack (alignment: .leading) {
@@ -33,7 +35,7 @@ struct GoalCard: View {
                 Button(action: {
                     // TODO: Ação do botão de informação
                 },
-                       label: {
+                label: {
                     Image(systemName: "info.circle")
                         .foregroundColor(Color.gray)
                 })
@@ -89,77 +91,86 @@ struct GoalCard: View {
                     Spacer()
                     Spacer()
                     
-                    TextField("R$ 4,00", text: $valueTextField)
+                    TextField(String(valueTextField),
+                              text: $valueTextField)
                         .foregroundColor(.gray)
                         .padding(5)
                         .background(Color(red: 118/256, green: 118/256, blue: 128/256, opacity: 0.12))
                         .cornerRadius(10)
-                        .multilineTextAlignment(.center)
+                        .multilineTextAlignment(.leading)
                         .font(.custom("Avenir_Next", size: 16))
-                    
-                } else {
-                    Text("Duração:")
-                    
-                    Spacer()
-                    
-                    // Picker duplo
-                    Picker(selection: $quantityDuration,
-                           label: Text("\(quantityDuration)").foregroundColor(.gray)
-                            .padding(5)
-                            .padding(.horizontal)
-                            .background(Color(red: 118/256, green: 118/256, blue: 128/256, opacity: 0.12))
-                            .cornerRadius(10)
-                            .multilineTextAlignment(.center)
-                            .font(.custom("Avenir", size: 16))) {
-                        ForEach(1...11, id: \.self) { quantity in
-                            Text("\(quantity)")
+                        .frame(minWidth: 0, idealWidth: 100, maxWidth: maxWidth/2, alignment: .trailing)
+                        .keyboardType(.numberPad)
+                        .onReceive(Just(valueTextField)) { newValue in
+                            let filtered = newValue.filter { "0123456789.,".contains($0) }
+                            if filtered != newValue {
+                                self.valueTextField = String("R$ \(filtered)")
+                            }}
+                            
+                        } else {
+                            Text("Duração:")
+                            
+                            Spacer()
+                            
+                            // Picker duplo
+                            Picker(selection: $quantityDuration,
+                                   label: Text("\(quantityDuration)").foregroundColor(.gray)
+                                    .padding(5)
+                                    .padding(.horizontal)
+                                    .background(Color(red: 118/256, green: 118/256, blue: 128/256, opacity: 0.12))
+                                    .cornerRadius(10)
+                                    .multilineTextAlignment(.center)
+                                    .font(.custom("Avenir", size: 16))) {
+                                ForEach(1...11, id: \.self) { quantity in
+                                    Text("\(quantity)")
+                                }
+                            }.pickerStyle(MenuPickerStyle())
+                            
+                            Picker(selection: $duration,
+                                   label: Text(duration.rawValue)
+                                    .foregroundColor(.gray)
+                                    .font(.custom("Avenir", size: 16))
+                                    .padding(5)
+                                    .padding(.horizontal)
+                                    .background(Color(red: 118/256, green: 118/256, blue: 128/256, opacity: 0.12))
+                                    .cornerRadius(10)
+                                    .multilineTextAlignment(.center)
+                            ) {
+                                ForEach(DurationTypes.allCases, id: \.self) {
+                                    Text($0.rawValue)
+                                }
+                            }.pickerStyle(MenuPickerStyle())
                         }
-                    }.pickerStyle(MenuPickerStyle())
-                    
-                    Picker(selection: $duration,
-                           label: Text(duration.rawValue)
-                            .foregroundColor(.gray)
-                            .padding(5)
-                            .padding(.horizontal)
-                            .background(Color(red: 118/256, green: 118/256, blue: 128/256, opacity: 0.12))
-                            .cornerRadius(10)
-                            .multilineTextAlignment(.center)
-                            .font(.custom("Avenir", size: 16))) {
-                        ForEach(DurationTypes.allCases, id: \.self) {
-                            Text($0.rawValue)
-                        }
-                    }.pickerStyle(MenuPickerStyle())
-                }
-            } // HStack
-        } // VStack
-        .padding(15)
-        .background(Color(red: 248/256, green: 248/256, blue: 248/256))
-        .cornerRadius(10)
-        .fixedSize(horizontal: false, vertical: false)
-    } // body
-}
-
-enum GoalBy: String, CaseIterable {
-    case value = "Por valor"
-    case period = "Por período"
-}
-
-enum FrequencyTypes: String, CaseIterable{
-    case weekly = "semanal";
-    case monthly = "mensal";
-}
-
-enum DurationTypes: String, CaseIterable {
-    case weeks = "semanas"
-    case months = "meses"
-    case years = "anos"
-}
-
-struct GoalCard_Previews: PreviewProvider {
-    static var previews: some View {
-        GoalCard()
-            .preferredColorScheme(.light)
-            .previewLayout(.sizeThatFits)
-            .padding()
+                } // HStack
+            } // VStack
+            .padding(15)
+            .background(Color(red: 248/256, green: 248/256, blue: 248/256))
+            .cornerRadius(10)
+            .fixedSize(horizontal: false, vertical: false)
+        } // body
     }
-}
+    
+    enum GoalBy: String, CaseIterable {
+        case value = "Por valor"
+        case period = "Por período"
+    }
+    
+    enum FrequencyTypes: String, CaseIterable{
+        case monthly = "mensal";
+        case weekly = "semanal";
+    }
+    
+    enum DurationTypes: String, CaseIterable {
+        case years = "anos"
+        case weeks = "semanas"
+        case months = "meses"
+    }
+    
+    struct GoalCard_Previews: PreviewProvider {
+        static var previews: some View {
+            GoalCard()
+                .preferredColorScheme(.light)
+                .previewLayout(.sizeThatFits)
+                .padding()
+        }
+    }
