@@ -11,7 +11,7 @@ import Combine
 struct GoalCard: View {
     
     init() {
-        UISegmentedControl.appearance().selectedSegmentTintColor = .cyan
+        UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(named: "systemMint")!
     }
     
     @State private var goalBy: GoalBy = .value
@@ -26,7 +26,7 @@ struct GoalCard: View {
             
             HStack {
                 Text("Meta")
-                    .font(.custom("Avenir_Next", size: 22))
+                    .font(.custom("Avenir", size: 22).bold())
                     .fontWeight(.bold)
                     .multilineTextAlignment(.leading)
                 
@@ -46,7 +46,7 @@ struct GoalCard: View {
                 //https://www.youtube.com/watch?v=iqKmgs_0VPE
                 ForEach(GoalBy.allCases, id: \.self) {
                     Text($0.rawValue)
-                        .font(.custom("Avenir_Next", size: 18))
+                        .font(.custom("Avenir", size: 16))
                         .fontWeight(.medium)
                         .multilineTextAlignment(.leading)
                 }
@@ -57,7 +57,7 @@ struct GoalCard: View {
             
             HStack {
                 Text("Frequência:")
-                    .font(.custom("Avenir_Next", size: 18))
+                    .font(.custom("Avenir", size: 18))
                     .fontWeight(.regular)
                     .multilineTextAlignment(.leading)
                 
@@ -69,10 +69,10 @@ struct GoalCard: View {
                         .foregroundColor(.gray)
                         .padding(5)
                         .padding(.horizontal)
-                        .background(Color(red: 118/256, green: 118/256, blue: 128/256, opacity: 0.12))
-                        .cornerRadius(10)
+                        .background(RoundedRectangle(cornerRadius: 5).foregroundColor(.white))
+                        .overlay(RoundedRectangle(cornerRadius: 5).stroke(Color(UIColor.gray), lineWidth: 1))
                         .multilineTextAlignment(.center)
-                        .font(.custom("Avenir_Next", size: 16))) {
+                        .font(.custom("Avenir", size: 16))) {
                     
                     ForEach(FrequencyTypes.allCases, id: \.self) {
                         Text($0.rawValue)
@@ -84,21 +84,20 @@ struct GoalCard: View {
             HStack {
                 if goalBy == GoalBy.value {
                     Text("Valor:")
-                        .font(.custom("Avenir_Next", size: 18))
+                        .font(.custom("Avenir", size: 18))
                         .fontWeight(.regular)
                         .multilineTextAlignment(.leading)
                     
                     Spacer()
-                    Spacer()
                     
                     TextField(String(valueTextField),
                               text: $valueTextField)
-                        .foregroundColor(.gray)
                         .padding(5)
-                        .background(Color(red: 118/256, green: 118/256, blue: 128/256, opacity: 0.12))
-                        .cornerRadius(10)
+                        .foregroundColor(.gray)
+                        .font(.custom("Avenir", size: 16))
                         .multilineTextAlignment(.leading)
-                        .font(.custom("Avenir_Next", size: 16))
+                        .background(RoundedRectangle(cornerRadius: 5).foregroundColor(.white))
+                        .overlay(RoundedRectangle(cornerRadius: 5).stroke(Color(UIColor.gray), lineWidth: 1))
                         .frame(minWidth: 0, idealWidth: 200, maxWidth: maxWidth/3, alignment: .trailing)
                         .keyboardType(.numberPad)
                         .onReceive(Just(valueTextField)) { newValue in
@@ -109,18 +108,23 @@ struct GoalCard: View {
                             
                         } else {
                             Text("Duração:")
+                                .font(.custom("Avenir", size: 18))
+                                .fontWeight(.regular)
+                                .multilineTextAlignment(.leading)
                             
                             Spacer()
                             
                             // Picker duplo
                             Picker(selection: $quantityDuration,
                                    label: Text("\(quantityDuration)").foregroundColor(.gray)
+                                    .foregroundColor(.gray)
+                                    .font(.custom("Avenir", size: 16))
                                     .padding(5)
                                     .padding(.horizontal)
-                                    .background(Color(red: 118/256, green: 118/256, blue: 128/256, opacity: 0.12))
-                                    .cornerRadius(10)
+                                    .background(RoundedRectangle(cornerRadius: 5).foregroundColor(.white))
+                                    .overlay(RoundedRectangle(cornerRadius: 5).stroke(Color(UIColor.gray), lineWidth: 1))
                                     .multilineTextAlignment(.center)
-                                    .font(.custom("Avenir", size: 16))) {
+                            ) {
                                 ForEach(1...11, id: \.self) { quantity in
                                     Text("\(quantity)")
                                 }
@@ -132,8 +136,8 @@ struct GoalCard: View {
                                     .font(.custom("Avenir", size: 16))
                                     .padding(5)
                                     .padding(.horizontal)
-                                    .background(Color(red: 118/256, green: 118/256, blue: 128/256, opacity: 0.12))
-                                    .cornerRadius(10)
+                                    .background(RoundedRectangle(cornerRadius: 5).foregroundColor(.white))
+                                    .overlay(RoundedRectangle(cornerRadius: 5).stroke(Color(UIColor.gray), lineWidth: 1))
                                     .multilineTextAlignment(.center)
                             ) {
                                 ForEach(DurationTypes.allCases, id: \.self) {
