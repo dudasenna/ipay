@@ -99,7 +99,7 @@ struct GoalCard: View {
                         .cornerRadius(10)
                         .multilineTextAlignment(.leading)
                         .font(.custom("Avenir_Next", size: 16))
-                        .frame(minWidth: 0, idealWidth: 100, maxWidth: maxWidth/2, alignment: .trailing)
+                        .frame(minWidth: 0, idealWidth: 200, maxWidth: maxWidth/3, alignment: .trailing)
                         .keyboardType(.numberPad)
                         .onReceive(Just(valueTextField)) { newValue in
                             let filtered = newValue.filter { "0123456789.,".contains($0) }
