@@ -28,7 +28,7 @@ struct MyWishesCards: View {
                     MyWishCard()
                 }
             }
-            .shadow(color: Color("sombra"),radius: 10)
+            .shadow(color: Color.gray.opacity(0.4), radius: 5)
             //gostei mais da sombra no tom natural
         }
         .padding(20)

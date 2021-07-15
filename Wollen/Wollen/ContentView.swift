@@ -28,7 +28,7 @@ struct ContentView: View {
                 }
             }
             .padding(20)
-            .background(Color(red: 0.0, green: 0.0, blue: 0.0, opacity: 1.0))
+            .background(Color(red: 0.98, green: 0.98, blue: 0.98, opacity: 1.0))
         }
 //        List {
 //            ForEach(items) { item in

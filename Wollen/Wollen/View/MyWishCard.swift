@@ -27,7 +27,7 @@ struct MyWishCard: View {
         .padding(10)
         .background(Color(red: 248/256, green: 248/256, blue: 248/256))
         .cornerRadius(10)
-//        .shadow(radius: 5)
+        .shadow(color: Color.gray.opacity(0.4), radius: 5)
     }
 }
 
