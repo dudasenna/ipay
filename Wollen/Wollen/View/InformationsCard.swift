@@ -17,19 +17,19 @@ struct InformationsCard: View {
             Text("Informações")
                 .bold()
                 .padding(5)
-                .font(.custom("Avenir", size: 22))
+                .font(.custom("Avenir Next", size: 22))
             
             // NOME
             
             HStack() {
                 Text("Nome:")
-                    .font(.custom("Avenir", size: 18))
+                    .font(.custom("Avenir Next", size: 18))
                 TextField("Nome do produto", text: $productName)
                     .padding(5)
                     .background(Color(red: 118/256, green: 118/256, blue: 128/256, opacity: 0.12))
                     .cornerRadius(10)
                     .multilineTextAlignment(.center)
-                    .font(.custom("Avenir", size: 16))
+                    .font(.custom("Avenir Next", size: 16))
 
             }
             .padding(10)
@@ -38,13 +38,13 @@ struct InformationsCard: View {
             
             HStack() {
                 Text("Preço:")
-                    .font(.custom("Avenir", size: 18))
+                    .font(.custom("Avenir Next", size: 18))
                 TextField("Nome do produto", text: $productName)
                     .padding(5)
                     .background(Color(red: 118/256, green: 118/256, blue: 128/256, opacity: 0.12))
                     .cornerRadius(10)
                     .multilineTextAlignment(.center)
-                    .font(.custom("Avenir", size: 16))
+                    .font(.custom("Avenir Next", size: 16))
             }
             .padding(10)
             
@@ -52,13 +52,13 @@ struct InformationsCard: View {
             
             HStack() {
                 Text("Descrição:")
-                    .font(.custom("Avenir", size: 18))
+                    .font(.custom("Avenir Next", size: 18))
                 TextField("Nome do produto", text: $productName)
                     .padding(5)
                     .background(Color(red: 118/256, green: 118/256, blue: 128/256, opacity: 0.12))
                     .cornerRadius(10)
                     .multilineTextAlignment(.center)
-                    .font(.custom("Avenir", size: 16))
+                    .font(.custom("Avenir Next", size: 16))
             }
             .padding(10)
             
@@ -66,25 +66,27 @@ struct InformationsCard: View {
             
             HStack() {
                 Text("Link:")
-                    .font(.custom("Avenir", size: 18))
+                    .font(.custom("Avenir Next", size: 18))
                 TextField("Nome do produto", text: $productName)
                     .padding(5)
                     .background(Color(red: 118/256, green: 118/256, blue: 128/256, opacity: 0.12))
                     .cornerRadius(10)
                     .multilineTextAlignment(.center)
-                    .font(.custom("Avenir", size: 16))
+                    .font(.custom("Avenir Next", size: 16))
             }
             .padding(10)
         }
         .padding(15)
         .background(Color(red: 248/256, green: 248/256, blue: 248/256))
         .cornerRadius(10)
+        .shadow(color: Color.gray.opacity(0.4), radius: 5)
     }
 }
 
 struct InformationsCard_Previews: PreviewProvider {
     static var previews: some View {
         InformationsCard()
+            .previewDevice("iPhone 11")
             .previewLayout(.sizeThatFits)
             .padding()
             .cornerRadius(10)
