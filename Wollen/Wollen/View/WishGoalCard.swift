@@ -8,12 +8,15 @@
 import SwiftUI
 
 struct WishGoalCard: View {
-    var goalValue = 50
+    var categoryColor = "systemPurple"
+    var goalValue = 50.0
     var goalTime = 4
     var goalPeriod = "Semanas"
+    var accomplished = false
     
     var body: some View {
-        VStack (alignment: .center, spacing: /*@START_MENU_TOKEN@*/nil/*@END_MENU_TOKEN@*/, content: {
+        let formattedGoalValue = String(format: "%.2f", goalValue)
+        VStack (alignment: .center, spacing: nil, content: {
             HStack {
                 Text("Meta")
                     .bold()
@@ -21,16 +24,34 @@ struct WishGoalCard: View {
                     .padding()
                 Spacer()
             }
-            Text("R$ \(goalValue) / mês")
-                .bold()
-                .font(.custom("Avenir Next", size: 22))
-                .foregroundColor(Color("systemMint"))
-                .padding(.bottom)
-            Text("Se você continuar neste ritmo, você completará a meta daqui a \(goalTime) \(goalPeriod).")
-                .padding(.vertical)
-                .font(.custom("Avenir Next", size: 18))
-                .multilineTextAlignment(.leading)
-                .fixedSize(horizontal: false, vertical: true)
+            // Meta cumprida
+            if accomplished {
+                Text("Cumprida")
+                    .bold()
+                    .font(.custom("Avenir Next", size: 22))
+                    .foregroundColor(Color(categoryColor))
+                    .padding(.bottom)
+                Text("Parabéns 🎉\n Você merece!")
+                    .padding(.vertical)
+                    .padding(.bottom, 20)
+                    .font(.custom("Avenir Next", size: 18))
+                    .multilineTextAlignment(.center)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+            // Meta ainda não cumprida
+            else {
+                Text("R$ \(formattedGoalValue) / mês")
+                    .bold()
+                    .font(.custom("Avenir Next", size: 22))
+                    .foregroundColor(Color("systemMint"))
+                    .padding(.bottom)
+                Text("Se você continuar neste ritmo, você completará a meta daqui a \(goalTime) \(goalPeriod).")
+                    .padding(.vertical)
+                    .font(.custom("Avenir Next", size: 18))
+                    .multilineTextAlignment(.leading)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+            
         })
         .padding(15)
         .background(Color(red: 248/256, green: 248/256, blue: 248/256))
