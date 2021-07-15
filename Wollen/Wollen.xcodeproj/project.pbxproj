@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		22039296269CC9280054C168 /* InformationsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22039295269CC9280054C168 /* InformationsCard.swift */; };
 		BEF78B952698D85700181907 /* WollenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF78B942698D85700181907 /* WollenApp.swift */; };
 		BEF78B972698D85700181907 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF78B962698D85700181907 /* ContentView.swift */; };
 		BEF78B992698D85900181907 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEF78B982698D85900181907 /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		22039295269CC9280054C168 /* InformationsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationsCard.swift; sourceTree = "<group>"; };
 		BEF78B912698D85700181907 /* Wollen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wollen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEF78B942698D85700181907 /* WollenApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WollenApp.swift; sourceTree = "<group>"; };
 		BEF78B962698D85700181907 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -37,6 +39,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		22039293269CC71E0054C168 /* App */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		22039294269CC7280054C168 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				22039295269CC9280054C168 /* InformationsCard.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		BEF78B882698D85700181907 = {
 			isa = PBXGroup;
 			children = (
@@ -56,6 +73,8 @@
 		BEF78B932698D85700181907 /* Wollen */ = {
 			isa = PBXGroup;
 			children = (
+				22039293269CC71E0054C168 /* App */,
+				22039294269CC7280054C168 /* View */,
 				BEF78B942698D85700181907 /* WollenApp.swift */,
 				BEF78B962698D85700181907 /* ContentView.swift */,
 				BEF78B982698D85900181907 /* Assets.xcassets */,
@@ -144,6 +163,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22039296269CC9280054C168 /* InformationsCard.swift in Sources */,
 				BEF78BA12698D85900181907 /* Wollen.xcdatamodeld in Sources */,
 				BEF78B9E2698D85900181907 /* Persistence.swift in Sources */,
 				BEF78B972698D85700181907 /* ContentView.swift in Sources */,
