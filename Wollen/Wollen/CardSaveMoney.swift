@@ -10,7 +10,13 @@ import Combine
 
 struct CardSaveMoney: View {
     
-    @State private var valueTextField: String = "R$ 100,00"
+    init(goal value: Float) {
+        self.goalValue = value
+        self.valueTextField = String("R$ \(value)")
+    }
+    
+    var goalValue: Float = 0
+    @State private var valueTextField: String
     var maxWidth = UIScreen().bounds.width
     
     var body: some View {
@@ -20,7 +26,7 @@ struct CardSaveMoney: View {
             
             Text("Quanto você gostaria de guardar?")
                 .font(.custom("Avenir", size: 18))
-                .padding(.bottom)
+                .padding(.vertical)
             
             HStack(alignment: .center) {
                 Spacer()
@@ -41,14 +47,22 @@ struct CardSaveMoney: View {
                         }
                     }
                 
-                Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
-                    Text("Salvar")
-                        .foregroundColor(Color(UIColor.darkGray))
-                        .font(.custom("Avenir", size: 18).bold())
-                        .padding(.horizontal)
-                })
+                Button(
+                    action: {
+                        // TODO: Salvar valor do TextField no core data
+                        
+                        // A ideia aqui vai ser colocar o valor da meta
+                        self.valueTextField = String("R$ \(self.goalValue)")
+                    },
+                    label: {
+                        Text("Salvar")
+                            .foregroundColor(Color(UIColor.darkGray))
+                            .font(.custom("Avenir", size: 18).bold())
+                            .padding(.horizontal)
+                    }
+                )
                 .background(RoundedRectangle(cornerRadius: 5))
-                .foregroundColor(Color(UIColor.cyan))
+                .foregroundColor(Color(UIColor(named: "systemMint")!))
                 
                 Spacer()
             }
@@ -63,6 +77,6 @@ struct CardSaveMoney: View {
 
 struct CardSaveMoney_Previews: PreviewProvider {
     static var previews: some View {
-        CardSaveMoney().previewLayout(.sizeThatFits)
+        CardSaveMoney(goal: 50).previewLayout(.sizeThatFits)
     }
 }
