@@ -27,10 +27,10 @@ struct WishGoalCard: View {
                 .foregroundColor(Color("systemMint"))
                 .padding(.bottom)
             Text("Se você continuar neste ritmo, você completará a meta daqui a \(goalTime) \(goalPeriod).")
-                .padding()
+                .padding(.vertical)
+                .font(.custom("Avenir Next", size: 18))
                 .multilineTextAlignment(.leading)
                 .fixedSize(horizontal: false, vertical: true)
-            
         })
         .padding(15)
         .background(Color(red: 248/256, green: 248/256, blue: 248/256))
