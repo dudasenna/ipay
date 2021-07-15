@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BE5FAE4F269E880A006E54A6 /* CardSaveMoney.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5FAE4E269E880A006E54A6 /* CardSaveMoney.swift */; };
 		22039296269CC9280054C168 /* InformationsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22039295269CC9280054C168 /* InformationsCard.swift */; };
 		222AE6D0269E0E6A005DB79A /* MyWishCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222AE6CF269E0E6A005DB79A /* MyWishCard.swift */; };
 		222AE6D2269E178B005DB79A /* MyWishesCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222AE6D1269E178B005DB79A /* MyWishesCards.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BE5FAE4E269E880A006E54A6 /* CardSaveMoney.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSaveMoney.swift; sourceTree = "<group>"; };
 		22039295269CC9280054C168 /* InformationsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationsCard.swift; sourceTree = "<group>"; };
 		222AE6CF269E0E6A005DB79A /* MyWishCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWishCard.swift; sourceTree = "<group>"; };
 		222AE6D1269E178B005DB79A /* MyWishesCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWishesCards.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				BEF78BA22698D85900181907 /* Info.plist */,
 				BEF78B9F2698D85900181907 /* Wollen.xcdatamodeld */,
 				BEF78B9A2698D85900181907 /* Preview Content */,
+				BE5FAE4E269E880A006E54A6 /* CardSaveMoney.swift */,
 			);
 			path = Wollen;
 			sourceTree = "<group>";
@@ -175,6 +178,7 @@
 				222AE6D0269E0E6A005DB79A /* MyWishCard.swift in Sources */,
 				BEF78B9E2698D85900181907 /* Persistence.swift in Sources */,
 				BEF78B972698D85700181907 /* ContentView.swift in Sources */,
+				BE5FAE4F269E880A006E54A6 /* CardSaveMoney.swift in Sources */,
 				BEF78B952698D85700181907 /* WollenApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
