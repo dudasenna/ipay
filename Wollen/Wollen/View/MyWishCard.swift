@@ -19,7 +19,7 @@ struct MyWishCard: View {
                 .scaledToFit()
                 .cornerRadius(10)
             Text("Nome")
-                .font(.custom("Avenir", size: 16))
+                .font(.custom("Avenir Next", size: 16))
             ProgressBar(value: $downloadAmount).frame(minWidth: 0, idealWidth: 220, maxWidth: 220, minHeight: 0, idealHeight: 20, maxHeight: 20, alignment: .center)
                 .padding(.bottom, 5)
 
