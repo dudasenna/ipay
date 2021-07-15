@@ -22,12 +22,13 @@ struct MyWishesCards: View {
             ScrollView(.horizontal) {
                 HStack(spacing: 20) {
                     MyWishCard()
-                    Spacer(minLength: 50)
+                    Spacer(minLength: 10)
                     MyWishCard()
-                    Spacer(minLength: 50)
+                    Spacer(minLength: 10)
                     MyWishCard()
                 }
             }
+            .padding(.horizontal)
             .shadow(color: Color.gray.opacity(0.4), radius: 5)
             //gostei mais da sombra no tom natural
         }
