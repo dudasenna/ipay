@@ -7,12 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BE5FAE4F269E880A006E54A6 /* CardSaveMoney.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5FAE4E269E880A006E54A6 /* CardSaveMoney.swift */; };
 		22039296269CC9280054C168 /* InformationsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22039295269CC9280054C168 /* InformationsCard.swift */; };
 		222AE6D0269E0E6A005DB79A /* MyWishCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222AE6CF269E0E6A005DB79A /* MyWishCard.swift */; };
 		222AE6D2269E178B005DB79A /* MyWishesCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222AE6D1269E178B005DB79A /* MyWishesCards.swift */; };
+		225C081726A5FA1000079D66 /* DescriptionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225C081626A5FA1000079D66 /* DescriptionCard.swift */; };
 		22ACBE1726A0B43000E4AED7 /* WishGoalCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ACBE1626A0B43000E4AED7 /* WishGoalCard.swift */; };
 		BE167E67269CDD9C009E94C5 /* GoalCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE167E66269CDD9C009E94C5 /* GoalCard.swift */; };
+		BE5FAE4F269E880A006E54A6 /* CardSaveMoney.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5FAE4E269E880A006E54A6 /* CardSaveMoney.swift */; };
 		BEF78B952698D85700181907 /* WollenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF78B942698D85700181907 /* WollenApp.swift */; };
 		BEF78B972698D85700181907 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF78B962698D85700181907 /* ContentView.swift */; };
 		BEF78B992698D85900181907 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEF78B982698D85900181907 /* Assets.xcassets */; };
@@ -22,12 +23,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		BE5FAE4E269E880A006E54A6 /* CardSaveMoney.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSaveMoney.swift; sourceTree = "<group>"; };
 		22039295269CC9280054C168 /* InformationsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationsCard.swift; sourceTree = "<group>"; };
 		222AE6CF269E0E6A005DB79A /* MyWishCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWishCard.swift; sourceTree = "<group>"; };
 		222AE6D1269E178B005DB79A /* MyWishesCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWishesCards.swift; sourceTree = "<group>"; };
+		225C081626A5FA1000079D66 /* DescriptionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionCard.swift; sourceTree = "<group>"; };
 		22ACBE1626A0B43000E4AED7 /* WishGoalCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishGoalCard.swift; sourceTree = "<group>"; };
 		BE167E66269CDD9C009E94C5 /* GoalCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCard.swift; sourceTree = "<group>"; };
+		BE5FAE4E269E880A006E54A6 /* CardSaveMoney.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSaveMoney.swift; sourceTree = "<group>"; };
 		BEF78B912698D85700181907 /* Wollen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wollen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEF78B942698D85700181907 /* WollenApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WollenApp.swift; sourceTree = "<group>"; };
 		BEF78B962698D85700181907 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				222AE6CF269E0E6A005DB79A /* MyWishCard.swift */,
 				222AE6D1269E178B005DB79A /* MyWishesCards.swift */,
 				22ACBE1626A0B43000E4AED7 /* WishGoalCard.swift */,
+				225C081626A5FA1000079D66 /* DescriptionCard.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -179,6 +182,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				222AE6D2269E178B005DB79A /* MyWishesCards.swift in Sources */,
+				225C081726A5FA1000079D66 /* DescriptionCard.swift in Sources */,
 				22039296269CC9280054C168 /* InformationsCard.swift in Sources */,
 				BEF78BA12698D85900181907 /* Wollen.xcdatamodeld in Sources */,
 				222AE6D0269E0E6A005DB79A /* MyWishCard.swift in Sources */,
@@ -317,7 +321,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Wollen/Preview Content\"";
-				DEVELOPMENT_TEAM = 23WSBM7T82;
+				DEVELOPMENT_TEAM = RGBZBCSCUU;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Wollen/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -339,7 +343,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Wollen/Preview Content\"";
-				DEVELOPMENT_TEAM = 23WSBM7T82;
+				DEVELOPMENT_TEAM = RGBZBCSCUU;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Wollen/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
