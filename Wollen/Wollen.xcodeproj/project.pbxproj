@@ -11,6 +11,7 @@
 		222AE6D0269E0E6A005DB79A /* MyWishCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222AE6CF269E0E6A005DB79A /* MyWishCard.swift */; };
 		222AE6D2269E178B005DB79A /* MyWishesCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222AE6D1269E178B005DB79A /* MyWishesCards.swift */; };
 		22ACBE1726A0B43000E4AED7 /* WishGoalCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ACBE1626A0B43000E4AED7 /* WishGoalCard.swift */; };
+		6640A5AD26A0D3A300B65461 /* MetaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6640A5AC26A0D3A300B65461 /* MetaViewModel.swift */; };
 		7DEE3FB126A0CEB2007B9615 /* WollenDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7DEE3FAF26A0CEB2007B9615 /* WollenDataModel.xcdatamodeld */; };
 		7DEE3FB526A0D063007B9615 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DEE3FB426A0D063007B9615 /* CoreDataManager.swift */; };
 		7DEE3FB726A0D10B007B9615 /* CategoriaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DEE3FB626A0D10B007B9615 /* CategoriaViewModel.swift */; };
@@ -29,6 +30,7 @@
 		222AE6CF269E0E6A005DB79A /* MyWishCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWishCard.swift; sourceTree = "<group>"; };
 		222AE6D1269E178B005DB79A /* MyWishesCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWishesCards.swift; sourceTree = "<group>"; };
 		22ACBE1626A0B43000E4AED7 /* WishGoalCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishGoalCard.swift; sourceTree = "<group>"; };
+		6640A5AC26A0D3A300B65461 /* MetaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetaViewModel.swift; sourceTree = "<group>"; };
 		7DEE3FB026A0CEB2007B9615 /* WollenDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WollenDataModel.xcdatamodel; sourceTree = "<group>"; };
 		7DEE3FB426A0D063007B9615 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		7DEE3FB626A0D10B007B9615 /* CategoriaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriaViewModel.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 			children = (
 				7DEE3FB626A0D10B007B9615 /* CategoriaViewModel.swift */,
 				7DEE3FB826A0D15E007B9615 /* CoreDataViewModel.swift */,
+				6640A5AC26A0D3A300B65461 /* MetaViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -214,6 +217,7 @@
 				22ACBE1726A0B43000E4AED7 /* WishGoalCard.swift in Sources */,
 				BEF78B972698D85700181907 /* ContentView.swift in Sources */,
 				BE5FAE4F269E880A006E54A6 /* CardSaveMoney.swift in Sources */,
+				6640A5AD26A0D3A300B65461 /* MetaViewModel.swift in Sources */,
 				BEF78B952698D85700181907 /* WollenApp.swift in Sources */,
 				7DEE3FB526A0D063007B9615 /* CoreDataManager.swift in Sources */,
 			);
