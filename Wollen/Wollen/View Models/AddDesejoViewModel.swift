@@ -13,7 +13,7 @@ class AddDesejoViewModel: ObservableObject {
     var nome: String = ""
     var descricao: String = ""
     var link: String = ""
-    var preco: Double = 0.0
+    var preco: String = ""
     
     func addDesejoToCategoria(categoriaId: NSManagedObjectID) {
         
@@ -25,7 +25,7 @@ class AddDesejoViewModel: ObservableObject {
             let desejo = Desejo(context: manager.persistentContainer.viewContext)
             desejo.descricao = descricao
             desejo.link = link
-            desejo.preco = preco
+            desejo.preco = Double(preco) ?? 0.0
             desejo.categoria = categoria
             
             manager.save()
@@ -43,7 +43,7 @@ class AddDesejoViewModel: ObservableObject {
         desejo.nome = nome
         desejo.descricao = descricao
         desejo.link = link
-        desejo.preco = preco
+        desejo.preco = Double(preco) ?? 0.0
         
         manager.save()
         print("Botao save desejo")

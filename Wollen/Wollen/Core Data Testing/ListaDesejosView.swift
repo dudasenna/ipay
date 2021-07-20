@@ -40,11 +40,14 @@ struct DetalhesDesejo: View {
                 .fontWeight(.bold)
                 .font(.system(size: 22))
             Text(desejo.descricao)
-                .font(.callout)
-                .opacity(0.5)
+                .fontWeight(.bold)
+                .font(.system(size: 22))
             Text(desejo.link)
-                .font(.callout)
-                .opacity(0.5)
+                .fontWeight(.bold)
+                .font(.system(size: 22))
+            Text(String(desejo.preco))
+                .fontWeight(.bold)
+                .font(.system(size: 22))
             
         }
     }

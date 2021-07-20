@@ -26,6 +26,8 @@ struct ContentView: View {
                     InformationsCard()
                     //InformationsCard()
                     ListaDesejosView()
+                    AddCategoriaView()
+                    ListaCategoriasView()
                 }
             }
             .padding(20)

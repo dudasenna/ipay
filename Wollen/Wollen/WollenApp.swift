@@ -13,7 +13,8 @@ struct WollenApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            //ContentView()
+            ListaCategoriasView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }

@@ -26,6 +26,15 @@ class ListaDesejosViewModel: ObservableObject {
         }
     }
     
+    func getDesejosOfCategoria(categoria: CategoriaViewModel) {
+        let categoria = CoreDataManager.shared.getCategoriaById(id: categoria.id)
+        if let categoria = categoria {
+            DispatchQueue.main.async {
+                self.desejos = (categoria.desejos?.allObjects as! [Desejo]).map(DesejoViewModel.init)
+            }
+        }
+    }
+    
 }
 
 struct DesejoViewModel {

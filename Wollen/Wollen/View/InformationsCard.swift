@@ -41,7 +41,7 @@ struct InformationsCard: View {
             HStack() {
                 Text("Preço:")
                     .font(.custom("Avenir Next", size: 18))
-                TextField("Preço do produto", text: $productName)
+                TextField("Preço do produto", text: $addDesejoVM.preco)
                     .padding(5)
                     .background(Color(red: 118/256, green: 118/256, blue: 128/256, opacity: 0.12))
                     .cornerRadius(10)
