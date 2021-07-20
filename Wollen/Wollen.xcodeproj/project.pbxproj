@@ -11,6 +11,7 @@
 		222AE6D0269E0E6A005DB79A /* MyWishCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222AE6CF269E0E6A005DB79A /* MyWishCard.swift */; };
 		222AE6D2269E178B005DB79A /* MyWishesCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222AE6D1269E178B005DB79A /* MyWishesCards.swift */; };
 		225C081726A5FA1000079D66 /* DescriptionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225C081626A5FA1000079D66 /* DescriptionCard.swift */; };
+		225C081926A616C800079D66 /* LinksCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225C081826A616C800079D66 /* LinksCard.swift */; };
 		22ACBE1726A0B43000E4AED7 /* WishGoalCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ACBE1626A0B43000E4AED7 /* WishGoalCard.swift */; };
 		BE167E67269CDD9C009E94C5 /* GoalCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE167E66269CDD9C009E94C5 /* GoalCard.swift */; };
 		BE17DB7F26A650740051966C /* GalleryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE17DB7E26A650740051966C /* GalleryCard.swift */; };
@@ -28,6 +29,7 @@
 		222AE6CF269E0E6A005DB79A /* MyWishCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWishCard.swift; sourceTree = "<group>"; };
 		222AE6D1269E178B005DB79A /* MyWishesCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWishesCards.swift; sourceTree = "<group>"; };
 		225C081626A5FA1000079D66 /* DescriptionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionCard.swift; sourceTree = "<group>"; };
+		225C081826A616C800079D66 /* LinksCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksCard.swift; sourceTree = "<group>"; };
 		22ACBE1626A0B43000E4AED7 /* WishGoalCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishGoalCard.swift; sourceTree = "<group>"; };
 		BE167E66269CDD9C009E94C5 /* GoalCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCard.swift; sourceTree = "<group>"; };
 		BE17DB7E26A650740051966C /* GalleryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCard.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 				222AE6D1269E178B005DB79A /* MyWishesCards.swift */,
 				22ACBE1626A0B43000E4AED7 /* WishGoalCard.swift */,
 				225C081626A5FA1000079D66 /* DescriptionCard.swift */,
+				225C081826A616C800079D66 /* LinksCard.swift */,
 				BE5FAE4E269E880A006E54A6 /* CardSaveMoney.swift */,
 				BE167E66269CDD9C009E94C5 /* GoalCard.swift */,
 				BE17DB7E26A650740051966C /* GalleryCard.swift */,
@@ -186,6 +189,7 @@
 			files = (
 				BE17DB7F26A650740051966C /* GalleryCard.swift in Sources */,
 				222AE6D2269E178B005DB79A /* MyWishesCards.swift in Sources */,
+				225C081926A616C800079D66 /* LinksCard.swift in Sources */,
 				225C081726A5FA1000079D66 /* DescriptionCard.swift in Sources */,
 				22039296269CC9280054C168 /* InformationsCard.swift in Sources */,
 				BEF78BA12698D85900181907 /* Wollen.xcdatamodeld in Sources */,

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct DescriptionCard: View {
+    @State var descriptionText: String = "Texto do usuário"
     var body: some View {
         VStack(alignment: .leading) {
             
@@ -18,7 +19,7 @@ struct DescriptionCard: View {
                 .padding()
             
             // DESCRIÇÃO
-            Text("Pegar texto do usuário\nPegar texto do usuário")
+            Text(descriptionText)
                 .font(.custom("Avenir Next", size: 18))
 //                .multilineTextAlignment(.center)
                 .fixedSize(horizontal: false, vertical: true)
@@ -37,5 +38,8 @@ struct DescriptionCard: View {
 struct DescriptionCard_Previews: PreviewProvider {
     static var previews: some View {
         DescriptionCard()
+            .previewLayout(.sizeThatFits)
+            .padding()
+            .cornerRadius(10)
     }
 }
