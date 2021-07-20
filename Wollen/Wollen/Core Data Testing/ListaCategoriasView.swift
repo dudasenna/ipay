@@ -14,42 +14,38 @@ struct ListaCategoriasView: View {
     
     var body: some View {
         
-//        NavigationView {
-//            List {
-//                ForEach(listaCategoriasVM.categorias, id: \.id) { categoria in
-//                    NavigationLink(
-//                        destination: ListaDesejosCategoriaView(categoriaVM: categoria),
-//                        label: {
-//                            DetalhesCategoria(categoria: categoria)
-//                        })
-//                }
-//            }
-//            
-//            
-//            .navigationTitle("Categorias")
-//            .listStyle(SidebarListStyle())
-//            
-//            ListaDesejosView()
-//        }
-        
-        NavigationView{
+        NavigationView {
             VStack {
-                List{
-                    ForEach(listaCategoriasVM.categorias, id: \.id) { categoria in
-                        NavigationLink(
-                            destination: ListaDesejosCategoriaView(categoriaVM: categoria),
-                            label: {
-                                DetalhesCategoria(categoria: categoria)
-                            })
-                    }
-                }
-                .listStyle(SidebarListStyle())
                 
-                NavigationLink(
-                    destination: AddCategoriaView(),
-                    label: {
-                        Text("Add Categoria nl")
-                    })
+                List {
+                    Group {
+                        Text("Categorias")
+                            .font(.title)
+                            //.font(.custom("Avenir Next", size: 22))
+                            .fontWeight(.bold)
+                        ForEach(listaCategoriasVM.categorias, id: \.id) { categoria in
+                            NavigationLink(
+                                destination: ListaDesejosCategoriaView(categoriaVM: categoria),
+                                label: {
+                                    DetalhesCategoria(categoria: categoria)
+                                        //.font(.custom("Avenir Next", size: 18))
+                                        .font(.title2)
+                                })
+                        }
+                    }
+                }.listStyle(SidebarListStyle())
+                
+                HStack {
+                    //Spacer()
+                    NavigationLink(
+                        destination: AddCategoriaView(),
+                        label: {
+                            Text("Nova categoria")
+                            //Image(systemName: "plus.circle")
+                        })
+                }.padding()
+                
+                //Spacer()
             }
             
             ListaDesejosView()
