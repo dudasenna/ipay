@@ -24,7 +24,8 @@ struct ContentView: View {
                 MyWishesCards()
                 HStack {
                     InformationsCard()
-                    InformationsCard()
+                    //InformationsCard()
+                    ListaDesejosView()
                 }
             }
             .padding(20)

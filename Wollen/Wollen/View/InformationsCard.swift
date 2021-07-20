@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct InformationsCard: View {
+    
+    @StateObject private var addDesejoVM = AddDesejoViewModel()
     @State var productName: String = ""
     @State var productPrice: Int = 0
     
@@ -24,7 +26,7 @@ struct InformationsCard: View {
             HStack() {
                 Text("Nome:")
                     .font(.custom("Avenir Next", size: 18))
-                TextField("Nome do produto", text: $productName)
+                TextField("Nome do produto", text: $addDesejoVM.nome)
                     .padding(5)
                     .background(Color(red: 118/256, green: 118/256, blue: 128/256, opacity: 0.12))
                     .cornerRadius(10)
@@ -39,7 +41,7 @@ struct InformationsCard: View {
             HStack() {
                 Text("Preço:")
                     .font(.custom("Avenir Next", size: 18))
-                TextField("Nome do produto", text: $productName)
+                TextField("Preço do produto", text: $productName)
                     .padding(5)
                     .background(Color(red: 118/256, green: 118/256, blue: 128/256, opacity: 0.12))
                     .cornerRadius(10)
@@ -53,7 +55,7 @@ struct InformationsCard: View {
             HStack() {
                 Text("Descrição:")
                     .font(.custom("Avenir Next", size: 18))
-                TextField("Nome do produto", text: $productName)
+                TextField("Descrição do produto", text: $addDesejoVM.descricao)
                     .padding(5)
                     .background(Color(red: 118/256, green: 118/256, blue: 128/256, opacity: 0.12))
                     .cornerRadius(10)
@@ -67,7 +69,7 @@ struct InformationsCard: View {
             HStack() {
                 Text("Link:")
                     .font(.custom("Avenir Next", size: 18))
-                TextField("Nome do produto", text: $productName)
+                TextField("Link do produto", text: $addDesejoVM.link)
                     .padding(5)
                     .background(Color(red: 118/256, green: 118/256, blue: 128/256, opacity: 0.12))
                     .cornerRadius(10)
@@ -75,6 +77,11 @@ struct InformationsCard: View {
                     .font(.custom("Avenir Next", size: 16))
             }
             .padding(10)
+            
+            Button("Salvar") {
+                addDesejoVM.saveDesejo()
+                //print("Botao de salvar desejo")
+            }
         }
         .padding(15)
         .background(Color(red: 248/256, green: 248/256, blue: 248/256))

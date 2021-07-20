@@ -12,6 +12,10 @@
 		222AE6D2269E178B005DB79A /* MyWishesCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222AE6D1269E178B005DB79A /* MyWishesCards.swift */; };
 		22ACBE1726A0B43000E4AED7 /* WishGoalCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ACBE1626A0B43000E4AED7 /* WishGoalCard.swift */; };
 		7D6F2EBD26A6434900EC8ADC /* WollenDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7D6F2EBB26A6434900EC8ADC /* WollenDataModel.xcdatamodeld */; };
+		7D6F2EBF26A6458000EC8ADC /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6F2EBE26A6458000EC8ADC /* CoreDataManager.swift */; };
+		7D6F2EC126A646E900EC8ADC /* AddDesejoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6F2EC026A646E900EC8ADC /* AddDesejoViewModel.swift */; };
+		7D6F2EC326A6528700EC8ADC /* ListaDesejosViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6F2EC226A6528700EC8ADC /* ListaDesejosViewModel.swift */; };
+		7D6F2EC526A6575800EC8ADC /* ListaDesejosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6F2EC426A6575800EC8ADC /* ListaDesejosView.swift */; };
 		BE167E67269CDD9C009E94C5 /* GoalCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE167E66269CDD9C009E94C5 /* GoalCard.swift */; };
 		BE5FAE4F269E880A006E54A6 /* CardSaveMoney.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5FAE4E269E880A006E54A6 /* CardSaveMoney.swift */; };
 		BEF78B952698D85700181907 /* WollenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF78B942698D85700181907 /* WollenApp.swift */; };
@@ -28,6 +32,10 @@
 		222AE6D1269E178B005DB79A /* MyWishesCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWishesCards.swift; sourceTree = "<group>"; };
 		22ACBE1626A0B43000E4AED7 /* WishGoalCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishGoalCard.swift; sourceTree = "<group>"; };
 		7D6F2EBC26A6434900EC8ADC /* WollenDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WollenDataModel.xcdatamodel; sourceTree = "<group>"; };
+		7D6F2EBE26A6458000EC8ADC /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		7D6F2EC026A646E900EC8ADC /* AddDesejoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDesejoViewModel.swift; sourceTree = "<group>"; };
+		7D6F2EC226A6528700EC8ADC /* ListaDesejosViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListaDesejosViewModel.swift; sourceTree = "<group>"; };
+		7D6F2EC426A6575800EC8ADC /* ListaDesejosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListaDesejosView.swift; sourceTree = "<group>"; };
 		BE167E66269CDD9C009E94C5 /* GoalCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCard.swift; sourceTree = "<group>"; };
 		BE5FAE4E269E880A006E54A6 /* CardSaveMoney.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSaveMoney.swift; sourceTree = "<group>"; };
 		BEF78B912698D85700181907 /* Wollen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wollen.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,6 +102,10 @@
 				22039294269CC7280054C168 /* View */,
 				BEF78B942698D85700181907 /* WollenApp.swift */,
 				7D6F2EBB26A6434900EC8ADC /* WollenDataModel.xcdatamodeld */,
+				7D6F2EBE26A6458000EC8ADC /* CoreDataManager.swift */,
+				7D6F2EC226A6528700EC8ADC /* ListaDesejosViewModel.swift */,
+				7D6F2EC426A6575800EC8ADC /* ListaDesejosView.swift */,
+				7D6F2EC026A646E900EC8ADC /* AddDesejoViewModel.swift */,
 				BEF78B962698D85700181907 /* ContentView.swift */,
 				BEF78B982698D85900181907 /* Assets.xcassets */,
 				BEF78B9D2698D85900181907 /* Persistence.swift */,
@@ -181,14 +193,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D6F2EC326A6528700EC8ADC /* ListaDesejosViewModel.swift in Sources */,
 				222AE6D2269E178B005DB79A /* MyWishesCards.swift in Sources */,
 				22039296269CC9280054C168 /* InformationsCard.swift in Sources */,
 				BEF78BA12698D85900181907 /* Wollen.xcdatamodeld in Sources */,
 				7D6F2EBD26A6434900EC8ADC /* WollenDataModel.xcdatamodeld in Sources */,
 				222AE6D0269E0E6A005DB79A /* MyWishCard.swift in Sources */,
 				BEF78B9E2698D85900181907 /* Persistence.swift in Sources */,
+				7D6F2EBF26A6458000EC8ADC /* CoreDataManager.swift in Sources */,
+				7D6F2EC526A6575800EC8ADC /* ListaDesejosView.swift in Sources */,
 				22ACBE1726A0B43000E4AED7 /* WishGoalCard.swift in Sources */,
 				BEF78B972698D85700181907 /* ContentView.swift in Sources */,
+				7D6F2EC126A646E900EC8ADC /* AddDesejoViewModel.swift in Sources */,
 				BE5FAE4F269E880A006E54A6 /* CardSaveMoney.swift in Sources */,
 				BE167E67269CDD9C009E94C5 /* GoalCard.swift in Sources */,
 				BEF78B952698D85700181907 /* WollenApp.swift in Sources */,
