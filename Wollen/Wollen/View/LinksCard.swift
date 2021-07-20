@@ -8,8 +8,12 @@
 import SwiftUI
 
 struct LinksCard: View {
-    @State var linkName: [String] = ["Apple", "Apple Brasil", "Google"]
-    @State var links: [String] = ["https://www.apple.com", "https://www.apple.com.br", "https://www.google.com"]
+    @State var linkName: [String] = ["Apple", "Apple Brasil", "Google", "Apple", "Apple Brasil", "Google", "Apple", "Apple Brasil", "Google"]
+    @State var links: [String] = ["https://www.apple.com", "https://www.apple.com.br", "https://www.google.com", "https://www.apple.com", "https://www.apple.com.br", "https://www.google.com", "https://www.apple.com", "https://www.apple.com.br", "https://www.google.com"]
+    
+    private var adaptiveLayout = [GridItem(.adaptive(minimum: 150))]
+    private var flexibleLayout = [GridItem(.flexible()), GridItem(.flexible())]
+    
     var body: some View {
         VStack(alignment: .leading) {
             
@@ -21,14 +25,16 @@ struct LinksCard: View {
             
             // DESCRIÇÃO
             ScrollView(.vertical, showsIndicators: false) {
-                ForEach (0..<links.count) { link in
-                    Link(linkName[link], destination: URL(string: links[link])!)
-                        .font(.custom("Avenir Next", size: 18))
-        //                .multilineTextAlignment(.center)
-                        .fixedSize(horizontal: false, vertical: true)
-                        .padding(.horizontal)
-                        .padding(.bottom)
-                        
+                LazyVGrid (columns: adaptiveLayout, alignment: .center, spacing: 0){
+                    ForEach (0..<links.count) { link in
+                        Link(linkName[link], destination: URL(string: links[link])!)
+                            .font(.custom("Avenir Next", size: 18))
+            //                .multilineTextAlignment(.center)
+                            .fixedSize(horizontal: false, vertical: true)
+                            .padding(.horizontal)
+                            .padding(.bottom)
+                            
+                    }
                 }
             }
             
@@ -44,5 +50,8 @@ struct LinksCard: View {
 struct LinksCard_Previews: PreviewProvider {
     static var previews: some View {
         LinksCard()
+            .previewLayout(.sizeThatFits)
+            .padding()
+            .cornerRadius(10)
     }
 }

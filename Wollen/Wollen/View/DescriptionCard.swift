@@ -38,5 +38,8 @@ struct DescriptionCard: View {
 struct DescriptionCard_Previews: PreviewProvider {
     static var previews: some View {
         DescriptionCard()
+            .previewLayout(.sizeThatFits)
+            .padding()
+            .cornerRadius(10)
     }
 }

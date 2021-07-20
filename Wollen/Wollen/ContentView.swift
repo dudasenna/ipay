@@ -22,10 +22,8 @@ struct ContentView: View {
                 .frame(minWidth: 0, idealWidth: 240, maxWidth: 240, minHeight: 0, idealHeight: 100, maxHeight: .infinity, alignment: .center)
             VStack {
                 MyWishesCards()
-                HStack {
-                    InformationsCard()
-                    InformationsCard()
-                }
+                DescriptionCard()
+                LinksCard()
             }
             .padding(20)
             .background(Color(red: 0.98, green: 0.98, blue: 0.98, opacity: 1.0))
