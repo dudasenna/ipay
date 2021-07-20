@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ListaDesejosView: View {
     
+    @State private var isPresented: Bool = false
     @StateObject private var listaDesejosVM = ListaDesejosViewModel()
     
     var body: some View {
@@ -18,6 +19,15 @@ struct ListaDesejosView: View {
                 DetalhesDesejo(desejo: desejo)
             }
         }
+        .navigationTitle("Meus desejos")
+        .navigationBarItems(trailing: Button("Add novo desejo") {
+             isPresented = true
+        })
+        .sheet(isPresented: $isPresented, onDismiss: {
+            listaDesejosVM.getAllDesejos()
+        }, content: {
+            InformationsCard()
+        })
         .onAppear(perform: {
             listaDesejosVM.getAllDesejos()
         })
@@ -38,17 +48,12 @@ struct DetalhesDesejo: View {
         VStack(alignment: .leading, spacing: 5) {
             Text(desejo.nome)
                 .fontWeight(.bold)
-                .font(.system(size: 22))
             Text(desejo.descricao)
                 .fontWeight(.bold)
-                .font(.system(size: 22))
             Text(desejo.link)
                 .fontWeight(.bold)
-                .font(.system(size: 22))
             Text(String(desejo.preco))
                 .fontWeight(.bold)
-                .font(.system(size: 22))
-            
         }
     }
 }

@@ -18,13 +18,11 @@ struct ListaDesejosCategoriaView: View {
         VStack {
             List(listaDesejosVM.desejos, id: \.id) { desejo in
                 VStack(alignment: .leading) {
-                    Text(desejo.nome)
+                    
                     Text(String(desejo.preco))
-                        .font(.caption)
                     Text(desejo.descricao)
-                        .font(.caption)
                     Text(desejo.link)
-                        .font(.caption)
+                    Text(desejo.nome)
                 }
             }
         }

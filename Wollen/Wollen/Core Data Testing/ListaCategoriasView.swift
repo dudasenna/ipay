@@ -13,6 +13,25 @@ struct ListaCategoriasView: View {
     @State private var isPresented: Bool = false
     
     var body: some View {
+        
+//        NavigationView {
+//            List {
+//                ForEach(listaCategoriasVM.categorias, id: \.id) { categoria in
+//                    NavigationLink(
+//                        destination: ListaDesejosCategoriaView(categoriaVM: categoria),
+//                        label: {
+//                            DetalhesCategoria(categoria: categoria)
+//                        })
+//                }
+//            }
+//            
+//            
+//            .navigationTitle("Categorias")
+//            .listStyle(SidebarListStyle())
+//            
+//            ListaDesejosView()
+//        }
+        
         NavigationView{
             VStack {
                 List{
@@ -29,18 +48,15 @@ struct ListaCategoriasView: View {
                 NavigationLink(
                     destination: AddCategoriaView(),
                     label: {
-                        Text("Add Categoria")
+                        Text("Add Categoria nl")
                     })
-                
-                Spacer()
             }
             
-            
-            
+            ListaDesejosView()
             
         }
         .navigationTitle("Categorias")
-        .navigationBarItems(trailing: Button("Add Categoria") {
+        .navigationBarItems(trailing: Button("Add Categoria botao") {
             isPresented = true
         })
         .sheet(isPresented: $isPresented, onDismiss: {

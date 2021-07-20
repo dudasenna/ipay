@@ -23,6 +23,7 @@ class AddDesejoViewModel: ObservableObject {
         
         if let categoria = categoria {
             let desejo = Desejo(context: manager.persistentContainer.viewContext)
+            desejo.nome = nome
             desejo.descricao = descricao
             desejo.link = link
             desejo.preco = Double(preco) ?? 0.0
