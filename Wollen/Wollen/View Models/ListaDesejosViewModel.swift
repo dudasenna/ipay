@@ -12,6 +12,13 @@ class ListaDesejosViewModel: ObservableObject {
     
     @Published var desejos = [DesejoViewModel]()
     
+    func deleteDesejo(desejoSelecionado: DesejoViewModel) {
+        let desejo = CoreDataManager.shared.getDesejoById(id: desejoSelecionado.id)
+        if let desejo = desejo {
+            CoreDataManager.shared.deleteDesejo(desejo)
+        }
+    }
+    
     func getAllDesejos() {
         let desejos = CoreDataManager.shared.getAllDesejos()
         DispatchQueue.main.async {
