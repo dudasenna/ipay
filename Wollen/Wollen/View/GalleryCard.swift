@@ -15,23 +15,17 @@ struct GalleryCard: View {
                 // Título:
                 HStack {
                     Text("Galeria")
-                        .font(.custom("Avenir", size: 22).bold())
+                        .font(.custom("Avenir Next", size: 22).bold())
                         .multilineTextAlignment(.leading)
-                        .padding(.horizontal)
+                        .padding([.top, .leading])
                     Spacer()
                 }
                 
                 // Imagens:
                 ScrollView {
                     VStack (alignment: .center) {
-                        ForEach(1..<7) {
-                            Image("image\($0)")
-                                .resizable()
-                                .cornerRadius(10)
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: geometry.size.width*0.8)
-                                .padding()
-                                .shadow(color: Color.gray.opacity(0.4), radius: 5)
+                        ForEach(1..<7) { _ in
+                            imageFromDatabase(width: geometry.size.width)
                         }
                     }
                 }.padding()
@@ -42,6 +36,17 @@ struct GalleryCard: View {
         }
         
     }
+}
+
+fileprivate func imageFromDatabase(width: CGFloat) -> some View {
+    let image = Image("teste")
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .frame(width: width*0.8)
+            .clipShape(RoundedRectangle(cornerRadius: 10))
+            .padding()
+            .shadow(color: Color.gray.opacity(0.4), radius: 5)
+    return image
 }
 
 struct GalleryCard_Previews: PreviewProvider {
