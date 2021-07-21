@@ -15,12 +15,17 @@ struct ListaDesejosView: View {
     var body: some View {
         List{
             ForEach(listaDesejosVM.desejos, id: \.id) { desejo in
-                //Text(desejo.nome)
-                DetalhesDesejo(desejo: desejo)
+                
+                NavigationLink(
+                    destination: DesejoView(desejoVM: desejo),
+                    label: {
+                        DetalhesDesejo(desejo: desejo)
+                    })
+                
             }
         }
         .navigationTitle("Meus desejos")
-        .navigationBarItems(trailing: Button("Add novo desejo") {
+        .navigationBarItems(trailing: Button("Novo desejo") {
              isPresented = true
         })
         .sheet(isPresented: $isPresented, onDismiss: {
@@ -48,12 +53,10 @@ struct DetalhesDesejo: View {
         VStack(alignment: .leading, spacing: 5) {
             Text(desejo.nome)
                 .fontWeight(.bold)
-            Text(desejo.descricao)
-                .fontWeight(.bold)
-            Text(desejo.link)
-                .fontWeight(.bold)
-            Text(String(desejo.preco))
-                .fontWeight(.bold)
+            Text("R$ " + String(desejo.preco))
+            Text("Descrição " + desejo.descricao)
+            Text("Link " + desejo.link)
+
         }
     }
 }

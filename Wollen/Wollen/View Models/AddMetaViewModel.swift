@@ -10,10 +10,10 @@ import CoreData
 
 class AddMetaViewModel: ObservableObject {
     
-    var duracao: Int16 = 0
+    var duracao: String = ""
     var frequencia: String = ""
-    var valorAtual: Double = 0.0
-    var valorMeta: Double = 0.0
+    var valorAtual: String = ""
+    var valorMeta: String = ""
     
     func addMetaToDesejo(desejoId: NSManagedObjectID) {
         
@@ -23,10 +23,10 @@ class AddMetaViewModel: ObservableObject {
         
         if let desejo = desejo {
             let meta = Meta(context: manager.persistentContainer.viewContext)
-            meta.duracao = duracao
+            meta.duracao = Int16(duracao) ?? 0
             meta.frequencia = frequencia
-            meta.valorAtual = valorAtual
-            meta.valorMeta = valorMeta
+            meta.valorAtual = Double(valorAtual) ?? 0.0
+            meta.valorMeta = Double(valorMeta) ?? 0.0
             meta.desejo = desejo
             
             manager.save()
@@ -39,10 +39,10 @@ class AddMetaViewModel: ObservableObject {
         
         let manager = CoreDataManager.shared
         let meta = Meta(context: manager.persistentContainer.viewContext)
-        meta.duracao = duracao
+        meta.duracao = Int16(duracao) ?? 0
         meta.frequencia = frequencia
-        meta.valorAtual = valorAtual
-        meta.valorMeta = valorMeta
+        meta.valorAtual = Double(valorAtual) ?? 0.0
+        meta.valorMeta = Double(valorMeta) ?? 0.0
         
         manager.save()
         print("Salvou a meta!")

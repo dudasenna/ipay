@@ -17,23 +17,25 @@ struct ListaDesejosCategoriaView: View {
     var body: some View {
         VStack {
             List(listaDesejosVM.desejos, id: \.id) { desejo in
-                VStack(alignment: .leading) {
-                    
-                    Text(String(desejo.preco))
-                    Text(desejo.descricao)
-                    Text(desejo.link)
+                VStack(alignment: .leading, spacing: 5) {
                     Text(desejo.nome)
+                        .fontWeight(.bold)
+                    Text("R$ " + String(desejo.preco))
+                    Text("Descrição " + desejo.descricao)
+                    Text("Link " + desejo.link)
+                    
                 }
             }
         }
         .navigationTitle(categoriaVM.nome)
-        .navigationBarItems(trailing: Button("Add novo desejo na categoria \(categoriaVM.nome)") {
+        .navigationBarItems(trailing: Button("Novo desejo na categoria \(categoriaVM.nome)") {
              isPresented = true
         })
         .sheet(isPresented: $isPresented, onDismiss: {
             listaDesejosVM.getDesejosOfCategoria(categoria: categoriaVM)
         }, content: {
             AddDesejoToCategoriaView(categoriaVM:categoriaVM)
+            //AddDesejo(categoriaVM: categoriaVM, desejoVM:)
         })
         .onAppear(perform: {
             listaDesejosVM.getDesejosOfCategoria(categoria: categoriaVM)

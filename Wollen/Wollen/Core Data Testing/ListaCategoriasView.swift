@@ -23,7 +23,17 @@ struct ListaCategoriasView: View {
                             .font(.title)
                             //.font(.custom("Avenir Next", size: 22))
                             .fontWeight(.bold)
+                        
+                        
+                        NavigationLink(
+                            destination: ListaDesejosView(),
+                            label: {
+                                Text("Geral")
+                                    .font(.title2)
+                            })
+                        
                         ForEach(listaCategoriasVM.categorias, id: \.id) { categoria in
+                            
                             NavigationLink(
                                 destination: ListaDesejosCategoriaView(categoriaVM: categoria),
                                 label: {
@@ -80,6 +90,7 @@ struct DetalhesCategoria: View {
         VStack(alignment: .leading, spacing: 5) {
             Text(categoria.nome)
             Text(categoria.cor)
+                .font(.footnote)
         }
     }
 }
