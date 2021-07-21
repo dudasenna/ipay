@@ -35,6 +35,23 @@ class AddMetaViewModel: ObservableObject {
         
     }
     
+    func addMetaToDesejo(desejoId: NSManagedObjectID, metaId: NSManagedObjectID) {
+        
+        let manager = CoreDataManager.shared
+        
+        let desejo: Desejo? = manager.getDesejoById(id: desejoId)
+        
+        let meta: Meta? = manager.getMetaById(id: metaId)
+        
+        if let desejo = desejo {
+            if let meta = meta {
+                desejo.meta = meta
+                
+                manager.save()
+            }
+        }
+    }
+    
     func saveMeta() {
         
         let manager = CoreDataManager.shared

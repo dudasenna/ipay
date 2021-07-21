@@ -42,34 +42,28 @@ struct ListaCategoriasView: View {
                                         .font(.title2)
                                 })
                         }
+                        
+                        Button {
+                            isPresented.toggle()
+                        } label: {
+                            Text("Nova categoria")
+                                .font(.title2)
+                        }
+                        .sheet(isPresented: $isPresented, onDismiss: {
+                            listaCategoriasVM.getAllCategorias()
+                        }, content: {
+                            AddCategoriaView()
+                        })
+                        
                     }
                 }.listStyle(SidebarListStyle())
                 
-                HStack {
-                    //Spacer()
-                    NavigationLink(
-                        destination: AddCategoriaView(),
-                        label: {
-                            Text("Nova categoria")
-                            //Image(systemName: "plus.circle")
-                        })
-                }.padding()
-                
-                //Spacer()
             }
             
             ListaDesejosView()
             
         }
-        .navigationTitle("Categorias")
-        .navigationBarItems(trailing: Button("Add Categoria botao") {
-            isPresented = true
-        })
-        .sheet(isPresented: $isPresented, onDismiss: {
-            listaCategoriasVM.getAllCategorias()
-        },  content: {
-            AddCategoriaView()
-        })
+        
         .onAppear(perform: {
             listaCategoriasVM.getAllCategorias()
         })
