@@ -27,6 +27,7 @@
 		7D9C5A6C26A798FF00FAF19C /* DesejoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9C5A6B26A798FF00FAF19C /* DesejoView.swift */; };
 		7D9C5A6E26A8905700FAF19C /* AddMetaToDesejoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9C5A6D26A8905700FAF19C /* AddMetaToDesejoView.swift */; };
 		7D9C5A7026A8A2B700FAF19C /* AddDesejo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9C5A6F26A8A2B700FAF19C /* AddDesejo.swift */; };
+		7D9C5A7226A8F7CB00FAF19C /* TesteSideBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9C5A7126A8F7CB00FAF19C /* TesteSideBar.swift */; };
 		BE167E67269CDD9C009E94C5 /* GoalCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE167E66269CDD9C009E94C5 /* GoalCard.swift */; };
 		BE5FAE4F269E880A006E54A6 /* CardSaveMoney.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5FAE4E269E880A006E54A6 /* CardSaveMoney.swift */; };
 		BEF78B952698D85700181907 /* WollenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF78B942698D85700181907 /* WollenApp.swift */; };
@@ -58,6 +59,7 @@
 		7D9C5A6B26A798FF00FAF19C /* DesejoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesejoView.swift; sourceTree = "<group>"; };
 		7D9C5A6D26A8905700FAF19C /* AddMetaToDesejoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMetaToDesejoView.swift; sourceTree = "<group>"; };
 		7D9C5A6F26A8A2B700FAF19C /* AddDesejo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDesejo.swift; sourceTree = "<group>"; };
+		7D9C5A7126A8F7CB00FAF19C /* TesteSideBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TesteSideBar.swift; sourceTree = "<group>"; };
 		BE167E66269CDD9C009E94C5 /* GoalCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCard.swift; sourceTree = "<group>"; };
 		BE5FAE4E269E880A006E54A6 /* CardSaveMoney.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSaveMoney.swift; sourceTree = "<group>"; };
 		BEF78B912698D85700181907 /* Wollen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wollen.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -125,6 +127,7 @@
 				7D9C5A6926A74F5800FAF19C /* AddDesejoToCategoriaView.swift */,
 				7D9C5A6B26A798FF00FAF19C /* DesejoView.swift */,
 				7D9C5A6F26A8A2B700FAF19C /* AddDesejo.swift */,
+				7D9C5A7126A8F7CB00FAF19C /* TesteSideBar.swift */,
 			);
 			path = "Core Data Testing";
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 				7D6F2EC926A704F400EC8ADC /* ListaCategoriasViewModel.swift in Sources */,
 				7D9C5A7026A8A2B700FAF19C /* AddDesejo.swift in Sources */,
 				22ACBE1726A0B43000E4AED7 /* WishGoalCard.swift in Sources */,
+				7D9C5A7226A8F7CB00FAF19C /* TesteSideBar.swift in Sources */,
 				7D6F2EC726A704DF00EC8ADC /* AddCategoriaViewModel.swift in Sources */,
 				BEF78B972698D85700181907 /* ContentView.swift in Sources */,
 				7D6F2ECE26A707A300EC8ADC /* ListaMetasViewModel.swift in Sources */,

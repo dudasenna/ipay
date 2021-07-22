@@ -19,12 +19,12 @@ struct ListaCategoriasView: View {
                 
                 List {
                     Group {
-                        Text("Categorias")
-                            .font(.title)
-                            //.font(.custom("Avenir Next", size: 22))
-                            .fontWeight(.bold)
-                        
-                        
+//                        Text("Categorias")
+//                            .font(.title)
+//                            //.font(.custom("Avenir Next", size: 22))
+//                            .fontWeight(.bold)
+//
+//
                         NavigationLink(
                             destination: ListaDesejosView(),
                             label: {
@@ -56,8 +56,12 @@ struct ListaCategoriasView: View {
                         })
                         
                     }
-                }.listStyle(SidebarListStyle())
-                
+                }
+                .toolbar {
+                    EditButton()
+                }
+                .listStyle(SidebarListStyle())
+                .navigationTitle("Categorias")
             }
             
             ListaDesejosView()
