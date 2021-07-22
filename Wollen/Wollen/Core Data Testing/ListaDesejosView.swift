@@ -12,6 +12,17 @@ struct ListaDesejosView: View {
     @State private var isPresented: Bool = false
     @StateObject private var listaDesejosVM = ListaDesejosViewModel()
     
+    func deleteDesejo(at indexSet: IndexSet) {
+        indexSet.forEach { index in
+            let desejo = listaDesejosVM.desejos[index]
+            // Deletar desejo
+            listaDesejosVM.deleteDesejo(desejoSelecionado: desejo)
+            
+            // Atualizar desejos
+            listaDesejosVM.getAllDesejos()
+        }
+    }
+    
     var body: some View {
         List{
             ForEach(listaDesejosVM.desejos, id: \.id) { desejo in
@@ -22,7 +33,7 @@ struct ListaDesejosView: View {
                         DetalhesDesejo(desejo: desejo)
                     })
                 
-            }
+            }.onDelete(perform: deleteDesejo)
         }
         .navigationTitle("Meus desejos")
         .navigationBarItems(trailing: Button("Novo desejo") {
@@ -31,7 +42,7 @@ struct ListaDesejosView: View {
         .sheet(isPresented: $isPresented, onDismiss: {
             listaDesejosVM.getAllDesejos()
         }, content: {
-            InformationsCard()
+            AddDesejoCompleto()
         })
         .onAppear(perform: {
             listaDesejosVM.getAllDesejos()

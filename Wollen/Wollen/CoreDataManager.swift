@@ -67,6 +67,10 @@ class CoreDataManager {
         
     }
     
+    func updateDesejo() {
+        
+    }
+    
     // MARK: Categoria
     
     func getAllCategorias() -> [Categoria] {

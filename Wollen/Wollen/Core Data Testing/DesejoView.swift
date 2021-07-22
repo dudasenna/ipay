@@ -14,34 +14,41 @@ struct DesejoView: View {
     let desejoVM: DesejoViewModel
     
     var body: some View {
-        VStack{
+        VStack(spacing: 5){
+            Text("Informações sobre o desejo")
+                .font(.title)
+                .bold()
             DetalhesDesejo(desejo: desejoVM)
             Text(desejoVM.desejo.categoria?.cor ?? "não consegui pegar a cor")
                 .font(.footnote)
-            //Text(desejoVM.desejo.meta?.valorMeta ?? "")
-            Button {
-                isPresented.toggle()
-            } label: {
-                Text("Adicionar meta")
-                    .font(.title2)
-            }
-            .sheet(isPresented: $isPresented, onDismiss: {
-                DetalhesDesejo(desejo: desejoVM)
-            }, content: {
-                AddMetaToDesejoView(desejoVM: desejoVM)
-            })
+            //Text(desejoVM.desejo.meta?.valorMeta ?? "não consegui pegar a meta")
             
-            Button {
-                isPresented.toggle()
-            } label: {
-                Text("Adicionar categoria")
-                    .font(.title2)
-            }
-            .sheet(isPresented: $isPresented, onDismiss: {
-                DetalhesDesejo(desejo: desejoVM)
-            }, content: {
-                //AddCategoriaViewToDesejo(desejoVM: desejoVM)
-            })
+            
+            
+            
+//            Button {
+//                isPresented.toggle()
+//            } label: {
+//                Text("Adicionar meta")
+//                    .font(.title2)
+//            }
+//            .sheet(isPresented: $isPresented, onDismiss: {
+//                DetalhesDesejo(desejo: desejoVM)
+//            }, content: {
+//                AddMetaToDesejoView(desejoVM: desejoVM)
+//            })
+//
+//            Button {
+//                isPresented.toggle()
+//            } label: {
+//                Text("Adicionar categoria")
+//                    .font(.title2)
+//            }
+//            .sheet(isPresented: $isPresented, onDismiss: {
+//                DetalhesDesejo(desejo: desejoVM)
+//            }, content: {
+//                //AddCategoriaToDesejo(desejoVM: desejoVM)
+//            })
         }
     }
 }

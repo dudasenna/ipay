@@ -21,7 +21,6 @@ struct ListaCategoriasView: View {
             // Atualizar categorias
             listaCategoriasVM.getAllCategorias()
         }
-        //deusers.remove(atOffsets: offsets)
     }
     
     var body: some View {
