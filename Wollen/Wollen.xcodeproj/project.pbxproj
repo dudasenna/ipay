@@ -12,6 +12,9 @@
 		222AE6D2269E178B005DB79A /* MyWishesCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222AE6D1269E178B005DB79A /* MyWishesCards.swift */; };
 		22ACBE1726A0B43000E4AED7 /* WishGoalCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ACBE1626A0B43000E4AED7 /* WishGoalCard.swift */; };
 		6640A5AD26A0D3A300B65461 /* MetaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6640A5AC26A0D3A300B65461 /* MetaViewModel.swift */; };
+		66E8BCFF26A75DFB001D3178 /* ContentViewImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E8BCFE26A75DFB001D3178 /* ContentViewImage.swift */; };
+		66E8BD0126A760C5001D3178 /* SenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E8BD0026A760C5001D3178 /* SenderView.swift */; };
+		66E8BD0326A76829001D3178 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E8BD0226A76829001D3178 /* ImagePicker.swift */; };
 		7DEE3FB126A0CEB2007B9615 /* WollenDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7DEE3FAF26A0CEB2007B9615 /* WollenDataModel.xcdatamodeld */; };
 		7DEE3FB526A0D063007B9615 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DEE3FB426A0D063007B9615 /* CoreDataManager.swift */; };
 		7DEE3FB726A0D10B007B9615 /* CategoriaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DEE3FB626A0D10B007B9615 /* CategoriaViewModel.swift */; };
@@ -31,6 +34,9 @@
 		222AE6D1269E178B005DB79A /* MyWishesCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWishesCards.swift; sourceTree = "<group>"; };
 		22ACBE1626A0B43000E4AED7 /* WishGoalCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishGoalCard.swift; sourceTree = "<group>"; };
 		6640A5AC26A0D3A300B65461 /* MetaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetaViewModel.swift; sourceTree = "<group>"; };
+		66E8BCFE26A75DFB001D3178 /* ContentViewImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewImage.swift; sourceTree = "<group>"; };
+		66E8BD0026A760C5001D3178 /* SenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenderView.swift; sourceTree = "<group>"; };
+		66E8BD0226A76829001D3178 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		7DEE3FB026A0CEB2007B9615 /* WollenDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WollenDataModel.xcdatamodel; sourceTree = "<group>"; };
 		7DEE3FB426A0D063007B9615 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		7DEE3FB626A0D10B007B9615 /* CategoriaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriaViewModel.swift; sourceTree = "<group>"; };
@@ -71,6 +77,7 @@
 				222AE6CF269E0E6A005DB79A /* MyWishCard.swift */,
 				222AE6D1269E178B005DB79A /* MyWishesCards.swift */,
 				22ACBE1626A0B43000E4AED7 /* WishGoalCard.swift */,
+				66E8BD0026A760C5001D3178 /* SenderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -119,6 +126,8 @@
 				22039294269CC7280054C168 /* View */,
 				BEF78B942698D85700181907 /* WollenApp.swift */,
 				BEF78B962698D85700181907 /* ContentView.swift */,
+				66E8BCFE26A75DFB001D3178 /* ContentViewImage.swift */,
+				66E8BD0226A76829001D3178 /* ImagePicker.swift */,
 				BEF78B982698D85900181907 /* Assets.xcassets */,
 				BEF78B9D2698D85900181907 /* Persistence.swift */,
 				BEF78BA22698D85900181907 /* Info.plist */,
@@ -209,10 +218,12 @@
 				7DEE3FB126A0CEB2007B9615 /* WollenDataModel.xcdatamodeld in Sources */,
 				222AE6D2269E178B005DB79A /* MyWishesCards.swift in Sources */,
 				22039296269CC9280054C168 /* InformationsCard.swift in Sources */,
+				66E8BD0326A76829001D3178 /* ImagePicker.swift in Sources */,
 				BEF78BA12698D85900181907 /* Wollen.xcdatamodeld in Sources */,
 				222AE6D0269E0E6A005DB79A /* MyWishCard.swift in Sources */,
 				BEF78B9E2698D85900181907 /* Persistence.swift in Sources */,
 				7DEE3FB926A0D15E007B9615 /* CoreDataViewModel.swift in Sources */,
+				66E8BD0126A760C5001D3178 /* SenderView.swift in Sources */,
 				7DEE3FB726A0D10B007B9615 /* CategoriaViewModel.swift in Sources */,
 				22ACBE1726A0B43000E4AED7 /* WishGoalCard.swift in Sources */,
 				BEF78B972698D85700181907 /* ContentView.swift in Sources */,
@@ -220,6 +231,7 @@
 				6640A5AD26A0D3A300B65461 /* MetaViewModel.swift in Sources */,
 				BEF78B952698D85700181907 /* WollenApp.swift in Sources */,
 				7DEE3FB526A0D063007B9615 /* CoreDataManager.swift in Sources */,
+				66E8BCFF26A75DFB001D3178 /* ContentViewImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
