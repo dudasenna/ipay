@@ -15,7 +15,7 @@ struct  ImagePicker: UIViewControllerRepresentable {
     
     
     @Binding var show: Bool
-    @Binding var image: Data
+    @Binding var image: [Data]
     
     func makeCoordinator() -> ImagePicker.Coordinator {
         return ImagePicker.Coordinator(child1: self)
@@ -41,7 +41,7 @@ struct  ImagePicker: UIViewControllerRepresentable {
             let image = info[.originalImage]as! UIImage
             let data = image.jpegData(compressionQuality: 0.45)
             
-            self.child.image = data!
+            self.child.image.append(data!)
             self.child.show.toggle()
         }
     }

@@ -10,8 +10,13 @@ import SwiftUI
 struct SenderView : View {
     @Environment(\.managedObjectContext) private var viewContext
     
-    @State var image: Data = .init(count: 0)
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \Desejo.imagens, ascending: true)],
+        animation: .default)
     
+    private var imagens: FetchedResults<Desejo>
+    
+    @State var image: [Data] = .init(repeating: Data.init(), count:0)
     
     @State var show = false
     
@@ -23,14 +28,14 @@ struct SenderView : View {
     var body: some View {
         VStack (alignment: .leading){
             HStack{
-            Text("Imagens")
-                .bold()
-                .font(.custom("Avenir Next", size: 22))
-            ScrollView(.horizontal) {
-                HStack(spacing: 20) {
-                    
+                Text("Imagens")
+                    .bold()
+                    .font(.custom("Avenir Next", size: 22))
+                ScrollView(.horizontal) {
+                    HStack(spacing: 20) {
+                        
+                    }
                 }
-    }
                 Button(action: {
                     self.show.toggle()
                     print("button touched")
@@ -39,50 +44,39 @@ struct SenderView : View {
                         .font(.system(size:24))
                         .foregroundColor(.gray)
                         .padding()
-                 
+                    
                 }
                 
-        }
+            }
             
             ScrollView(.horizontal) {
                 HStack(spacing: 20) {
                     if self.image.count != 0 {
-                        Image(uiImage: UIImage(data: self.image)!)
-                            .renderingMode(.original)
-                            .resizable()
-                            .frame(width: 120, height: 89)
-                            .cornerRadius(6) }
+                        ForEach(image, id: \.self) { data in
+                            Image(uiImage: UIImage(data: data)!)
+                                .renderingMode(.original)
+                                .resizable()
+                                .frame(width: 120, height: 89)
+                                .cornerRadius(6)
+                        }
+                    }
                     else{
                         CardEmpty()
                     }
                     Spacer(minLength: 10)
+                    if image.count < 2 {
                         CardEmpty()
+                    }
                     Spacer(minLength: 10)
-                    CardEmpty()
+                    if image.count < 3 {
+                        CardEmpty()
+                    }
                     
-//            if self.image.count != 0 {
-////           card =
-//            Image(uiImage: UIImage(data: self.image)!)
-//                .renderingMode(.original)
-//                .resizable()
-//                .frame(width: 120, height: 89)
-//            .cornerRadius(6)
-//        }
-//            else{
-////                Image(systemName: "photo")
-////                    .font(.system(size:31))
-////                    .foregroundColor(.green)
-////               Rectangle()
-////                .frame(width: 120, height: 89, alignment: .leading)
-////                    .foregroundColor(.gray)
-////            card = Image(uiImage: UIImage(named: "teste")!)
-//
-//            }
                 }
             }
             
         }
-            
+        
         .sheet(isPresented: self.$show, content:
                 {
                     ImagePicker(show: self.$show, image: self.$image)
@@ -92,15 +86,15 @@ struct SenderView : View {
         .background(Color(red: 248/256, green: 248/256, blue: 248/256))
         .cornerRadius(10)
         .shadow(color: Color.gray.opacity(0.4), radius: 5)
-}
+    }
 }
 
 struct CardEmpty: View {
     var body: some View {
         Rectangle()
-        .frame(width: 120, height: 89, alignment: .leading)
+            .frame(width: 120, height: 89, alignment: .leading)
             .foregroundColor(.gray)
-}
+    }
 }
 
 struct  SenderView_Previews: PreviewProvider {
