@@ -12,6 +12,18 @@ struct ListaCategoriasView: View {
     @StateObject private var listaCategoriasVM = ListaCategoriasViewModel()
     @State private var isPresented: Bool = false
     
+    func deleteCategoria(at indexSet: IndexSet) {
+        indexSet.forEach { index in
+            let categoria = listaCategoriasVM.categorias[index]
+            // Deletar categoria
+            listaCategoriasVM.deleteCategoria(categoriaSelecionada: categoria)
+            
+            // Atualizar categorias
+            listaCategoriasVM.getAllCategorias()
+        }
+        //deusers.remove(atOffsets: offsets)
+    }
+    
     var body: some View {
         
         NavigationView {
@@ -19,12 +31,6 @@ struct ListaCategoriasView: View {
                 
                 List {
                     Group {
-//                        Text("Categorias")
-//                            .font(.title)
-//                            //.font(.custom("Avenir Next", size: 22))
-//                            .fontWeight(.bold)
-//
-//
                         NavigationLink(
                             destination: ListaDesejosView(),
                             label: {
@@ -41,7 +47,7 @@ struct ListaCategoriasView: View {
                                         //.font(.custom("Avenir Next", size: 18))
                                         .font(.title2)
                                 })
-                        }
+                        }.onDelete(perform: deleteCategoria)
                         
                         Button {
                             isPresented.toggle()
@@ -62,12 +68,13 @@ struct ListaCategoriasView: View {
                 }
                 .listStyle(SidebarListStyle())
                 .navigationTitle("Categorias")
+                //.font(.custom("Avenir Next", size: 22))
+                .accentColor(Color(UIColor(named: "systemMint")!))
             }
             
             ListaDesejosView()
             
         }
-        
         .onAppear(perform: {
             listaCategoriasVM.getAllCategorias()
         })
