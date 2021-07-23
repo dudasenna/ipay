@@ -15,18 +15,39 @@ struct ContentView: View {
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
         animation: .default)
     private var items: FetchedResults<Item>
+    
+    @Environment(\.verticalSizeClass) var verticalSizeClass: UserInterfaceSizeClass?
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
 
     var body: some View {
-        HStack {
-            Rectangle()
-                .frame(minWidth: 0, idealWidth: 240, maxWidth: 240, minHeight: 0, idealHeight: 100, maxHeight: .infinity, alignment: .center)
-            VStack {
-                MyWishesCards()
-                DescriptionCard()
-                LinksCard()
+        
+        Group {
+            if verticalSizeClass == .regular && horizontalSizeClass == .compact {
+                // iPhone Portrait or iPad 1/3 split view for Multitasking for instance
+                VStack {
+                    LinksCard()
+                    DescriptionCard()
+                }
+            } else if verticalSizeClass == .compact && horizontalSizeClass == .compact {
+                // some "standard" iPhone Landscape (iPhone SE, X, XS, 7, 8, ...)
+            } else if verticalSizeClass == .compact && horizontalSizeClass == .regular {
+                // some "bigger" iPhone Landscape (iPhone Xs Max, 6s Plus, 7 Plus, 8 Plus, ...)
+            } else if verticalSizeClass == .regular && horizontalSizeClass == .regular {
+                // macOS or iPad without split view - no Multitasking
+                HStack {
+                    Rectangle()
+                        .frame(minWidth: 0, idealWidth: 240, maxWidth: 240, minHeight: 0, idealHeight: 100, maxHeight: .infinity, alignment: .center)
+                    VStack {
+                        MyWishesCards()
+                        DescriptionCard()
+                        LinksCard()
+                    }
+                    .padding(20)
+                    .background(Color(red: 0.98, green: 0.98, blue: 0.98, opacity: 1.0))
             }
-            .padding(20)
-            .background(Color(red: 0.98, green: 0.98, blue: 0.98, opacity: 1.0))
+        }
+        
+        
         }
 //        List {
 //            ForEach(items) { item in
