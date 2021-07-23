@@ -15,7 +15,7 @@ struct  ImagePicker: UIViewControllerRepresentable {
     
     
     @Binding var show: Bool
-    @Binding var image: [Data]
+    @Binding var image: [UIImage]
     
     func makeCoordinator() -> ImagePicker.Coordinator {
         return ImagePicker.Coordinator(child1: self)
@@ -26,9 +26,6 @@ struct  ImagePicker: UIViewControllerRepresentable {
         picker.delegate = context.coordinator
         return picker
     }
-//    func updateViewController(_ uiViewController: UIImagePickerController, context: UIViewControllerRepresentable<ImagePicker>) {
-//
-//    }
     class Coordinator: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
         var child: ImagePicker
         init(child1: ImagePicker) {
@@ -38,10 +35,8 @@ struct  ImagePicker: UIViewControllerRepresentable {
             self.child.show.toggle()
         }
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any])  {
-            let image = info[.originalImage]as! UIImage
-            let data = image.jpegData(compressionQuality: 0.45)
             
-            self.child.image.append(data!)
+            self.child.image.append(info[.originalImage] as! UIImage)
             self.child.show.toggle()
         }
     }

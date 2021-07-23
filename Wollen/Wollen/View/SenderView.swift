@@ -8,22 +8,17 @@
 import SwiftUI
 
 struct SenderView : View {
-    @Environment(\.managedObjectContext) private var viewContext
+
+    @State var image: [UIImage] = []
     
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Desejo.imagens, ascending: true)],
-        animation: .default)
-    
-    private var imagens: FetchedResults<Desejo>
-    
-    @State var image: [Data] = .init(repeating: Data.init(), count:0)
-    
+    @State var imageaux: UIImage = UIImage()
+        
     @State var show = false
     
     @State private var gridLayout: [GridItem] = [GridItem(.flexible())]
     @State private var gridColumn: Double = 3.0
     
-    var card = Image.self
+    let pub = NotificationCenter.default.publisher(for: NSNotification.Name("atualiza"))
     
     var body: some View {
         VStack (alignment: .leading){
@@ -53,7 +48,7 @@ struct SenderView : View {
                 HStack(spacing: 20) {
                     if self.image.count != 0 {
                         ForEach(image, id: \.self) { data in
-                            Image(uiImage: UIImage(data: data)!)
+                            Image(uiImage: data)
                                 .renderingMode(.original)
                                 .resizable()
                                 .frame(width: 120, height: 89)
@@ -76,6 +71,7 @@ struct SenderView : View {
             }
             
         }
+        .onDrop(of: ["public.image"], delegate: DropImageDelegate(image: $imageaux))
         
         .sheet(isPresented: self.$show, content:
                 {
@@ -86,6 +82,43 @@ struct SenderView : View {
         .background(Color(red: 248/256, green: 248/256, blue: 248/256))
         .cornerRadius(10)
         .shadow(color: Color.gray.opacity(0.4), radius: 5)
+        
+        .onReceive(pub, perform: { _ in
+                    self.image.append(self.imageaux)})
+    }
+}
+
+struct DropImageDelegate: DropDelegate {
+    
+    @Binding var image: UIImage
+
+    // Método responsável por tratar os dados:
+    func performDrop(info: DropInfo) -> Bool {
+        let itens = info.itemProviders(for: ["public.image"])
+        for item in itens {
+            // Carregar a imagem:
+            item.loadObject(ofClass: UIImage.self) { image, error in
+                guard error == nil else {
+                    print("Erro ao carregar imagem")
+                    return
+                }
+                if let image = image {
+                    DispatchQueue.main.async {
+                        self.image = image as! UIImage
+                        
+                        NotificationCenter.default.post(Notification.init(name: Notification.Name("atualiza")))
+                    }
+                }
+            }
+        }
+        return true
+    }
+    
+    func validateDrop(info: DropInfo) -> Bool {
+        return info.hasItemsConforming(to: ["public.image"])
+    }
+    func dropUpdated(info: DropInfo) -> DropProposal? {
+        return DropProposal(operation: DropOperation.copy)
     }
 }
 
