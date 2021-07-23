@@ -10,6 +10,8 @@ import CoreData
 
 class AddMetaViewModel: ObservableObject {
     
+    // Não está sendo usado, porque a meta está sendo criada apenas quando se cria um desejo 
+    
     var duracao: String = ""
     var frequencia: String = ""
     var valorAtual: String = ""

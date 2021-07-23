@@ -9,6 +9,9 @@ import SwiftUI
 
 struct ListaDesejosView: View {
     
+    // Exibe todos os desejos de todas as categorias
+    // É o conteúdo da aba Geral na Side bar
+    
     @State private var isPresented: Bool = false
     @StateObject private var listaDesejosVM = ListaDesejosViewModel()
     
@@ -42,6 +45,8 @@ struct ListaDesejosView: View {
         .sheet(isPresented: $isPresented, onDismiss: {
             listaDesejosVM.getAllDesejos()
         }, content: {
+            
+            // Permite adicionar um desejo criando as informações de Meta e Categoria
             AddDesejoCompleto()
         })
         .onAppear(perform: {

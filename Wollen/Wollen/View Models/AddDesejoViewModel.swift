@@ -37,16 +37,21 @@ class AddDesejoViewModel: ObservableObject {
         desejo.link = link
         desejo.preco = Double(preco) ?? 0.0
     
+        
+        // Cria uma nova categoria associada ao desejo
         let categoria = Categoria(context: context)
         categoria.nome = nomeCategoria
         categoria.cor = cor
         
+        
+        // Cria uma nova meta associada ao desejo
         let meta = Meta(context: context)
         meta.duracao = Int16(duracao) ?? 0
         meta.frequencia = frequencia
         meta.valorAtual = Double(valorAtual) ?? 0.0
         meta.valorMeta = Double(valorMeta) ?? 0.0
         
+        // Atribui a categoria e a meta ao desejo
         desejo.categoria = categoria
         desejo.meta =  meta
         
@@ -68,6 +73,14 @@ class AddDesejoViewModel: ObservableObject {
             desejo.link = link
             desejo.preco = Double(preco) ?? 0.0
             desejo.categoria = categoria
+
+            
+            let meta = Meta(context: manager.persistentContainer.viewContext)
+            meta.duracao = Int16(duracao) ?? 0
+            meta.frequencia = frequencia
+            meta.valorAtual = Double(valorAtual) ?? 0.0
+            meta.valorMeta = Double(valorMeta) ?? 0.0
+            desejo.meta = meta
             
             manager.save()
             print("Salvou o desejo!")

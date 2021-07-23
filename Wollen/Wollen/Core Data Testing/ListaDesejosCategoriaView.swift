@@ -8,23 +8,38 @@
 import SwiftUI
 
 struct ListaDesejosCategoriaView: View {
+    
+    // Exibe os desejos de uma categoria específica
+    
     @State private var isPresented: Bool = false
     
     @StateObject private var listaDesejosVM = ListaDesejosViewModel()
     
     let categoriaVM: CategoriaViewModel
     
-    var body: some View {
+    func deleteDesejo(at indexSet: IndexSet) {
+        indexSet.forEach { index in
+            let desejo = listaDesejosVM.desejos[index]
+            // Deletar desejo
+            listaDesejosVM.deleteDesejo(desejoSelecionado: desejo)
+            
+            // Atualizar desejos da categoria
+            listaDesejosVM.getDesejosOfCategoria(categoria: categoriaVM)
+        }
+    }
+    
+    var body: some View {        
         VStack {
             List(listaDesejosVM.desejos, id: \.id) { desejo in
-                VStack(alignment: .leading, spacing: 5) {
-                    Text(desejo.nome)
-                        .fontWeight(.bold)
-                    Text("R$ " + String(desejo.preco))
-                    Text("Descrição " + desejo.descricao)
-                    Text("Link " + desejo.link)
+                ForEach(listaDesejosVM.desejos, id: \.id) { desejo in
                     
-                }
+                    NavigationLink(
+                        destination: DesejoView(desejoVM: desejo),
+                        label: {
+                            DetalhesDesejo(desejo: desejo)
+                        })
+                    
+                }.onDelete(perform: deleteDesejo)
             }
         }
         .navigationTitle(categoriaVM.nome)
@@ -34,8 +49,9 @@ struct ListaDesejosCategoriaView: View {
         .sheet(isPresented: $isPresented, onDismiss: {
             listaDesejosVM.getDesejosOfCategoria(categoria: categoriaVM)
         }, content: {
+            
+            // Permite adicionar um desejo associado a uma categoria
             AddDesejoToCategoriaView(categoriaVM:categoriaVM)
-            //AddDesejo(categoriaVM: categoriaVM, desejoVM:)
         })
         .onAppear(perform: {
             listaDesejosVM.getDesejosOfCategoria(categoria: categoriaVM)

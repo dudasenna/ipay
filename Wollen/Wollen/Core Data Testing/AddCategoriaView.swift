@@ -9,6 +9,8 @@ import SwiftUI
 
 struct AddCategoriaView: View {
     
+    // Adiciona uma categoria a partir da Side Bar
+    
     @StateObject private var addCategoriaVM = AddCategoriaViewModel()
     
     var body: some View {

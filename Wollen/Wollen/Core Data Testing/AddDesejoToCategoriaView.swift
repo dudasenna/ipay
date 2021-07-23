@@ -16,10 +16,33 @@ struct AddDesejoToCategoriaView: View {
     
     var body: some View {
         VStack {
-            TextField("Nome", text: $addDesejoVM.nome)
-            TextField("Preco", text: $addDesejoVM.preco)
-            TextField("Descricao", text: $addDesejoVM.descricao)
-            TextField("Link", text: $addDesejoVM.link)
+            HStack {
+                VStack {
+                    Text("Desejo")
+                        .bold()
+                    TextField("Nome", text: $addDesejoVM.nome)
+                    TextField("Preco", text: $addDesejoVM.preco)
+                    TextField("Descricao", text: $addDesejoVM.descricao)
+                    TextField("Link", text: $addDesejoVM.link)
+                }
+                
+                VStack(spacing: 5) {
+                    Text("Categoria")
+                        .bold()
+                    Text(categoriaVM.nome ?? "não consegui pegar a categoria")
+                    Text(categoriaVM.cor ?? "não consegui pegar a cor")
+                }
+                
+                VStack {
+                    Text("Meta")
+                        .bold()
+                    TextField("Valor Meta", text: $addDesejoVM.valorMeta)
+                    TextField("Valor Atual", text: $addDesejoVM.valorAtual)
+                    TextField("Duração", text: $addDesejoVM.duracao)
+                    TextField("Frequência", text: $addDesejoVM.frequencia)
+                }
+            }
+            
             Button("Salvar") {
                 addDesejoVM.addDesejoToCategoria(categoriaId: categoriaVM.id)
             }

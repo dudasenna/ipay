@@ -9,6 +9,8 @@ import SwiftUI
 
 struct AddMetaToDesejoView: View {
     
+    // Esta view não está sendo usada no momento.
+    
     @StateObject private var addMetaVM = AddMetaViewModel()
 
     let desejoVM: DesejoViewModel

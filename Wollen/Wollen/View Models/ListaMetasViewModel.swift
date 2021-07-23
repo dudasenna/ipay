@@ -19,6 +19,8 @@ class ListaMetasViewModel: ObservableObject {
 //        }
 //    }
     
+    
+    // Atualiza a variável meta, com o conteúdo de uma meta associada a um desejo
     func getMetaFromDesejo(desejo: DesejoViewModel) {
         let desejo =  CoreDataManager.shared.getDesejoById(id: desejo.id)
         if let desejo = desejo {
@@ -26,6 +28,14 @@ class ListaMetasViewModel: ObservableObject {
                 self.meta = MetaViewModel(meta: desejo.meta!)
             }
         }
+    }
+    
+    func returnMetaFromDesejo(desejo: DesejoViewModel) -> MetaViewModel? {
+        let desejo =  CoreDataManager.shared.getDesejoById(id: desejo.id)
+        if let desejo = desejo {
+            return MetaViewModel(meta: desejo.meta!)
+        }
+        return nil
     }
     
 }

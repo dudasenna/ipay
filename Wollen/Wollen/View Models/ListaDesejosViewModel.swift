@@ -12,6 +12,7 @@ class ListaDesejosViewModel: ObservableObject {
     
     @Published var desejos = [DesejoViewModel]()
     
+    // Deleta um desejo pelo ObjectID
     func deleteDesejo(desejoSelecionado: DesejoViewModel) {
         let desejo = CoreDataManager.shared.getDesejoById(id: desejoSelecionado.id)
         if let desejo = desejo {
@@ -19,6 +20,7 @@ class ListaDesejosViewModel: ObservableObject {
         }
     }
     
+    // Atualiza o conteúdo do array de desejos
     func getAllDesejos() {
         let desejos = CoreDataManager.shared.getAllDesejos()
         DispatchQueue.main.async {
@@ -30,10 +32,15 @@ class ListaDesejosViewModel: ObservableObject {
         let categoria = CoreDataManager.shared.getCategoriaById(id: categoria.id)
         if let categoria = categoria {
             DispatchQueue.main.async {
+                // Mapeia o array de Desejo (entidade) para um array de DesejoViewModel
                 self.desejos = (categoria.desejos?.allObjects as! [Desejo]).map(DesejoViewModel.init)
             }
         }
     }
+    
+//    func getCategoriaFromDesejo(desejo: DesejoViewModel) {
+//        
+//    }
     
 }
 

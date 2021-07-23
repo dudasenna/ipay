@@ -9,46 +9,39 @@ import SwiftUI
 
 struct DesejoView: View {
     
+    // Exibe as informações do desejo
+    
     @State private var isPresented: Bool = false
     
     let desejoVM: DesejoViewModel
     
+    @StateObject private var listaMetasVM = ListaMetasViewModel()
+    
     var body: some View {
         VStack(spacing: 5){
+            // Mostrar informações sobre o desejo
             Text("Informações sobre o desejo")
                 .font(.title)
                 .bold()
             DetalhesDesejo(desejo: desejoVM)
+            
+            // Mostrar informações sobre a categoria
+            Text("Informações sobre a categoria")
+                .font(.title)
+            Text(desejoVM.desejo.categoria?.nome ?? "não consegui pegar a categoria")
             Text(desejoVM.desejo.categoria?.cor ?? "não consegui pegar a cor")
-                .font(.footnote)
-            //Text(desejoVM.desejo.meta?.valorMeta ?? "não consegui pegar a meta")
+            Text("Informações sobre a meta")
+                .font(.title)
             
+            // Mostrar informações sobre a meta
+            let metaVM = listaMetasVM.returnMetaFromDesejo(desejo: desejoVM)
+            // Só tenta exibir detalhes da meta se a meta existir
+            if let metaVM = metaVM {
+                DetalhesMeta(meta: metaVM)
+            } else {
+                Text("A meta não existe :(")
+            }
             
-            
-            
-//            Button {
-//                isPresented.toggle()
-//            } label: {
-//                Text("Adicionar meta")
-//                    .font(.title2)
-//            }
-//            .sheet(isPresented: $isPresented, onDismiss: {
-//                DetalhesDesejo(desejo: desejoVM)
-//            }, content: {
-//                AddMetaToDesejoView(desejoVM: desejoVM)
-//            })
-//
-//            Button {
-//                isPresented.toggle()
-//            } label: {
-//                Text("Adicionar categoria")
-//                    .font(.title2)
-//            }
-//            .sheet(isPresented: $isPresented, onDismiss: {
-//                DetalhesDesejo(desejo: desejoVM)
-//            }, content: {
-//                //AddCategoriaToDesejo(desejoVM: desejoVM)
-//            })
         }
     }
 }
