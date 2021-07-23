@@ -13,7 +13,7 @@ struct WollenApp: App {
 
     var body: some Scene {
         WindowGroup {
-            SenderView()
+            ImageCard()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
