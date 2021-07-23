@@ -36,22 +36,20 @@ class AddDesejoViewModel: ObservableObject {
         desejo.descricao = descricao
         desejo.link = link
         desejo.preco = Double(preco) ?? 0.0
-    
         
-        // Cria uma nova categoria associada ao desejo
+        // Cria uma nova categoria para ser associada ao desejo
         let categoria = Categoria(context: context)
         categoria.nome = nomeCategoria
         categoria.cor = cor
         
-        
-        // Cria uma nova meta associada ao desejo
+        // Cria uma nova meta para ser associada ao desejo
         let meta = Meta(context: context)
         meta.duracao = Int16(duracao) ?? 0
         meta.frequencia = frequencia
         meta.valorAtual = Double(valorAtual) ?? 0.0
         meta.valorMeta = Double(valorMeta) ?? 0.0
         
-        // Atribui a categoria e a meta ao desejo
+        // Associa a categoria e a meta ao desejo
         desejo.categoria = categoria
         desejo.meta =  meta
         
@@ -59,7 +57,7 @@ class AddDesejoViewModel: ObservableObject {
         print("Salvou o desejo com categoria e meta associadas")
     }
     
-    // Cria um desejo associado a uma categoria
+    // Cria um desejo associado a uma categoria já existente
     func addDesejoToCategoria(categoriaId: NSManagedObjectID) {
         
         let manager = CoreDataManager.shared

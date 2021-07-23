@@ -30,10 +30,11 @@ struct DesejoView: View {
                 .font(.title)
             Text(desejoVM.desejo.categoria?.nome ?? "não consegui pegar a categoria")
             Text(desejoVM.desejo.categoria?.cor ?? "não consegui pegar a cor")
-            Text("Informações sobre a meta")
-                .font(.title)
+            
             
             // Mostrar informações sobre a meta
+            Text("Informações sobre a meta")
+                .font(.title)
             let metaVM = listaMetasVM.returnMetaFromDesejo(desejo: desejoVM)
             // Só tenta exibir detalhes da meta se a meta existir
             if let metaVM = metaVM {
@@ -41,6 +42,20 @@ struct DesejoView: View {
             } else {
                 Text("A meta não existe :(")
             }
+            
+            Button {
+                isPresented.toggle()
+            } label: {
+                Text("Editar desejo")
+            }
+            .sheet(isPresented: $isPresented, onDismiss: {
+                
+                // Atualizar as informações exibidas do desejo
+                //listaCategoriasVM.getAllCategorias()
+            }, content: {
+                AtualizarDesejo(desejoVM: desejoVM)
+            })
+            
             
         }
     }

@@ -15,6 +15,8 @@ struct ListaDesejosView: View {
     @State private var isPresented: Bool = false
     @StateObject private var listaDesejosVM = ListaDesejosViewModel()
     
+    @StateObject private var listaCategoriasVM = ListaCategoriasViewModel()
+    
     func deleteDesejo(at indexSet: IndexSet) {
         indexSet.forEach { index in
             let desejo = listaDesejosVM.desejos[index]
@@ -43,7 +45,11 @@ struct ListaDesejosView: View {
              isPresented = true
         })
         .sheet(isPresented: $isPresented, onDismiss: {
+            // Atualiza os desejos
             listaDesejosVM.getAllDesejos()
+            
+            // Atualiza as categorias
+            listaCategoriasVM.getAllCategorias()
         }, content: {
             
             // Permite adicionar um desejo criando as informações de Meta e Categoria

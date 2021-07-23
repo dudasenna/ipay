@@ -17,6 +17,7 @@ class AddMetaViewModel: ObservableObject {
     var valorAtual: String = ""
     var valorMeta: String = ""
     
+    // Adicionar uma meta a um desejo existente
     func addMetaToDesejo(desejoId: NSManagedObjectID) {
         
         let manager = CoreDataManager.shared
@@ -37,6 +38,7 @@ class AddMetaViewModel: ObservableObject {
         
     }
     
+    // Adicionar uma meta existente a um desejo existente
     func addMetaToDesejo(desejoId: NSManagedObjectID, metaId: NSManagedObjectID) {
         
         let manager = CoreDataManager.shared
@@ -54,6 +56,7 @@ class AddMetaViewModel: ObservableObject {
         }
     }
     
+    // Criar uma meta que não está associada a nenhum desejo
     func saveMeta() {
         
         let manager = CoreDataManager.shared

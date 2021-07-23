@@ -9,6 +9,8 @@ import SwiftUI
 
 struct DetalhesMeta: View {
     
+    // Struct auxiliar para recuperar informações da Meta
+    
     let meta: MetaViewModel
     
     var body: some View {

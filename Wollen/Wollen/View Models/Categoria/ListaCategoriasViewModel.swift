@@ -27,21 +27,3 @@ class ListaCategoriasViewModel: ObservableObject {
         }
     }
 }
-
-
-struct CategoriaViewModel {
-    
-    let categoria: Categoria
-    
-    var id: NSManagedObjectID {
-        return categoria.objectID
-    }
-    
-    var nome: String {
-        return categoria.nome ?? ""
-    }
-    
-    var cor: String {
-        return categoria.cor ?? ""
-    }
-}

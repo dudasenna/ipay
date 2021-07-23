@@ -17,6 +17,7 @@ struct AddDesejoToCategoriaView: View {
     var body: some View {
         VStack {
             HStack {
+                
                 VStack {
                     Text("Desejo")
                         .bold()
@@ -26,11 +27,12 @@ struct AddDesejoToCategoriaView: View {
                     TextField("Link", text: $addDesejoVM.link)
                 }
                 
+                // Recupera informações da categoria
                 VStack(spacing: 5) {
                     Text("Categoria")
                         .bold()
-                    Text(categoriaVM.nome ?? "não consegui pegar a categoria")
-                    Text(categoriaVM.cor ?? "não consegui pegar a cor")
+                    Text("Nome categoria: " + categoriaVM.nome)
+                    Text("Cor categoria: " + categoriaVM.cor)
                 }
                 
                 VStack {
