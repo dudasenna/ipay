@@ -10,14 +10,31 @@ import SwiftUI
 struct DragDrop: View {
     
     @State var image: UIImage = UIImage(named: "teste")!
+    @State var images: [UIImage] = []
+    
+    var pub = NotificationCenter.default.publisher(for: Notification.Name("atualiza"))
     
     var body: some View {
-        Image(uiImage: image)
-            .resizable()
-            .frame()
-            .aspectRatio(contentMode: .fit)
-            .onDrop(of: ["public.image"], delegate: DropImageDelegate(image: $image))
-            .onDrag({ NSItemProvider(object: image) })
+        VStack {
+            Image(uiImage: image)
+                .resizable()
+                .frame(width: 200, height: 200, alignment: .center)
+                .onDrop(of: ["public.image"], delegate: DropImageDelegate(image: $image))
+            HStack {
+                ForEach(images, id: \.self) { image in
+                    Image(uiImage: image)
+                        .resizable()
+                        .frame(width: 200, height: 200, alignment: .center)
+                        .aspectRatio(contentMode: .fit)
+                }.onReceive(pub, perform: { _ in
+                    self.images.append(self.image)
+                })
+            }
+        }
+    }
+    
+    func atualiza(image: UIImage) {
+        self.images.append(image)
     }
 }
 
@@ -38,6 +55,7 @@ struct DropImageDelegate: DropDelegate {
                 if let image = image {
                     DispatchQueue.main.async {
                         self.image = image as! UIImage
+                        NotificationCenter.default.post(Notification.init(name: Notification.Name("atualiza")))
                     }
                 }
             }
