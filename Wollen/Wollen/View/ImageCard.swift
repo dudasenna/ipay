@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ImageCard : View {
     
-    @State var images: [UIImage] = []
+    @State public var images: [UIImage] = []
     
     @State var image: UIImage = UIImage()
     
@@ -36,7 +36,7 @@ struct ImageCard : View {
                 }) {
                     Image(systemName: "plus.circle")
                         .font(.system(size:24))
-                        .foregroundColor(.gray)
+                        .foregroundColor(Color("preto_primario"))
                         .padding()
                     
                 }
@@ -45,12 +45,8 @@ struct ImageCard : View {
             
             ScrollView(.horizontal) {
                 HStack(spacing: 20) {
-                    ForEach(images, id: \.self) { data in
-                        Image(uiImage: data)
-                            .renderingMode(.original)
-                            .resizable()
-                            .frame(width: 120, height: 89)
-                            .cornerRadius(6)
+                    ForEach(0..<(self.images.count), id: \.self) { index in
+                        ImageView(image: images[index], index: index)
                     }
                     // Adiciona cards vazios se tiver menos que três imagens:
                     if self.images.count < 3 {
@@ -72,6 +68,42 @@ struct ImageCard : View {
         .sheet(isPresented: self.$show, content: {
             ImagePicker(show: self.$show, image: self.$images)
         })
+    }
+    
+    func ImageView(image: UIImage, index: Int) -> some View {
+        var view: some View {
+            ZStack {
+                Image(uiImage: image)
+                    .renderingMode(.original)
+                    .resizable()
+                    .frame(width: 120, height: 89)
+                    .cornerRadius(6)
+                
+                VStack {
+                    HStack {
+                        Spacer()
+                        Button(action: {
+                            deleteImage(index)
+                        },
+                        label: {
+                            Image(systemName: "x.circle.fill")
+                                .foregroundColor(Color(red: 248/256, green: 248/256, blue: 248/256))
+                        })
+                        .background(Color("preto_primario"))
+                        .cornerRadius(20)
+                        .padding(5)
+                        .shadow(color: Color.gray.opacity(0.4), radius: 5)
+                    }.frame(width: 120)
+                    Spacer()
+                }.frame(width: 120, height: 89)
+            }
+        }
+        
+        return view
+    }
+    
+    func deleteImage(_ index: Int) -> Void {
+        self.images.remove(at: index)
     }
 }
 
