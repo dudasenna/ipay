@@ -16,6 +16,7 @@ struct WollenApp: App {
             //ContentView()
             ListaCategoriasView()
                
+
         }
     }
 }
