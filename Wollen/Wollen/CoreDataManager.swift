@@ -149,6 +149,44 @@ class CoreDataManager {
         
     }
     
+    // MARK: Midia
+    func getAllMidias() -> [Midia] {
+        
+        let fetchRequest: NSFetchRequest<Midia> = Midia.fetchRequest()
+        
+        do {
+            return try persistentContainer.viewContext.fetch(fetchRequest)
+        } catch {
+            return []
+        }
+        
+    }
+    
+    
+    func getMidiaById(id: NSManagedObjectID) -> Midia? {
+        
+        do {
+            return try persistentContainer.viewContext.existingObject(with: id) as? Midia
+        } catch {
+            print(error)
+            return nil
+        }
+    }
+    
+    func deleteMidia(_ midia: Midia) {
+        
+        persistentContainer.viewContext.delete(midia)
+        
+        do {
+            try persistentContainer.viewContext.save()
+        } catch {
+            persistentContainer.viewContext.rollback()
+            print("Failed to delete Meta \(error)")
+        }
+        
+    }
+    
+    
     
     func save() {
         do {
