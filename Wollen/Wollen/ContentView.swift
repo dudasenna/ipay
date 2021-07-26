@@ -20,13 +20,17 @@ struct ContentView: View {
     @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
 
     var body: some View {
-        
-        Group {
-            if verticalSizeClass == .regular && horizontalSizeClass == .compact {
-                // iPhone Portrait or iPad 1/3 split view for Multitasking for instance
-                VStack {
-                    LinksCard()
-                    DescriptionCard()
+        HStack {
+            Rectangle()
+                .frame(minWidth: 0, idealWidth: 240, maxWidth: 240, minHeight: 0, idealHeight: 100, maxHeight: .infinity, alignment: .center)
+            VStack {
+                MyWishesCards()
+                HStack {
+                    InformationsCard()
+                    //InformationsCard()
+                    ListaDesejosView()
+                    AddCategoriaView()
+                    ListaCategoriasView()
                 }
             } else if verticalSizeClass == .compact && horizontalSizeClass == .compact {
                 // some "standard" iPhone Landscape (iPhone SE, X, XS, 7, 8, ...)

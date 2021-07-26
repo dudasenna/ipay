@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20C69" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Categoria" representedClassName="Categoria" syncable="YES" codeGenerationType="class">
+        <attribute name="cor" optional="YES" attributeType="String"/>
+        <attribute name="nome" optional="YES" attributeType="String"/>
+        <relationship name="desejos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Desejo" inverseName="categoria" inverseEntity="Desejo"/>
+    </entity>
+    <entity name="Desejo" representedClassName="Desejo" syncable="YES" codeGenerationType="class">
+        <attribute name="descricao" optional="YES" attributeType="String"/>
+        <attribute name="imagem" optional="YES" attributeType="Binary"/>
+        <attribute name="link" optional="YES" attributeType="String"/>
+        <attribute name="nome" optional="YES" attributeType="String"/>
+        <attribute name="preco" optional="YES" attributeType="Double" usesScalarValueType="YES"/>
+        <relationship name="categoria" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Categoria" inverseName="desejos" inverseEntity="Categoria"/>
+        <relationship name="meta" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Meta" inverseName="desejo" inverseEntity="Meta"/>
+    </entity>
+    <entity name="Meta" representedClassName="Meta" syncable="YES" codeGenerationType="class">
+        <attribute name="duracao" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="frequencia" optional="YES" attributeType="String"/>
+        <attribute name="valorAtual" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="valorMeta" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="desejo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Desejo" inverseName="meta" inverseEntity="Desejo"/>
+    </entity>
+    <elements>
+        <element name="Desejo" positionX="-63" positionY="-18" width="128" height="134"/>
+        <element name="Categoria" positionX="-54" positionY="-9" width="128" height="74"/>
+        <element name="Meta" positionX="-36" positionY="9" width="128" height="104"/>
+    </elements>
+</model>
