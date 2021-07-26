@@ -42,8 +42,6 @@
 		BEF78B972698D85700181907 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF78B962698D85700181907 /* ContentView.swift */; };
 		BEF78B992698D85900181907 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEF78B982698D85900181907 /* Assets.xcassets */; };
 		BEF78B9C2698D85900181907 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEF78B9B2698D85900181907 /* Preview Assets.xcassets */; };
-		BEF78B9E2698D85900181907 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF78B9D2698D85900181907 /* Persistence.swift */; };
-		BEF78BA12698D85900181907 /* Wollen.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BEF78B9F2698D85900181907 /* Wollen.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,8 +81,6 @@
 		BEF78B962698D85700181907 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BEF78B982698D85900181907 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BEF78B9B2698D85900181907 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		BEF78B9D2698D85900181907 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
-		BEF78BA02698D85900181907 /* Wollen.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Wollen.xcdatamodel; sourceTree = "<group>"; };
 		BEF78BA22698D85900181907 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -208,9 +204,7 @@
 				7D9C5A6626A743FA00FAF19C /* Core Data Testing */,
 				BEF78B962698D85700181907 /* ContentView.swift */,
 				BEF78B982698D85900181907 /* Assets.xcassets */,
-				BEF78B9D2698D85900181907 /* Persistence.swift */,
 				BEF78BA22698D85900181907 /* Info.plist */,
-				BEF78B9F2698D85900181907 /* Wollen.xcdatamodeld */,
 				BEF78B9A2698D85900181907 /* Preview Content */,
 			);
 			path = Wollen;
@@ -305,13 +299,11 @@
 				7D9C5A7626AB36E700FAF19C /* MetaView.swift in Sources */,
 				7D9C5A8126AB5D7A00FAF19C /* CategoriaViewModel.swift in Sources */,
 				22039296269CC9280054C168 /* InformationsCard.swift in Sources */,
-				BEF78BA12698D85900181907 /* Wollen.xcdatamodeld in Sources */,
 				7D9C5A6E26A8905700FAF19C /* AddMetaToDesejoView.swift in Sources */,
 				7D9C5A6326A743DC00FAF19C /* AddCategoriaView.swift in Sources */,
 				7D9C5A6826A74C5500FAF19C /* ListaDesejosCategoriaView.swift in Sources */,
 				7D6F2EBD26A6434900EC8ADC /* WollenDataModel.xcdatamodeld in Sources */,
 				222AE6D0269E0E6A005DB79A /* MyWishCard.swift in Sources */,
-				BEF78B9E2698D85900181907 /* Persistence.swift in Sources */,
 				7D6F2EBF26A6458000EC8ADC /* CoreDataManager.swift in Sources */,
 				7D6F2EC526A6575800EC8ADC /* ListaDesejosView.swift in Sources */,
 				7D6F2EC926A704F400EC8ADC /* ListaCategoriasViewModel.swift in Sources */,
@@ -526,16 +518,6 @@
 			);
 			currentVersion = 7D6F2EBC26A6434900EC8ADC /* WollenDataModel.xcdatamodel */;
 			path = WollenDataModel.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-		BEF78B9F2698D85900181907 /* Wollen.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				BEF78BA02698D85900181907 /* Wollen.xcdatamodel */,
-			);
-			currentVersion = BEF78BA02698D85900181907 /* Wollen.xcdatamodel */;
-			path = Wollen.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
