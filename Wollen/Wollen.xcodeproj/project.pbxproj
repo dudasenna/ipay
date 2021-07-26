@@ -13,6 +13,7 @@
 		225C081726A5FA1000079D66 /* DescriptionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225C081626A5FA1000079D66 /* DescriptionCard.swift */; };
 		225C081926A616C800079D66 /* LinksCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225C081826A616C800079D66 /* LinksCard.swift */; };
 		22ACBE1726A0B43000E4AED7 /* WishGoalCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ACBE1626A0B43000E4AED7 /* WishGoalCard.swift */; };
+		22FA634426AF3FD500B0CF34 /* WishGraphCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FA634326AF3FD500B0CF34 /* WishGraphCard.swift */; };
 		7D6F2EBD26A6434900EC8ADC /* WollenDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7D6F2EBB26A6434900EC8ADC /* WollenDataModel.xcdatamodeld */; };
 		7D6F2EBF26A6458000EC8ADC /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6F2EBE26A6458000EC8ADC /* CoreDataManager.swift */; };
 		7D6F2EC126A646E900EC8ADC /* AddDesejoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6F2EC026A646E900EC8ADC /* AddDesejoViewModel.swift */; };
@@ -53,6 +54,7 @@
 		225C081626A5FA1000079D66 /* DescriptionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionCard.swift; sourceTree = "<group>"; };
 		225C081826A616C800079D66 /* LinksCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksCard.swift; sourceTree = "<group>"; };
 		22ACBE1626A0B43000E4AED7 /* WishGoalCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishGoalCard.swift; sourceTree = "<group>"; };
+		22FA634326AF3FD500B0CF34 /* WishGraphCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishGraphCard.swift; sourceTree = "<group>"; };
 		7D6F2EBC26A6434900EC8ADC /* WollenDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WollenDataModel.xcdatamodel; sourceTree = "<group>"; };
 		7D6F2EBE26A6458000EC8ADC /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		7D6F2EC026A646E900EC8ADC /* AddDesejoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDesejoViewModel.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				BE5FAE4E269E880A006E54A6 /* CardSaveMoney.swift */,
 				BE167E66269CDD9C009E94C5 /* GoalCard.swift */,
 				BE17DB7E26A650740051966C /* GalleryCard.swift */,
+				22FA634326AF3FD500B0CF34 /* WishGraphCard.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 				7D6F2EC526A6575800EC8ADC /* ListaDesejosView.swift in Sources */,
 				7D6F2EC926A704F400EC8ADC /* ListaCategoriasViewModel.swift in Sources */,
 				22ACBE1726A0B43000E4AED7 /* WishGoalCard.swift in Sources */,
+				22FA634426AF3FD500B0CF34 /* WishGraphCard.swift in Sources */,
 				7D6F2EC726A704DF00EC8ADC /* AddCategoriaViewModel.swift in Sources */,
 				BEF78B972698D85700181907 /* ContentView.swift in Sources */,
 				7D9C5A7426A9F68600FAF19C /* AddDesejoCompleto.swift in Sources */,
