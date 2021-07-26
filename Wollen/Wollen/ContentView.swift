@@ -9,11 +9,18 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
+    //valor do progresso do desejo
+    @State var progressValue: Float = 0.28
+    
+    @Environment(\.managedObjectContext) private var viewContext
 
     @Environment(\.verticalSizeClass) var verticalSizeClass: UserInterfaceSizeClass?
     @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
 
     var body: some View {
+//        WishGraphCard(progress: self.$progressValue)
+//            .frame(width: 150.0, height: 150.0)
+//            .padding(40.0)
         Group {
             if verticalSizeClass == .regular && horizontalSizeClass == .compact {
                 // iPhone Portrait or iPad 1/3 split view for Multitasking for instance
@@ -72,8 +79,8 @@ struct ContentView: View {
 //                    .background(Color(red: 0.98, green: 0.98, blue: 0.98, opacity: 1.0))
 //            }
 //        }
-//        
-//        
+//
+//
 //        }
 //        List {
 //            ForEach(items) { item in
