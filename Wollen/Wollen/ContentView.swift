@@ -14,11 +14,6 @@ struct ContentView: View {
     
     @Environment(\.managedObjectContext) private var viewContext
 
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
-        animation: .default)
-    private var items: FetchedResults<Item>
-    
     @Environment(\.verticalSizeClass) var verticalSizeClass: UserInterfaceSizeClass?
     @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
 
@@ -33,7 +28,8 @@ struct ContentView: View {
                     LinksCard()
                     DescriptionCard()
                 }
-            } else if verticalSizeClass == .compact && horizontalSizeClass == .compact {
+            }
+            if verticalSizeClass == .compact && horizontalSizeClass == .compact {
                 // some "standard" iPhone Landscape (iPhone SE, X, XS, 7, 8, ...)
             } else if verticalSizeClass == .compact && horizontalSizeClass == .regular {
                 // some "bigger" iPhone Landscape (iPhone Xs Max, 6s Plus, 7 Plus, 8 Plus, ...)
@@ -103,47 +99,10 @@ struct ContentView: View {
 //        }
     }
 
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-        }
-    }
 }
-
-private let itemFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .medium
-    return formatter
-}()
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().previewDevice("iPad Pro (11-inch) (3rd generation)").environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        ContentView().previewDevice("iPad Pro (11-inch) (3rd generation)")
     }
 }
