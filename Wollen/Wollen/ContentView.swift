@@ -32,7 +32,8 @@ struct ContentView: View {
                     AddCategoriaView()
                     ListaCategoriasView()
                 }
-            } else if verticalSizeClass == .compact && horizontalSizeClass == .compact {
+            }
+            if verticalSizeClass == .compact && horizontalSizeClass == .compact {
                 // some "standard" iPhone Landscape (iPhone SE, X, XS, 7, 8, ...)
             } else if verticalSizeClass == .compact && horizontalSizeClass == .regular {
                 // some "bigger" iPhone Landscape (iPhone Xs Max, 6s Plus, 7 Plus, 8 Plus, ...)
