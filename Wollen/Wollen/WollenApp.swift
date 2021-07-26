@@ -9,12 +9,14 @@ import SwiftUI
 
 @main
 struct WollenApp: App {
-    let persistenceController = PersistenceController.shared
+    
 
     var body: some Scene {
         WindowGroup {
-            ImageCard()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            //ContentView()
+            ListaCategoriasView()
+               
+
         }
     }
 }

@@ -9,12 +9,9 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
-    @Environment(\.managedObjectContext) private var viewContext
 
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
-        animation: .default)
-    private var items: FetchedResults<Item>
+    @Environment(\.verticalSizeClass) var verticalSizeClass: UserInterfaceSizeClass?
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
 
     var body: some View {
         HStack {
@@ -24,11 +21,32 @@ struct ContentView: View {
                 MyWishesCards()
                 HStack {
                     InformationsCard()
-                    InformationsCard()
+                    //InformationsCard()
+                    ListaDesejosView()
+                    AddCategoriaView()
+                    ListaCategoriasView()
                 }
             }
-            .padding(20)
-            .background(Color(red: 0.98, green: 0.98, blue: 0.98, opacity: 1.0))
+            if verticalSizeClass == .compact && horizontalSizeClass == .compact {
+                // some "standard" iPhone Landscape (iPhone SE, X, XS, 7, 8, ...)
+            } else if verticalSizeClass == .compact && horizontalSizeClass == .regular {
+                // some "bigger" iPhone Landscape (iPhone Xs Max, 6s Plus, 7 Plus, 8 Plus, ...)
+            } else if verticalSizeClass == .regular && horizontalSizeClass == .regular {
+                // macOS or iPad without split view - no Multitasking
+                HStack {
+                    Rectangle()
+                        .frame(minWidth: 0, idealWidth: 240, maxWidth: 240, minHeight: 0, idealHeight: 100, maxHeight: .infinity, alignment: .center)
+                    VStack {
+                        MyWishesCards()
+                        DescriptionCard()
+                        LinksCard()
+                    }
+                    .padding(20)
+                    .background(Color(red: 0.98, green: 0.98, blue: 0.98, opacity: 1.0))
+            }
+        }
+        
+        
         }
 //        List {
 //            ForEach(items) { item in
@@ -47,47 +65,10 @@ struct ContentView: View {
 //        }
     }
 
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-        }
-    }
 }
-
-private let itemFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .medium
-    return formatter
-}()
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().previewDevice("iPad Pro (11-inch) (3rd generation)").environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        ContentView().previewDevice("iPad Pro (11-inch) (3rd generation)")
     }
 }
