@@ -135,9 +135,9 @@
 		7D6F2ECA26A7073100EC8ADC /* View Models */ = {
 			isa = PBXGroup;
 			children = (
-				7D9C9E2D26AF39D900AD3185 /* Midia */,
 				BE078A2626AF3361009087BF /* ImagePicker.swift */,
 				BE078A2426AF3350009087BF /* DropImageDelegate.swift */,
+				7D9C9E2D26AF39D900AD3185 /* Midia */,
 				7D9C5A7B26AB50AB00FAF19C /* Meta */,
 				7D9C5A7A26AB509000FAF19C /* Categoria */,
 				7D9C5A7926AB507B00FAF19C /* Desejo */,

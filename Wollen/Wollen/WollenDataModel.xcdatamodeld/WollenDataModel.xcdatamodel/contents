@@ -23,7 +23,7 @@
         <relationship name="desejo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Desejo" inverseName="meta" inverseEntity="Desejo"/>
     </entity>
     <entity name="Midia" representedClassName="Midia" syncable="YES" codeGenerationType="class">
-        <attribute name="imagem" optional="YES" attributeType="Binary"/>
+        <attribute name="imagem" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
         <relationship name="desejo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Desejo" inverseName="imagens" inverseEntity="Desejo"/>
     </entity>
     <elements>

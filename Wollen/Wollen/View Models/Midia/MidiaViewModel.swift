@@ -7,8 +7,11 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 struct MidiaViewModel {
+    
+    let defaultImage = #imageLiteral(resourceName: "teste")
     
     let midia: Midia
     
@@ -16,8 +19,8 @@ struct MidiaViewModel {
         return midia.objectID
     }
     
-//    var imagem: Data {
-//        //return midia.imagem ?? nil
-//    }
+    var imagem: Data {
+        return midia.imagem ?? defaultImage.pngData()!
+    }
     
 }

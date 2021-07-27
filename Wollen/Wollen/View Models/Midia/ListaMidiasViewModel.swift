@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 class ListaMidiasViewModel: ObservableObject {
     
@@ -29,6 +30,29 @@ class ListaMidiasViewModel: ObservableObject {
             }
         }
         
+    }
+    
+    func getImageFromMidia(midia: MidiaViewModel) -> UIImage {
+        // Converte data pra UIImage
+        return UIImage(data: midia.imagem) ?? midia.defaultImage
+    }
+    
+    /*
+     List{
+         ForEach(listaMidiasVM.midias, id: \.id) { midia in
+            let image = getImageFromMidia(midia)
+            Image(image)
+             
+         }
+     }
+     */
+    
+    func getAllMidias(){
+        let midias = CoreDataManager.shared.getAllMidias()
+        
+        DispatchQueue.main.async {
+            self.midias = midias.map(MidiaViewModel.init)
+        }
     }
     
 }
