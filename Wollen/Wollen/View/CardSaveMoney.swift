@@ -10,14 +10,17 @@ import Combine
 
 struct CardSaveMoney: View {
     
-    init(goal value: Float) {
+    init(goal value: Float, desejo: DesejoViewModel) {
         self.goalValue = value
         self.valueTextField = String("R$ \(value)")
+        self.desejoVM = desejo
     }
     
-    var goalValue: Float = 0
+    @StateObject private var updateDesejoVM = UpdateDesejoViewModel()
     @State private var valueTextField: String
+    var goalValue: Float = 0
     var maxWidth = UIScreen().bounds.width
+    let desejoVM: DesejoViewModel
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -38,18 +41,19 @@ struct CardSaveMoney: View {
                     .multilineTextAlignment(.leading)
                     .background(RoundedRectangle(cornerRadius: 5).foregroundColor(.white))
                     .overlay(RoundedRectangle(cornerRadius: 5).stroke(Color(UIColor.gray), lineWidth: 1))
-                    .frame(minWidth: 0, idealWidth: 200, maxWidth: maxWidth/3, alignment: .trailing)
+                    .frame(minWidth: 0, idealWidth: 200, alignment: .trailing)
                     .keyboardType(.numberPad)
                     .onReceive(Just(valueTextField)) { newValue in
-                        let filtered = newValue.filter { "0123456789.,".contains($0) }
+                        let filtered = valueFiltering(newValue)
                         if filtered != newValue {
-                            self.valueTextField = String("R$ \(filtered)")
+                            self.valueTextField = String("\(filtered)")
                         }
                     }
                 
                 Button(
                     action: {
                         // TODO: Salvar valor do TextField no core data
+                        self.updateDesejoVM.updateValorAtual(desejo: desejoVM, valor: valueTextField)
                         
                         // A ideia aqui vai ser colocar o valor da meta
                         self.valueTextField = String("R$ \(self.goalValue)")
@@ -73,10 +77,20 @@ struct CardSaveMoney: View {
         .fixedSize(horizontal: false, vertical: false)
         .shadow(color: Color.gray.opacity(0.4), radius: 5)
     }
+    
+    func valueFiltering(_ value: String) -> String {
+        var filtered = value.filter { "0123456789.".contains($0) }
+        let points = filtered.filter { ".".contains($0) }
+        if points.count > 1 {
+            filtered.removeLast()
+        }
+        return filtered
+    }
 }
 
 struct CardSaveMoney_Previews: PreviewProvider {
     static var previews: some View {
-        CardSaveMoney(goal: 50).previewLayout(.sizeThatFits)
+        let desejoVM = DesejoViewModel(desejo: Desejo(context: CoreDataManager.shared.viewContext))
+        CardSaveMoney(goal: 50, desejo: desejoVM).previewLayout(.sizeThatFits)
     }
 }
