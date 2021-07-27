@@ -13,7 +13,7 @@ struct CategoriesCard: View {
     private var flexibleLayout = [GridItem(.flexible()), GridItem(.flexible())]
     
     var categoriesTitle = ["Tecnologia", "Roupa", "Viagem", "Comida", "Saúde", "Livros"]
-    var categoriesColor = ["systemYellow", "systemOrange", "systemGreen", "systemCyan", "systemPurple", "systemPink"]
+    var categoriesColor = ["systemYellow700", "systemOrange700", "systemGreen700", "systemCyan700", "systemPurple700", "systemPink700"]
     @State private var newCategory: String = ""
     
     var body: some View {
