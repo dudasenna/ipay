@@ -17,13 +17,12 @@ struct LinksCard: View {
     var body: some View {
         VStack(alignment: .leading) {
             
-            // TÍTULO - DESCRIÇÃO
             Text(LocalizedStringKey("Links"))
                 .bold()
                 .font(.custom("Avenir Next", size: 22))
                 .padding()
             
-            // DESCRIÇÃO
+            // LINKS
             ScrollView(.vertical, showsIndicators: false) {
                 LazyVGrid (columns: adaptiveLayout, alignment: .center, spacing: 0){
                     ForEach (0..<links.count) { link in
