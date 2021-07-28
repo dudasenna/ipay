@@ -24,6 +24,7 @@ struct DesejoView: View {
                 .font(.title)
                 .bold()
             DetalhesDesejo(desejo: desejoVM)
+            CardSaveMoney(goal: 50, desejo: desejoVM)
             
             // Mostrar informações sobre a categoria
             Text("Informações sobre a categoria")
