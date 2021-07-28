@@ -17,6 +17,7 @@ struct CardSaveMoney: View {
     }
     
     @StateObject private var updateDesejoVM = UpdateDesejoViewModel()
+    @StateObject private var listaMetasVM = ListaMetasViewModel()
     @State private var valueTextField: String
     @State private var showPopup: Bool = false
     @State private var showSheet = false
@@ -77,6 +78,7 @@ struct CardSaveMoney: View {
                                 self.updateDesejoVM.updateValorAtual(desejo: desejoVM, valor: valueTextField)
                                 self.valueTextField = String("R$ \(self.goalValue)")
                                 // TODO: Atualizar valor do desejo atual nas informações sobre a meta
+                                NotificationCenter.default.post(Notification.init(name: Notification.Name("atualiza_valor_atual")))
                             }
                         )
                     )
