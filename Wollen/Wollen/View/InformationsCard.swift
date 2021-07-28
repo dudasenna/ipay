@@ -20,7 +20,6 @@ struct InformationsCard: View {
                 .bold()
                 .padding(5)
                 .font(.custom("Avenir Next", size: 22))
-            
             // NOME
             
             HStack() {

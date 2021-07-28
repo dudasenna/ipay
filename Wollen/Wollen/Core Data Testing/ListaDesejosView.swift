@@ -29,35 +29,39 @@ struct ListaDesejosView: View {
     }
     
     var body: some View {
-        List{
-            ForEach(listaDesejosVM.desejos, id: \.id) { desejo in
+        VStack() {
+            ListToShare()
+            List{
+                ForEach(listaDesejosVM.desejos, id: \.id) { desejo in
+                    
+                    NavigationLink(
+                        destination: DesejoView(desejoVM: desejo),
+                        label: {
+                            DetalhesDesejo(desejo: desejo)
+                        })
+                    
+                }.onDelete(perform: deleteDesejo)
+            }
+            .navigationTitle("Meus desejos")
+            .navigationBarItems(trailing: Button("Novo desejo") {
+                 isPresented = true
+            })
+            .sheet(isPresented: $isPresented, onDismiss: {
+                // Atualiza os desejos
+                listaDesejosVM.getAllDesejos()
                 
-                NavigationLink(
-                    destination: DesejoView(desejoVM: desejo),
-                    label: {
-                        DetalhesDesejo(desejo: desejo)
-                    })
+                // Atualiza as categorias
+                listaCategoriasVM.getAllCategorias()
+            }, content: {
                 
-            }.onDelete(perform: deleteDesejo)
+                // Permite adicionar um desejo criando as informações de Meta e Categoria
+                AddDesejoCompleto()
+            })
+            .onAppear(perform: {
+                listaDesejosVM.getAllDesejos()
+            })
         }
-        .navigationTitle("Meus desejos")
-        .navigationBarItems(trailing: Button("Novo desejo") {
-             isPresented = true
-        })
-        .sheet(isPresented: $isPresented, onDismiss: {
-            // Atualiza os desejos
-            listaDesejosVM.getAllDesejos()
-            
-            // Atualiza as categorias
-            listaCategoriasVM.getAllCategorias()
-        }, content: {
-            
-            // Permite adicionar um desejo criando as informações de Meta e Categoria
-            AddDesejoCompleto()
-        })
-        .onAppear(perform: {
-            listaDesejosVM.getAllDesejos()
-        })
+        
     }
 }
 
