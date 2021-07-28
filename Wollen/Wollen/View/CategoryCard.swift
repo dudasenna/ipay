@@ -12,7 +12,7 @@ struct CategoryCard: View {
     @State var categoryTitle: String
     var body: some View {
         VStack(alignment: .center) {
-            Text(categoryTitle)
+            Text(LocalizedStringKey(categoryTitle))
                 .padding(5)
                 .font(.custom("Avenir Next", size: 18))
         }

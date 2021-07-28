@@ -37,7 +37,7 @@ struct WishGraphCard: View {
             .frame(minWidth: 0, idealWidth: 150, maxWidth: 150, minHeight: 0, idealHeight: 150, maxHeight: 150, alignment: .center)
             Spacer()
             HStack {
-                Text("R$ \(formattedSavedMoney) /")
+                Text(LocalizedStringKey("R$ \(formattedSavedMoney) /"))
                     .bold()
                     .font(.custom("Avenir Next", size: 25))
                 Text("\(formattedGoalMoney)")

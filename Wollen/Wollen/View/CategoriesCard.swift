@@ -33,9 +33,9 @@ struct CategoriesCard: View {
             .padding()
             
             HStack() {
-                Text("Outra:")
+                Text(LocalizedStringKey("Outra:"))
                     .font(.custom("Avenir Next", size: 18))
-                TextField("Nova categoria", text: $newCategory)
+                TextField(LocalizedStringKey("Nova categoria"), text: $newCategory)
                     .padding(5)
                     .background(Color(red: 118/256, green: 118/256, blue: 128/256, opacity: 0.12))
                     .cornerRadius(10)

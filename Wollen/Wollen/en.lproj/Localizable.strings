@@ -42,4 +42,11 @@
 "anos" = "years";
 "semanas" = "weeks";
 "meses" = "months";
-
+"Outra:" = "Other:";
+"Nova categoria" = "New category";
+"Tecnologia" = "Tecnology";
+"Roupa" = "Clothes";
+"Viagem" = "Travel";
+"Comida" = "Food";
+"Saúde" = "Health";
+"Livros" = "Books";
