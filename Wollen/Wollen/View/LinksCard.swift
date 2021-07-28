@@ -18,7 +18,7 @@ struct LinksCard: View {
         VStack(alignment: .leading) {
             
             // TÍTULO - DESCRIÇÃO
-            Text("Links")
+            Text(LocalizedStringKey("Links"))
                 .bold()
                 .font(.custom("Avenir Next", size: 22))
                 .padding()

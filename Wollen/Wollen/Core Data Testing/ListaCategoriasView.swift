@@ -64,7 +64,7 @@ struct ListaCategoriasView: View {
                         Button {
                             isPresented.toggle()
                         } label: {
-                            Text("Nova categoria")
+                            Text(LocalizedStringKey("Nova categoria"))
                                 .font(.title2)
                         }
                         .sheet(isPresented: $isPresented, onDismiss: {
@@ -79,7 +79,7 @@ struct ListaCategoriasView: View {
                     EditButton()
                 }
                 .listStyle(SidebarListStyle())
-                .navigationTitle("Categorias")
+                .navigationTitle(LocalizedStringKey("Categorias"))
                 //.font(.custom("Avenir Next", size: 22))
                 .accentColor(Color(UIColor(named: "systemMint")!))
             }

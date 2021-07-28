@@ -25,7 +25,7 @@ struct GoalCard: View {
         VStack (alignment: .leading) {
             
             HStack {
-                Text("Meta")
+                Text(LocalizedStringKey("Meta"))
                     .font(.custom("Avenir", size: 22).bold())
                     .fontWeight(.bold)
                     .multilineTextAlignment(.leading)
@@ -41,7 +41,7 @@ struct GoalCard: View {
                 })
             }
             
-            Picker( selection: $goalBy, label: Text("Que tipo de meta você prefere?")) {
+            Picker( selection: $goalBy, label: Text(LocalizedStringKey("Que tipo de meta você prefere?"))) {
                 // Link para tutorial:
                 //https://www.youtube.com/watch?v=iqKmgs_0VPE
                 ForEach(GoalBy.allCases, id: \.self) {
@@ -56,7 +56,7 @@ struct GoalCard: View {
             .fixedSize(horizontal: false, vertical: false)
             
             HStack {
-                Text("Frequência:")
+                Text(LocalizedStringKey("Frequência:"))
                     .font(.custom("Avenir", size: 18))
                     .fontWeight(.regular)
                     .multilineTextAlignment(.leading)
@@ -83,7 +83,7 @@ struct GoalCard: View {
             
             HStack {
                 if goalBy == GoalBy.value {
-                    Text("Valor:")
+                    Text(LocalizedStringKey("Valor:"))
                         .font(.custom("Avenir", size: 18))
                         .fontWeight(.regular)
                         .multilineTextAlignment(.leading)
@@ -107,7 +107,7 @@ struct GoalCard: View {
                             }}
                             
                         } else {
-                            Text("Duração:")
+                            Text(LocalizedStringKey("Duração:"))
                                 .font(.custom("Avenir", size: 18))
                                 .fontWeight(.regular)
                                 .multilineTextAlignment(.leading)
@@ -153,21 +153,33 @@ struct GoalCard: View {
             .fixedSize(horizontal: false, vertical: false)
         } // body
     }
-    
-    enum GoalBy: String, CaseIterable {
-        case value = "Por valor"
-        case period = "Por período"
-    }
-    
-    enum FrequencyTypes: String, CaseIterable{
+
+enum GoalBy: LocalizedStringKey, CaseIterable {
+    case value = "Por valor";
+    case period = "Por período";
+
+    var localized: LocalizedStringKey {
+            return rawValue
+        }
+}
+
+    enum FrequencyTypes: LocalizedStringKey, CaseIterable{
         case monthly = "mensal";
         case weekly = "semanal";
+        
+        var localized: LocalizedStringKey {
+                return rawValue
+            }
     }
     
-    enum DurationTypes: String, CaseIterable {
+    enum DurationTypes: LocalizedStringKey, CaseIterable {
         case years = "anos"
         case weeks = "semanas"
         case months = "meses"
+        
+        var localized: LocalizedStringKey {
+                return rawValue
+            }
     }
     
     struct GoalCard_Previews: PreviewProvider {
