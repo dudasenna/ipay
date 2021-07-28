@@ -14,7 +14,7 @@ struct WollenApp: App {
     var body: some Scene {
         WindowGroup {
             //ContentView()
-           GoalCard()
+           ImageCard()
                
 
         }
