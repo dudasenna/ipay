@@ -16,7 +16,7 @@ struct InformationsCard: View {
     var body: some View {
         VStack(alignment: .leading) {
             
-            Text("Informações")
+            Text(LocalizedStringKey("Informações"))
                 .bold()
                 .padding(5)
                 .font(.custom("Avenir Next", size: 22))
@@ -24,9 +24,9 @@ struct InformationsCard: View {
             // NOME
             
             HStack() {
-                Text("Nome:")
+                Text(LocalizedStringKey("Nome:"))
                     .font(.custom("Avenir Next", size: 18))
-                TextField("Nome do produto", text: $addDesejoVM.nome)
+                TextField(LocalizedStringKey("Nome do produto"), text: $addDesejoVM.nome)
                     .padding(5)
                     .background(Color(red: 118/256, green: 118/256, blue: 128/256, opacity: 0.12))
                     .cornerRadius(10)
@@ -39,9 +39,9 @@ struct InformationsCard: View {
             // PREÇO
             
             HStack() {
-                Text("Preço:")
+                Text(LocalizedStringKey("Preço:"))
                     .font(.custom("Avenir Next", size: 18))
-                TextField("Preço do produto", text: $addDesejoVM.preco)
+                TextField(LocalizedStringKey("Preço do produto"), text: $addDesejoVM.preco)
                     .padding(5)
                     .background(Color(red: 118/256, green: 118/256, blue: 128/256, opacity: 0.12))
                     .cornerRadius(10)
@@ -53,9 +53,9 @@ struct InformationsCard: View {
             // DESCRIÇÃO
             
             HStack() {
-                Text("Descrição:")
+                Text(LocalizedStringKey("Descrição:"))
                     .font(.custom("Avenir Next", size: 18))
-                TextField("Descrição do produto", text: $addDesejoVM.descricao)
+                TextField(LocalizedStringKey("Descrição do produto"), text: $addDesejoVM.descricao)
                     .padding(5)
                     .background(Color(red: 118/256, green: 118/256, blue: 128/256, opacity: 0.12))
                     .cornerRadius(10)
@@ -67,9 +67,9 @@ struct InformationsCard: View {
             //LINK
             
             HStack() {
-                Text("Link:")
+                Text(LocalizedStringKey("Link:"))
                     .font(.custom("Avenir Next", size: 18))
-                TextField("Link do produto", text: $addDesejoVM.link)
+                TextField(LocalizedStringKey("Link do produto"), text: $addDesejoVM.link)
                     .padding(5)
                     .background(Color(red: 118/256, green: 118/256, blue: 128/256, opacity: 0.12))
                     .cornerRadius(10)
@@ -78,7 +78,7 @@ struct InformationsCard: View {
             }
             .padding(10)
             
-            Button("Salvar") {
+            Button(LocalizedStringKey("Salvar")) {
                 addDesejoVM.saveDesejo()
                 //print("Botao de salvar desejo")
             }

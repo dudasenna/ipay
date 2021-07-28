@@ -21,10 +21,10 @@ struct CardSaveMoney: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text("Guardar dinheiro")
+            Text(LocalizedStringKey("Guardar dinheiro"))
                 .font(.custom("Avenir", size: 22).bold())
             
-            Text("Quanto você gostaria de guardar?")
+            Text(LocalizedStringKey("Quanto você gostaria de guardar?"))
                 .font(.custom("Avenir", size: 18))
                 .padding(.vertical)
             
@@ -55,7 +55,7 @@ struct CardSaveMoney: View {
                         self.valueTextField = String("R$ \(self.goalValue)")
                     },
                     label: {
-                        Text("Salvar")
+                        Text(LocalizedStringKey("Salvar"))
                             .foregroundColor(Color(UIColor.darkGray))
                             .font(.custom("Avenir", size: 18).bold())
                             .padding(.horizontal)

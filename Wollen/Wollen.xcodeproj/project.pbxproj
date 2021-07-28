@@ -15,6 +15,7 @@
 		225F4CC826B078610058FBEF /* CategoriesCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225F4CC726B078610058FBEF /* CategoriesCard.swift */; };
 		225F4CCB26B0790A0058FBEF /* CategoryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225F4CCA26B0790A0058FBEF /* CategoryCard.swift */; };
 		22ACBE1726A0B43000E4AED7 /* WishGoalCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ACBE1626A0B43000E4AED7 /* WishGoalCard.swift */; };
+		66AE9E8526B172A200501CE9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 66AE9E8726B172A200501CE9 /* Localizable.strings */; };
 		22FA634426AF3FD500B0CF34 /* WishGraphCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FA634326AF3FD500B0CF34 /* WishGraphCard.swift */; };
 		66E8BD0126A760C5001D3178 /* ImageCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E8BD0026A760C5001D3178 /* ImageCard.swift */; };
 		7D6F2EBD26A6434900EC8ADC /* WollenDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7D6F2EBB26A6434900EC8ADC /* WollenDataModel.xcdatamodeld */; };
@@ -59,6 +60,8 @@
 		225F4CC726B078610058FBEF /* CategoriesCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesCard.swift; sourceTree = "<group>"; };
 		225F4CCA26B0790A0058FBEF /* CategoryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCard.swift; sourceTree = "<group>"; };
 		22ACBE1626A0B43000E4AED7 /* WishGoalCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishGoalCard.swift; sourceTree = "<group>"; };
+		66AE9E8626B172A200501CE9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		66AE9E8826B172B300501CE9 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		22FA634326AF3FD500B0CF34 /* WishGraphCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishGraphCard.swift; sourceTree = "<group>"; };
 		66E8BD0026A760C5001D3178 /* ImageCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCard.swift; sourceTree = "<group>"; };
 		7D6F2EBC26A6434900EC8ADC /* WollenDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WollenDataModel.xcdatamodel; sourceTree = "<group>"; };
@@ -111,6 +114,7 @@
 		22039293269CC71E0054C168 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				66AE9E8726B172A200501CE9 /* Localizable.strings */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -287,6 +291,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"pt-BR",
 			);
 			mainGroup = BEF78B882698D85700181907;
 			productRefGroup = BEF78B922698D85700181907 /* Products */;
@@ -304,6 +309,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BEF78B9C2698D85900181907 /* Preview Assets.xcassets in Resources */,
+				66AE9E8526B172A200501CE9 /* Localizable.strings in Resources */,
 				BEF78B992698D85900181907 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -358,6 +364,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		66AE9E8726B172A200501CE9 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				66AE9E8626B172A200501CE9 /* en */,
+				66AE9E8826B172B300501CE9 /* pt-BR */,
+			);
+			name = Localizable.strings;
+			path = Wollen;
+			sourceTree = SOURCE_ROOT;
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		BEF78BA32698D85900181907 /* Debug */ = {
@@ -483,7 +502,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Wollen/Preview Content\"";
-				DEVELOPMENT_TEAM = 23WSBM7T82;
+				DEVELOPMENT_TEAM = TSNQUNMSD5;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Wollen/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -505,7 +524,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Wollen/Preview Content\"";
-				DEVELOPMENT_TEAM = 23WSBM7T82;
+				DEVELOPMENT_TEAM = TSNQUNMSD5;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Wollen/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;

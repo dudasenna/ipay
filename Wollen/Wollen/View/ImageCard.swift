@@ -23,7 +23,7 @@ struct ImageCard : View {
     var body: some View {
         VStack (alignment: .leading){
             HStack{
-                Text("Imagens")
+                Text(LocalizedStringKey("Imagens"))
                     .bold()
                     .font(.custom("Avenir Next", size: 22))
                 ScrollView(.horizontal) {

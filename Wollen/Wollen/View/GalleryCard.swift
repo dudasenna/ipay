@@ -14,7 +14,7 @@ struct GalleryCard: View {
             VStack {
                 // Título:
                 HStack {
-                    Text("Galeria")
+                    Text(LocalizedStringKey("Galeria"))
                         .font(.custom("Avenir Next", size: 22).bold())
                         .multilineTextAlignment(.leading)
                         .padding([.top, .leading])

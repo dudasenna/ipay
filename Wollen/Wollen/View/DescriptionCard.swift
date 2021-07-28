@@ -13,7 +13,7 @@ struct DescriptionCard: View {
         VStack(alignment: .leading) {
             
             // TÍTULO - DESCRIÇÃO
-            Text("Descrição")
+            Text(LocalizedStringKey("Descrição"))
                 .bold()
                 .font(.custom("Avenir Next", size: 22))
                 .padding()

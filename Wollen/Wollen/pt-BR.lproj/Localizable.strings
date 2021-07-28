@@ -1,0 +1,47 @@
+/* 
+  Localizable.strings
+  Wollen
+
+  Created by Palloma Ramos on 28/07/21.
+  
+*/
+"Informações" = "Informações";
+"Nome:" = "Nome:";
+"Nome do produto" = "Nome do produto";
+"Preço:" = "Preço:";
+"Preço do produto" = "Preço do produto";
+"Descrição:" = "Descrição:";
+"Descrição" = "Descrição";
+"Descrição do produto" = "Descrição do produto";
+"Link:" = "Link:";
+"Links" = "Links";
+"Link do produto" = "Link do produto";
+"Salvar" = "Salvar";
+"Nome" = "Nome";
+"Meus desejos" = "Meus desejos";
+"Categoria" = "Categoria";
+"Meta" = "Meta";
+"Cumprida" = "Cumprida";
+"Parabéns 🎉\n Você merece!" = "Parabéns 🎉\n Você merece!";
+"R$ %lld / mês" = "R$ %lld / mês";
+"Se você continuar neste ritmo, você completará a meta daqui a ." = "Se você continuar neste ritmo, você completará a meta daqui a .";
+"Categorias" = "Categorias";
+"Nova categoria" = "Nova categoria";
+"Imagens" = "Imagens";
+"Guardar dinheiro" = "Guardar dinheiro";
+"Quanto você gostaria de guardar?" = "Quanto você gostaria de guardar?";
+"R$ %lld" = "R$ %lld";
+"Frequência:" = "Frequência:";
+"Valor:" = "Valor:";
+"Duração:" = "Duração:";
+"Galeria" = "Galeria";
+"Por valor" = "Por valor";
+"Por período" = "Por período";
+"mensal" = "mensal";
+"semanal" = "semanal";
+"anos" = "anos";
+"semanas" = "semanas";
+"meses" = "meses";
+
+
+

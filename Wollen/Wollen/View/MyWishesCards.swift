@@ -14,10 +14,10 @@ struct MyWishesCards: View {
     
     var body: some View {
         VStack (alignment: .leading) {
-            Text("Meus desejos")
+            Text(LocalizedStringKey("Meus desejos"))
                 .bold()
                 .font(.custom("Avenir Next", size: 36))
-            Text("Categoria")
+            Text(LocalizedStringKey("Categoria"))
                 .font(.custom("Avenir Next", size: 22))
             ScrollView(.horizontal) {
                 HStack(spacing: 20) {
