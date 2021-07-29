@@ -54,7 +54,7 @@ struct ListaCategoriasView: View {
                                 destination: ListaDesejosCategoriaView(categoriaVM: categoria),
                                 label: {
                                     DetalhesCategoria(categoria: categoria)
-                                        //.font(.custom("Avenir Next", size: 18))
+                                    //.font(.custom("Avenir Next", size: 18))
                                         .font(.title2)
                                 })
                         }.onDelete(perform: deleteCategoria)
@@ -70,7 +70,8 @@ struct ListaCategoriasView: View {
                         .sheet(isPresented: $isPresented, onDismiss: {
                             listaCategoriasVM.getAllCategorias()
                         }, content: {
-                            AddCategoriaView()
+//                            AddCategoriaView()
+                            NewCategory()
                         })
                         
                     }

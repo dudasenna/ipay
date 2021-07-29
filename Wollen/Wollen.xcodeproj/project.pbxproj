@@ -15,8 +15,9 @@
 		225F4CC826B078610058FBEF /* CategoriesCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225F4CC726B078610058FBEF /* CategoriesCard.swift */; };
 		225F4CCB26B0790A0058FBEF /* CategoryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225F4CCA26B0790A0058FBEF /* CategoryCard.swift */; };
 		22ACBE1726A0B43000E4AED7 /* WishGoalCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ACBE1626A0B43000E4AED7 /* WishGoalCard.swift */; };
-		66AE9E8526B172A200501CE9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 66AE9E8726B172A200501CE9 /* Localizable.strings */; };
 		22FA634426AF3FD500B0CF34 /* WishGraphCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FA634326AF3FD500B0CF34 /* WishGraphCard.swift */; };
+		66AE9E8526B172A200501CE9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 66AE9E8726B172A200501CE9 /* Localizable.strings */; };
+		66AE9E8C26B1EAC200501CE9 /* NewCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AE9E8B26B1EAC200501CE9 /* NewCategory.swift */; };
 		66E8BD0126A760C5001D3178 /* ImageCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E8BD0026A760C5001D3178 /* ImageCard.swift */; };
 		7D6F2EBD26A6434900EC8ADC /* WollenDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7D6F2EBB26A6434900EC8ADC /* WollenDataModel.xcdatamodeld */; };
 		7D6F2EC126A646E900EC8ADC /* AddDesejoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6F2EC026A646E900EC8ADC /* AddDesejoViewModel.swift */; };
@@ -60,9 +61,10 @@
 		225F4CC726B078610058FBEF /* CategoriesCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesCard.swift; sourceTree = "<group>"; };
 		225F4CCA26B0790A0058FBEF /* CategoryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCard.swift; sourceTree = "<group>"; };
 		22ACBE1626A0B43000E4AED7 /* WishGoalCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishGoalCard.swift; sourceTree = "<group>"; };
+		22FA634326AF3FD500B0CF34 /* WishGraphCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishGraphCard.swift; sourceTree = "<group>"; };
 		66AE9E8626B172A200501CE9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		66AE9E8826B172B300501CE9 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		22FA634326AF3FD500B0CF34 /* WishGraphCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishGraphCard.swift; sourceTree = "<group>"; };
+		66AE9E8B26B1EAC200501CE9 /* NewCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCategory.swift; sourceTree = "<group>"; };
 		66E8BD0026A760C5001D3178 /* ImageCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCard.swift; sourceTree = "<group>"; };
 		7D6F2EBC26A6434900EC8ADC /* WollenDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WollenDataModel.xcdatamodel; sourceTree = "<group>"; };
 		7D6F2EC026A646E900EC8ADC /* AddDesejoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDesejoViewModel.swift; sourceTree = "<group>"; };
@@ -135,15 +137,24 @@
 				22FA634326AF3FD500B0CF34 /* WishGraphCard.swift */,
 				225F4CC726B078610058FBEF /* CategoriesCard.swift */,
 				225F4CCA26B0790A0058FBEF /* CategoryCard.swift */,
+				66AE9E8B26B1EAC200501CE9 /* NewCategory.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		66AE9E8D26B1EC4D00501CE9 /* Imagem */ = {
+			isa = PBXGroup;
+			children = (
+				BE078A2626AF3361009087BF /* ImagePicker.swift */,
+				BE078A2426AF3350009087BF /* DropImageDelegate.swift */,
+			);
+			path = Imagem;
 			sourceTree = "<group>";
 		};
 		7D6F2ECA26A7073100EC8ADC /* View Models */ = {
 			isa = PBXGroup;
 			children = (
-				BE078A2626AF3361009087BF /* ImagePicker.swift */,
-				BE078A2426AF3350009087BF /* DropImageDelegate.swift */,
+				66AE9E8D26B1EC4D00501CE9 /* Imagem */,
 				7D9C5A7B26AB50AB00FAF19C /* Meta */,
 				7D9C5A7A26AB509000FAF19C /* Categoria */,
 				7D9C5A7926AB507B00FAF19C /* Desejo */,
@@ -342,6 +353,7 @@
 				7D6F2EBD26A6434900EC8ADC /* WollenDataModel.xcdatamodeld in Sources */,
 				222AE6D0269E0E6A005DB79A /* MyWishCard.swift in Sources */,
 				7D6F2EC526A6575800EC8ADC /* ListaDesejosView.swift in Sources */,
+				66AE9E8C26B1EAC200501CE9 /* NewCategory.swift in Sources */,
 				7D6F2EC926A704F400EC8ADC /* ListaCategoriasViewModel.swift in Sources */,
 				22ACBE1726A0B43000E4AED7 /* WishGoalCard.swift in Sources */,
 				22FA634426AF3FD500B0CF34 /* WishGraphCard.swift in Sources */,
