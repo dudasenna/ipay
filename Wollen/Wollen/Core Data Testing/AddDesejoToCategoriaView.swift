@@ -44,7 +44,7 @@ struct AddDesejoToCategoriaView: View {
                     TextField("Frequência", text: $addDesejoVM.frequencia)
                 }
             }
-            
+            ImageCard()
             Button("Salvar") {
                 addDesejoVM.addDesejoToCategoria(categoriaId: categoriaVM.id)
             }

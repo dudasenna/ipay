@@ -14,12 +14,15 @@ class addMidiaViewModel: ObservableObject {
     var imagem = UIImage()
     
     
-    func saveImage() {
+    func saveMidia() {
         let manager = CoreDataManager.shared
         let midia = Midia(context: manager.persistentContainer.viewContext)
         
         // Para salvar a imagem em Core Data, precisa converter para PNGData
         let dadosImagem = imagem.pngData()
+
+        // Pode converter para jpeg e comprimir para diminuir o espaço utilizado. compressionQuality = 0 -> maior compressão
+        //let dadosImagem = imagem.jpegData(compressionQuality: 0.5)
         midia.imagem = dadosImagem
         
         manager.save()
@@ -39,6 +42,9 @@ class addMidiaViewModel: ObservableObject {
             
             // Para salvar a imagem em Core Data, precisa converter para PNGData
             let dadosImagem = imagem.pngData()
+            
+            // Pode converter para jpeg e comprimir para diminuir o espaço utilizado. compressionQuality = 0 -> maior compressão
+            //let dadosImagem = imagem.jpegData(compressionQuality: 0.5)
             midia.imagem = dadosImagem
 
             desejo.addToImagens(midia)

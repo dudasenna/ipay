@@ -37,16 +37,6 @@ class ListaMidiasViewModel: ObservableObject {
         return UIImage(data: midia.imagem) ?? midia.defaultImage
     }
     
-    /*
-     List{
-         ForEach(listaMidiasVM.midias, id: \.id) { midia in
-            let image = getImageFromMidia(midia)
-            Image(image)
-             
-         }
-     }
-     */
-    
     func getAllMidias(){
         let midias = CoreDataManager.shared.getAllMidias()
         
