@@ -21,11 +21,11 @@ struct MyWishesCards: View {
                 .font(.custom("Avenir Next", size: 22))
             ScrollView(.horizontal) {
                 HStack(spacing: 20) {
-                    MyWishCard()
+                    //MyWishCard()
                     Spacer(minLength: 10)
-                    MyWishCard()
+                    //MyWishCard()
                     Spacer(minLength: 10)
-                    MyWishCard()
+                    //MyWishCard()
                 }
             }
             .padding(.horizontal)

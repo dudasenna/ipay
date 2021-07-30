@@ -35,7 +35,7 @@ struct ListaDesejosView: View {
                 NavigationLink(
                     destination: DesejoView(desejoVM: desejo),
                     label: {
-                        DetalhesDesejo(desejo: desejo)
+                        MyWishCard(desejoVM: desejo)
                     })
                 
             }.onDelete(perform: deleteDesejo)
