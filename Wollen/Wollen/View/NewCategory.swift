@@ -11,17 +11,19 @@ struct NewCategory : View {
     
     @StateObject private var addCategoriaVM = AddCategoriaViewModel()
     
-    @State private var showingDetail = false
+    @Environment(\.presentationMode) var presentation
+    
     var colorNames: [String] = ["systemYellow", "systemPurple", "systemOrange", "systemGreen", "systemPink", "systemCyan"]
     @State private var colorSelected: String = "systemYellow"
     
     var body: some View {
         VStack{
-            Text(LocalizedStringKey("Nova Categoria"))
+            Text(LocalizedStringKey("Nova categoria"))
                 .bold()
                 .font(.custom("Avenir Next", size: 22))
                 .foregroundColor(.black)
             TextField(LocalizedStringKey("Nome da categoria"), text: $addCategoriaVM.nome)
+                .foregroundColor(.black)
                 .padding(5)
                 .background(Color(red: 118/256, green: 118/256, blue: 128/256, opacity: 0.12))
                 .cornerRadius(10)
@@ -55,16 +57,8 @@ struct NewCategory : View {
                 }
             }
             HStack{
-//                Button(action: {
-//
-//                }, label: {
-//                    Text("Cancelar")
-//                })
                 Button(LocalizedStringKey("Cancelar")) {
-                           showingDetail = true
-                       }
-                       .sheet(isPresented: $showingDetail) {
-                           ListaCategoriasView()
+                    self.presentation.wrappedValue.dismiss()
                        }
                 .font(.custom("Avenir Next", size: 18))
                 .foregroundColor(Color(UIColor.darkGray))
@@ -77,6 +71,7 @@ struct NewCategory : View {
                             addCategoriaVM.cor = colorSelected
                         }
                         self.addCategoriaVM.saveCategoria()
+                        self.presentation.wrappedValue.dismiss()
                     },
                     label: {
                         Text(LocalizedStringKey("Criar"))

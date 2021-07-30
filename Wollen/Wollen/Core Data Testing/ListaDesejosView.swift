@@ -42,8 +42,8 @@ struct ListaDesejosView: View {
                     
                 }.onDelete(perform: deleteDesejo)
             }
-            .navigationTitle("Meus desejos")
-            .navigationBarItems(trailing: Button("Novo desejo") {
+            .navigationTitle(LocalizedStringKey("Meus desejos"))
+            .navigationBarItems(trailing: Button(LocalizedStringKey("Novo desejo")) {
                  isPresented = true
             })
             .sheet(isPresented: $isPresented, onDismiss: {

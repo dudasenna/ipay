@@ -42,7 +42,7 @@ struct ListaCategoriasView: View {
                         NavigationLink(
                             destination: ListaDesejosView(),
                             label: {
-                                Text("Geral")
+                                Text(LocalizedStringKey("Geral"))
                                     .font(.title2)
                             })
                         
