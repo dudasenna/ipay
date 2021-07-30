@@ -19,6 +19,7 @@
 		66AE9E8526B172A200501CE9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 66AE9E8726B172A200501CE9 /* Localizable.strings */; };
 		66AE9E8C26B1EAC200501CE9 /* NewCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AE9E8B26B1EAC200501CE9 /* NewCategory.swift */; };
 		66E8BD0126A760C5001D3178 /* ImageCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E8BD0026A760C5001D3178 /* ImageCard.swift */; };
+		7D502BF026B36AEE00B7DF77 /* NavigationBarAppearanceModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D502BEF26B36AEE00B7DF77 /* NavigationBarAppearanceModifier.swift */; };
 		7D6F2EBD26A6434900EC8ADC /* WollenDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7D6F2EBB26A6434900EC8ADC /* WollenDataModel.xcdatamodeld */; };
 		7D6F2EC126A646E900EC8ADC /* AddDesejoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6F2EC026A646E900EC8ADC /* AddDesejoViewModel.swift */; };
 		7D6F2EC326A6528700EC8ADC /* ListaDesejosViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6F2EC226A6528700EC8ADC /* ListaDesejosViewModel.swift */; };
@@ -66,6 +67,7 @@
 		66AE9E8826B172B300501CE9 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		66AE9E8B26B1EAC200501CE9 /* NewCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCategory.swift; sourceTree = "<group>"; };
 		66E8BD0026A760C5001D3178 /* ImageCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCard.swift; sourceTree = "<group>"; };
+		7D502BEF26B36AEE00B7DF77 /* NavigationBarAppearanceModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarAppearanceModifier.swift; sourceTree = "<group>"; };
 		7D6F2EBC26A6434900EC8ADC /* WollenDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WollenDataModel.xcdatamodel; sourceTree = "<group>"; };
 		7D6F2EC026A646E900EC8ADC /* AddDesejoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDesejoViewModel.swift; sourceTree = "<group>"; };
 		7D6F2EC226A6528700EC8ADC /* ListaDesejosViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListaDesejosViewModel.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				225F4CC726B078610058FBEF /* CategoriesCard.swift */,
 				225F4CCA26B0790A0058FBEF /* CategoryCard.swift */,
 				66AE9E8B26B1EAC200501CE9 /* NewCategory.swift */,
+				7D502BEF26B36AEE00B7DF77 /* NavigationBarAppearanceModifier.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -336,6 +339,7 @@
 				222AE6D2269E178B005DB79A /* MyWishesCards.swift in Sources */,
 				225C081926A616C800079D66 /* LinksCard.swift in Sources */,
 				225C081726A5FA1000079D66 /* DescriptionCard.swift in Sources */,
+				7D502BF026B36AEE00B7DF77 /* NavigationBarAppearanceModifier.swift in Sources */,
 				7D9C5A6C26A798FF00FAF19C /* DesejoView.swift in Sources */,
 				225F4CC826B078610058FBEF /* CategoriesCard.swift in Sources */,
 				225F4CCB26B0790A0058FBEF /* CategoryCard.swift in Sources */,

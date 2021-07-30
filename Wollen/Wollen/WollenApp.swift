@@ -15,7 +15,6 @@ struct WollenApp: App {
         WindowGroup {
             //ContentView()
         ListaCategoriasView()
-               
 
         }
     }
