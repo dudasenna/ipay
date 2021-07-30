@@ -105,88 +105,88 @@ struct GoalCard: View {
                             if filtered != newValue {
                                 self.valueTextField = String("R$ \(filtered)")
                             }}
-                            
-                        } else {
-                            Text(LocalizedStringKey("Duração:"))
-                                .font(.custom("Avenir Next", size: 18))
-                                .fontWeight(.regular)
-                                .multilineTextAlignment(.leading)
-                            
-                            Spacer()
-                            
-                            // Picker duplo
-                            Picker(selection: $quantityDuration,
-                                   label: Text("\(quantityDuration)").foregroundColor(.gray)
-                                    .foregroundColor(.gray)
-                                    .font(.custom("Avenir Next", size: 16))
-                                    .padding(5)
-                                    .padding(.horizontal)
-                                    .background(RoundedRectangle(cornerRadius: 5).foregroundColor(.white))
-                                    .overlay(RoundedRectangle(cornerRadius: 5).stroke(Color(UIColor.gray), lineWidth: 1))
-                                    .multilineTextAlignment(.center)
-                            ) {
-                                ForEach(1...11, id: \.self) { quantity in
-                                    Text("\(quantity)")
-                                }
-                            }.pickerStyle(MenuPickerStyle())
-                            
-                            Picker(selection: $duration,
-                                   label: Text(duration.rawValue)
-                                    .foregroundColor(.gray)
-                                    .font(.custom("Avenir Next", size: 16))
-                                    .padding(5)
-                                    .padding(.horizontal)
-                                    .background(RoundedRectangle(cornerRadius: 5).foregroundColor(.white))
-                                    .overlay(RoundedRectangle(cornerRadius: 5).stroke(Color(UIColor.gray), lineWidth: 1))
-                                    .multilineTextAlignment(.center)
-                            ) {
-                                ForEach(DurationTypes.allCases, id: \.self) {
-                                    Text($0.rawValue)
-                                }
-                            }.pickerStyle(MenuPickerStyle())
+                    
+                } else {
+                    Text(LocalizedStringKey("Duração:"))
+                        .font(.custom("Avenir Next", size: 18))
+                        .fontWeight(.regular)
+                        .multilineTextAlignment(.leading)
+                    
+                    Spacer()
+                    
+                    // Picker duplo
+                    Picker(selection: $quantityDuration,
+                           label: Text("\(quantityDuration)").foregroundColor(.gray)
+                            .foregroundColor(.gray)
+                            .font(.custom("Avenir Next", size: 16))
+                            .padding(5)
+                            .padding(.horizontal)
+                            .background(RoundedRectangle(cornerRadius: 5).foregroundColor(.white))
+                            .overlay(RoundedRectangle(cornerRadius: 5).stroke(Color(UIColor.gray), lineWidth: 1))
+                            .multilineTextAlignment(.center)
+                    ) {
+                        ForEach(1...11, id: \.self) { quantity in
+                            Text("\(quantity)")
                         }
-                } // HStack
-            } // VStack
-            .padding(15)
-            .background(Color(red: 248/256, green: 248/256, blue: 248/256))
-            .cornerRadius(10)
-            .fixedSize(horizontal: false, vertical: false)
-        } // body
-    }
+                    }.pickerStyle(MenuPickerStyle())
+                    
+                    Picker(selection: $duration,
+                           label: Text(duration.rawValue)
+                            .foregroundColor(.gray)
+                            .font(.custom("Avenir Next", size: 16))
+                            .padding(5)
+                            .padding(.horizontal)
+                            .background(RoundedRectangle(cornerRadius: 5).foregroundColor(.white))
+                            .overlay(RoundedRectangle(cornerRadius: 5).stroke(Color(UIColor.gray), lineWidth: 1))
+                            .multilineTextAlignment(.center)
+                    ) {
+                        ForEach(DurationTypes.allCases, id: \.self) {
+                            Text($0.rawValue)
+                        }
+                    }.pickerStyle(MenuPickerStyle())
+                }
+            } // HStack
+        } // VStack
+        .padding(15)
+        .background(Color(red: 248/256, green: 248/256, blue: 248/256))
+        .cornerRadius(10)
+        .fixedSize(horizontal: false, vertical: false)
+    } // body
+}
 
 enum GoalBy: LocalizedStringKey, CaseIterable {
     case value = "Por valor";
     case period = "Por período";
-
+    
     var localized: LocalizedStringKey {
-            return rawValue
-        }
+        return rawValue
+    }
 }
 
-    enum FrequencyTypes: LocalizedStringKey, CaseIterable{
-        case monthly = "mensal";
-        case weekly = "semanal";
-        
-        var localized: LocalizedStringKey {
-                return rawValue
-            }
-    }
+enum FrequencyTypes: LocalizedStringKey, CaseIterable{
+    case monthly = "mensal";
+    case weekly = "semanal";
     
-    enum DurationTypes: LocalizedStringKey, CaseIterable {
-        case years = "anos"
-        case weeks = "semanas"
-        case months = "meses"
-        
-        var localized: LocalizedStringKey {
-                return rawValue
-            }
+    var localized: LocalizedStringKey {
+        return rawValue
     }
+}
+
+enum DurationTypes: LocalizedStringKey, CaseIterable {
+    case years = "anos"
+    case weeks = "semanas"
+    case months = "meses"
     
-    struct GoalCard_Previews: PreviewProvider {
-        static var previews: some View {
-            GoalCard()
-                .preferredColorScheme(.light)
-                .previewLayout(.sizeThatFits)
-                .padding()
-        }
+    var localized: LocalizedStringKey {
+        return rawValue
     }
+}
+
+struct GoalCard_Previews: PreviewProvider {
+    static var previews: some View {
+        GoalCard()
+            .preferredColorScheme(.light)
+            .previewLayout(.sizeThatFits)
+            .padding()
+    }
+}
