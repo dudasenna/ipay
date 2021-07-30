@@ -15,9 +15,10 @@
 		225F4CC826B078610058FBEF /* CategoriesCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225F4CC726B078610058FBEF /* CategoriesCard.swift */; };
 		225F4CCB26B0790A0058FBEF /* CategoryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225F4CCA26B0790A0058FBEF /* CategoryCard.swift */; };
 		22ACBE1726A0B43000E4AED7 /* WishGoalCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ACBE1626A0B43000E4AED7 /* WishGoalCard.swift */; };
-		66AE9E8526B172A200501CE9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 66AE9E8726B172A200501CE9 /* Localizable.strings */; };
 		22FA634426AF3FD500B0CF34 /* WishGraphCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FA634326AF3FD500B0CF34 /* WishGraphCard.swift */; };
+		66AE9E8526B172A200501CE9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 66AE9E8726B172A200501CE9 /* Localizable.strings */; };
 		66E8BD0126A760C5001D3178 /* ImageCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E8BD0026A760C5001D3178 /* ImageCard.swift */; };
+		7D502BF026B36AEE00B7DF77 /* NavigationBarAppearanceModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D502BEF26B36AEE00B7DF77 /* NavigationBarAppearanceModifier.swift */; };
 		7D6F2EBD26A6434900EC8ADC /* WollenDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7D6F2EBB26A6434900EC8ADC /* WollenDataModel.xcdatamodeld */; };
 		7D6F2EC126A646E900EC8ADC /* AddDesejoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6F2EC026A646E900EC8ADC /* AddDesejoViewModel.swift */; };
 		7D6F2EC326A6528700EC8ADC /* ListaDesejosViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6F2EC226A6528700EC8ADC /* ListaDesejosViewModel.swift */; };
@@ -60,10 +61,11 @@
 		225F4CC726B078610058FBEF /* CategoriesCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesCard.swift; sourceTree = "<group>"; };
 		225F4CCA26B0790A0058FBEF /* CategoryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCard.swift; sourceTree = "<group>"; };
 		22ACBE1626A0B43000E4AED7 /* WishGoalCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishGoalCard.swift; sourceTree = "<group>"; };
+		22FA634326AF3FD500B0CF34 /* WishGraphCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishGraphCard.swift; sourceTree = "<group>"; };
 		66AE9E8626B172A200501CE9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		66AE9E8826B172B300501CE9 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		22FA634326AF3FD500B0CF34 /* WishGraphCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishGraphCard.swift; sourceTree = "<group>"; };
 		66E8BD0026A760C5001D3178 /* ImageCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCard.swift; sourceTree = "<group>"; };
+		7D502BEF26B36AEE00B7DF77 /* NavigationBarAppearanceModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarAppearanceModifier.swift; sourceTree = "<group>"; };
 		7D6F2EBC26A6434900EC8ADC /* WollenDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WollenDataModel.xcdatamodel; sourceTree = "<group>"; };
 		7D6F2EC026A646E900EC8ADC /* AddDesejoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDesejoViewModel.swift; sourceTree = "<group>"; };
 		7D6F2EC226A6528700EC8ADC /* ListaDesejosViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListaDesejosViewModel.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				22FA634326AF3FD500B0CF34 /* WishGraphCard.swift */,
 				225F4CC726B078610058FBEF /* CategoriesCard.swift */,
 				225F4CCA26B0790A0058FBEF /* CategoryCard.swift */,
+				7D502BEF26B36AEE00B7DF77 /* NavigationBarAppearanceModifier.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 				222AE6D2269E178B005DB79A /* MyWishesCards.swift in Sources */,
 				225C081926A616C800079D66 /* LinksCard.swift in Sources */,
 				225C081726A5FA1000079D66 /* DescriptionCard.swift in Sources */,
+				7D502BF026B36AEE00B7DF77 /* NavigationBarAppearanceModifier.swift in Sources */,
 				7D9C5A6C26A798FF00FAF19C /* DesejoView.swift in Sources */,
 				225F4CC826B078610058FBEF /* CategoriesCard.swift in Sources */,
 				225F4CCB26B0790A0058FBEF /* CategoryCard.swift in Sources */,

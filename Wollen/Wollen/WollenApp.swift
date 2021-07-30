@@ -14,7 +14,7 @@ struct WollenApp: App {
     var body: some Scene {
         WindowGroup {
             //ContentView()
-          WishGraphCard(progress: 0.8)
+          ListaCategoriasView()
                
 
         }

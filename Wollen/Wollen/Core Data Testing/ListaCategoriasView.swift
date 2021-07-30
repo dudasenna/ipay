@@ -43,7 +43,7 @@ struct ListaCategoriasView: View {
                             destination: ListaDesejosView(),
                             label: {
                                 Text("Geral")
-                                    .font(.title2)
+                                    .font(.custom("Avenir Next", size: 22))
                             })
                         
                         // Lista de categorias - exibe todas as categorias cadastradas
@@ -54,8 +54,7 @@ struct ListaCategoriasView: View {
                                 destination: ListaDesejosCategoriaView(categoriaVM: categoria),
                                 label: {
                                     DetalhesCategoria(categoria: categoria)
-                                        //.font(.custom("Avenir Next", size: 18))
-                                        .font(.title2)
+                                        .font(.custom("Avenir Next", size: 22))
                                 })
                         }.onDelete(perform: deleteCategoria)
                         
@@ -65,7 +64,7 @@ struct ListaCategoriasView: View {
                             isPresented.toggle()
                         } label: {
                             Text(LocalizedStringKey("Nova categoria"))
-                                .font(.title2)
+                                .font(.custom("Avenir Next", size: 22))
                         }
                         .sheet(isPresented: $isPresented, onDismiss: {
                             listaCategoriasVM.getAllCategorias()
@@ -75,18 +74,30 @@ struct ListaCategoriasView: View {
                         
                     }
                 }
+                
+                // Personalização Side Bar
+                // Muda a cor de fundo da Side Bar
+                .onAppear {
+                    UITableView.appearance().backgroundColor = .white
+                }
+                // Muda a cor de fundo de um item selecionado na Lista
+                .accentColor(Color("systemMint"))
+               
                 .toolbar {
                     EditButton()
+                        .font(.custom("Avenir Next", size: 18))
                 }
-                .listStyle(SidebarListStyle())
+                
+                
                 .navigationTitle(LocalizedStringKey("Categorias"))
-                //.font(.custom("Avenir Next", size: 22))
-                .accentColor(Color(UIColor(named: "systemMint")!))
+
             }
-            
+           
             ListaDesejosView()
             
         }
+        // Modifica a fonte do título da Navigation bar e a cor dos ícones
+        .navigationAppearance(backgroundColor: .white, foregroundColor: .black, tintColor: UIColor(Color("systemMint")), hideSeparator: true)
         .onAppear(perform: {
             listaCategoriasVM.getAllCategorias()
         })
