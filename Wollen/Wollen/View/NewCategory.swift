@@ -73,6 +73,10 @@ struct NewCategory : View {
 
                 Button(
                     action: {
+                        if addCategoriaVM.cor == "" {
+                            addCategoriaVM.cor = colorSelected
+                        }
+                        self.addCategoriaVM.saveCategoria()
                     },
                     label: {
                         Text(LocalizedStringKey("Criar"))
