@@ -17,7 +17,7 @@ struct GoalCard: View {
     @State private var goalBy: GoalBy = .value
     @State private var frequency: FrequencyTypes = .weekly
     @State private var duration: DurationTypes = .weeks
-    @State private var valueTextField: String = "R$ 100,00"
+    @State private var valueTextField: String = "R$ 100.00"
     @State private var quantityDuration = 1
     var maxWidth = UIScreen().bounds.width
     
@@ -26,7 +26,7 @@ struct GoalCard: View {
             
             HStack {
                 Text(LocalizedStringKey("Meta"))
-                    .font(.custom("Avenir", size: 22).bold())
+                    .font(.custom("Avenir Next", size: 22).bold())
                     .fontWeight(.bold)
                     .multilineTextAlignment(.leading)
                 
@@ -57,7 +57,7 @@ struct GoalCard: View {
             
             HStack {
                 Text(LocalizedStringKey("Frequência:"))
-                    .font(.custom("Avenir", size: 18))
+                    .font(.custom("Avenir Next", size: 18))
                     .fontWeight(.regular)
                     .multilineTextAlignment(.leading)
                 
@@ -72,7 +72,7 @@ struct GoalCard: View {
                         .background(RoundedRectangle(cornerRadius: 5).foregroundColor(.white))
                         .overlay(RoundedRectangle(cornerRadius: 5).stroke(Color(UIColor.gray), lineWidth: 1))
                         .multilineTextAlignment(.center)
-                        .font(.custom("Avenir", size: 16))) {
+                        .font(.custom("Avenir Next", size: 16))) {
                     
                     ForEach(FrequencyTypes.allCases, id: \.self) {
                         Text($0.rawValue)
@@ -84,7 +84,7 @@ struct GoalCard: View {
             HStack {
                 if goalBy == GoalBy.value {
                     Text(LocalizedStringKey("Valor:"))
-                        .font(.custom("Avenir", size: 18))
+                        .font(.custom("Avenir Next", size: 18))
                         .fontWeight(.regular)
                         .multilineTextAlignment(.leading)
                     
@@ -94,7 +94,7 @@ struct GoalCard: View {
                               text: $valueTextField)
                         .padding(5)
                         .foregroundColor(.gray)
-                        .font(.custom("Avenir", size: 16))
+                        .font(.custom("Avenir Next", size: 16))
                         .multilineTextAlignment(.leading)
                         .background(RoundedRectangle(cornerRadius: 5).foregroundColor(.white))
                         .overlay(RoundedRectangle(cornerRadius: 5).stroke(Color(UIColor.gray), lineWidth: 1))
@@ -108,7 +108,7 @@ struct GoalCard: View {
                             
                         } else {
                             Text(LocalizedStringKey("Duração:"))
-                                .font(.custom("Avenir", size: 18))
+                                .font(.custom("Avenir Next", size: 18))
                                 .fontWeight(.regular)
                                 .multilineTextAlignment(.leading)
                             
@@ -118,7 +118,7 @@ struct GoalCard: View {
                             Picker(selection: $quantityDuration,
                                    label: Text("\(quantityDuration)").foregroundColor(.gray)
                                     .foregroundColor(.gray)
-                                    .font(.custom("Avenir", size: 16))
+                                    .font(.custom("Avenir Next", size: 16))
                                     .padding(5)
                                     .padding(.horizontal)
                                     .background(RoundedRectangle(cornerRadius: 5).foregroundColor(.white))
@@ -133,7 +133,7 @@ struct GoalCard: View {
                             Picker(selection: $duration,
                                    label: Text(duration.rawValue)
                                     .foregroundColor(.gray)
-                                    .font(.custom("Avenir", size: 16))
+                                    .font(.custom("Avenir Next", size: 16))
                                     .padding(5)
                                     .padding(.horizontal)
                                     .background(RoundedRectangle(cornerRadius: 5).foregroundColor(.white))
