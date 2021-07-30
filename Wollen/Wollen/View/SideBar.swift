@@ -1,13 +1,13 @@
 //
-//  ListaCategoriasView.swift
+//  SideBar.swift
 //  Wollen
 //
-//  Created by Mayara Mendonça de Souza on 20/07/21.
+//  Created by Mayara Mendonça de Souza on 30/07/21.
 //
 
 import SwiftUI
 
-struct ListaCategoriasView: View {
+struct SideBar: View {
     
     // Exibe todas as categorias na Side Bar
     
@@ -42,8 +42,8 @@ struct ListaCategoriasView: View {
                         NavigationLink(
                             destination: HomeView(),
                             label: {
-                                Text(LocalizedStringKey("Geral"))
-                                    .font(.title2)
+                                Text("Geral")
+                                    .font(.custom("Avenir Next", size: 22))
                             })
                         
                         // Lista de categorias - exibe todas as categorias cadastradas
@@ -51,11 +51,10 @@ struct ListaCategoriasView: View {
                         ForEach(listaCategoriasVM.categorias, id: \.id) { categoria in
                             
                             NavigationLink(
-                                destination: ListaDesejosCategoriaView(categoriaVM: categoria),
+                                destination: HomeCategoryView(categoriaVM: categoria),
                                 label: {
-                                    DetalhesCategoria(categoria: categoria)
-                                    //.font(.custom("Avenir Next", size: 18))
-                                        .font(.title2)
+                                    Text(categoria.nome)
+                                        .font(.custom("Avenir Next", size: 22))
                                 })
                         }.onDelete(perform: deleteCategoria)
                         
@@ -70,8 +69,7 @@ struct ListaCategoriasView: View {
                         .sheet(isPresented: $isPresented, onDismiss: {
                             listaCategoriasVM.getAllCategorias()
                         }, content: {
-//                            AddCategoriaView()
-                            NewCategory()
+                            AddCategoriaView()
                         })
                         
                     }
@@ -105,21 +103,8 @@ struct ListaCategoriasView: View {
     }
 }
 
-struct ListaCategoriasView_Previews: PreviewProvider {
+struct SideBar_Previews: PreviewProvider {
     static var previews: some View {
-        ListaCategoriasView()
-    }
-}
-
-struct DetalhesCategoria: View {
-    
-    let categoria: CategoriaViewModel
-    
-    var body: some View {
-        VStack(alignment: .leading, spacing: 5) {
-            Text(categoria.nome)
-            Text(categoria.cor)
-                .font(.footnote)
-        }
+        SideBar()
     }
 }

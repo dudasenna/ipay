@@ -50,15 +50,31 @@ struct ListaDesejosView: View {
                 // Atualiza os desejos
                 listaDesejosVM.getAllDesejos()
                 
-                // Atualiza as categorias
-                listaCategoriasVM.getAllCategorias()
-            }, content: {
+                NavigationLink(
+                    destination: DesejoView(desejoVM: desejo),
+                    label: {
+                        MyWishCard(desejoVM: desejo)
+                    })
                 
-                // Permite adicionar um desejo criando as informações de Meta e Categoria
-                AddDesejoCompleto()
-            })
-            .onAppear(perform: {
-                listaDesejosVM.getAllDesejos()
+            }.onDelete(perform: deleteDesejo)
+        }
+        .navigationBarItems(trailing: Button("Novo desejo") {
+             isPresented = true
+        })
+        .sheet(isPresented: $isPresented, onDismiss: {
+            // Atualiza os desejos
+            listaDesejosVM.getAllDesejos()
+            
+            // Atualiza as categorias
+            listaCategoriasVM.getAllCategorias()
+        }, content: {
+            
+            // Permite adicionar um desejo criando as informações de Meta e Categoria
+            AddDesejoCompleto()
+        })
+        .onAppear(perform: {
+            listaDesejosVM.getAllDesejos()
+
         })
         }
     }

@@ -50,9 +50,11 @@
 "Comida" = "Food";
 "Saúde" = "Health";
 "Livros" = "Books";
+"Geral" = "General";
 "Nome da categoria" = "Category's name";
 "Cancelar" = "Cancel";
 "Criar" = "Create";
 "Geral" = "All";
 "Novo desejo" = "New wish";
 "Novo desejo na categoria %@" = "New wish in the category %@";
+
