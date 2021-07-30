@@ -85,7 +85,7 @@ struct ListaCategoriasView: View {
                
                 .toolbar {
                     EditButton()
-                        .font(.custom("Avenir Next", size: 18))
+                        //.font(.custom("Avenir Next", size: 18))
                 }
                 
                 

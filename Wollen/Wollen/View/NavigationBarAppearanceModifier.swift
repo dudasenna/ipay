@@ -12,7 +12,7 @@ struct NavigationBarAppearanceModifier: ViewModifier {
     init(backgroundColor: UIColor, foregroundColor: UIColor, tintColor: UIColor?, hideSeparator: Bool) {
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.titleTextAttributes = [.foregroundColor: foregroundColor]
-        navBarAppearance.largeTitleTextAttributes = [.font : UIFont(name: "Avenir Next", size: 30)!]
+        navBarAppearance.largeTitleTextAttributes = [.font : UIFont(name: "Avenir Next Medium", size: 30)!]
         //navBarAppearance.largeTitleTextAttributes = [.foregroundColor: foregroundColor]
         navBarAppearance.backgroundColor = backgroundColor
         if hideSeparator {
