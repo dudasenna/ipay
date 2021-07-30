@@ -42,8 +42,8 @@ struct ListaCategoriasView: View {
                         NavigationLink(
                             destination: ListaDesejosView(),
                             label: {
-                                Text("Geral")
-                                    .font(.custom("Avenir Next", size: 22))
+                                Text(LocalizedStringKey("Geral"))
+                                    .font(.title2)
                             })
                         
                         // Lista de categorias - exibe todas as categorias cadastradas
@@ -54,7 +54,8 @@ struct ListaCategoriasView: View {
                                 destination: ListaDesejosCategoriaView(categoriaVM: categoria),
                                 label: {
                                     DetalhesCategoria(categoria: categoria)
-                                        .font(.custom("Avenir Next", size: 22))
+                                    //.font(.custom("Avenir Next", size: 18))
+                                        .font(.title2)
                                 })
                         }.onDelete(perform: deleteCategoria)
                         
@@ -69,7 +70,8 @@ struct ListaCategoriasView: View {
                         .sheet(isPresented: $isPresented, onDismiss: {
                             listaCategoriasVM.getAllCategorias()
                         }, content: {
-                            AddCategoriaView()
+//                            AddCategoriaView()
+                            NewCategory()
                         })
                         
                     }
