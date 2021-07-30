@@ -1,15 +1,17 @@
 //
-//  MyWishesCards.swift
+//  WishesFromCategory.swift
 //  Wollen
 //
-//  Created by Eduarda Senna on 13/07/21.
+//  Created by Mayara Mendonça de Souza on 30/07/21.
 //
 
 import SwiftUI
 
-struct MyWishesCards: View {
+struct WishesFromCategory: View {
     
     @StateObject private var listaDesejosVM = ListaDesejosViewModel()
+    
+    let categoriaVM: CategoriaViewModel
     
     @State private var gridLayout: [GridItem] = [GridItem(.flexible())]
     @State private var gridColumn: Double = 3.0
@@ -21,13 +23,15 @@ struct MyWishesCards: View {
                     Text(LocalizedStringKey("Meus desejos"))
                         .bold()
                         .font(.custom("Avenir Next", size: 30))
-                    Text(LocalizedStringKey("Geral"))
+                    Text(categoriaVM.nome)
                         .font(.custom("Avenir Next", size: 22))
                 }
                 Spacer()
                 
                 NavigationLink(
-                    destination: AddDesejoCompleto(),
+                    destination:
+                        // Adicionar um desejo a uma categoria
+                        AddDesejoToCategoriaView(categoriaVM:categoriaVM),
                     label: {
                         Image(systemName: "plus.circle")
                             .foregroundColor(Color(UIColor(named: "systemMint")!))
@@ -59,7 +63,9 @@ struct MyWishesCards: View {
             //gostei mais da sombra no tom natural
         }
         .onAppear(perform: {
-            listaDesejosVM.getAllDesejos()
+            
+            // Recuperar os desejos de uma categoria
+            listaDesejosVM.getDesejosOfCategoria(categoria: categoriaVM)
         })
         .padding(20)
         .padding(.leading, 10)
@@ -69,9 +75,12 @@ struct MyWishesCards: View {
     }
 }
 
-struct MyWishesCards_Previews: PreviewProvider {
+struct WishesFromCategory_Previews: PreviewProvider {
     static var previews: some View {
-        MyWishesCards()
+        
+        let categoriaVM = CategoriaViewModel(categoria: Categoria(context: CoreDataManager.shared.viewContext))
+        
+        WishesFromCategory(categoriaVM: categoriaVM)
             .previewLayout(.sizeThatFits)
             .padding()
             .cornerRadius(10)

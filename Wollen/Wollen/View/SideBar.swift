@@ -1,13 +1,13 @@
 //
-//  ListaCategoriasView.swift
+//  SideBar.swift
 //  Wollen
 //
-//  Created by Mayara Mendonça de Souza on 20/07/21.
+//  Created by Mayara Mendonça de Souza on 30/07/21.
 //
 
 import SwiftUI
 
-struct ListaCategoriasView: View {
+struct SideBar: View {
     
     // Exibe todas as categorias na Side Bar
     
@@ -51,9 +51,9 @@ struct ListaCategoriasView: View {
                         ForEach(listaCategoriasVM.categorias, id: \.id) { categoria in
                             
                             NavigationLink(
-                                destination: ListaDesejosCategoriaView(categoriaVM: categoria),
+                                destination: HomeCategoryView(categoriaVM: categoria),
                                 label: {
-                                    DetalhesCategoria(categoria: categoria)
+                                    Text(categoria.nome)
                                         .font(.custom("Avenir Next", size: 22))
                                 })
                         }.onDelete(perform: deleteCategoria)
@@ -103,21 +103,8 @@ struct ListaCategoriasView: View {
     }
 }
 
-struct ListaCategoriasView_Previews: PreviewProvider {
+struct SideBar_Previews: PreviewProvider {
     static var previews: some View {
-        ListaCategoriasView()
-    }
-}
-
-struct DetalhesCategoria: View {
-    
-    let categoria: CategoriaViewModel
-    
-    var body: some View {
-        VStack(alignment: .leading, spacing: 5) {
-            Text(categoria.nome)
-            Text(categoria.cor)
-                .font(.footnote)
-        }
+        SideBar()
     }
 }
