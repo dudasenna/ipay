@@ -93,6 +93,22 @@ class AddDesejoViewModel: ObservableObject {
 
     }
     
+    // Cria um desejo associado a uma categoria, mas sem nenhuma outra informação, e retorna o objectID do desejo
+    func createDesejoInCategoria(categoriaId: NSManagedObjectID) -> NSManagedObjectID? {
+        let manager = CoreDataManager.shared
+        
+        let categoria: Categoria? = manager.getCategoriaById(id: categoriaId)
+        
+        if let categoria = categoria {
+            let desejo = Desejo(context: manager.persistentContainer.viewContext)
+            desejo.categoria = categoria
+            manager.save()
+            print("Criou o desejo!")
+            return desejo.objectID
+        }
+        return nil
+    }
+    
     // Cria um desejo que não está associado a nenhuma categoria
     func saveDesejo() {
         

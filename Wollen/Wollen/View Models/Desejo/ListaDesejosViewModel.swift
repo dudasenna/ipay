@@ -28,6 +28,14 @@ class ListaDesejosViewModel: ObservableObject {
         }
     }
     
+    func getDesejoById(desejoId: NSManagedObjectID) -> DesejoViewModel? {
+        let desejo = CoreDataManager.shared.getDesejoById(id: desejoId)
+        if let desejo = desejo {
+            return DesejoViewModel(desejo: desejo)
+        }
+        return nil
+    }
+    
     func getDesejosOfCategoria(categoria: CategoriaViewModel) {
         let categoria = CoreDataManager.shared.getCategoriaById(id: categoria.id)
         if let categoria = categoria {
