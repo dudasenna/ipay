@@ -29,26 +29,8 @@ struct ListaDesejosView: View {
     }
     
     var body: some View {
-        
-        VStack {
-            List{
-                ForEach(listaDesejosVM.desejos, id: \.id) { desejo in
-                    
-                    NavigationLink(
-                        destination: DesejoView(desejoVM: desejo),
-                        label: {
-                            DetalhesDesejo(desejo: desejo)
-                        })
-                    
-                }.onDelete(perform: deleteDesejo)
-            }
-            .navigationTitle(LocalizedStringKey("Meus desejos"))
-            .navigationBarItems(trailing: Button(LocalizedStringKey("Novo desejo")) {
-                 isPresented = true
-            })
-            .sheet(isPresented: $isPresented, onDismiss: {
-                // Atualiza os desejos
-                listaDesejosVM.getAllDesejos()
+        List{
+            ForEach(listaDesejosVM.desejos, id: \.id) { desejo in
                 
                 NavigationLink(
                     destination: DesejoView(desejoVM: desejo),
@@ -74,9 +56,7 @@ struct ListaDesejosView: View {
         })
         .onAppear(perform: {
             listaDesejosVM.getAllDesejos()
-
         })
-        }
     }
 }
 
@@ -101,3 +81,4 @@ struct DetalhesDesejo: View {
         }
     }
 }
+
