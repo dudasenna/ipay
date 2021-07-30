@@ -43,7 +43,7 @@ struct ListaDesejosCategoriaView: View {
             }
         }
         .navigationTitle(categoriaVM.nome)
-        .navigationBarItems(trailing: Button("Novo desejo na categoria \(categoriaVM.nome)") {
+        .navigationBarItems(trailing: Button(LocalizedStringKey("Novo desejo na categoria \(categoriaVM.nome)")) {
              isPresented = true
         })
         .sheet(isPresented: $isPresented, onDismiss: {

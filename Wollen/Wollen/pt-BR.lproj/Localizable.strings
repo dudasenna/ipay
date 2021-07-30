@@ -50,5 +50,9 @@
 "Comida" = "Comida";
 "Saúde" = "Saúde";
 "Livros" = "Livros";
-
-
+"Nome da categoria" = "Nome da categoria";
+"Cancelar" = "Cancelar";
+"Criar" = "Criar";
+"Geral" = "Geral";
+"Novo desejo" = "Novo desejo";
+"Novo desejo na categoria %@" = "Novo desejo na categoria %@";
