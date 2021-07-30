@@ -12,6 +12,8 @@ struct NewCategory : View {
     @StateObject private var addCategoriaVM = AddCategoriaViewModel()
     
     @State private var showingDetail = false
+    var colorNames: [String] = ["systemYellow", "systemPurple", "systemOrange", "systemGreen", "systemPink", "systemCyan"]
+    @State private var colorSelected: String = "systemYellow"
     
     var body: some View {
         VStack{
@@ -27,50 +29,30 @@ struct NewCategory : View {
                 .font(.custom("Avenir Next", size: 16))
             
             HStack{
-                Button(action: {
-                    print("cor yellow")
-                    $addCategoriaVM.cor
-                }, label: {
-                    Circle()
-                        .frame(width: 30, height:30, alignment: .leading)
-                        .foregroundColor(Color(UIColor(named: "systemYellow")!))
-                })
-                Button(action: {
-                    print("cor purple")
-                }, label: {
-                    Circle()
-                        .frame(width: 30, height:30, alignment: .leading)
-                        .foregroundColor(Color(UIColor(named: "systemPurple")!))
-                })
-                Button(action: {
-                    print("cor orange")
-                }, label: {
-                    Circle()
-                        .frame(width: 30, height:30, alignment: .leading)
-                        .foregroundColor(Color(UIColor(named: "systemOrange")!))
-                })
-                Button(action: {
-                    print("cor green")
-                }, label: {
-                    Circle()
-                        .frame(width: 30, height:30, alignment: .leading)
-                        .foregroundColor(Color(UIColor(named: "systemGreen")!))
-                })
-                Button(action: {
-                    print("cor red")
-                }, label: {
-                    Circle()
-                        .frame(width: 30, height:30, alignment: .leading)
-                        .foregroundColor(Color(UIColor(named: "systemPink")!))
-                })
-                Button(action: {
-                    print("cor mint")
-                }, label: {
-                    Circle()
-                        .frame(width: 30, height:30, alignment: .leading)
-                        .foregroundColor(Color(UIColor(named: "systemMint")!))
-                })
-                
+                ForEach(self.colorNames, id: \.self) { colorName in
+                    Button(
+                        action: {
+                            colorSelected = colorName
+                            addCategoriaVM.cor = colorName
+                        },
+                        label: {
+                            if colorName == colorSelected {
+                                ZStack {
+                                    Circle()
+                                        .frame(width: 20, height:20, alignment: .leading)
+                                        .foregroundColor(Color(UIColor(named: "\(colorName)")!))
+                                    Circle()
+                                        .stroke(Color(UIColor(named: "preto_primario")!), style: .init(lineWidth: 3))
+                                        .frame(width: 30, height:30, alignment: .leading)
+                                }
+                            } else {
+                                Circle()
+                                    .frame(width: 30, height:30, alignment: .leading)
+                                    .foregroundColor(Color(UIColor(named: "\(colorName)")!))
+                            }
+                        }
+                    )
+                }
             }
             HStack{
 //                Button(action: {
