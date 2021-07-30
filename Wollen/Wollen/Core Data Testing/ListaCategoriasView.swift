@@ -40,7 +40,7 @@ struct ListaCategoriasView: View {
                         // Aba Geral - exibe todos os desejos, independente da categoria
                         
                         NavigationLink(
-                            destination: ListaDesejosView(),
+                            destination: HomeView(),
                             label: {
                                 Text("Geral")
                                     .font(.custom("Avenir Next", size: 22))
@@ -88,7 +88,8 @@ struct ListaCategoriasView: View {
                         //.font(.custom("Avenir Next", size: 18))
                 }
                 
-                
+                //.navigationBarTitleDisplayMode(.inline)
+                //.navigationBarHidden(true)
                 .navigationTitle(LocalizedStringKey("Categorias"))
 
             }

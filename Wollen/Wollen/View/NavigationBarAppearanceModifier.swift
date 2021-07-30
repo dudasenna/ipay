@@ -24,6 +24,7 @@ struct NavigationBarAppearanceModifier: ViewModifier {
         if let tintColor = tintColor {
             UINavigationBar.appearance().tintColor = tintColor
         }
+        
     }
     
     func body(content: Content) -> some View {

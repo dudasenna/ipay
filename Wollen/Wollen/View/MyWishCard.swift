@@ -30,11 +30,12 @@ struct MyWishCard: View {
         .padding(10)
         .background(Color(red: 248/256, green: 248/256, blue: 248/256))
         .cornerRadius(10)
-        .shadow(color: Color.gray.opacity(0.4), radius: 5)
+        .shadow(color: Color.gray.opacity(0.2), radius: 4, x: 0, y: 2)
     }
 }
 
 struct ProgressBar: View {
+    // TO DO Associar este valor com o valor do Core Data valorAtual/valorMeta
     @Binding var value: Float
     
     let desejoVM: DesejoViewModel
@@ -44,7 +45,7 @@ struct ProgressBar: View {
             ZStack (alignment: .leading) {
                 Rectangle().frame(width: geometry.size.width , height: geometry.size.height)
                     .foregroundColor(Color(UIColor.white))
-                Rectangle().frame(width: min(CGFloat(self.value)*geometry.size.width, geometry.size.width), height: geometry.size.height)
+                Rectangle().frame(width: min(CGFloat(value)*geometry.size.width, geometry.size.width), height: geometry.size.height)
                     .foregroundColor(Color(UIColor(named: desejoVM.desejo.categoria?.cor ?? "systemMint")!))
                     .cornerRadius(10)
             }.cornerRadius(45.0)

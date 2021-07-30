@@ -32,4 +32,11 @@ struct MetaViewModel {
         return meta.valorMeta
     }
     
+    var progresso: Double {
+        if meta.valorMeta != 0.0 {
+            return meta.valorAtual / meta.valorMeta
+        }
+        return 0.0
+    }
+    
 }

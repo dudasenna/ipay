@@ -40,7 +40,7 @@ struct ListaDesejosView: View {
                 
             }.onDelete(perform: deleteDesejo)
         }
-        .navigationTitle("Meus desejos")
+        .navigationBarTitleDisplayMode(.inline)
         .navigationBarItems(trailing: Button("Novo desejo") {
              isPresented = true
         })
