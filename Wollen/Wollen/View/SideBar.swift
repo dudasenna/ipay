@@ -69,7 +69,7 @@ struct SideBar: View {
                         .sheet(isPresented: $isPresented, onDismiss: {
                             listaCategoriasVM.getAllCategorias()
                         }, content: {
-                            AddCategoriaView()
+                            NewCategory()
                         })
                         
                     }

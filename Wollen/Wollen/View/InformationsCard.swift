@@ -28,10 +28,11 @@ struct InformationsCard: View {
                     .font(.custom("Avenir Next", size: 18))
                 TextField(LocalizedStringKey("Nome do produto"), text: $addDesejoVM.nome)
                     .padding(5)
-                    .background(Color(red: 118/256, green: 118/256, blue: 128/256, opacity: 0.12))
-                    .cornerRadius(10)
-                    .multilineTextAlignment(.center)
+                    .foregroundColor(.gray)
                     .font(.custom("Avenir Next", size: 16))
+                    .multilineTextAlignment(.leading)
+                    .background(RoundedRectangle(cornerRadius: 5).foregroundColor(.white))
+                    .overlay(RoundedRectangle(cornerRadius: 5).stroke(Color(UIColor.gray), lineWidth: 1))
 
             }
             .padding(10)
@@ -43,10 +44,11 @@ struct InformationsCard: View {
                     .font(.custom("Avenir Next", size: 18))
                 TextField(LocalizedStringKey("Preço do produto"), text: $addDesejoVM.preco)
                     .padding(5)
-                    .background(Color(red: 118/256, green: 118/256, blue: 128/256, opacity: 0.12))
-                    .cornerRadius(10)
-                    .multilineTextAlignment(.center)
+                    .foregroundColor(.gray)
                     .font(.custom("Avenir Next", size: 16))
+                    .multilineTextAlignment(.leading)
+                    .background(RoundedRectangle(cornerRadius: 5).foregroundColor(.white))
+                    .overlay(RoundedRectangle(cornerRadius: 5).stroke(Color(UIColor.gray), lineWidth: 1))
             }
             .padding(10)
             
@@ -57,10 +59,11 @@ struct InformationsCard: View {
                     .font(.custom("Avenir Next", size: 18))
                 TextField(LocalizedStringKey("Descrição do produto"), text: $addDesejoVM.descricao)
                     .padding(5)
-                    .background(Color(red: 118/256, green: 118/256, blue: 128/256, opacity: 0.12))
-                    .cornerRadius(10)
-                    .multilineTextAlignment(.center)
+                    .foregroundColor(.gray)
                     .font(.custom("Avenir Next", size: 16))
+                    .multilineTextAlignment(.leading)
+                    .background(RoundedRectangle(cornerRadius: 5).foregroundColor(.white))
+                    .overlay(RoundedRectangle(cornerRadius: 5).stroke(Color(UIColor.gray), lineWidth: 1))
             }
             .padding(10)
             
@@ -71,10 +74,11 @@ struct InformationsCard: View {
                     .font(.custom("Avenir Next", size: 18))
                 TextField(LocalizedStringKey("Link do produto"), text: $addDesejoVM.link)
                     .padding(5)
-                    .background(Color(red: 118/256, green: 118/256, blue: 128/256, opacity: 0.12))
-                    .cornerRadius(10)
-                    .multilineTextAlignment(.center)
+                    .foregroundColor(.gray)
                     .font(.custom("Avenir Next", size: 16))
+                    .multilineTextAlignment(.leading)
+                    .background(RoundedRectangle(cornerRadius: 5).foregroundColor(.white))
+                    .overlay(RoundedRectangle(cornerRadius: 5).stroke(Color(UIColor.gray), lineWidth: 1))
             }
             .padding(10)
             
