@@ -17,7 +17,7 @@ struct NewCategory : View {
     @State private var colorSelected: String = "systemYellow"
     
     var body: some View {
-        VStack{
+        VStack(spacing: 20){
             Text(LocalizedStringKey("Nova categoria"))
                 .bold()
                 .font(.custom("Avenir Next", size: 22))
@@ -25,10 +25,10 @@ struct NewCategory : View {
             TextField(LocalizedStringKey("Nome da categoria"), text: $addCategoriaVM.nome)
                 .foregroundColor(.black)
                 .padding(5)
-                .background(Color(red: 118/256, green: 118/256, blue: 128/256, opacity: 0.12))
-                .cornerRadius(10)
-                .multilineTextAlignment(.center)
                 .font(.custom("Avenir Next", size: 16))
+                .multilineTextAlignment(.leading)
+                .background(RoundedRectangle(cornerRadius: 5).foregroundColor(.white))
+                .overlay(RoundedRectangle(cornerRadius: 5).stroke(Color(UIColor.gray), lineWidth: 1))
             
             HStack{
                 ForEach(self.colorNames, id: \.self) { colorName in

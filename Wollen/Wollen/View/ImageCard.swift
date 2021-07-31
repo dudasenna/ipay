@@ -22,22 +22,18 @@ struct ImageCard : View {
     
     var body: some View {
         VStack (alignment: .leading){
-            HStack{
+            HStack (alignment: .top) {
                 Text(LocalizedStringKey("Imagens"))
                     .bold()
                     .font(.custom("Avenir Next", size: 22))
-                ScrollView(.horizontal) {
-                    HStack(spacing: 20) {
-                        
-                    }
-                }
+                Spacer()
+                
                 Button(action: {
                     self.show.toggle()
                 }) {
                     Image(systemName: "plus.circle")
-                        .font(.system(size:24))
-                        .foregroundColor(.gray)
-                        .padding()
+                        .foregroundColor(Color(UIColor(named: "systemMint")!))
+                        .imageScale(.large)
                     
                 }
                 
@@ -61,7 +57,7 @@ struct ImageCard : View {
                 }
             }
         }
-        .padding(15)
+        .padding(20)
         .background(Color(red: 248/256, green: 248/256, blue: 248/256))
         .cornerRadius(10)
         .shadow(color: Color.gray.opacity(0.4), radius: 5)
