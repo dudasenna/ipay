@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AddWish: View {
+struct AddWishView: View {
     var body: some View {
         ZStack {
             (Color(UIColor(named: "branco_bg")!))
@@ -20,8 +20,8 @@ struct AddWish: View {
     }
 }
 
-struct AddWish_Previews: PreviewProvider {
+struct AddWishView_Previews: PreviewProvider {
     static var previews: some View {
-        AddWish()
+        AddWishView()
     }
 }

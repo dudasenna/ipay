@@ -10,7 +10,7 @@ import SwiftUI
 struct AddWishCards: View {
     var body: some View {
         
-        VStack (alignment: .leading, spacing: 30) {
+        VStack (alignment: .center, spacing: 30) {
             
             HStack (alignment: .top){
                 Text(LocalizedStringKey("Adicionar desejo"))
@@ -39,11 +39,24 @@ struct AddWishCards: View {
                 ImageCard()
                 GoalCard()
             }
+            
+            Button {
+                //
+            } label: {
+                Text(LocalizedStringKey("Salvar"))
+                    .foregroundColor(Color(UIColor(named: "preto_primario")!))
+                    .font(.custom("Avenir Next", size: 18).bold())
+                    .padding(5)
+            }
+            .padding(5)
+            .background(Color(UIColor(named: "systemMint")!))
+            .cornerRadius(10)
+            .shadow(color: Color.gray.opacity(0.4), radius: 5)
+
         }
         .padding(30)
         .background(Color.white)
         .cornerRadius(10)
-        //.shadow(color: Color.gray.opacity(0.4), radius: 5)
         .shadow(color: Color.gray.opacity(0.2), radius: 4, x: 0, y: 2)
         
         

@@ -75,14 +75,15 @@ struct NewCategory : View {
                     },
                     label: {
                         Text(LocalizedStringKey("Criar"))
-                            .foregroundColor(Color(UIColor.darkGray))
-                            .font(.custom("Avenir", size: 18).bold())
-                            .padding(.horizontal)
+                            .foregroundColor(Color(UIColor(named: "preto_primario")!))
+                            .font(.custom("Avenir Next", size: 18).bold())
+                            .padding(5)
                     }
                 )
-                .background(RoundedRectangle(cornerRadius: 5))
-                .foregroundColor(Color(UIColor(named: "systemMint")!))
-                .padding()
+                .padding(5)
+                .background(Color(UIColor(named: "systemMint")!))
+                .cornerRadius(10)
+                
             
         }
         .background(Color(red: 248/256, green: 248/256, blue: 248/256))

@@ -29,7 +29,7 @@ struct MyWishesCards: View {
                 NavigationLink(
                     destination:
                         //AddDesejoCompleto(),
-                        AddWish(),
+                        AddWishView(),
                     label: {
                         Image(systemName: "plus.circle")
                             .foregroundColor(Color(UIColor(named: "systemMint")!))
