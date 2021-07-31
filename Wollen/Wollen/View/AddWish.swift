@@ -15,7 +15,8 @@ struct AddWish: View {
             
             AddWishCards()
         }
-        //.navigationBarHidden(true)
+        .padding(30)
+        .navigationBarHidden(true)
     }
 }
 
