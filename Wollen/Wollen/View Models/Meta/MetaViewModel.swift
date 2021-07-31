@@ -32,4 +32,8 @@ struct MetaViewModel {
         return meta.valorMeta
     }
     
+    var tipo: String {
+        return meta.tipo ?? "Por valor"
+    }
+    
 }

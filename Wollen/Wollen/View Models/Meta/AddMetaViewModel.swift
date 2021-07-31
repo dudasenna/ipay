@@ -16,6 +16,7 @@ class AddMetaViewModel: ObservableObject {
     var frequencia: String = ""
     var valorAtual: String = ""
     var valorMeta: String = ""
+    var tipo: String = ""
     
     // Adicionar uma meta a um desejo existente
     func addMetaToDesejo(desejoId: NSManagedObjectID) {
