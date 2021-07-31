@@ -16,7 +16,7 @@ struct MyWishesCards: View {
     
     var body: some View {
         VStack (alignment: .leading) {
-            HStack {
+            HStack (alignment: .top){
                 VStack (alignment: .leading){
                     Text(LocalizedStringKey("Meus desejos"))
                         .bold()
@@ -43,11 +43,12 @@ struct MyWishesCards: View {
                 HStack(spacing: 30) {
                     ForEach(listaDesejosVM.desejos, id: \.id) { desejo in
                         
-                        
+                        // Exibe a lista de desejos
                         NavigationLink(
                             destination: DesejoView(desejoVM: desejo),
                             label: {
                                 MyWishCard(desejoVM: desejo)
+                                    .foregroundColor(Color(UIColor(named: "preto_primario")!))
                             })
                         
                     }

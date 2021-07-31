@@ -92,6 +92,8 @@ struct SideBar: View {
 
             }
            
+            // Exibe card com os desejos de todas as categorias
+            // Exibe cards do gráfico e noticias
             HomeView()
             
         }

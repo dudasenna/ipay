@@ -9,6 +9,10 @@ import SwiftUI
 
 struct WishesFromCategory: View {
     
+    // Similar ao MyWishesCards, mas exibe apenas desejos de uma categoria
+    // E adiciona desejos apenas à esta categoria
+    // TO DO: aumentar a altura da frame
+    
     @StateObject private var listaDesejosVM = ListaDesejosViewModel()
     
     let categoriaVM: CategoriaViewModel
@@ -18,7 +22,7 @@ struct WishesFromCategory: View {
     
     var body: some View {
         VStack (alignment: .leading) {
-            HStack {
+            HStack (alignment: .top) {
                 VStack (alignment: .leading){
                     Text(LocalizedStringKey("Meus desejos"))
                         .bold()
@@ -47,11 +51,12 @@ struct WishesFromCategory: View {
                 HStack(spacing: 30) {
                     ForEach(listaDesejosVM.desejos, id: \.id) { desejo in
                         
-                        
+                        // Exibe a lista de desejos da categoria
                         NavigationLink(
                             destination: DesejoView(desejoVM: desejo),
                             label: {
                                 MyWishCard(desejoVM: desejo)
+                                    .foregroundColor(Color(UIColor(named: "preto_primario")!))
                             })
                         
                     }

@@ -9,6 +9,9 @@ import SwiftUI
 
 struct HomeCategoryView: View {
     
+    // Exibe o card com a lista de desejos de uma categoria
+    // Adiciona cor de fundo
+    
     let categoriaVM: CategoriaViewModel
     
     var body: some View {
