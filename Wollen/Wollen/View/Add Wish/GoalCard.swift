@@ -12,6 +12,7 @@ struct GoalCard: View {
     
     init() {
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(named: "systemMint")!
+        UISegmentedControl.appearance().setTitleTextAttributes([.font : UIFont(name: "Avenir Next", size: 18)!], for: .normal)
     }
     
     @State private var goalBy: GoalBy = .value
@@ -24,7 +25,7 @@ struct GoalCard: View {
     var body: some View {
         VStack (alignment: .leading) {
             
-            HStack {
+            HStack (alignment: .top) {
                 Text(LocalizedStringKey("Meta"))
                     .bold()
                     .padding(5)
@@ -38,7 +39,8 @@ struct GoalCard: View {
                 },
                 label: {
                     Image(systemName: "info.circle")
-                        .foregroundColor(Color.gray)
+                        .foregroundColor(Color(UIColor(named: "systemMint")!))
+                        .imageScale(.large)
                 })
             }
             

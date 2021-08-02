@@ -59,12 +59,12 @@ struct NewCategory : View {
             HStack{
                 Button(LocalizedStringKey("Cancelar")) {
                     self.presentation.wrappedValue.dismiss()
-                       }
+                }
                 .font(.custom("Avenir Next", size: 18))
                 .foregroundColor(Color(UIColor.darkGray))
                 .padding()
                 Spacer()
-
+                
                 Button(
                     action: {
                         if addCategoriaVM.cor == "" {
@@ -83,12 +83,11 @@ struct NewCategory : View {
                 .padding(5)
                 .background(Color(UIColor(named: "systemMint")!))
                 .cornerRadius(10)
-                
-            
+            }
+            .background(Color(red: 248/256, green: 248/256, blue: 248/256))
+            .cornerRadius(20)
+    
         }
-        .background(Color(red: 248/256, green: 248/256, blue: 248/256))
-        .cornerRadius(20)
-    }
         .padding(10)
         .background(Color(red: 248/256, green: 248/256, blue: 248/256))
         .cornerRadius(10)
