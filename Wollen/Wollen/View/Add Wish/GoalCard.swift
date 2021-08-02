@@ -18,7 +18,7 @@ struct GoalCard: View {
     @State private var goalBy: GoalBy = .value
     @State private var frequency: FrequencyTypes = .weekly
     @State private var duration: DurationTypes = .weeks
-    @State private var valueTextField: String = "R$ 100,00"
+    @State private var valueTextField: String = "R$"
     @State private var quantityDuration = 1
     var maxWidth = UIScreen().bounds.width
     
@@ -106,7 +106,8 @@ struct GoalCard: View {
                         .onReceive(Just(valueTextField)) { newValue in
                             let filtered = newValue.filter { "0123456789.,".contains($0) }
                             if filtered != newValue {
-                                self.valueTextField = String("R$ \(filtered)")
+                                let traduz = NSLocalizedString("R$", comment: "")
+                                self.valueTextField = String("\(traduz) \(filtered)")
                             }}
                             
                         } else {
