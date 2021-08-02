@@ -10,8 +10,10 @@ import Combine
 
 struct GoalCard: View {
     
-    init() {
+    init(desejo: AddDesejoViewModel) {
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(named: "systemMint")!
+        self.desejo = desejo
+        //self.desejo.tipo = "Por valor"
     }
     
     @State private var goalBy: GoalBy = .value
@@ -19,7 +21,9 @@ struct GoalCard: View {
     @State private var duration: DurationTypes = .weeks
     @State private var valueTextField: String = "R$ 100.00"
     @State private var quantityDuration = 1
+    @ObservedObject var desejo: AddDesejoViewModel
     var maxWidth = UIScreen().bounds.width
+    @State private var valueFiltered: String = "100.00"
     
     var body: some View {
         VStack (alignment: .leading) {
@@ -54,6 +58,13 @@ struct GoalCard: View {
             .pickerStyle(SegmentedPickerStyle())
             .padding()
             .fixedSize(horizontal: false, vertical: false)
+            .onChange(of: goalBy) { _ in
+                if goalBy.rawValue == LocalizedStringKey("Por valor") {
+                    desejo.tipo = "Por valor"
+                } else {
+                    desejo.tipo = "Por período"
+                }
+            }
             
             HStack {
                 Text(LocalizedStringKey("Frequência:"))
@@ -78,7 +89,22 @@ struct GoalCard: View {
                         Text($0.rawValue)
                     }
                     
-                }.pickerStyle(MenuPickerStyle())
+                }
+                .pickerStyle(MenuPickerStyle())
+                .onChange(of: frequency) { _ in
+                    if self.frequency.rawValue == LocalizedStringKey("mensal") {
+                        self.desejo.frequencia = "mensal"
+                    } else {
+                        self.desejo.frequencia = "semanal"
+                    }
+                }
+                .onTapGesture {
+                    if self.frequency.rawValue == LocalizedStringKey("mensal") {
+                        self.desejo.frequencia = "mensal"
+                    } else {
+                        self.desejo.frequencia = "semanal"
+                    }
+                }
             } // HStack
             
             HStack {
@@ -90,21 +116,31 @@ struct GoalCard: View {
                     
                     Spacer()
                     
-                    TextField(String(valueTextField),
-                              text: $valueTextField)
-                        .padding(5)
-                        .foregroundColor(.gray)
-                        .font(.custom("Avenir Next", size: 16))
-                        .multilineTextAlignment(.leading)
-                        .background(RoundedRectangle(cornerRadius: 5).foregroundColor(.white))
-                        .overlay(RoundedRectangle(cornerRadius: 5).stroke(Color(UIColor.gray), lineWidth: 1))
-                        .frame(minWidth: 0, idealWidth: 200, maxWidth: maxWidth/3, alignment: .trailing)
-                        .keyboardType(.numberPad)
-                        .onReceive(Just(valueTextField)) { newValue in
-                            let filtered = newValue.filter { "0123456789.,".contains($0) }
-                            if filtered != newValue {
-                                self.valueTextField = String("R$ \(filtered)")
-                            }}
+                    TextField(
+                        String(valueTextField),
+                        text: $valueTextField
+                    )
+                    .padding(5)
+                    .foregroundColor(.gray)
+                    .font(.custom("Avenir Next", size: 16))
+                    .multilineTextAlignment(.leading)
+                    .background(RoundedRectangle(cornerRadius: 5).foregroundColor(.white))
+                    .overlay(RoundedRectangle(cornerRadius: 5).stroke(Color(UIColor.gray), lineWidth: 1))
+                    .frame(minWidth: 0, idealWidth: 200, maxWidth: maxWidth/3, alignment: .trailing)
+                    .keyboardType(.numberPad)
+                    .onReceive(Just(valueTextField)) { newValue in
+                        let filtered = newValue.filter { "0123456789.,".contains($0) }
+                        if filtered != newValue {
+                            self.valueTextField = String("R$ \(filtered)")
+                            self.valueFiltered = filtered
+                        }
+                    }
+                    .onChange(of: valueTextField) { _ in
+                        self.desejo.valorMeta = self.valueFiltered
+                    }
+                    .onTapGesture {
+                        self.desejo.valorMeta = self.valueFiltered
+                    }
                     
                 } else {
                     Text(LocalizedStringKey("Duração:"))
@@ -129,6 +165,12 @@ struct GoalCard: View {
                             Text("\(quantity)")
                         }
                     }.pickerStyle(MenuPickerStyle())
+                    .onChange(of: quantityDuration) { _ in
+                        self.desejo.duracao = String(self.quantityDuration)
+                    }
+                    .onTapGesture {
+                        self.desejo.duracao = String(self.quantityDuration)
+                    }
                     
                     Picker(selection: $duration,
                            label: Text(duration.rawValue)
@@ -174,8 +216,8 @@ enum FrequencyTypes: LocalizedStringKey, CaseIterable{
 
 enum DurationTypes: LocalizedStringKey, CaseIterable {
     case years = "anos"
-    case weeks = "semanas"
     case months = "meses"
+    case weeks = "semanas"
     
     var localized: LocalizedStringKey {
         return rawValue
@@ -184,7 +226,8 @@ enum DurationTypes: LocalizedStringKey, CaseIterable {
 
 struct GoalCard_Previews: PreviewProvider {
     static var previews: some View {
-        GoalCard()
+        let desejo = AddDesejoViewModel()
+        GoalCard(desejo: desejo)
             .preferredColorScheme(.light)
             .previewLayout(.sizeThatFits)
             .padding()

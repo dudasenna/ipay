@@ -40,6 +40,8 @@ struct AddDesejoCompleto: View {
                 }.padding()
             }
             
+            GoalCard(desejo: addDesejoVM)
+            
             Button("Salvar") {
                 addDesejoVM.addDesejo()
             }

@@ -21,10 +21,11 @@ class AddDesejoViewModel: ObservableObject {
     var cor: String = ""
     
     // Atributos da Meta
-    var duracao: String = ""
-    var frequencia: String = ""
-    var valorAtual: String = ""
-    var valorMeta: String = ""
+    @Published var duracao: String = ""
+    @Published var frequencia: String = ""
+    @Published var valorAtual: String = ""
+    @Published var valorMeta: String = ""
+    @Published var tipo: String = "Por valor"
     
     // Cria um desejo com categoria e meta associadas
     func addDesejo() {
