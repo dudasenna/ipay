@@ -17,6 +17,8 @@ struct CategoriesCard: View {
     
     @StateObject private var listaCategoriasVM = ListaCategoriasViewModel()
     
+    @State private var colorSelected: String = "systemYellow"
+    
     private var adaptiveLayout = [GridItem(.adaptive(minimum: 150))]
     private var flexibleLayout = [GridItem(.flexible()), GridItem(.flexible())]
     
@@ -48,9 +50,17 @@ struct CategoriesCard: View {
                             addDesejoVM.cor = categoria.cor
                             addDesejoVM.nomeCategoria = categoria.nome
                             
+                            colorSelected = categoria.nome
+                            
                         } label: {
-                            CategoryCard(categoryColor: categoria.cor+"700", categoryTitle: categoria.nome)
-                                .foregroundColor(Color(UIColor.black))
+                            if (categoria.nome == colorSelected) {
+                                CategoryCard(categoryColor: categoria.cor, categoryTitle: categoria.nome)
+                                    .foregroundColor(Color(UIColor.black))
+                            } else {
+                                CategoryCard(categoryColor: categoria.cor+"700", categoryTitle: categoria.nome)
+                                    .foregroundColor(Color(UIColor.black))
+                            }
+                            
                         }
 
                     }
