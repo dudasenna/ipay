@@ -9,6 +9,16 @@ import SwiftUI
 
 struct ImageCard : View {
     
+    // Core Data - adicionar imagem
+    @StateObject private var addMidiaVM = addMidiaViewModel()
+    
+    // Core Data - recuperar imagens
+    @StateObject private var listaMidiaVM = ListaMidiasViewModel()
+    
+    // Core Data - desejo ao qual as imagens estarão associadas
+    //let desejoVM: DesejoViewModel
+    
+    
     @State var images: [UIImage] = []
     
     @State var image: UIImage = UIImage()
@@ -42,6 +52,8 @@ struct ImageCard : View {
             ScrollView(.horizontal) {
                 HStack(spacing: 20) {
                     ForEach(images, id: \.self) { data in
+                        
+                        //TO DO: recuperar do core data
                         Image(uiImage: data)
                             .renderingMode(.original)
                             .resizable()
@@ -64,9 +76,18 @@ struct ImageCard : View {
         .onDrop(of: ["public.image"], delegate: DropImageDelegate(image: $image))
         .onReceive(pub, perform: { _ in
             self.images.append(self.image)
+            
+                // Salvar no core data
+                addMidiaVM.imagem = image
+                // Aqui está salvando sem associar a um desejo especifico
+                addMidiaVM.saveMidia()
+                        
+                // TO DO: Salvar associado a um desejo
+                //addMidiaVM.addMidiaToDesejo(desejoId: desejoVM.id)
+                
         })
         .sheet(isPresented: self.$show, content: {
-            ImagePicker(show: self.$show, image: self.$images)
+            ImagePicker(show: self.$show, image: self.$image)
         })
     }
 }
@@ -81,6 +102,8 @@ struct CardEmpty: View {
 
 struct  SenderView_Previews: PreviewProvider {
     static var previews: some View{
+        //let desejoVM = DesejoViewModel(desejo: Desejo (context: CoreDataManager.shared.viewContext))
+        //ImageCard(desejoVM: desejoVM)
         ImageCard()
             .previewDevice("iPhone 11")
             .previewLayout(.sizeThatFits)

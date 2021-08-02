@@ -41,9 +41,13 @@ struct AddDesejoCompleto: View {
                     TextField("Frequência", text: $addDesejoVM.frequencia)
                 }.padding()
             }
+            HStack {
+                InformationsCard(addDesejoVM: addDesejoVM)
+                CategoriesCard(addDesejoVM: addDesejoVM)
+                ImageCard()
+            }
             
-            InformationsCard(addDesejoVM: addDesejoVM)
-            CategoriesCard(addDesejoVM: addDesejoVM)
+            
             
             Button("Salvar") {
                 addDesejoVM.addDesejo()
