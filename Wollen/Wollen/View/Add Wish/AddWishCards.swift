@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct AddWishCards: View {
+    @StateObject private var addDesejoVM = AddDesejoViewModel()
+    
     var body: some View {
         
         VStack (alignment: .center, spacing: 30) {
@@ -31,7 +33,7 @@ struct AddWishCards: View {
             }
             
             HStack (alignment: .top, spacing: 30) {
-                InformationsCard()
+                InformationsCard(addDesejoVM: addDesejoVM)
                 CategoriesCard()
             }
             
