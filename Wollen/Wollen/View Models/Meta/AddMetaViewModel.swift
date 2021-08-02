@@ -12,7 +12,8 @@ class AddMetaViewModel: ObservableObject {
     
     // Não está sendo usado, porque a meta está sendo criada apenas quando se cria um desejo 
     
-    var duracao: String = ""
+    var duracao: Int = 0
+    var duracao2: String = ""
     var frequencia: String = ""
     var valorAtual: String = ""
     var valorMeta: String = ""
@@ -27,11 +28,13 @@ class AddMetaViewModel: ObservableObject {
         
         if let desejo = desejo {
             let meta = Meta(context: manager.persistentContainer.viewContext)
-            meta.duracao = Int16(duracao) ?? 0
+            meta.duracao = Int16(duracao)
+            meta.duracao2 = duracao2
             meta.frequencia = frequencia
             meta.valorAtual = Double(valorAtual) ?? 0.0
             meta.valorMeta = Double(valorMeta) ?? 0.0
             meta.desejo = desejo
+            meta.tipo = tipo
             
             manager.save()
             print("Salvou a meta!")
@@ -62,10 +65,12 @@ class AddMetaViewModel: ObservableObject {
         
         let manager = CoreDataManager.shared
         let meta = Meta(context: manager.persistentContainer.viewContext)
-        meta.duracao = Int16(duracao) ?? 0
+        meta.duracao = Int16(duracao) 
+        meta.duracao2 = duracao2
         meta.frequencia = frequencia
         meta.valorAtual = Double(valorAtual) ?? 0.0
         meta.valorMeta = Double(valorMeta) ?? 0.0
+        meta.tipo = tipo
         
         manager.save()
         print("Salvou a meta!")

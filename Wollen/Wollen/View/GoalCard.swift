@@ -166,10 +166,10 @@ struct GoalCard: View {
                         }
                     }.pickerStyle(MenuPickerStyle())
                     .onChange(of: quantityDuration) { _ in
-                        self.desejo.duracao = String(self.quantityDuration)
+                        self.desejo.duracao = self.quantityDuration
                     }
                     .onTapGesture {
-                        self.desejo.duracao = String(self.quantityDuration)
+                        self.desejo.duracao = self.quantityDuration
                     }
                     
                     Picker(selection: $duration,

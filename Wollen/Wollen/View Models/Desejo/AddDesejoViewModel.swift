@@ -21,7 +21,8 @@ class AddDesejoViewModel: ObservableObject {
     var cor: String = ""
     
     // Atributos da Meta
-    @Published var duracao: String = ""
+    @Published var duracao: Int = 0
+    @Published var duracao2: String = ""
     @Published var frequencia: String = ""
     @Published var valorAtual: String = ""
     @Published var valorMeta: String = ""
@@ -46,9 +47,11 @@ class AddDesejoViewModel: ObservableObject {
         // Cria uma nova meta para ser associada ao desejo
         let meta = Meta(context: context)
         meta.duracao = Int16(duracao) ?? 0
+        meta.duracao2 = duracao2
         meta.frequencia = frequencia
         meta.valorAtual = Double(valorAtual) ?? 0.0
         meta.valorMeta = Double(valorMeta) ?? 0.0
+        meta.tipo = tipo
         
         // Associa a categoria e a meta ao desejo
         desejo.categoria = categoria
@@ -76,9 +79,11 @@ class AddDesejoViewModel: ObservableObject {
             
             let meta = Meta(context: manager.persistentContainer.viewContext)
             meta.duracao = Int16(duracao) ?? 0
+            meta.duracao2 = duracao2
             meta.frequencia = frequencia
             meta.valorAtual = Double(valorAtual) ?? 0.0
             meta.valorMeta = Double(valorMeta) ?? 0.0
+            meta.tipo = tipo
             desejo.meta = meta
             
             manager.save()

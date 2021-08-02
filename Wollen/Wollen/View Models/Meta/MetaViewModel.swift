@@ -20,6 +20,10 @@ struct MetaViewModel {
         return meta.duracao
     }
     
+    var duracao2: String {
+        return meta.duracao2 ?? "semanal"
+    }
+    
     var frequencia: String {
         return meta.frequencia ?? ""
     }
