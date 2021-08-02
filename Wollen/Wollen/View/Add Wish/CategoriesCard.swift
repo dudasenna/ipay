@@ -25,10 +25,20 @@ struct CategoriesCard: View {
                 .padding(5)
                 .font(.custom("Avenir Next", size: 22))
             
-            LazyVGrid (columns: adaptiveLayout, alignment: .center, spacing: 15){
-                ForEach (0..<categoriesTitle.count) { category in
-                    CategoryCard(categoryColor: categoriesColor[category], categoryTitle: categoriesTitle[category])
+//            LazyVGrid (columns: adaptiveLayout, alignment: .center, spacing: 15){
+//                ForEach (0..<categoriesTitle.count) { category in
+//                    CategoryCard(categoryColor: categoriesColor[category], categoryTitle: categoriesTitle[category])
+//                }
+//            }
+//            .padding()
+            
+            ScrollView(.horizontal) {
+                HStack (spacing: 20) {
+                    ForEach (0..<categoriesTitle.count) { category in
+                        CategoryCard(categoryColor: categoriesColor[category], categoryTitle: categoriesTitle[category])
+                    }
                 }
+                
             }
             .padding()
             

@@ -5,7 +5,7 @@
   Created by Palloma Ramos on 28/07/21.
   
 */
-"Informações:" = "Informations";
+"Informações" = "Informations";
 "Nome:" = "Name:";
 "Nome do produto" = "Product's name";
 "Preço:" = "Price:";
@@ -57,4 +57,4 @@
 "Geral" = "All";
 "Novo desejo" = "New wish";
 "Novo desejo na categoria %@" = "New wish in the category %@";
-
+"Adicionar desejo" = "Add wish";

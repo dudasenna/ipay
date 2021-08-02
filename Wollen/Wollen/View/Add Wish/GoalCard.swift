@@ -12,6 +12,7 @@ struct GoalCard: View {
     
     init() {
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(named: "systemMint")!
+        UISegmentedControl.appearance().setTitleTextAttributes([.font : UIFont(name: "Avenir Next", size: 18)!], for: .normal)
     }
     
     @State private var goalBy: GoalBy = .value
@@ -24,10 +25,11 @@ struct GoalCard: View {
     var body: some View {
         VStack (alignment: .leading) {
             
-            HStack {
+            HStack (alignment: .top) {
                 Text(LocalizedStringKey("Meta"))
-                    .font(.custom("Avenir", size: 22).bold())
-                    .fontWeight(.bold)
+                    .bold()
+                    .padding(5)
+                    .font(.custom("Avenir Next", size: 22))
                     .multilineTextAlignment(.leading)
                 
                 Spacer()
@@ -37,7 +39,8 @@ struct GoalCard: View {
                 },
                 label: {
                     Image(systemName: "info.circle")
-                        .foregroundColor(Color.gray)
+                        .foregroundColor(Color(UIColor(named: "systemMint")!))
+                        .imageScale(.large)
                 })
             }
             
@@ -46,7 +49,7 @@ struct GoalCard: View {
                 //https://www.youtube.com/watch?v=iqKmgs_0VPE
                 ForEach(GoalBy.allCases, id: \.self) {
                     Text($0.rawValue)
-                        .font(.custom("Avenir", size: 16))
+                        .font(.custom("Avenir Next", size: 16))
                         .fontWeight(.medium)
                         .multilineTextAlignment(.leading)
                 }
@@ -57,7 +60,7 @@ struct GoalCard: View {
             
             HStack {
                 Text(LocalizedStringKey("Frequência:"))
-                    .font(.custom("Avenir", size: 18))
+                    .font(.custom("Avenir Next", size: 18))
                     .fontWeight(.regular)
                     .multilineTextAlignment(.leading)
                 
@@ -72,7 +75,7 @@ struct GoalCard: View {
                         .background(RoundedRectangle(cornerRadius: 5).foregroundColor(.white))
                         .overlay(RoundedRectangle(cornerRadius: 5).stroke(Color(UIColor.gray), lineWidth: 1))
                         .multilineTextAlignment(.center)
-                        .font(.custom("Avenir", size: 16))) {
+                        .font(.custom("Avenir Next", size: 16))) {
                     
                     ForEach(FrequencyTypes.allCases, id: \.self) {
                         Text($0.rawValue)
@@ -84,7 +87,7 @@ struct GoalCard: View {
             HStack {
                 if goalBy == GoalBy.value {
                     Text(LocalizedStringKey("Valor:"))
-                        .font(.custom("Avenir", size: 18))
+                        .font(.custom("Avenir Next", size: 18))
                         .fontWeight(.regular)
                         .multilineTextAlignment(.leading)
                     
@@ -94,7 +97,7 @@ struct GoalCard: View {
                               text: $valueTextField)
                         .padding(5)
                         .foregroundColor(.gray)
-                        .font(.custom("Avenir", size: 16))
+                        .font(.custom("Avenir Next", size: 16))
                         .multilineTextAlignment(.leading)
                         .background(RoundedRectangle(cornerRadius: 5).foregroundColor(.white))
                         .overlay(RoundedRectangle(cornerRadius: 5).stroke(Color(UIColor.gray), lineWidth: 1))
@@ -108,7 +111,7 @@ struct GoalCard: View {
                             
                         } else {
                             Text(LocalizedStringKey("Duração:"))
-                                .font(.custom("Avenir", size: 18))
+                                .font(.custom("Avenir Next", size: 18))
                                 .fontWeight(.regular)
                                 .multilineTextAlignment(.leading)
                             
@@ -118,7 +121,7 @@ struct GoalCard: View {
                             Picker(selection: $quantityDuration,
                                    label: Text("\(quantityDuration)").foregroundColor(.gray)
                                     .foregroundColor(.gray)
-                                    .font(.custom("Avenir", size: 16))
+                                    .font(.custom("Avenir Next", size: 16))
                                     .padding(5)
                                     .padding(.horizontal)
                                     .background(RoundedRectangle(cornerRadius: 5).foregroundColor(.white))
@@ -133,7 +136,7 @@ struct GoalCard: View {
                             Picker(selection: $duration,
                                    label: Text(duration.rawValue)
                                     .foregroundColor(.gray)
-                                    .font(.custom("Avenir", size: 16))
+                                    .font(.custom("Avenir Next", size: 16))
                                     .padding(5)
                                     .padding(.horizontal)
                                     .background(RoundedRectangle(cornerRadius: 5).foregroundColor(.white))
@@ -151,6 +154,7 @@ struct GoalCard: View {
             .background(Color(red: 248/256, green: 248/256, blue: 248/256))
             .cornerRadius(10)
             .fixedSize(horizontal: false, vertical: false)
+            .shadow(color: Color.gray.opacity(0.4), radius: 5)
         } // body
     }
 

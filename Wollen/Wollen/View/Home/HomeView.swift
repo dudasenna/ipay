@@ -8,6 +8,11 @@
 import SwiftUI
 
 struct HomeView: View {
+    
+    // Exibe o card a lista de desejos geral (todas as categorias)
+    // Exibe cards do gráfico e notícias
+    // Adiciona cor de fundo
+    
     var body: some View {
         ZStack {
             (Color(UIColor(named: "branco_bg")!))

@@ -40,7 +40,9 @@ struct SideBar: View {
                         // Aba Geral - exibe todos os desejos, independente da categoria
                         
                         NavigationLink(
-                            destination: HomeView(),
+                            destination:
+                                //ListaDesejosView(),
+                                HomeView(),
                             label: {
                                 Text("Geral")
                                     .font(.custom("Avenir Next", size: 22))
@@ -51,7 +53,8 @@ struct SideBar: View {
                         ForEach(listaCategoriasVM.categorias, id: \.id) { categoria in
                             
                             NavigationLink(
-                                destination: HomeCategoryView(categoriaVM: categoria),
+                                destination:
+                                    HomeCategoryView(categoriaVM: categoria),
                                 label: {
                                     Text(categoria.nome)
                                         .font(.custom("Avenir Next", size: 22))
@@ -69,7 +72,7 @@ struct SideBar: View {
                         .sheet(isPresented: $isPresented, onDismiss: {
                             listaCategoriasVM.getAllCategorias()
                         }, content: {
-                            AddCategoriaView()
+                            NewCategory()
                         })
                         
                     }
@@ -92,6 +95,8 @@ struct SideBar: View {
 
             }
            
+            // Exibe card com os desejos de todas as categorias
+            // Exibe cards do gráfico e noticias
             HomeView()
             
         }
