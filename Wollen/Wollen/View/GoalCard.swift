@@ -92,18 +92,10 @@ struct GoalCard: View {
                 }
                 .pickerStyle(MenuPickerStyle())
                 .onChange(of: frequency) { _ in
-                    if self.frequency.rawValue == LocalizedStringKey("mensal") {
-                        self.desejo.frequencia = "mensal"
-                    } else {
-                        self.desejo.frequencia = "semanal"
-                    }
+                    self.desejo.frequencia = convertFromFrequencyToString(frequency: self.frequency)
                 }
                 .onTapGesture {
-                    if self.frequency.rawValue == LocalizedStringKey("mensal") {
-                        self.desejo.frequencia = "mensal"
-                    } else {
-                        self.desejo.frequencia = "semanal"
-                    }
+                    self.desejo.frequencia = convertFromFrequencyToString(frequency: self.frequency)
                 }
             } // HStack
             
@@ -186,6 +178,12 @@ struct GoalCard: View {
                             Text($0.rawValue)
                         }
                     }.pickerStyle(MenuPickerStyle())
+                    .onChange(of: self.duration) { _ in
+                        self.desejo.duracao2 = convertFromDurationToString(duration: self.duration)
+                    }
+                    .onTapGesture {
+                        self.desejo.duracao2 = convertFromDurationToString(duration: self.duration)
+                    }
                 }
             } // HStack
         } // VStack
@@ -221,6 +219,30 @@ enum DurationTypes: LocalizedStringKey, CaseIterable {
     
     var localized: LocalizedStringKey {
         return rawValue
+    }
+}
+
+func convertFromFrequencyToString(frequency: FrequencyTypes) -> String {
+    switch frequency.rawValue {
+    case "mensal":
+        return "mensal"
+    case "semanal":
+        return "semanal"
+    default:
+        return ""
+    }
+}
+
+func convertFromDurationToString(duration: DurationTypes) -> String {
+    switch duration.rawValue {
+    case "anos":
+        return "anos"
+    case "meses":
+        return "meses"
+    case "semanas":
+        return "semanas"
+    default:
+        return ""
     }
 }
 
