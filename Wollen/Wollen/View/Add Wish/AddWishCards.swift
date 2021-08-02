@@ -34,7 +34,7 @@ struct AddWishCards: View {
             
             HStack (alignment: .top, spacing: 30) {
                 InformationsCard(addDesejoVM: addDesejoVM)
-                CategoriesCard()
+                CategoriesCard(addDesejoVM: addDesejoVM)
             }
             
             HStack (alignment: .top, spacing: 30) {
@@ -43,7 +43,7 @@ struct AddWishCards: View {
             }
             
             Button {
-                //
+                //addDesejoVM.addDesejo()
             } label: {
                 Text(LocalizedStringKey("Salvar"))
                     .foregroundColor(Color(UIColor(named: "preto_primario")!))

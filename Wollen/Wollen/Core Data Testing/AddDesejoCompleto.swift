@@ -43,6 +43,7 @@ struct AddDesejoCompleto: View {
             }
             
             InformationsCard(addDesejoVM: addDesejoVM)
+            CategoriesCard(addDesejoVM: addDesejoVM)
             
             Button("Salvar") {
                 addDesejoVM.addDesejo()
