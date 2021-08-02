@@ -15,7 +15,7 @@ struct  ImagePicker: UIViewControllerRepresentable {
     
     
     @Binding var show: Bool
-    @Binding var image: [UIImage]
+    @Binding var image: UIImage
     
     func makeCoordinator() -> ImagePicker.Coordinator {
         return ImagePicker.Coordinator(child1: self)
@@ -36,8 +36,11 @@ struct  ImagePicker: UIViewControllerRepresentable {
         }
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any])  {
             
-            self.child.image.append(info[.originalImage] as! UIImage)
+            self.child.image = (info[.originalImage] as! UIImage)
+            NotificationCenter.default.post(Notification.init(name: Notification.Name("atualiza_array_images")))
+            //self.child.image.append(info[.originalImage] as! UIImage)
             self.child.show.toggle()
         }
     }
 }
+

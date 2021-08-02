@@ -44,7 +44,7 @@ struct AtualizarDesejo: View {
                 }.padding()
             }
         
-            
+            ImageCard()
             Button("Salvar") {
                 updateDesejoVM.updateDesejo(desejoSelecionado: desejoVM)
             }

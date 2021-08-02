@@ -22,12 +22,13 @@ class ListaMetasViewModel: ObservableObject {
         }
     }
     
-    func returnMetaFromDesejo(desejo: DesejoViewModel) -> MetaViewModel? {
-        let desejo =  CoreDataManager.shared.getDesejoById(id: desejo.id)
-        if let desejo = desejo {
-            return MetaViewModel(meta: desejo.meta!)
-        }
-        return nil
-    }
+//    func returnMetaFromDesejo(desejo: DesejoViewModel) -> MetaViewModel? {
+//        let desejo =  CoreDataManager.shared.getDesejoById(id: desejo.id)
+//        if let desejo = desejo {
+//            meta = MetaViewModel(meta: desejo.meta!)
+//            return meta
+//        }
+//        return nil
+//    }
     
 }
