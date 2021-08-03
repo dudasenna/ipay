@@ -8,7 +8,11 @@
 import SwiftUI
 
 struct DescriptionCard: View {
+    
+    @StateObject private var updateDesejoVM = UpdateDesejoViewModel()
+    
     @State var descriptionText: String = "Texto do usuário"
+    
     var body: some View {
         VStack(alignment: .leading) {
             
@@ -20,6 +24,7 @@ struct DescriptionCard: View {
             
             // DESCRIÇÃO
             Text(descriptionText)
+        
                 .font(.custom("Avenir Next", size: 18))
 //                .multilineTextAlignment(.center)
                 .fixedSize(horizontal: false, vertical: true)
