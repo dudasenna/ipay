@@ -19,7 +19,7 @@ struct HomeView: View {
                 .ignoresSafeArea(.all)
             VStack(spacing: 30) {
                 MyWishesCards()
-                
+                //ListaDesejosView()
                 HStack(spacing: 30) {
                     LinksCard()
                     DescriptionCard()

@@ -29,7 +29,7 @@
 "Imagens" = "Imagens";
 "Guardar dinheiro" = "Guardar dinheiro";
 "Quanto você gostaria de guardar?" = "Quanto você gostaria de guardar?";
-"R$" = "R$";
+"R$ %lld" = "R$ %lld";
 "Frequência:" = "Frequência:";
 "Valor:" = "Valor:";
 "Duração:" = "Duração:";

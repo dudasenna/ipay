@@ -29,7 +29,7 @@
 "Imagens" = "Images";
 "Guardar dinheiro" = "Save money";
 "Quanto você gostaria de guardar?" = "How much would you like to save?";
-"R$" = "$";
+"R$ %lld" = "$ %lld";
 "Frequência:" = "Frequency:";
 "Valor:" = "Value:";
 "Duração:" = "Duration:";
