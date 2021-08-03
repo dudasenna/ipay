@@ -53,4 +53,7 @@ struct MidiaView_Previews: PreviewProvider {
         MidiaView()
     }
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> b57e4387a3a2abed8092d590727c2a6fddb51299

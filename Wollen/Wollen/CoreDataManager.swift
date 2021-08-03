@@ -162,6 +162,34 @@ class CoreDataManager {
         
     }
     
+<<<<<<< HEAD
+=======
+    
+    func getMidiaById(id: NSManagedObjectID) -> Midia? {
+        
+        do {
+            return try persistentContainer.viewContext.existingObject(with: id) as? Midia
+        } catch {
+            print(error)
+            return nil
+        }
+    }
+    
+    func deleteMidia(_ midia: Midia) {
+        
+        persistentContainer.viewContext.delete(midia)
+        
+        do {
+            try persistentContainer.viewContext.save()
+        } catch {
+            persistentContainer.viewContext.rollback()
+            print("Failed to delete Meta \(error)")
+        }
+        
+    }
+    
+    
+>>>>>>> b57e4387a3a2abed8092d590727c2a6fddb51299
     
     func getMidiaById(id: NSManagedObjectID) -> Midia? {
         

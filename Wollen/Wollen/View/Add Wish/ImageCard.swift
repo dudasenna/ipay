@@ -18,7 +18,10 @@ struct ImageCard : View {
     // Core Data - desejo ao qual as imagens estarão associadas
     //let desejoVM: DesejoViewModel
     
+<<<<<<< HEAD
     
+=======
+>>>>>>> b57e4387a3a2abed8092d590727c2a6fddb51299
     @State var images: [UIImage] = []
     
     @State var image: UIImage = UIImage()
@@ -77,6 +80,7 @@ struct ImageCard : View {
         .onReceive(pub, perform: { _ in
             self.images.append(self.image)
             
+<<<<<<< HEAD
                 // Salvar no core data
                 addMidiaVM.imagem = image
                 // Aqui está salvando sem associar a um desejo especifico
@@ -85,6 +89,16 @@ struct ImageCard : View {
                 // TO DO: Salvar associado a um desejo
                 //addMidiaVM.addMidiaToDesejo(desejoId: desejoVM.id)
                 
+=======
+            // Salvar no core data
+            addMidiaVM.imagem = image
+            // Aqui está salvando sem associar a um desejo especifico
+            addMidiaVM.saveMidia()
+            
+            // TO DO: Salvar associado a um desejo
+            //addMidiaVM.addMidiaToDesejo(desejoId: desejoVM.id)
+            
+>>>>>>> b57e4387a3a2abed8092d590727c2a6fddb51299
         })
         .sheet(isPresented: self.$show, content: {
             ImagePicker(show: self.$show, image: self.$image)
@@ -111,3 +125,4 @@ struct  SenderView_Previews: PreviewProvider {
             .cornerRadius(10)
     }
 }
+

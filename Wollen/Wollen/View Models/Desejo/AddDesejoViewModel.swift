@@ -49,6 +49,12 @@ class AddDesejoViewModel: ObservableObject {
         meta.valorAtual = Double(valorAtual) ?? 0.0
         meta.valorMeta = Double(valorMeta) ?? 0.0
         
+        /*
+        let midia = Midia(context: context)
+        //midia.imagem =
+        desejo.addToImagens(midia)
+        */
+        
         // Associa a categoria e a meta ao desejo
         desejo.categoria = categoria
         desejo.meta =  meta

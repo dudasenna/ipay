@@ -11,6 +11,7 @@ struct AddDesejoCompleto: View {
     
     @StateObject private var addDesejoVM = AddDesejoViewModel()
     
+    
     var body: some View {
         VStack {
             HStack(spacing: 10) {
@@ -49,6 +50,7 @@ struct AddDesejoCompleto: View {
             
             
             
+            //ImageCard(desejoVM: desejoVM)
             Button("Salvar") {
                 addDesejoVM.addDesejo()
             }
