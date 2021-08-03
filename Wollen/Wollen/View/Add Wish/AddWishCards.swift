@@ -37,7 +37,8 @@ struct AddWishCards: View {
             
             HStack (alignment: .top, spacing: 30) {
                 ImageCard()
-                GoalCard()
+                //GoalCard()
+                Text("------> GoalCard aqui <------")
             }
             
             Button {
