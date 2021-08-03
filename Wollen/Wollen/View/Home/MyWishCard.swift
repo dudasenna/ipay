@@ -13,10 +13,14 @@ struct MyWishCard: View {
     
     //Core Data
     let desejoVM: DesejoViewModel
+    @StateObject private var listaMidiasVM = ListaMidiasViewModel()
     
     var body: some View {
         VStack(alignment: .leading, spacing: nil, content: {
-            Image(uiImage: UIImage(named: "teste")!)
+            
+            let image = listaMidiasVM.getImageFromMidia(midia: desejoVM.midiaVM)
+            Image(uiImage: image)
+            //Image(uiImage: UIImage(named: "teste")!)
                 .resizable()
                 .frame(minWidth: 0, idealWidth: 220, maxWidth: 220, minHeight: 0, idealHeight: 130, maxHeight: 130, alignment: .center)
                 .scaledToFit()

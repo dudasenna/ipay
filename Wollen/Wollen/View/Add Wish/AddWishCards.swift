@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct AddWishCards: View {
+    @StateObject private var addDesejoVM = AddDesejoViewModel()
+    
+    @Environment(\.presentationMode) var presentation
+    
     var body: some View {
         
         VStack (alignment: .center, spacing: 30) {
@@ -31,18 +35,22 @@ struct AddWishCards: View {
             }
             
             HStack (alignment: .top, spacing: 30) {
-                InformationsCard()
-                CategoriesCard()
+                InformationsCard(addDesejoVM: addDesejoVM)
+                CategoriesCard(addDesejoVM: addDesejoVM)
             }
             
             HStack (alignment: .top, spacing: 30) {
-                ImageCard()
-                //GoalCard()
-                Text("------> GoalCard aqui <------")
+
+                ImageCard(addDesejoVM: addDesejoVM)
+                GoalCard(desejo: addDesejoVM)
             }
             
+            
             Button {
-                //
+                addDesejoVM.addDesejo()
+                // Quando salva, volta para a Home
+                self.presentation.wrappedValue.dismiss()
+    
             } label: {
                 Text(LocalizedStringKey("Salvar"))
                     .foregroundColor(Color(UIColor(named: "preto_primario")!))

@@ -43,6 +43,11 @@ struct DesejoView: View {
                 Text("A meta não existe :(")
             }
             
+            // Mostrar informações sobre as midias
+            Text("Informações sobre as midias")
+                .font(.title)
+            MidiaView(desejoVM: desejoVM)
+            
             Button {
                 isPresented.toggle()
             } label: {

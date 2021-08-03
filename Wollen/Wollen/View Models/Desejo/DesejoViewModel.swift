@@ -32,4 +32,11 @@ struct DesejoViewModel {
         return desejo.link ?? ""
     }
     
+    // Retorna a MidiaViewModel da primeira imagem associada ao desejo
+    //TO DO tratar o caso de não ter nenhuma imagem
+    var midiaVM: MidiaViewModel {
+        let midias = desejo.imagens!.allObjects as! [Midia]
+        return MidiaViewModel(midia: midias[0])
+    }
+    
 }

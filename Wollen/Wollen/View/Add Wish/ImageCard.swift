@@ -9,6 +9,19 @@ import SwiftUI
 
 struct ImageCard : View {
     
+    init(addDesejoVM: AddDesejoViewModel) {
+        self.addDesejoVM = addDesejoVM
+    }
+    
+    @ObservedObject var addDesejoVM: AddDesejoViewModel
+    
+    // Core Data - adicionar imagem
+    @StateObject private var addMidiaVM = addMidiaViewModel()
+    
+    // Core Data - recuperar imagens na tela de editar
+    @StateObject private var listaMidiaVM = ListaMidiasViewModel()
+    
+
     @State var images: [UIImage] = []
     
     @State var image: UIImage = UIImage()
@@ -42,6 +55,8 @@ struct ImageCard : View {
             ScrollView(.horizontal) {
                 HStack(spacing: 20) {
                     ForEach(images, id: \.self) { data in
+                        
+                        //TO DO: recuperar do core data
                         Image(uiImage: data)
                             .renderingMode(.original)
                             .resizable()
@@ -64,9 +79,13 @@ struct ImageCard : View {
         .onDrop(of: ["public.image"], delegate: DropImageDelegate(image: $image))
         .onReceive(pub, perform: { _ in
             self.images.append(self.image)
+            
+            // Salvar imagens no Core Data, associado a um desejo
+            addDesejoVM.imagensMidia.append(image)
+            
         })
         .sheet(isPresented: self.$show, content: {
-            ImagePicker(show: self.$show, image: self.$images)
+            ImagePicker(show: self.$show, image: self.$image)
         })
     }
 }
@@ -81,7 +100,9 @@ struct CardEmpty: View {
 
 struct  SenderView_Previews: PreviewProvider {
     static var previews: some View{
-        ImageCard()
+        
+        let addDesejoVM = AddDesejoViewModel()
+        ImageCard(addDesejoVM: addDesejoVM)
             .previewDevice("iPhone 11")
             .previewLayout(.sizeThatFits)
             .padding()
