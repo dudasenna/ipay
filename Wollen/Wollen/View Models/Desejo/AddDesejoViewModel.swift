@@ -28,7 +28,7 @@ class AddDesejoViewModel: ObservableObject {
     var valorMeta: String = ""
     
     // Atributos da Mídia
-    @Published var imagem = UIImage()
+    @Published var imagensMidia = [UIImage]()
     
     // Cria um desejo com categoria e meta associadas
     func addDesejo() {
@@ -42,6 +42,7 @@ class AddDesejoViewModel: ObservableObject {
         desejo.preco = Double(preco) ?? 0.0
         
         // Cria uma nova categoria para ser associada ao desejo
+        // TO DO: checar se a categoria já existe?
         let categoria = Categoria(context: context)
         categoria.nome = nomeCategoria
         categoria.cor = cor
@@ -53,19 +54,20 @@ class AddDesejoViewModel: ObservableObject {
         meta.valorAtual = Double(valorAtual) ?? 0.0
         meta.valorMeta = Double(valorMeta) ?? 0.0
         
-        //Cria uma nova mídia para ser associada ao desejo
-        let midia = Midia(context: manager.persistentContainer.viewContext)
-        // Para salvar a imagem em Core Data, precisa converter para PNGData
-        let dadosImagem = imagem.pngData()
-
-        // Pode converter para jpeg e comprimir para diminuir o espaço utilizado. compressionQuality = 0 -> maior compressão
-        //let dadosImagem = imagem.jpegData(compressionQuality: 0.5)
-        midia.imagem = dadosImagem
         
+        // Cria uma nova mídia para ser associada ao desejo para cada imagem selecionada e associa ao desejo
+        for imagemMidia in imagensMidia {
+            let midia = Midia(context: manager.persistentContainer.viewContext)
+            let dadosImagem = imagemMidia.pngData()
+            midia.imagem = dadosImagem
+            desejo.addToImagens(midia)
+            
+        }
+
         // Associa a categoria e a meta e a imagem ao desejo
         desejo.categoria = categoria
         desejo.meta =  meta
-        desejo.addToImagens(midia)
+        
         
         manager.save()
         print("Salvou o desejo com categoria e meta associadas")

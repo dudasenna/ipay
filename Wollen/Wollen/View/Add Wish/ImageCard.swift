@@ -18,13 +18,10 @@ struct ImageCard : View {
     // Core Data - adicionar imagem
     @StateObject private var addMidiaVM = addMidiaViewModel()
     
-    // Core Data - recuperar imagens
+    // Core Data - recuperar imagens na tela de editar
     @StateObject private var listaMidiaVM = ListaMidiasViewModel()
     
-    // Core Data - desejo ao qual as imagens estarão associadas
-    //let desejoVM: DesejoViewModel
-    
-    
+
     @State var images: [UIImage] = []
     
     @State var image: UIImage = UIImage()
@@ -83,15 +80,9 @@ struct ImageCard : View {
         .onReceive(pub, perform: { _ in
             self.images.append(self.image)
             
-                // Salvar no core data
-                //addMidiaVM.imagem = image
+            // Salvar imagens no Core Data, associado a um desejo
+            addDesejoVM.imagensMidia.append(image)
             
-                // Aqui está salvando sem associar a um desejo especifico
-                //addMidiaVM.saveMidia()
-                        
-                // TO DO: Salvar associado a um desejo
-                addDesejoVM.imagem = image
-                
         })
         .sheet(isPresented: self.$show, content: {
             ImagePicker(show: self.$show, image: self.$image)

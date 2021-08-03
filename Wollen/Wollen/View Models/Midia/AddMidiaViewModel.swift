@@ -55,11 +55,4 @@ class addMidiaViewModel: ObservableObject {
         }
 
     }
-    
-    // Converter Image() para pngData ou jpegData
-    //let data = image.jpegData(compressionQuality: 1.0)
-    //
-    
-    // Converter png data para Image()
-    //UIImage(data: midia.imagem ?? defaultImage.pngData())
 }

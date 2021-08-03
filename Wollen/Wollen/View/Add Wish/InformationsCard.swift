@@ -15,8 +15,6 @@ struct InformationsCard: View {
     }
     
     @ObservedObject var addDesejoVM: AddDesejoViewModel
-    
-    //@StateObject private var addDesejoVM = AddDesejoViewModel()
     @State private var productName: String = ""
     @State private var productPrice: String = ""
     @State private var productPriceFiltered: String = ""
@@ -58,7 +56,7 @@ struct InformationsCard: View {
             HStack() {
                 Text(LocalizedStringKey("Preço:"))
                     .font(.custom("Avenir Next", size: 18))
-                TextField(LocalizedStringKey("Preço do produto"), text: $productPrice) //addDesejoVM.preco)
+                TextField(LocalizedStringKey("Preço do produto"), text: $productPrice)
                     .padding(5)
                     .foregroundColor(.gray)
                     .font(.custom("Avenir Next", size: 16))
@@ -94,7 +92,7 @@ struct InformationsCard: View {
                     .multilineTextAlignment(.leading)
                     .background(RoundedRectangle(cornerRadius: 5).foregroundColor(.white))
                     .overlay(RoundedRectangle(cornerRadius: 5).stroke(Color(UIColor.gray), lineWidth: 1))
-                    .onChange(of: productPrice) { _ in
+                    .onChange(of: productDescription) { _ in
                         self.addDesejoVM.descricao = self.productDescription
                     }
                     .onTapGesture {
@@ -108,7 +106,7 @@ struct InformationsCard: View {
             HStack() {
                 Text(LocalizedStringKey("Link:"))
                     .font(.custom("Avenir Next", size: 18))
-                TextField(LocalizedStringKey("Link do produto"), text: $productLink) //$addDesejoVM.link)
+                TextField(LocalizedStringKey("Link do produto"), text: $productLink)
                     .padding(5)
                     .foregroundColor(.gray)
                     .font(.custom("Avenir Next", size: 16))
