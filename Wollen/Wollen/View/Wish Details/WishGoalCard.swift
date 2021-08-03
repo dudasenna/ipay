@@ -40,12 +40,19 @@ struct WishGoalCard: View {
             }
             // Meta ainda não cumprida
             else {
-                Text(LocalizedStringKey("R$ \(formattedGoalValue) / mês"))
+                let valorMeta = Text(LocalizedStringKey("R$"))
+                    
+                Text("\(valorMeta) \(formattedGoalValue) / \(goalPeriod)")
+                    
+                    
                     .bold()
                     .font(.custom("Avenir Next", size: 22))
                     .foregroundColor(Color("systemMint"))
                     .padding(.bottom)
-                Text(LocalizedStringKey("Se você continuar neste ritmo, você completará a meta daqui a \(goalTime) \(goalPeriod)."))
+               let meta = Text(LocalizedStringKey("Se você continuar neste ritmo, você completará a meta daqui a"))
+                
+                Text("\(meta) \(goalTime) \(goalPeriod).")
+                    
                     .padding(.vertical)
                     .font(.custom("Avenir Next", size: 18))
                     .multilineTextAlignment(.leading)

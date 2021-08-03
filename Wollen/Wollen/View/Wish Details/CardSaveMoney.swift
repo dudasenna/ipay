@@ -10,16 +10,25 @@ import Combine
 
 struct CardSaveMoney: View {
     
+//    var guardarValor = NSLocalizedString("R$", comment: "")
+//    let guardarValor = Text(LocalizedStringKey("R$"))
+    
     init(goal value: Float) {
         self.goalValue = value
-        self.valueTextField = String("R$ \(value)")
+//        self.valueTextField = String("R$ \(value)")
+        self.valueTextField = NSLocalizedString("R$", comment: "")
+        self.valueTextField = ("\(self.valueTextField) \(value)")
     }
+    
+//    let traduz = NSLocalizedString("R$", comment: "")
+//    self.valueTextField = String("\(traduz) \(filtered)")
     
     var goalValue: Float = 0
     @State private var valueTextField: String
     var maxWidth = UIScreen().bounds.width
     
     var body: some View {
+        
         VStack(alignment: .leading) {
             Text(LocalizedStringKey("Guardar dinheiro"))
                 .font(.custom("Avenir", size: 22).bold())
@@ -52,7 +61,7 @@ struct CardSaveMoney: View {
                         // TODO: Salvar valor do TextField no core data
                         
                         // A ideia aqui vai ser colocar o valor da meta
-                        self.valueTextField = String("R$ \(self.goalValue)")
+                        self.valueTextField = String("R$  \(self.goalValue)")
                     },
                     label: {
                         Text(LocalizedStringKey("Salvar"))

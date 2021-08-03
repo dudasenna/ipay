@@ -23,8 +23,7 @@
 "Meta" = "Goal";
 "Cumprida" = "Fulfilled";
 "Parabéns 🎉\n Você merece!" = "Congratulations 🎉\n You deserve it!";
-"R$ %lld / mês" = "$ %lld / month";
-"Se você continuar neste ritmo, você completará a meta daqui a ." = "If you continue at this rate, you'll complete your goal in .";
+"Se você continuar neste ritmo, você completará a meta daqui a" = "If you continue at this rate, you'll complete your goal in";
 "Categorias" = "Categories";
 "Nova categoria" = "New category";
 "Imagens" = "Images";
