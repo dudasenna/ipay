@@ -198,6 +198,16 @@ struct GoalCard: View {
         .fixedSize(horizontal: false, vertical: false)
         .shadow(color: Color.gray.opacity(0.4), radius: 5)
     } // body
+    
+    /// Função responsável por filtar o valor do text field
+    func valueFiltering(_ value: String) -> String {
+        var filtered = value.filter { "0123456789.".contains($0) }
+        let points = filtered.filter { ".".contains($0) }
+        if points.count > 1 {
+            filtered.removeLast()
+        }
+        return filtered
+    }
 }
 
 enum GoalBy: LocalizedStringKey, CaseIterable {
