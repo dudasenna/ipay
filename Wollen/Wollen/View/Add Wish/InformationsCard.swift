@@ -17,7 +17,6 @@ struct InformationsCard: View {
     @ObservedObject var addDesejoVM: AddDesejoViewModel
     @State private var productName: String = ""
     @State private var productPrice: String = ""
-    @State private var productPriceFiltered: String = ""
     @State private var productDescription: String = ""
     @State private var productLink: String = ""
     
@@ -47,7 +46,7 @@ struct InformationsCard: View {
                     .onTapGesture {
                         self.addDesejoVM.nome = self.productName
                     }
-
+                
             }
             .padding(10)
             
@@ -68,14 +67,13 @@ struct InformationsCard: View {
                         let filtered = newValue.filter { "0123456789.,".contains($0) }
                         if filtered != newValue {
                             self.productPrice = String(filtered)
-                            self.productPriceFiltered = filtered
                         }
                     }
                     .onChange(of: productPrice) { _ in
-                        self.addDesejoVM.preco = self.productPriceFiltered
+                        self.addDesejoVM.preco = self.productPrice
                     }
                     .onTapGesture {
-                        self.addDesejoVM.preco = self.productPriceFiltered
+                        self.addDesejoVM.preco = self.productPrice
                     }
             }
             .padding(10)
