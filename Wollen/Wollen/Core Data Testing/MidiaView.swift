@@ -13,24 +13,13 @@ struct MidiaView: View {
     
     @StateObject private var listaMidiasVM = ListaMidiasViewModel()
     
-//    let desejoVM: DesejoViewModel
-//
-//    init() {
-//        self.desejoVM =  DesejoViewModel(desejo: Desejo (context: CoreDataManager.shared.viewContext))
-//    }
+    let desejoVM: DesejoViewModel
     
     var body: some View {
-        
-        // Atualiza o conteúdo da variável midias de ListaMidiasViewModel com todas as midias
-        //let _ = listaMidiasVM.getAllMidias()
-        
-        // TO DO Recuperar midia para um desejo especifico
-        //let _ = listaMidiasVM.getMidiasFromDesejo(desejo: <#T##DesejoViewModel#>)
         
         ScrollView(.horizontal) {
             HStack(spacing: 20) {
                
-                
                 ForEach(listaMidiasVM.midias, id: \.id) { midia in
                     let image = listaMidiasVM.getImageFromMidia(midia: midia)
                     Image(uiImage: image)
@@ -43,14 +32,18 @@ struct MidiaView: View {
             }
         }
         .onAppear(perform: {
-            listaMidiasVM.getAllMidias()
+            // Recupera as midias para um desejo especifico
+            listaMidiasVM.getMidiasFromDesejo(desejo: desejoVM)
         })
     }
 }
 
 struct MidiaView_Previews: PreviewProvider {
     static var previews: some View {
-        MidiaView()
+        
+        let desejoVM = DesejoViewModel(desejo: Desejo(context: CoreDataManager.shared.viewContext))
+        
+        MidiaView(desejoVM: desejoVM)
     }
 }
 

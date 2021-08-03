@@ -44,7 +44,7 @@ struct AddDesejoCompleto: View {
             HStack {
                 InformationsCard(addDesejoVM: addDesejoVM)
                 CategoriesCard(addDesejoVM: addDesejoVM)
-                ImageCard()
+                ImageCard(addDesejoVM: addDesejoVM)
             }
             
             

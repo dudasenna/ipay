@@ -9,6 +9,12 @@ import SwiftUI
 
 struct ImageCard : View {
     
+    init(addDesejoVM: AddDesejoViewModel) {
+        self.addDesejoVM = addDesejoVM
+    }
+    
+    @ObservedObject var addDesejoVM: AddDesejoViewModel
+    
     // Core Data - adicionar imagem
     @StateObject private var addMidiaVM = addMidiaViewModel()
     
@@ -78,12 +84,13 @@ struct ImageCard : View {
             self.images.append(self.image)
             
                 // Salvar no core data
-                addMidiaVM.imagem = image
+                //addMidiaVM.imagem = image
+            
                 // Aqui está salvando sem associar a um desejo especifico
-                addMidiaVM.saveMidia()
+                //addMidiaVM.saveMidia()
                         
                 // TO DO: Salvar associado a um desejo
-                //addMidiaVM.addMidiaToDesejo(desejoId: desejoVM.id)
+                addDesejoVM.imagem = image
                 
         })
         .sheet(isPresented: self.$show, content: {
@@ -102,9 +109,9 @@ struct CardEmpty: View {
 
 struct  SenderView_Previews: PreviewProvider {
     static var previews: some View{
-        //let desejoVM = DesejoViewModel(desejo: Desejo (context: CoreDataManager.shared.viewContext))
-        //ImageCard(desejoVM: desejoVM)
-        ImageCard()
+        
+        let addDesejoVM = AddDesejoViewModel()
+        ImageCard(addDesejoVM: addDesejoVM)
             .previewDevice("iPhone 11")
             .previewLayout(.sizeThatFits)
             .padding()

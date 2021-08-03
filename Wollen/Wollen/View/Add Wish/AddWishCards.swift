@@ -38,7 +38,7 @@ struct AddWishCards: View {
             }
             
             HStack (alignment: .top, spacing: 30) {
-                ImageCard()
+                ImageCard(addDesejoVM: addDesejoVM)
                 GoalCard()
             }
             
