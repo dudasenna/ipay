@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct AddWishCards: View {
+    @StateObject private var addDesejoVM = AddDesejoViewModel()
+    
     var body: some View {
         
         VStack (alignment: .center, spacing: 30) {
@@ -31,8 +33,8 @@ struct AddWishCards: View {
             }
             
             HStack (alignment: .top, spacing: 30) {
-                InformationsCard()
-                CategoriesCard()
+                InformationsCard(addDesejoVM: addDesejoVM)
+                CategoriesCard(addDesejoVM: addDesejoVM)
             }
             
             HStack (alignment: .top, spacing: 30) {
@@ -41,7 +43,7 @@ struct AddWishCards: View {
             }
             
             Button {
-                //
+                //addDesejoVM.addDesejo()
             } label: {
                 Text(LocalizedStringKey("Salvar"))
                     .foregroundColor(Color(UIColor(named: "preto_primario")!))

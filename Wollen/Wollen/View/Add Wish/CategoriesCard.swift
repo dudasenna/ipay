@@ -9,6 +9,16 @@ import SwiftUI
 
 struct CategoriesCard: View {
     
+    init(addDesejoVM: AddDesejoViewModel) {
+        self.addDesejoVM = addDesejoVM
+    }
+    
+    @ObservedObject var addDesejoVM: AddDesejoViewModel
+    
+    @StateObject private var listaCategoriasVM = ListaCategoriasViewModel()
+    
+    @State private var colorSelected: String = "systemYellow"
+    
     private var adaptiveLayout = [GridItem(.adaptive(minimum: 150))]
     private var flexibleLayout = [GridItem(.flexible()), GridItem(.flexible())]
     
@@ -34,10 +44,27 @@ struct CategoriesCard: View {
             
             ScrollView(.horizontal) {
                 HStack (spacing: 20) {
-                    ForEach (0..<categoriesTitle.count) { category in
-                        CategoryCard(categoryColor: categoriesColor[category], categoryTitle: categoriesTitle[category])
+                    ForEach (listaCategoriasVM.categorias, id: \.id) { categoria in
+                        
+                        Button {
+                            addDesejoVM.cor = categoria.cor
+                            addDesejoVM.nomeCategoria = categoria.nome
+                            
+                            colorSelected = categoria.nome
+                            
+                        } label: {
+                            if (categoria.nome == colorSelected) {
+                                CategoryCard(categoryColor: categoria.cor, categoryTitle: categoria.nome)
+                                    .foregroundColor(Color(UIColor.black))
+                            } else {
+                                CategoryCard(categoryColor: categoria.cor+"700", categoryTitle: categoria.nome)
+                                    .foregroundColor(Color(UIColor.black))
+                            }
+                            
+                        }
+
                     }
-                }
+                }.padding()
                 
             }
             .padding()
@@ -60,6 +87,9 @@ struct CategoriesCard: View {
         .background(Color(red: 248/256, green: 248/256, blue: 248/256))
         .cornerRadius(10)
         .shadow(color: Color.gray.opacity(0.4), radius: 5)
+        .onAppear(perform: {
+            listaCategoriasVM.getAllCategorias()
+        })
         
         
     }
@@ -68,7 +98,10 @@ struct CategoriesCard: View {
 
 struct CategoriesCard_Previews: PreviewProvider {
     static var previews: some View {
-        CategoriesCard()
+        
+        let addDesejoVM = AddDesejoViewModel()
+        
+        CategoriesCard(addDesejoVM: addDesejoVM)
             .previewDevice("iPhone 11")
             .previewLayout(.sizeThatFits)
             .padding()

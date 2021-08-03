@@ -57,7 +57,7 @@ struct MyWishesCards: View {
                 }
             }
             
-            .padding(.horizontal)
+            .padding()
             .shadow(color: Color.gray.opacity(0.2), radius: 5)
             //gostei mais da sombra no tom natural
         }

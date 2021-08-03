@@ -11,14 +11,14 @@ import CoreData
 class AddDesejoViewModel: ObservableObject {
     
     // Atributos do Desejo
-    var nome: String = ""
-    var descricao: String = ""
-    var link: String = ""
-    var preco: String = ""
+    @Published var nome: String = ""
+    @Published var descricao: String = ""
+    @Published var link: String = ""
+    @Published var preco: String = ""
     
     // Atributos da Categoria
-    var nomeCategoria: String = ""
-    var cor: String = ""
+    @Published var nomeCategoria: String = ""
+    @Published var cor: String = ""
     
     // Atributos da Meta
     var duracao: String = ""

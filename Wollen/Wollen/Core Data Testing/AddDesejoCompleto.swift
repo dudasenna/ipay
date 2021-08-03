@@ -23,6 +23,8 @@ struct AddDesejoCompleto: View {
                     TextField("Link", text: $addDesejoVM.link)
                 }.padding()
                 
+                
+                
                 VStack(spacing: 5) {
                     Text("Categoria")
                         .bold()
@@ -39,6 +41,13 @@ struct AddDesejoCompleto: View {
                     TextField("Frequência", text: $addDesejoVM.frequencia)
                 }.padding()
             }
+            HStack {
+                InformationsCard(addDesejoVM: addDesejoVM)
+                CategoriesCard(addDesejoVM: addDesejoVM)
+                ImageCard()
+            }
+            
+            
             
             Button("Salvar") {
                 addDesejoVM.addDesejo()
