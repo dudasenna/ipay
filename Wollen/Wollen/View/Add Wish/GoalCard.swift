@@ -43,7 +43,8 @@ struct GoalCard: View {
                 },
                 label: {
                     Image(systemName: "info.circle")
-                        .foregroundColor(Color("preto_secundario"))
+                        .foregroundColor(Color(UIColor(named: "systemMint")!))
+                        .imageScale(.large)
                 })
                 .popover(isPresented: $showInformationPopup) {
                     InformationPopup()
