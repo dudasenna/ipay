@@ -10,6 +10,8 @@ import SwiftUI
 struct AddWishCards: View {
     @StateObject private var addDesejoVM = AddDesejoViewModel()
     
+    @Environment(\.presentationMode) var presentation
+    
     var body: some View {
         
         VStack (alignment: .center, spacing: 30) {
@@ -42,9 +44,12 @@ struct AddWishCards: View {
                 GoalCard()
             }
             
+            
             Button {
-                //TO DO - ir para a tela de detalhes do desejo
                 addDesejoVM.addDesejo()
+                // Quando salva, volta para a Home
+                self.presentation.wrappedValue.dismiss()
+    
             } label: {
                 Text(LocalizedStringKey("Salvar"))
                     .foregroundColor(Color(UIColor(named: "preto_primario")!))

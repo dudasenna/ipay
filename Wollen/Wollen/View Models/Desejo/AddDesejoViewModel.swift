@@ -29,6 +29,7 @@ class AddDesejoViewModel: ObservableObject {
     
     // Atributos da Mídia
     @Published var imagensMidia = [UIImage]()
+    var imagemPadrao = #imageLiteral(resourceName: "card")
     
     // Cria um desejo com categoria e meta associadas
     func addDesejo() {
@@ -42,10 +43,10 @@ class AddDesejoViewModel: ObservableObject {
         desejo.preco = Double(preco) ?? 0.0
         
         // Cria uma nova categoria para ser associada ao desejo
-        // TO DO: checar se a categoria já existe?
         let categoria = Categoria(context: context)
         categoria.nome = nomeCategoria
         categoria.cor = cor
+        desejo.categoria = categoria
         
         // Cria uma nova meta para ser associada ao desejo
         let meta = Meta(context: context)
@@ -53,24 +54,27 @@ class AddDesejoViewModel: ObservableObject {
         meta.frequencia = frequencia
         meta.valorAtual = Double(valorAtual) ?? 0.0
         meta.valorMeta = Double(valorMeta) ?? 0.0
-        
-        
-        // Cria uma nova mídia para ser associada ao desejo para cada imagem selecionada e associa ao desejo
-        for imagemMidia in imagensMidia {
-            let midia = Midia(context: manager.persistentContainer.viewContext)
-            let dadosImagem = imagemMidia.pngData()
-            midia.imagem = dadosImagem
-            desejo.addToImagens(midia)
-            
-        }
-
-        // Associa a categoria e a meta e a imagem ao desejo
-        desejo.categoria = categoria
         desejo.meta =  meta
         
+        // Verifica se o array de imagem está vazio, e se estiver, adiciona uma imagem padrão
+        if (imagensMidia.isEmpty) {
+            let midia = Midia(context: context)
+            let dadosImagem = imagemPadrao.pngData()
+            midia.imagem = dadosImagem
+            desejo.addToImagens(midia)
+        } else {
+            // Cria uma nova mídia para ser associada ao desejo para cada imagem selecionada e associa ao desejo
+            for imagemMidia in imagensMidia {
+                let midia = Midia(context: context)
+                let dadosImagem = imagemMidia.pngData()
+                midia.imagem = dadosImagem
+                desejo.addToImagens(midia)
+                
+            }
+        }
         
         manager.save()
-        print("Salvou o desejo com categoria e meta associadas")
+        
     }
     
     // Cria um desejo associado a uma categoria já existente
@@ -95,6 +99,15 @@ class AddDesejoViewModel: ObservableObject {
             meta.valorAtual = Double(valorAtual) ?? 0.0
             meta.valorMeta = Double(valorMeta) ?? 0.0
             desejo.meta = meta
+            
+            // Cria uma nova mídia para ser associada ao desejo para cada imagem selecionada e associa ao desejo
+            for imagemMidia in imagensMidia {
+                let midia = Midia(context: manager.persistentContainer.viewContext)
+                let dadosImagem = imagemMidia.pngData()
+                midia.imagem = dadosImagem
+                desejo.addToImagens(midia)
+                
+            }
             
             manager.save()
             print("Salvou o desejo!")
