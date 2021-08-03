@@ -21,7 +21,9 @@ struct WishesFromCategory: View {
     @State private var gridColumn: Double = 3.0
     
     var body: some View {
+        
         VStack (alignment: .leading) {
+            
             HStack (alignment: .top) {
                 VStack (alignment: .leading){
                     Text(LocalizedStringKey("Meus desejos"))
