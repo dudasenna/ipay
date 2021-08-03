@@ -24,7 +24,7 @@ struct GoalCard: View {
     @State private var showInformationPopup: Bool = false
     @ObservedObject var desejo: AddDesejoViewModel
     var maxWidth = UIScreen().bounds.width
-    @State private var valueFiltered: String = "100.00"
+    @State private var valuePlaceholder = "R$ 100.0"
     
     var body: some View {
         VStack (alignment: .leading) {
@@ -113,8 +113,8 @@ struct GoalCard: View {
                     Spacer()
                     
                     TextField(
-                        String(valueTextField),
-                        text: $valueTextField
+                        String(valuePlaceholder),
+                        text: $valuePlaceholder
                     )
                     .padding(5)
                     .foregroundColor(.gray)
@@ -122,20 +122,20 @@ struct GoalCard: View {
                     .multilineTextAlignment(.leading)
                     .background(RoundedRectangle(cornerRadius: 5).foregroundColor(.white))
                     .overlay(RoundedRectangle(cornerRadius: 5).stroke(Color(UIColor.gray), lineWidth: 1))
-                    .frame(minWidth: 0, idealWidth: 200, maxWidth: maxWidth/3, alignment: .trailing)
+                    .frame(minWidth: 0, idealWidth: 200, alignment: .trailing)
                     .keyboardType(.numberPad)
-                    .onReceive(Just(valueTextField)) { newValue in
-                        let filtered = newValue.filter { "0123456789.,".contains($0) }
+                    .onReceive(Just(valuePlaceholder)) { newValue in
+                        let filtered = valueFiltering(newValue)
                         if filtered != newValue {
-                            self.valueTextField = String("R$ \(filtered)")
-                            self.valueFiltered = filtered
+                            self.valueTextField = String("\(filtered)")
+                            self.valuePlaceholder = "R$ \(self.valueTextField)"
                         }
                     }
                     .onChange(of: valueTextField) { _ in
-                        self.desejo.valorMeta = self.valueFiltered
+                        self.desejo.valorMeta = self.valueTextField
                     }
                     .onTapGesture {
-                        self.desejo.valorMeta = self.valueFiltered
+                        self.desejo.valorMeta = self.valueTextField
                     }
                     
                 } else {
@@ -196,6 +196,16 @@ struct GoalCard: View {
         .cornerRadius(10)
         .fixedSize(horizontal: false, vertical: false)
     } // body
+    
+    /// Função responsável por filtar o valor do text field
+    func valueFiltering(_ value: String) -> String {
+        var filtered = value.filter { "0123456789.".contains($0) }
+        let points = filtered.filter { ".".contains($0) }
+        if points.count > 1 {
+            filtered.removeLast()
+        }
+        return filtered
+    }
 }
 
 enum GoalBy: LocalizedStringKey, CaseIterable {
