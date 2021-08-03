@@ -21,6 +21,7 @@ struct GoalCard: View {
     @State private var duration: DurationTypes = .weeks
     @State private var valueTextField: String = "R$ 100.00"
     @State private var quantityDuration = 1
+    @State private var showInformationPopup: Bool = false
     @ObservedObject var desejo: AddDesejoViewModel
     var maxWidth = UIScreen().bounds.width
     @State private var valueFiltered: String = "100.00"
@@ -37,12 +38,15 @@ struct GoalCard: View {
                 Spacer()
                 
                 Button(action: {
-                    // TODO: Ação do botão de informação
+                    self.showInformationPopup.toggle()
                 },
                 label: {
                     Image(systemName: "info.circle")
-                        .foregroundColor(Color.gray)
+                        .foregroundColor(Color("preto_secundario"))
                 })
+                .popover(isPresented: $showInformationPopup) {
+                    InformationPopup()
+                }
             }
             
             Picker( selection: $goalBy, label: Text(LocalizedStringKey("Que tipo de meta você prefere?"))) {
