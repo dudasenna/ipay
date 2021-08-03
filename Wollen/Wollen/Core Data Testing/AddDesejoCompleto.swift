@@ -37,7 +37,7 @@ struct AddDesejoCompleto: View {
                         .bold()
                     TextField("Valor Meta", text: $addDesejoVM.valorMeta)
                     TextField("Valor Atual", text: $addDesejoVM.valorAtual)
-                    TextField("Duração", text: $addDesejoVM.duracao)
+                    //TextField("Duração", text: $addDesejoVM.duracao)
                     TextField("Frequência", text: $addDesejoVM.frequencia)
                 }.padding()
             }
@@ -48,6 +48,8 @@ struct AddDesejoCompleto: View {
             }
             
             
+            
+            GoalCard(desejo: addDesejoVM)
             
             Button("Salvar") {
                 addDesejoVM.addDesejo()

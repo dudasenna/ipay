@@ -22,10 +22,12 @@ class AddDesejoViewModel: ObservableObject {
     @Published var cor: String = ""
     
     // Atributos da Meta
-    var duracao: String = ""
-    var frequencia: String = ""
-    var valorAtual: String = ""
-    var valorMeta: String = ""
+    @Published var duracao: Int = 0
+    @Published var duracao2: String = ""
+    @Published var frequencia: String = ""
+    @Published var valorAtual: String = ""
+    @Published var valorMeta: String = ""
+    @Published var tipo: String = "Por valor"
     
     // Atributos da Mídia
     @Published var imagensMidia = [UIImage]()
@@ -51,9 +53,11 @@ class AddDesejoViewModel: ObservableObject {
         // Cria uma nova meta para ser associada ao desejo
         let meta = Meta(context: context)
         meta.duracao = Int16(duracao) ?? 0
+        meta.duracao2 = duracao2
         meta.frequencia = frequencia
         meta.valorAtual = Double(valorAtual) ?? 0.0
         meta.valorMeta = Double(valorMeta) ?? 0.0
+        meta.tipo = tipo
         desejo.meta =  meta
         
         // Verifica se o array de imagem está vazio, e se estiver, adiciona uma imagem padrão
@@ -95,9 +99,11 @@ class AddDesejoViewModel: ObservableObject {
             
             let meta = Meta(context: manager.persistentContainer.viewContext)
             meta.duracao = Int16(duracao) ?? 0
+            meta.duracao2 = duracao2
             meta.frequencia = frequencia
             meta.valorAtual = Double(valorAtual) ?? 0.0
             meta.valorMeta = Double(valorMeta) ?? 0.0
+            meta.tipo = tipo
             desejo.meta = meta
             
             // Cria uma nova mídia para ser associada ao desejo para cada imagem selecionada e associa ao desejo

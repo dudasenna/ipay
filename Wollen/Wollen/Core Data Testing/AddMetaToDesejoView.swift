@@ -19,7 +19,7 @@ struct AddMetaToDesejoView: View {
         VStack {
             TextField("Valor Meta", text: $addMetaVM.valorMeta)
             TextField("Valor Atual", text: $addMetaVM.valorAtual)
-            TextField("Duração", text: $addMetaVM.duracao)
+            //TextField("Duração", text: $addMetaVM.duracao)
             TextField("Frequência", text: $addMetaVM.frequencia)
             Button("Salvar") {
                 addMetaVM.addMetaToDesejo(desejoId: desejoVM.id)
