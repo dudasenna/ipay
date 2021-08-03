@@ -43,7 +43,8 @@ struct AddWishCards: View {
             }
             
             Button {
-                //addDesejoVM.addDesejo()
+                //TO DO - ir para a tela de detalhes do desejo
+                addDesejoVM.addDesejo()
             } label: {
                 Text(LocalizedStringKey("Salvar"))
                     .foregroundColor(Color(UIColor(named: "preto_primario")!))
