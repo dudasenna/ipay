@@ -57,4 +57,6 @@
 "Novo desejo" = "New wish";
 "Novo desejo na categoria %@" = "New wish in the category %@";
 "Adicionar desejo" = "Add wish";
+"Informações não encontradas" = "Information missing";
+"Por favor defina o nome, o preço e a categoria do seu desejo" = "Please make sure you have defined the name, the price and the category for your wish";
 "Outra" = "Other";
