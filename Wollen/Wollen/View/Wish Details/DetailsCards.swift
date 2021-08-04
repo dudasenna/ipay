@@ -74,7 +74,7 @@ struct DetailsCards: View {
                 
                 VStack(alignment: .leading, spacing:30){
 
-                    CardSaveMoney(goal: 50)
+                    CardSaveMoney(goal: 50, desejo: desejoVM)
                     
                         .frame(minWidth: 100, idealWidth: 502, maxWidth: 515, minHeight: 100, idealHeight: 150, maxHeight: 155, alignment: .leading)
                     

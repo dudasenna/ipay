@@ -55,5 +55,14 @@ class UpdateDesejoViewModel: ObservableObject {
         }
     }
     
+    func updateValorAtual(desejo: DesejoViewModel, valor: String) {
+        let desejo = CoreDataManager.shared.getDesejoById(id: desejo.id)
+        
+        if let desejo = desejo {
+            desejo.meta?.valorAtual += Double(valor) ?? 0.0
+            CoreDataManager.shared.save()
+        }
+    }
+    
 }
 
