@@ -36,7 +36,7 @@ struct DetailsCards: View {
                     }) .padding()
                 
                     VStack(alignment: .leading){
-                Text(LocalizedStringKey("Kindle"))
+                Text(desejoVM.nome)
                     .bold()
                     .font(.custom("Avenir Next", size: 30))
 
@@ -84,8 +84,8 @@ struct DetailsCards: View {
                        
                     } .padding(.bottom)
                     .padding(.top)
-                    DescriptionCard()
-                    LinksCard()
+                    DescriptionCard(desejoVM: desejoVM)
+                    LinksCard(desejoVM: desejoVM)
                     
                 }
                 GalleryCard(desejoVM: desejoVM)
