@@ -9,6 +9,13 @@ import SwiftUI
 
 struct GalleryCard: View {
     
+    init(desejoVM: DesejoViewModel) {
+        self.desejoVM = desejoVM
+    }
+    
+    @ObservedObject var listaMidiasVM = ListaMidiasViewModel()
+    var desejoVM: DesejoViewModel
+    
     var body: some View {
         GeometryReader { geometry in
             VStack {
@@ -24,8 +31,9 @@ struct GalleryCard: View {
                 // Imagens:
                 ScrollView {
                     VStack (alignment: .center) {
-                        ForEach(1..<7) { _ in
-                            imageFromDatabase(width: geometry.size.width)
+                        ForEach(listaMidiasVM.midias, id: \.id) { midia in
+                            let image = listaMidiasVM.getImageFromMidia(midia: midia)
+                            imageTreated(image: image, width: geometry.size.width)
                         }
                     }
                 }.padding()
@@ -33,25 +41,30 @@ struct GalleryCard: View {
             .background(Color(red: 248/256, green: 248/256, blue: 248/256))
             .cornerRadius(10)
             .shadow(color: Color.gray.opacity(0.4), radius: 5)
+        }.onAppear() {
+            self.listaMidiasVM.getMidiasFromDesejo(desejo: self.desejoVM)
         }
         
     }
-}
-
-fileprivate func imageFromDatabase(width: CGFloat) -> some View {
-    let image = Image("teste")
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-            .frame(width: width*0.8)
-            .clipShape(RoundedRectangle(cornerRadius: 10))
-            .padding()
-            .shadow(color: Color.gray.opacity(0.4), radius: 5)
-    return image
+    
+    func imageTreated(image: UIImage, width: CGFloat) -> some View {
+        let image = Image(uiImage: image)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: width*0.8)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+                .padding()
+                .shadow(color: Color.gray.opacity(0.4), radius: 5)
+        return image
+    }
 }
 
 struct GalleryCard_Previews: PreviewProvider {
     static var previews: some View {
-        GalleryCard()
+        let listaMidiasVM = ListaMidiasViewModel()
+        let desejo = Desejo()
+        let desejoVM = DesejoViewModel(desejo: desejo)
+        GalleryCard(desejoVM: desejoVM)
             .previewLayout(.sizeThatFits)
             .padding()
     }

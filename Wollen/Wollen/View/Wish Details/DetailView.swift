@@ -8,12 +8,19 @@
 import SwiftUI
 
 struct DetailView: View {
+    
+    init(desejoVM: DesejoViewModel) {
+        self.desejoVM = desejoVM
+    }
+    
+    var desejoVM: DesejoViewModel
+    
     var body: some View {
         ZStack {
             (Color(UIColor(named: "branco_bg")!))
                 .ignoresSafeArea(.all)
             
-           DetailsCards()
+           DetailsCards(desejoVM: desejoVM)
         }
         .padding(30)
         .navigationBarHidden(true)
@@ -22,6 +29,8 @@ struct DetailView: View {
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailsCards()
+        let desejo = Desejo()
+        let desejoVM = DesejoViewModel(desejo: desejo)
+        DetailsCards(desejoVM: desejoVM)
     }
 }
