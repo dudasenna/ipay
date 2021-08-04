@@ -58,7 +58,7 @@
 "Novo desejo na categoria %@" = "New wish in the category %@";
 "Adicionar desejo" = "Add wish";
 "Informações não encontradas" = "Information missing";
-"Por favor defina o nome, o preço e a categoria do seu desejo" = "Please make sure you have defined the name, the price and the category for your wish";
+"Por favor defina os detalhes do seu desejo" = "Please make sure you have defined the details of your wish";
 "Outra" = "Other";
 "Deletar desejo" = "Delete wish";
 "Tem certeza que deseja deletar este desejo? Esta ação não poderá ser desfeita." = "Are you sure you want to delete this wish? This action cannot be undone.";
