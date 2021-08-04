@@ -9,6 +9,19 @@ import SwiftUI
 
 struct ImageCard : View {
     
+    init(addDesejoVM: AddDesejoViewModel) {
+        self.addDesejoVM = addDesejoVM
+    }
+    
+    @ObservedObject var addDesejoVM: AddDesejoViewModel
+    
+    // Core Data - adicionar imagem
+    @StateObject private var addMidiaVM = addMidiaViewModel()
+    
+    // Core Data - recuperar imagens na tela de editar
+    @StateObject private var listaMidiaVM = ListaMidiasViewModel()
+    
+
     @State var images: [UIImage] = []
     
     @State var image: UIImage = UIImage()
@@ -22,22 +35,18 @@ struct ImageCard : View {
     
     var body: some View {
         VStack (alignment: .leading){
-            HStack{
-                Text("Imagens")
+            HStack (alignment: .top) {
+                Text(LocalizedStringKey("Imagens"))
                     .bold()
                     .font(.custom("Avenir Next", size: 22))
-                ScrollView(.horizontal) {
-                    HStack(spacing: 20) {
-                        
-                    }
-                }
+                Spacer()
+                
                 Button(action: {
                     self.show.toggle()
                 }) {
                     Image(systemName: "plus.circle")
-                        .font(.system(size:24))
-                        .foregroundColor(.gray)
-                        .padding()
+                        .foregroundColor(Color(UIColor(named: "systemMint")!))
+                        .imageScale(.large)
                     
                 }
                 
@@ -46,6 +55,8 @@ struct ImageCard : View {
             ScrollView(.horizontal) {
                 HStack(spacing: 20) {
                     ForEach(images, id: \.self) { data in
+                        
+                        //TO DO: recuperar do core data
                         Image(uiImage: data)
                             .renderingMode(.original)
                             .resizable()
@@ -61,16 +72,20 @@ struct ImageCard : View {
                 }
             }
         }
-        .padding(15)
+        .padding(20)
         .background(Color(red: 248/256, green: 248/256, blue: 248/256))
         .cornerRadius(10)
         .shadow(color: Color.gray.opacity(0.4), radius: 5)
         .onDrop(of: ["public.image"], delegate: DropImageDelegate(image: $image))
         .onReceive(pub, perform: { _ in
             self.images.append(self.image)
+            
+            // Salvar imagens no Core Data, associado a um desejo
+            addDesejoVM.imagensMidia.append(image)
+            
         })
         .sheet(isPresented: self.$show, content: {
-            ImagePicker(show: self.$show, image: self.$images)
+            ImagePicker(show: self.$show, image: self.$image)
         })
     }
 }
@@ -85,7 +100,9 @@ struct CardEmpty: View {
 
 struct  SenderView_Previews: PreviewProvider {
     static var previews: some View{
-        ImageCard()
+        
+        let addDesejoVM = AddDesejoViewModel()
+        ImageCard(addDesejoVM: addDesejoVM)
             .previewDevice("iPhone 11")
             .previewLayout(.sizeThatFits)
             .padding()

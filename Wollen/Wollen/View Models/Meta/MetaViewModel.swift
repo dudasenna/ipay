@@ -20,6 +20,10 @@ struct MetaViewModel {
         return meta.duracao
     }
     
+    var duracao2: String {
+        return meta.duracao2 ?? "semanal"
+    }
+    
     var frequencia: String {
         return meta.frequencia ?? ""
     }
@@ -30,6 +34,17 @@ struct MetaViewModel {
     
     var valorMeta: Double {
         return meta.valorMeta
+    }
+
+    var tipo: String {
+        return meta.tipo ?? "Por valor"
+    }
+
+    var progresso: Double {
+        if meta.valorMeta != 0.0 {
+            return meta.valorAtual / meta.valorMeta
+        }
+        return 0.0
     }
     
 }

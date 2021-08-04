@@ -40,9 +40,9 @@ struct ListaCategoriasView: View {
                         // Aba Geral - exibe todos os desejos, independente da categoria
                         
                         NavigationLink(
-                            destination: ListaDesejosView(),
+                            destination: HomeView(),
                             label: {
-                                Text("Geral")
+                                Text(LocalizedStringKey("Geral"))
                                     .font(.title2)
                             })
                         
@@ -54,7 +54,7 @@ struct ListaCategoriasView: View {
                                 destination: ListaDesejosCategoriaView(categoriaVM: categoria),
                                 label: {
                                     DetalhesCategoria(categoria: categoria)
-                                        //.font(.custom("Avenir Next", size: 18))
+                                    //.font(.custom("Avenir Next", size: 18))
                                         .font(.title2)
                                 })
                         }.onDelete(perform: deleteCategoria)
@@ -64,29 +64,41 @@ struct ListaCategoriasView: View {
                         Button {
                             isPresented.toggle()
                         } label: {
-                            Text("Nova categoria")
-                                .font(.title2)
+                            Text(LocalizedStringKey("Nova categoria"))
+                                .font(.custom("Avenir Next", size: 22))
                         }
                         .sheet(isPresented: $isPresented, onDismiss: {
                             listaCategoriasVM.getAllCategorias()
                         }, content: {
-                            AddCategoriaView()
+//                            AddCategoriaView()
+                            NewCategory()
                         })
                         
                     }
                 }
+                
+                // Personalização Side Bar
+                // Muda a cor de fundo da Side Bar
+                .onAppear {
+                    UITableView.appearance().backgroundColor = .white
+                }
+                // Muda a cor de fundo de um item selecionado na Lista
+                .accentColor(Color("systemMint"))
+               
                 .toolbar {
                     EditButton()
+                        //.font(.custom("Avenir Next", size: 18))
                 }
-                .listStyle(SidebarListStyle())
-                .navigationTitle("Categorias")
-                //.font(.custom("Avenir Next", size: 22))
-                .accentColor(Color(UIColor(named: "systemMint")!))
+                
+                .navigationTitle(LocalizedStringKey("Categorias"))
+
             }
-            
-            ListaDesejosView()
+           
+            HomeView()
             
         }
+        // Modifica a fonte do título da Navigation bar e a cor dos ícones
+        .navigationAppearance(backgroundColor: .white, foregroundColor: .black, tintColor: UIColor(Color("systemMint")), hideSeparator: true)
         .onAppear(perform: {
             listaCategoriasVM.getAllCategorias()
         })

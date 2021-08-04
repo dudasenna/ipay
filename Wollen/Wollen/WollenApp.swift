@@ -14,8 +14,7 @@ struct WollenApp: App {
     var body: some Scene {
         WindowGroup {
             //ContentView()
-            ListaCategoriasView()
-               
+          SideBar()
 
         }
     }

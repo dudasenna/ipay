@@ -18,7 +18,7 @@ struct WishGoalCard: View {
         let formattedGoalValue = String(format: "%.2f", goalValue)
         VStack (alignment: .center, spacing: nil, content: {
             HStack {
-                Text("Meta")
+                Text(LocalizedStringKey("Meta"))
                     .bold()
                     .font(.custom("Avenir Next", size: 22))
                     .padding()
@@ -26,12 +26,12 @@ struct WishGoalCard: View {
             }
             // Meta cumprida
             if accomplished {
-                Text("Cumprida")
+                Text(LocalizedStringKey("Cumprida"))
                     .bold()
                     .font(.custom("Avenir Next", size: 22))
                     .foregroundColor(Color(categoryColor))
                     .padding(.bottom)
-                Text("Parabéns 🎉\n Você merece!")
+                Text(LocalizedStringKey("Parabéns 🎉\n Você merece!"))
                     .padding(.vertical)
                     .padding(.bottom, 20)
                     .font(.custom("Avenir Next", size: 18))
@@ -40,12 +40,19 @@ struct WishGoalCard: View {
             }
             // Meta ainda não cumprida
             else {
-                Text("R$ \(formattedGoalValue) / mês")
+                let valorMeta = Text(LocalizedStringKey("R$"))
+                    
+                Text("\(valorMeta) \(formattedGoalValue) / \(goalPeriod)")
+                    
+                    
                     .bold()
                     .font(.custom("Avenir Next", size: 22))
                     .foregroundColor(Color("systemMint"))
                     .padding(.bottom)
-                Text("Se você continuar neste ritmo, você completará a meta daqui a \(goalTime) \(goalPeriod).")
+               let meta = Text(LocalizedStringKey("Se você continuar neste ritmo, você completará a meta daqui a"))
+                
+                Text("\(meta) \(goalTime) \(goalPeriod).")
+                    
                     .padding(.vertical)
                     .font(.custom("Avenir Next", size: 18))
                     .multilineTextAlignment(.leading)

@@ -21,7 +21,7 @@ struct AddDesejoToCategoriaView: View {
                 VStack {
                     Text("Desejo")
                         .bold()
-                    TextField("Nome", text: $addDesejoVM.nome)
+                    TextField(LocalizedStringKey("Nome"), text: $addDesejoVM.nome)
                     TextField("Preco", text: $addDesejoVM.preco)
                     TextField("Descricao", text: $addDesejoVM.descricao)
                     TextField("Link", text: $addDesejoVM.link)
@@ -40,12 +40,12 @@ struct AddDesejoToCategoriaView: View {
                         .bold()
                     TextField("Valor Meta", text: $addDesejoVM.valorMeta)
                     TextField("Valor Atual", text: $addDesejoVM.valorAtual)
-                    TextField("Duração", text: $addDesejoVM.duracao)
+                    //TextField("Duração", text: $addDesejoVM.duracao)
                     TextField("Frequência", text: $addDesejoVM.frequencia)
                 }
             }
             
-            Button("Salvar") {
+            Button(LocalizedStringKey("Salvar")) {
                 addDesejoVM.addDesejoToCategoria(categoriaId: categoriaVM.id)
             }
         }.padding()

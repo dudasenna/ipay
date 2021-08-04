@@ -9,13 +9,21 @@ import SwiftUI
 import Combine
 
 struct CardSaveMoney: View {
-    
+
+    // init(goal value: Float, desejo: DesejoViewModel) {
+    //     self.goalValue = value
+    //     self.valueTextField = String("R$ \(value)")
+    //     self.desejoVM = desejo
+    // }
+
     init(goal value: Float, desejo: DesejoViewModel) {
         self.goalValue = value
-        self.valueTextField = String("R$ \(value)")
+        //self.valueTextField = String("R$ \(value)")
+        let textAux = NSLocalizedString("R$", comment: "")
+        self.valueTextField = ("\(textAux) \(value)")
         self.desejoVM = desejo
     }
-    
+
     @StateObject private var updateDesejoVM = UpdateDesejoViewModel()
     @StateObject private var listaMetasVM = ListaMetasViewModel()
     @State private var valueTextField: String
@@ -27,11 +35,12 @@ struct CardSaveMoney: View {
     let desejoVM: DesejoViewModel
     
     var body: some View {
+        
         VStack(alignment: .leading) {
-            Text("Guardar dinheiro")
+            Text(LocalizedStringKey("Guardar dinheiro"))
                 .font(.custom("Avenir", size: 22).bold())
             
-            Text("Quanto você gostaria de guardar?")
+            Text(LocalizedStringKey("Quanto você gostaria de guardar?"))
                 .font(.custom("Avenir", size: 18))
                 .padding(.vertical)
             
