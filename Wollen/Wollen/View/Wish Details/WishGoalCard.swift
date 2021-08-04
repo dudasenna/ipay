@@ -8,6 +8,14 @@
 import SwiftUI
 
 struct WishGoalCard: View {
+    
+    init(desejoVM: DesejoViewModel) {
+        self.desejoVM = desejoVM
+    }
+    
+    @ObservedObject var ListaMetasVM = ListaMetasViewModel()
+    var desejoVM: DesejoViewModel
+    
     var categoryColor = "systemPurple"
     var goalValue = 50.0
     var goalTime = 4
@@ -65,12 +73,17 @@ struct WishGoalCard: View {
         .cornerRadius(10)
         .shadow(color: Color.gray.opacity(0.4), radius: 5)
         .frame(minWidth: 0, idealWidth: 250, maxWidth: 250, minHeight: 0, idealHeight: 250, maxHeight: 250, alignment: .center)
+        .onAppear() {
+            self.ListaMetasVM.getMetaFromDesejo(desejo: self.desejoVM)
+        }
     }
 }
 
 struct WishGoalCard_Previews: PreviewProvider {
     static var previews: some View {
-        WishGoalCard()
+        let desejo = Desejo()
+        let dejesoVM = DesejoViewModel(desejo: desejo)
+        WishGoalCard(desejoVM: dejesoVM)
             .previewLayout(.sizeThatFits)
             .padding()
             .cornerRadius(10)

@@ -107,7 +107,7 @@ struct DetailsCards: View {
                         .frame(minWidth: 100, idealWidth: 502, maxWidth: 515, minHeight: 100, idealHeight: 150, maxHeight: 155, alignment: .leading)
                     
                     HStack (alignment: .top, spacing: 30) {
-                        WishGoalCard()
+                        WishGoalCard(desejoVM: desejoVM)
                         WishGraphCard(progress: 0.8)
                         
                     } .padding(.bottom)
