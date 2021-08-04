@@ -34,7 +34,7 @@ class AddDesejoViewModel: ObservableObject {
     @Published var imagensMidia = [UIImage]()
     var imagemPadrao = #imageLiteral(resourceName: "card")
     
-    // Cria um desejo com categoria e meta associadas
+    // Cria um desejo
     func addDesejo() {
         let manager = CoreDataManager.shared
         let context = manager.persistentContainer.viewContext
@@ -132,18 +132,40 @@ class AddDesejoViewModel: ObservableObject {
 
     }
     
-    // Cria um desejo que não está associado a nenhuma categoria
-    func saveDesejo() {
-        
+    // Atualiza um desejo pelo Object ID
+    func updateDesejo(desejoSelecionado: DesejoViewModel) {
         let manager = CoreDataManager.shared
-        let desejo = Desejo(context: manager.persistentContainer.viewContext)
-        desejo.nome = nome
-        desejo.descricao = descricao
-        desejo.link = link
-        desejo.preco = Double(preco) ?? 0.0
-        
+        let context = manager.persistentContainer.viewContext
+        let desejo = manager.getDesejoById(id: desejoSelecionado.id)
+        if let desejo = desejo {
+            // Desejo
+            desejo.nome = nome
+            desejo.descricao = descricao
+            desejo.link = link
+            desejo.preco = Double(preco) ?? 0.0
+           
+            // Categoria
+            desejo.categoria?.nome = nomeCategoria
+            desejo.categoria?.cor = cor
+            
+            // Meta
+            desejo.meta?.duracao = Int16(duracao)
+            desejo.meta?.duracao2 = duracao2
+            desejo.meta?.frequencia = frequencia
+            desejo.meta?.valorAtual = Double(valorAtual) ?? 0.0
+            desejo.meta?.valorMeta = Double(valorMeta) ?? 0.0
+            desejo.meta?.tipo = tipo
+            
+            //Midia
+            for imagemMidia in imagensMidia {
+                let midia = Midia(context: context)
+                let dadosImagem = imagemMidia.pngData()
+                midia.imagem = dadosImagem
+                desejo.addToImagens(midia)
+            }
+        }
         manager.save()
-        print("Botao save desejo")
+        print("Atualizou o desejo")
     }
     
 }

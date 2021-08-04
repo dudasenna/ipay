@@ -85,7 +85,7 @@ struct DetailsCards: View {
                     
                     NavigationLink(
                         destination:
-                            AddWishView(),
+                            EditWishView(desejoVM: desejoVM),
                         label: {
                             Image(systemName: "pencil")
                                 .foregroundColor(Color(UIColor(named: "systemMint")!))

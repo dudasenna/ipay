@@ -54,6 +54,9 @@
 		7D9C5A8126AB5D7A00FAF19C /* CategoriaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9C5A8026AB5D7A00FAF19C /* CategoriaViewModel.swift */; };
 		7D9C5A8326AB5D8500FAF19C /* MetaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9C5A8226AB5D8500FAF19C /* MetaViewModel.swift */; };
 		7DD0C25026BB048000061945 /* DetalhesDesejo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD0C24F26BB048000061945 /* DetalhesDesejo.swift */; };
+		7DD0C25326BB2F1F00061945 /* EditInformationsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD0C25226BB2F1F00061945 /* EditInformationsCard.swift */; };
+		7DD0C25526BB2FD000061945 /* EditWishCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD0C25426BB2FD000061945 /* EditWishCards.swift */; };
+		7DD0C25726BB305900061945 /* EditWishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD0C25626BB305900061945 /* EditWishView.swift */; };
 		BE078A2526AF3350009087BF /* DropImageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE078A2426AF3350009087BF /* DropImageDelegate.swift */; };
 		BE078A2726AF3361009087BF /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE078A2626AF3361009087BF /* ImagePicker.swift */; };
 		BE078A2926AF3426009087BF /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE078A2826AF3426009087BF /* CoreDataManager.swift */; };
@@ -116,6 +119,9 @@
 		7D9C5A8026AB5D7A00FAF19C /* CategoriaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriaViewModel.swift; sourceTree = "<group>"; };
 		7D9C5A8226AB5D8500FAF19C /* MetaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetaViewModel.swift; sourceTree = "<group>"; };
 		7DD0C24F26BB048000061945 /* DetalhesDesejo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetalhesDesejo.swift; sourceTree = "<group>"; };
+		7DD0C25226BB2F1F00061945 /* EditInformationsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditInformationsCard.swift; sourceTree = "<group>"; };
+		7DD0C25426BB2FD000061945 /* EditWishCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditWishCards.swift; sourceTree = "<group>"; };
+		7DD0C25626BB305900061945 /* EditWishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditWishView.swift; sourceTree = "<group>"; };
 		7DEE3FB426A0D063007B9615 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		BE078A2426AF3350009087BF /* DropImageDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropImageDelegate.swift; sourceTree = "<group>"; };
 		BE078A2626AF3361009087BF /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
@@ -154,6 +160,7 @@
 		22039294269CC7280054C168 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7DD0C25126BB2EE800061945 /* Edit Wish */,
 				7D78910D26B5DE4100D83571 /* Wish Details */,
 				7D78910C26B5DD6400D83571 /* Add Wish */,
 				7D78910B26B5DD5800D83571 /* Home */,
@@ -285,6 +292,16 @@
 				7D9C5A8226AB5D8500FAF19C /* MetaViewModel.swift */,
 			);
 			path = Meta;
+			sourceTree = "<group>";
+		};
+		7DD0C25126BB2EE800061945 /* Edit Wish */ = {
+			isa = PBXGroup;
+			children = (
+				7DD0C25226BB2F1F00061945 /* EditInformationsCard.swift */,
+				7DD0C25426BB2FD000061945 /* EditWishCards.swift */,
+				7DD0C25626BB305900061945 /* EditWishView.swift */,
+			);
+			path = "Edit Wish";
 			sourceTree = "<group>";
 		};
 		BE078A2326AF32C2009087BF /* Recovered References */ = {
@@ -424,6 +441,7 @@
 				7D9C5A6526A743F100FAF19C /* ListaCategoriasView.swift in Sources */,
 				BE078A2726AF3361009087BF /* ImagePicker.swift in Sources */,
 				7D78910A26B5894600D83571 /* AddWishView.swift in Sources */,
+				7DD0C25726BB305900061945 /* EditWishView.swift in Sources */,
 				7D941A5726B48C110049336C /* HomeView.swift in Sources */,
 				7D9C5A7626AB36E700FAF19C /* MetaView.swift in Sources */,
 				7D9C5A8126AB5D7A00FAF19C /* CategoriaViewModel.swift in Sources */,
@@ -449,6 +467,7 @@
 				7D6F2EC726A704DF00EC8ADC /* AddCategoriaViewModel.swift in Sources */,
 				66A642DA26B9BD6A00A3EB6E /* DetailsCards.swift in Sources */,
 				BEF78B972698D85700181907 /* ContentView.swift in Sources */,
+				7DD0C25526BB2FD000061945 /* EditWishCards.swift in Sources */,
 				7D9C5A7426A9F68600FAF19C /* AddDesejoCompleto.swift in Sources */,
 				7D9C5A7D26AB548200FAF19C /* DesejoViewModel.swift in Sources */,
 				7D9C5A7F26AB56D000FAF19C /* AtualizarDesejo.swift in Sources */,
@@ -463,6 +482,7 @@
 				7D6F2ECC26A7077B00EC8ADC /* AddMetaViewModel.swift in Sources */,
 				BE167E67269CDD9C009E94C5 /* GoalCard.swift in Sources */,
 				7D9C5A7826AB506900FAF19C /* UpdateDesejoViewModel.swift in Sources */,
+				7DD0C25326BB2F1F00061945 /* EditInformationsCard.swift in Sources */,
 				BEF78B952698D85700181907 /* WollenApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
