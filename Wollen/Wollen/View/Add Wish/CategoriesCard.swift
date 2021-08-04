@@ -28,24 +28,15 @@ struct CategoriesCard: View {
     
     var body: some View {
         // TÍTULO - CATEGORIA
-        VStack(alignment: .leading) {
-            
+        VStack(alignment: .leading){
             Text("Categoria")
                 .bold()
                 .padding(5)
                 .font(.custom("Avenir Next", size: 22))
             
-//            LazyVGrid (columns: adaptiveLayout, alignment: .center, spacing: 15){
-//                ForEach (0..<categoriesTitle.count) { category in
-//                    CategoryCard(categoryColor: categoriesColor[category], categoryTitle: categoriesTitle[category])
-//                }
-//            }
-//            .padding()
-            
             ScrollView(.horizontal) {
                 HStack (spacing: 20) {
                     ForEach (listaCategoriasVM.categorias, id: \.id) { categoria in
-                        
                         Button {
                             addDesejoVM.cor = categoria.cor
                             addDesejoVM.nomeCategoria = categoria.nome
@@ -53,7 +44,6 @@ struct CategoriesCard: View {
                             addDesejoVM.categoriaId = categoria.id
                             
                             colorSelected = categoria.nome
-                            
                         } label: {
                             if (categoria.nome == colorSelected) {
                                 CategoryCard(categoryColor: categoria.cor, categoryTitle: categoria.nome)
@@ -62,25 +52,25 @@ struct CategoriesCard: View {
                                 CategoryCard(categoryColor: categoria.cor+"700", categoryTitle: categoria.nome)
                                     .foregroundColor(Color(UIColor.black))
                             }
-                            
                         }
-
                     }
                 }.padding()
-                
             }
             .padding()
-            
-            HStack() {
-                Text(LocalizedStringKey("Outra:"))
-                    .font(.custom("Avenir Next", size: 18))
-                TextField(LocalizedStringKey("Nova categoria"), text: $newCategory)
+            VStack(alignment: .leading) {
+                NavigationLink(
+                    destination:
+                        NewCategory(),
+                    label: {
+                        Text(LocalizedStringKey("Outra"))
+                            .foregroundColor(Color(UIColor(named: "preto_primario")!))
+                            .font(.custom("Avenir Next", size: 18))
+                            .padding(5)
+                    })
                     .padding(5)
-                    .background(Color(red: 118/256, green: 118/256, blue: 128/256, opacity: 0.12))
+                    .background(Color(UIColor(named: "systemMint")!))
                     .cornerRadius(10)
-                    .multilineTextAlignment(.center)
-                    .font(.custom("Avenir Next", size: 16))
-
+                    .shadow(color: Color.gray.opacity(0.4), radius: 5)
             }
             .padding(10)
             .padding(.horizontal)
@@ -95,7 +85,7 @@ struct CategoriesCard: View {
         
         
     }
-
+    
 }
 
 struct CategoriesCard_Previews: PreviewProvider {
