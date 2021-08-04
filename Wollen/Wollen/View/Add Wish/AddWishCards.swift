@@ -11,6 +11,7 @@ struct AddWishCards: View {
     @StateObject private var addDesejoVM = AddDesejoViewModel()
     
     @Environment(\.presentationMode) var presentation
+    @State private var showingAlert = false
     
     var body: some View {
         
@@ -48,15 +49,27 @@ struct AddWishCards: View {
             
             Button {
                 //addDesejoVM.addDesejo()
+                // Caso tenha alguma informação faltando, não salva
+                if(addDesejoVM.cor.isEmpty || addDesejoVM.preco.isEmpty || addDesejoVM.nome.isEmpty) {
+                    showingAlert = true
+                }
+                else {
                 addDesejoVM.addDesejoToCategoria(categoriaId: addDesejoVM.categoriaId!)
+                    
                 // Quando salva, volta para a Home
                 self.presentation.wrappedValue.dismiss()
+                }
+                
     
             } label: {
                 Text(LocalizedStringKey("Salvar"))
                     .foregroundColor(Color(UIColor(named: "preto_primario")!))
                     .font(.custom("Avenir Next", size: 18).bold())
                     .padding(5)
+            }
+            //.disabled(addDesejoVM.cor.isEmpty)
+            .alert(isPresented: $showingAlert) {
+                Alert(title: Text(LocalizedStringKey("Information missing")), message: Text(LocalizedStringKey("Please make sure you have defined the name, the price and the category for your wish")), dismissButton: .default(Text("OK")))
             }
             .padding(5)
             .background(Color(UIColor(named: "systemMint")!))

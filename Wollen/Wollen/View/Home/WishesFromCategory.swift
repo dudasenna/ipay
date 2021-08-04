@@ -53,7 +53,9 @@ struct WishesFromCategory: View {
                         
                         // Exibe a lista de desejos da categoria
                         NavigationLink(
-                            destination: DesejoView(desejoVM: desejo),
+                            destination:
+                                //DesejoView(desejoVM: desejo),
+                                DetailView(),
                             label: {
                                 MyWishCard(desejoVM: desejo)
                                     .foregroundColor(Color(UIColor(named: "preto_primario")!))
