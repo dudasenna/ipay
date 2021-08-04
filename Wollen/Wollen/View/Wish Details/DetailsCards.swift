@@ -9,6 +9,12 @@ import SwiftUI
 
 struct DetailsCards: View {
     
+    init(desejoVM: DesejoViewModel) {
+        self.desejoVM = desejoVM
+    }
+    
+    var desejoVM: DesejoViewModel
+    
     var body: some View {
         
 //        NavigationView{
@@ -82,7 +88,7 @@ struct DetailsCards: View {
                     LinksCard()
                     
                 }
-                GalleryCard()
+                GalleryCard(desejoVM: desejoVM)
                     
                     .frame(minWidth: 100, idealWidth: 251.17, maxWidth: 251.17, minHeight: 300, idealHeight: 813, maxHeight: 830, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
             }
@@ -116,6 +122,8 @@ struct DetailsCards: View {
 //}
 struct DetailsCards_Previews: PreviewProvider {
     static var previews: some View {
-        DetailsCards()
+        let desejo = Desejo()
+        let desejoVM = DesejoViewModel(desejo: desejo)
+        DetailsCards(desejoVM: desejoVM)
     }
 }

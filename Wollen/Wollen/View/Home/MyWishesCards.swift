@@ -49,7 +49,7 @@ struct MyWishesCards: View {
                         NavigationLink(
                             destination:
                                 //DesejoView(desejoVM: desejo),
-                                DetailView(),
+                                DetailView(desejoVM: desejo),
                             label: {
                                 MyWishCard(desejoVM: desejo)
                                     .foregroundColor(Color(UIColor(named: "preto_primario")!))
