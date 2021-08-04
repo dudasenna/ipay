@@ -31,7 +31,8 @@ struct CardSaveMoney: View {
         
         VStack(alignment: .leading) {
             Text(LocalizedStringKey("Guardar dinheiro"))
-                .font(.custom("Avenir", size: 22).bold())
+                .bold()
+                .font(.custom("Avenir Next", size: 22))
             
             Text(LocalizedStringKey("Quanto você gostaria de guardar?"))
                 .font(.custom("Avenir", size: 18))
@@ -65,7 +66,7 @@ struct CardSaveMoney: View {
                     },
                     label: {
                         Text(LocalizedStringKey("Salvar"))
-                            .foregroundColor(Color(UIColor.darkGray))
+                            .foregroundColor(Color(UIColor(named: "preto_primario")!))
                             .font(.custom("Avenir", size: 18).bold())
                             .padding(.horizontal)
                     }

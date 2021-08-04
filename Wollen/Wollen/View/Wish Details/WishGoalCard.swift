@@ -16,24 +16,24 @@ struct WishGoalCard: View {
     
     var body: some View {
         let formattedGoalValue = String(format: "%.2f", goalValue)
-        VStack (alignment: .center, spacing: nil, content: {
+        VStack (alignment: .leading, spacing: nil, content: {
             HStack {
                 Text(LocalizedStringKey("Meta"))
                     .bold()
                     .font(.custom("Avenir Next", size: 22))
-                    .padding()
+//                    .padding()
                 Spacer()
-            }
+            } .padding(.bottom)
             // Meta cumprida
             if accomplished {
                 Text(LocalizedStringKey("Cumprida"))
                     .bold()
                     .font(.custom("Avenir Next", size: 22))
                     .foregroundColor(Color(categoryColor))
-                    .padding(.bottom)
+//                    .padding(.bottom)
                 Text(LocalizedStringKey("Parabéns 🎉\n Você merece!"))
-                    .padding(.vertical)
-                    .padding(.bottom, 20)
+//                    .padding(.vertical)
+//                    .padding(.bottom, 20)
                     .font(.custom("Avenir Next", size: 18))
                     .multilineTextAlignment(.center)
                     .fixedSize(horizontal: false, vertical: true)
@@ -41,37 +41,38 @@ struct WishGoalCard: View {
             // Meta ainda não cumprida
             else {
                 let valorMeta = Text(LocalizedStringKey("R$"))
-                    
-                Text("\(valorMeta) \(formattedGoalValue) / \(goalPeriod)")
-                    
-                    
+  
+                Text("\(valorMeta) \(formattedGoalValue)/ \(goalPeriod)")
                     .bold()
-                    .font(.custom("Avenir Next", size: 22))
+                    .font(.custom("Avenir Next", size: 18))
+                    .multilineTextAlignment(.center)
                     .foregroundColor(Color("systemMint"))
                     .padding(.bottom)
+                
                let meta = Text(LocalizedStringKey("Se você continuar neste ritmo, você completará a meta daqui a"))
                 
                 Text("\(meta) \(goalTime) \(goalPeriod).")
                     
-                    .padding(.vertical)
+//                    .padding(.vertical)
                     .font(.custom("Avenir Next", size: 18))
                     .multilineTextAlignment(.leading)
                     .fixedSize(horizontal: false, vertical: true)
             }
             
         })
-        .padding(15)
+        .padding()
         .background(Color(red: 248/256, green: 248/256, blue: 248/256))
         .cornerRadius(10)
         .shadow(color: Color.gray.opacity(0.4), radius: 5)
-        .frame(minWidth: 0, idealWidth: 250, maxWidth: 250, minHeight: 0, idealHeight: 250, maxHeight: 250, alignment: .center)
+//        .frame(minWidth: 0, idealWidth: 250, maxWidth: 250, minHeight: 0, idealHeight: 250, maxHeight: 250, alignment: .center)
+        .frame(minWidth: 100, idealWidth: 249, maxWidth: 249, minHeight: 100, idealHeight: 250, maxHeight: 250, alignment: .leading)
     }
 }
 
 struct WishGoalCard_Previews: PreviewProvider {
     static var previews: some View {
         WishGoalCard()
-            .previewLayout(.sizeThatFits)
+//            .previewLayout(.sizeThatFits)
             .padding()
             .cornerRadius(10)
     }
