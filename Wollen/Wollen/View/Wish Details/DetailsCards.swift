@@ -15,73 +15,101 @@ struct DetailsCards: View {
     
     var desejoVM: DesejoViewModel
     
+    @StateObject private var listaDesejosVM = ListaDesejosViewModel()
+    
+    @State private var showingAlert = false
+    
+    @Environment(\.presentationMode) var presentation
+    
     var body: some View {
         
-//        NavigationView{
+        //        NavigationView{
         
         VStack (alignment: .center, spacing: 30) {
             
             HStack (alignment: .top){
                 
                 HStack{
-                
-                NavigationLink(
-                    destination:
-                        HomeView(),
-                    label: {
-                        Image(systemName: "chevron.backward")
-                            .foregroundColor(Color(UIColor(named: "systemMint")!))
-                            .imageScale(.large)
-                        
-                    }) .padding()
-                
+                    
+                    NavigationLink(
+                        destination:
+                            HomeView(),
+                        label: {
+                            Image(systemName: "chevron.backward")
+                                .foregroundColor(Color(UIColor(named: "systemMint")!))
+                                .imageScale(.large)
+                            
+                        }) .padding()
+                    
                     VStack(alignment: .leading){
-                Text(LocalizedStringKey("Kindle"))
-                    .bold()
-                    .font(.custom("Avenir Next", size: 30))
-
-                Text(LocalizedStringKey("Tecnologia"))
-                    .font(.custom("Avenir Next", size: 18))
-                }
+                        Text(LocalizedStringKey("Kindle"))
+                            .bold()
+                            .font(.custom("Avenir Next", size: 30))
+                        
+                        Text(LocalizedStringKey("Tecnologia"))
+                            .font(.custom("Avenir Next", size: 18))
+                    }
                 }
                 
                 Spacer()
                 
                 HStack(alignment: .center, spacing:10){
                     
-                Button(
-                    action: {
+                    Button(
+                        action: {
+                            showingAlert = true
+                            
+                            
+                        }, label: {
+                            Image(systemName: "trash")
+                                .foregroundColor(Color(UIColor(named: "systemMint")!))
+                                .imageScale(.large)
+                        }
                         
-                    }, label: {
-                        Image(systemName: "trash")
-                            .foregroundColor(Color(UIColor(named: "systemMint")!))
-                            .imageScale(.large)
-                    })
-                NavigationLink(
-                    destination:
-                        AddWishView(),
-                    label: {
-                        Image(systemName: "pencil")
-                            .foregroundColor(Color(UIColor(named: "systemMint")!))
-                            .imageScale(.large)
-                        
-                    })
+                    )
+                    .alert(isPresented: $showingAlert) {
+                        Alert(title: Text(LocalizedStringKey("Deletar desejo")), message: Text(LocalizedStringKey("Tem certeza que deseja deletar este desejo? Esta ação não poderá ser desfeita.")),
+                              primaryButton: Alert.Button.default(Text(LocalizedStringKey("Sim")), action: {
+                                // Deletar desejo
+                                listaDesejosVM.deleteDesejo(desejoSelecionado: desejoVM)
+                                // Voltar pra tela home
+                                // Quando salva, volta para a Home
+                                self.presentation.wrappedValue.dismiss()
+                                
+                              }),
+                              secondaryButton: Alert.Button.cancel(Text(LocalizedStringKey("Não")), action: {
+                                showingAlert = false
+                              })
+                        )
+                    }
+                    
+                    NavigationLink(
+                        destination:
+                            AddWishView(),
+                        label: {
+                            Image(systemName: "pencil")
+                                .foregroundColor(Color(UIColor(named: "systemMint")!))
+                                .imageScale(.large)
+                            
+                        })
+                }
             }
-            }
-//            ScrollView(.vertical){
-                
+            //            ScrollView(.vertical){
+            
             HStack (alignment: .top, spacing:30){
                 
                 VStack(alignment: .leading, spacing:30){
 
+
                     CardSaveMoney(goal: 50, desejo: desejoVM)
-                    
+
+                        
                         .frame(minWidth: 100, idealWidth: 502, maxWidth: 515, minHeight: 100, idealHeight: 150, maxHeight: 155, alignment: .leading)
                     
                     HStack (alignment: .top, spacing: 30) {
                         WishGoalCard()
                         WishGraphCard(progress: 0.8)
-                       
+                        
                     } .padding(.bottom)
                     .padding(.top)
                     DescriptionCard()
@@ -92,10 +120,10 @@ struct DetailsCards: View {
                     
                     .frame(minWidth: 100, idealWidth: 251.17, maxWidth: 251.17, minHeight: 300, idealHeight: 813, maxHeight: 830, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
             }
-//                Spacer()
-//
+            //                Spacer()
+            //
             Button {
-
+                
             } label: {
                 Text(LocalizedStringKey("Salvar"))
                     .foregroundColor(Color(UIColor(named: "preto_primario")!))
@@ -108,16 +136,16 @@ struct DetailsCards: View {
             .shadow(color: Color.gray.opacity(0.4), radius: 5)
             
         }
-            
-//        }
+        
+        //        }
         .padding(30)
         .background(Color.white)
         .cornerRadius(10)
         .shadow(color: Color.gray.opacity(0.2), radius: 4, x: 0, y: 2)
-        }
-//        .padding(.all)
-//    }
-//
+    }
+    //        .padding(.all)
+    //    }
+    //
 }
 //}
 struct DetailsCards_Previews: PreviewProvider {
