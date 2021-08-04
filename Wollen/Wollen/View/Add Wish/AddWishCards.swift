@@ -47,7 +47,8 @@ struct AddWishCards: View {
             
             
             Button {
-                addDesejoVM.addDesejo()
+                //addDesejoVM.addDesejo()
+                addDesejoVM.addDesejoToCategoria(categoriaId: addDesejoVM.categoriaId!)
                 // Quando salva, volta para a Home
                 self.presentation.wrappedValue.dismiss()
     
