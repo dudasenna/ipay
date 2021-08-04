@@ -49,6 +49,8 @@ struct CategoriesCard: View {
                         Button {
                             addDesejoVM.cor = categoria.cor
                             addDesejoVM.nomeCategoria = categoria.nome
+                            // Atualiza o valor do id da categoria para adicionar o desejo dentro desta categoria
+                            addDesejoVM.categoriaId = categoria.id
                             
                             colorSelected = categoria.nome
                             

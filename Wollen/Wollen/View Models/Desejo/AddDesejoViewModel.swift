@@ -20,6 +20,7 @@ class AddDesejoViewModel: ObservableObject {
     // Atributos da Categoria
     @Published var nomeCategoria: String = ""
     @Published var cor: String = ""
+    var categoriaId: NSManagedObjectID?
     
     // Atributos da Meta
     @Published var duracao: Int = 0
@@ -52,7 +53,7 @@ class AddDesejoViewModel: ObservableObject {
         
         // Cria uma nova meta para ser associada ao desejo
         let meta = Meta(context: context)
-        meta.duracao = Int16(duracao) ?? 0
+        meta.duracao = Int16(duracao)
         meta.duracao2 = duracao2
         meta.frequencia = frequencia
         meta.valorAtual = Double(valorAtual) ?? 0.0
@@ -67,7 +68,7 @@ class AddDesejoViewModel: ObservableObject {
             midia.imagem = dadosImagem
             desejo.addToImagens(midia)
         } else {
-            // Cria uma nova mídia para ser associada ao desejo para cada imagem selecionada e associa ao desejo
+            // Cria uma nova mídia para cada imagem selecionada e associa ao desejo
             for imagemMidia in imagensMidia {
                 let midia = Midia(context: context)
                 let dadosImagem = imagemMidia.pngData()
@@ -85,11 +86,12 @@ class AddDesejoViewModel: ObservableObject {
     func addDesejoToCategoria(categoriaId: NSManagedObjectID) {
         
         let manager = CoreDataManager.shared
+        let context = manager.persistentContainer.viewContext
         
         let categoria: Categoria? = manager.getCategoriaById(id: categoriaId)
         
         if let categoria = categoria {
-            let desejo = Desejo(context: manager.persistentContainer.viewContext)
+            let desejo = Desejo(context: context)
             desejo.nome = nome
             desejo.descricao = descricao
             desejo.link = link
@@ -97,8 +99,8 @@ class AddDesejoViewModel: ObservableObject {
             desejo.categoria = categoria
 
             
-            let meta = Meta(context: manager.persistentContainer.viewContext)
-            meta.duracao = Int16(duracao) ?? 0
+            let meta = Meta(context: context)
+            meta.duracao = Int16(duracao)
             meta.duracao2 = duracao2
             meta.frequencia = frequencia
             meta.valorAtual = Double(valorAtual) ?? 0.0
@@ -106,13 +108,21 @@ class AddDesejoViewModel: ObservableObject {
             meta.tipo = tipo
             desejo.meta = meta
             
-            // Cria uma nova mídia para ser associada ao desejo para cada imagem selecionada e associa ao desejo
-            for imagemMidia in imagensMidia {
-                let midia = Midia(context: manager.persistentContainer.viewContext)
-                let dadosImagem = imagemMidia.pngData()
+            // Verifica se o array de imagem está vazio, e se estiver, adiciona uma imagem padrão
+            if (imagensMidia.isEmpty) {
+                let midia = Midia(context: context)
+                let dadosImagem = imagemPadrao.pngData()
                 midia.imagem = dadosImagem
                 desejo.addToImagens(midia)
-                
+            } else {
+                // Cria uma nova mídia para cada imagem selecionada e associa ao desejo
+                for imagemMidia in imagensMidia {
+                    let midia = Midia(context: context)
+                    let dadosImagem = imagemMidia.pngData()
+                    midia.imagem = dadosImagem
+                    desejo.addToImagens(midia)
+                    
+                }
             }
             
             manager.save()

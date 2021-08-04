@@ -35,7 +35,7 @@ struct WishesFromCategory: View {
                 NavigationLink(
                     destination:
                         // Adicionar um desejo a uma categoria
-                        AddDesejoToCategoriaView(categoriaVM:categoriaVM),
+                        AddWishView(),
                     label: {
                         Image(systemName: "plus.circle")
                             .foregroundColor(Color(UIColor(named: "systemMint")!))
