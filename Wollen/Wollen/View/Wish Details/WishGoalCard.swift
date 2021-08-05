@@ -11,12 +11,12 @@ struct WishGoalCard: View {
     
     init(desejoVM: DesejoViewModel) {
         self.desejoVM = desejoVM
-        let meta = desejoVM.desejo.meta!
+        let meta = desejoVM.desejo.meta ?? metaPadrao
         self.goalValue = meta.valorMeta
         self.actualValue = meta.valorAtual
-        self.goalType = meta.tipo!
+        self.goalType = meta.tipo ?? ""
         self.price = desejoVM.desejo.preco
-        self.goalPeriod = meta.frequencia!
+        self.goalPeriod = meta.frequencia ?? ""
         self.timeToFinishGoal()
         self.convertGoalPeriod()
         //self.listaMetasVM.getMetaFromDesejo(desejo: desejoVM)
@@ -32,6 +32,8 @@ struct WishGoalCard: View {
     var goalType = "Por valor"
     var actualValue = 0.0
     var price = 200.0
+    
+    let metaPadrao = Meta(context: CoreDataManager.shared.viewContext)
     @State private var goalValue = 50.0
     @State private var accomplished = false
     @State private var timeToText = ""
