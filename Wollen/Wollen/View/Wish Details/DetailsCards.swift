@@ -137,7 +137,7 @@ struct DetailsCards: View {
                         VStack (alignment: .center, spacing:50) {
                             CardSaveMoney(goal: 50, desejo: desejoVM)
                                 .frame(minWidth: 100, idealWidth: 502, maxWidth: 515, minHeight: 100, idealHeight: 150, maxHeight: 155, alignment: .leading)
-                            WishGoalCard()
+                            WishGoalCard(desejoVM: desejoVM)
                             WishGraphCard(progress: 0.8)
                             DescriptionCard(desejoVM: desejoVM)
                             LinksCard(desejoVM: desejoVM)
@@ -152,7 +152,7 @@ struct DetailsCards: View {
                         VStack (alignment: .center, spacing:50) {
                             CardSaveMoney(goal: 50, desejo: desejoVM)
                                 .frame(minWidth: 100, idealWidth: 502, maxWidth: 515, minHeight: 100, idealHeight: 150, maxHeight: 155, alignment: .leading)
-                            WishGoalCard()
+                            WishGoalCard(desejoVM: desejoVM)
                             WishGraphCard(progress: 0.8)
                             DescriptionCard(desejoVM: desejoVM)
                             LinksCard(desejoVM: desejoVM)
@@ -166,7 +166,7 @@ struct DetailsCards: View {
                         VStack (alignment: .center, spacing:50) {
                             CardSaveMoney(goal: 50, desejo: desejoVM)
                                 .frame(minWidth: 100, idealWidth: 502, maxWidth: 515, minHeight: 100, idealHeight: 150, maxHeight: 155, alignment: .leading)
-                            WishGoalCard()
+                            WishGoalCard(desejoVM: desejoVM)
                             WishGraphCard(progress: 0.8)
                             DescriptionCard(desejoVM: desejoVM)
                             LinksCard(desejoVM: desejoVM)
@@ -182,7 +182,7 @@ struct DetailsCards: View {
                                 CardSaveMoney(goal: 50, desejo: desejoVM)
                                     .frame(minWidth: 100, idealWidth: 502, maxWidth: 515, minHeight: 100, idealHeight: 150, maxHeight: 155, alignment: .leading)
                                 HStack (alignment: .center, spacing:20) {
-                                    WishGoalCard()
+                                    WishGoalCard(desejoVM: desejoVM)
                                     WishGraphCard(progress: 0.8)
                                 }
                                 DescriptionCard(desejoVM: desejoVM)
