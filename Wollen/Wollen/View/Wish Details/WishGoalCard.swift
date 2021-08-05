@@ -119,6 +119,9 @@ struct WishGoalCard: View {
             if self.listaMetasVM.meta!.tipo == "Por período" {
                 self.getValuePerFrequency()
             }
+            if self.listaMetasVM.meta!.valorAtual >= self.desejoVM.preco {
+                self.accomplished = true
+            }
         }
         .onReceive(self.pub) { _ in
             listaMetasVM.getMetaFromDesejo(desejo: desejoVM)
@@ -126,6 +129,9 @@ struct WishGoalCard: View {
             convertGoalPeriod()
             if self.listaMetasVM.meta!.tipo == "Por período" {
                 self.getValuePerFrequency()
+            }
+            if self.listaMetasVM.meta!.valorAtual >= self.desejoVM.preco {
+                self.accomplished = true
             }
         }
     }
