@@ -9,9 +9,20 @@ import SwiftUI
 
 struct WishGraphCard: View {
     
-    var progress: Float
-    var savedMoney = 2000.0
-    var goalMoney = 2500.0
+    init(desejoVM: DesejoViewModel) {
+        self.desejoVM = desejoVM
+        let meta = desejoVM.desejo.meta ?? metaPadrao
+    }
+    
+    @ObservedObject var listaMetasVM = ListaMetasViewModel()
+    
+    @State private var progress: Double = 0.8
+    @State private var savedMoney = 2000.0
+    @State private var goalMoney = 2500.0
+    
+    var desejoVM: DesejoViewModel
+    let metaPadrao = Meta(context: CoreDataManager.shared.viewContext)
+    let pub = NotificationCenter.default.publisher(for: NSNotification.Name("atualiza_valor_atual"))
     
     var body: some View {
         let formattedSavedMoney = String(format: "%.0f", savedMoney)
@@ -51,12 +62,26 @@ struct WishGraphCard: View {
         .cornerRadius(10)
         .shadow(color: Color.gray.opacity(0.4), radius: 5)
         .frame(minWidth: 0, idealWidth: 250, maxWidth: 250, minHeight: 0, idealHeight: 250, maxHeight: 250, alignment: .center)
+        .onAppear() {
+            self.listaMetasVM.getMetaFromDesejo(desejo: desejoVM)
+            self.savedMoney = listaMetasVM.meta!.valorAtual
+            self.goalMoney = desejoVM.preco
+            self.progress = self.savedMoney / self.goalMoney
+        }
+        .onReceive(self.pub) { _ in
+            self.listaMetasVM.getMetaFromDesejo(desejo: desejoVM)
+            self.savedMoney = listaMetasVM.meta!.valorAtual
+            self.goalMoney = desejoVM.preco
+            self.progress = self.savedMoney / self.goalMoney
+        }
     }
 }
 
 struct WishGraphCard_Previews: PreviewProvider {
     static var previews: some View {
-        WishGraphCard(progress: 0.8)
+        let desejo = Desejo()
+        let desejoVM = DesejoViewModel(desejo: desejo)
+        WishGraphCard(desejoVM: desejoVM)
             .previewLayout(.sizeThatFits)
             .padding()
             .cornerRadius(10)
