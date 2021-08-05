@@ -56,12 +56,8 @@ struct LinksCard: View {
 
 struct LinksCard_Previews: PreviewProvider {
     static var previews: some View {
-        //        LinksCard()
-        //            .previewLayout(.sizeThatFits)
-        //            .padding()
-        //            .cornerRadius(10)
-        let desejo = Desejo()
-        let desejoVM = DesejoViewModel(desejo: desejo)
+
+        let desejoVM = DesejoViewModel(desejo: Desejo(context: CoreDataManager.shared.viewContext))
         LinksCard(desejoVM: desejoVM)
             .previewLayout(.sizeThatFits)
             .padding()

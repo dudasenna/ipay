@@ -50,8 +50,9 @@ struct AddWishCards: View {
             Button {
                 //addDesejoVM.addDesejo()
                 // Caso tenha alguma informação faltando, não salva
-                if(addDesejoVM.cor.isEmpty || addDesejoVM.preco.isEmpty || addDesejoVM.nome.isEmpty || addDesejoVM.descricao.isEmpty || addDesejoVM.link.isEmpty) {
-                    showingAlert = true
+                if(addDesejoVM.cor.isEmpty || addDesejoVM.preco.isEmpty || addDesejoVM.nome.isEmpty || addDesejoVM.descricao.isEmpty || addDesejoVM.link.isEmpty || (addDesejoVM.tipo == "Por valor" && (addDesejoVM.frequencia.isEmpty || addDesejoVM.valorMeta.isEmpty)) || (addDesejoVM.tipo == "Por período" && (addDesejoVM.frequencia.isEmpty || addDesejoVM.duracao == 0 || addDesejoVM.duracao2.isEmpty))) {
+                        showingAlert = true
+                    
                 }
                 else {
                 addDesejoVM.addDesejoToCategoria(categoriaId: addDesejoVM.categoriaId!)
