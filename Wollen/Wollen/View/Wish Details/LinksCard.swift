@@ -34,7 +34,7 @@ struct LinksCard: View {
                 //                    ForEach (0..<links.count) { link in
                 //                        Link(linkName[link], destination: URL(string: links[link])!)
                 //                            .font(.custom("Avenir Next", size: 18))
-                Link(desejoVM.link, destination: URL(string: desejoVM.link)!)
+                Link(desejoVM.link, destination: URL(string: desejoVM.link) ?? URL(string: "www.apple.com")!)
                     .font(.custom("Avenir Next", size: 18))
                     //                .multilineTextAlignment(.center)
                     .fixedSize(horizontal: false, vertical: true)

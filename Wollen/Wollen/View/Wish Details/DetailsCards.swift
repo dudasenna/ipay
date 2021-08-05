@@ -74,10 +74,11 @@ struct DetailsCards: View {
                         Alert(title: Text(LocalizedStringKey("Deletar desejo")), message: Text(LocalizedStringKey("Tem certeza que deseja deletar este desejo? Esta ação não poderá ser desfeita.")),
                               primaryButton: Alert.Button.default(Text(LocalizedStringKey("Sim")), action: {
                                 // Deletar desejo
-                                listaDesejosVM.deleteDesejo(desejoSelecionado: desejoVM)
+                                
                                 // Voltar pra tela home
                                 // Quando salva, volta para a Home
                                 self.presentation.wrappedValue.dismiss()
+                                listaDesejosVM.deleteDesejo(desejoSelecionado: desejoVM)
                                 
                               }),
                               secondaryButton: Alert.Button.cancel(Text(LocalizedStringKey("Não")), action: {
