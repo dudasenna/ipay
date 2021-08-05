@@ -21,8 +21,8 @@ struct HomeView: View {
                 MyWishesCards()
                 //ListaDesejosView()
                 HStack(spacing: 30) {
-                    LinksCard()
-                    DescriptionCard()
+//                    LinksCard()
+//                    DescriptionCard()
                 }
                 Spacer()
             }

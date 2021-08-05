@@ -38,7 +38,8 @@ struct CardSaveMoney: View {
         
         VStack(alignment: .leading) {
             Text(LocalizedStringKey("Guardar dinheiro"))
-                .font(.custom("Avenir", size: 22).bold())
+                .bold()
+                .font(.custom("Avenir Next", size: 22))
             
             Text(LocalizedStringKey("Quanto você gostaria de guardar?"))
                 .font(.custom("Avenir", size: 18))
@@ -71,8 +72,8 @@ struct CardSaveMoney: View {
                         self.showPopup.toggle()
                     }
                 }
-                .foregroundColor(Color(UIColor.darkGray))
-                .font(.custom("Avenir", size: 18).bold())
+                .foregroundColor(Color(UIColor(named: "preto_primario")!))
+                            .font(.custom("Avenir Next", size: 18).bold())
                 .padding(.horizontal)
                 .background(RoundedRectangle(cornerRadius: 5))
                 .foregroundColor(Color(UIColor(named: "systemMint")!))
