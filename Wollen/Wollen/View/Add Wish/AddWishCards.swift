@@ -50,7 +50,7 @@ struct AddWishCards: View {
             Button {
                 //addDesejoVM.addDesejo()
                 // Caso tenha alguma informação faltando, não salva
-                if(addDesejoVM.cor.isEmpty || addDesejoVM.preco.isEmpty || addDesejoVM.nome.isEmpty) {
+                if(addDesejoVM.cor.isEmpty || addDesejoVM.preco.isEmpty || addDesejoVM.nome.isEmpty || addDesejoVM.descricao.isEmpty || addDesejoVM.link.isEmpty) {
                     showingAlert = true
                 }
                 else {
@@ -69,7 +69,7 @@ struct AddWishCards: View {
             }
             //.disabled(addDesejoVM.cor.isEmpty)
             .alert(isPresented: $showingAlert) {
-                Alert(title: Text(LocalizedStringKey("Information missing")), message: Text(LocalizedStringKey("Please make sure you have defined the name, the price and the category for your wish")), dismissButton: .default(Text("OK")))
+                Alert(title: Text(LocalizedStringKey("Information missing")), message: Text(LocalizedStringKey("Please make sure you have defined the details of your wish")), dismissButton: .default(Text("OK")))
             }
             .padding(5)
             .background(Color(UIColor(named: "systemMint")!))

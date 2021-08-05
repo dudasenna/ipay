@@ -15,25 +15,33 @@ struct DetailsCards: View {
     
     var desejoVM: DesejoViewModel
     
+    @StateObject private var listaDesejosVM = ListaDesejosViewModel()
+    
+    @State private var showingAlert = false
+    
+    @Environment(\.presentationMode) var presentation
+    
     var body: some View {
         
+
         VStack (alignment: .center, spacing: 30) {
             
             HStack (alignment: .top){
                 
                 HStack{
-                
-                NavigationLink(
-                    destination:
-                        HomeView(),
-                    label: {
-                        Image(systemName: "chevron.backward")
-                            .foregroundColor(Color(UIColor(named: "systemMint")!))
-                            .imageScale(.large)
-                        
-                    }) .padding()
-                
+                    
+                    NavigationLink(
+                        destination:
+                            HomeView(),
+                        label: {
+                            Image(systemName: "chevron.backward")
+                                .foregroundColor(Color(UIColor(named: "systemMint")!))
+                                .imageScale(.large)
+                            
+                        }) .padding()
+                    
                     VStack(alignment: .leading){
+
                 Text(desejoVM.nome)
                     .bold()
                     .font(.custom("Avenir Next", size: 30))
@@ -47,34 +55,56 @@ struct DetailsCards: View {
                 
                 HStack(alignment: .center, spacing:10){
                     
-                Button(
-                    action: {
+                    Button(
+                        action: {
+                            showingAlert = true
+                            
+                            
+                        }, label: {
+                            Image(systemName: "trash")
+                                .foregroundColor(Color(UIColor(named: "systemMint")!))
+                                .imageScale(.large)
+                        }
                         
-                    }, label: {
-                        Image(systemName: "trash")
-                            .foregroundColor(Color(UIColor(named: "systemMint")!))
-                            .imageScale(.large)
-                    })
-                NavigationLink(
-                    destination:
-                        AddWishView(),
-                    label: {
-                        Image(systemName: "pencil")
-                            .foregroundColor(Color(UIColor(named: "systemMint")!))
-                            .imageScale(.large)
-                        
-                    })
+                    )
+                    .alert(isPresented: $showingAlert) {
+                        Alert(title: Text(LocalizedStringKey("Deletar desejo")), message: Text(LocalizedStringKey("Tem certeza que deseja deletar este desejo? Esta ação não poderá ser desfeita.")),
+                              primaryButton: Alert.Button.default(Text(LocalizedStringKey("Sim")), action: {
+                                // Deletar desejo
+                                listaDesejosVM.deleteDesejo(desejoSelecionado: desejoVM)
+                                // Voltar pra tela home
+                                // Quando salva, volta para a Home
+                                self.presentation.wrappedValue.dismiss()
+                                
+                              }),
+                              secondaryButton: Alert.Button.cancel(Text(LocalizedStringKey("Não")), action: {
+                                showingAlert = false
+                              })
+                        )
+                    }
+                    
+                    NavigationLink(
+                        destination:
+                            AddWishView(),
+                        label: {
+                            Image(systemName: "pencil")
+                                .foregroundColor(Color(UIColor(named: "systemMint")!))
+                                .imageScale(.large)
+                            
+                        })
+                }
             }
-            }
-                
+
             HStack (alignment: .top, spacing:30){
                 
                 ScrollView{
                 
                     VStack(alignment: .leading, spacing:50){
 
-                    CardSaveMoney(goal: 50)
-                    
+
+                    CardSaveMoney(goal: 50, desejo: desejoVM)
+
+                        
                         .frame(minWidth: 100, idealWidth: 502, maxWidth: 515, minHeight: 100, idealHeight: 150, maxHeight: 155, alignment: .leading)
                     
                         HStack (alignment: .center, spacing:20) {
@@ -87,7 +117,7 @@ struct DetailsCards: View {
 //                    .padding(.top)
                     DescriptionCard(desejoVM: desejoVM)
                     LinksCard(desejoVM: desejoVM)
-                    
+
                     } .padding()
                 }
                 
@@ -97,13 +127,12 @@ struct DetailsCards: View {
             }
 
         }
-            
+
         .padding(30)
         .background(Color.white)
         .cornerRadius(10)
         .shadow(color: Color.gray.opacity(0.2), radius: 4, x: 0, y: 2)
         }
-
 }
 struct DetailsCards_Previews: PreviewProvider {
     static var previews: some View {
