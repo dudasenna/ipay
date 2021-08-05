@@ -50,17 +50,18 @@ struct EditWishCards: View {
             
             Button {
                 //addDesejoVM.addDesejo()
-                // Caso tenha alguma informação faltando, não salva
-                if(addDesejoVM.cor.isEmpty || addDesejoVM.preco.isEmpty || addDesejoVM.nome.isEmpty || addDesejoVM.descricao.isEmpty || addDesejoVM.link.isEmpty) {
-                    showingAlert = true
-                }
-                else {
+                // Caso tenha alguma informação faltando, pegar do desejo
+//                if(addDesejoVM.cor.isEmpty || addDesejoVM.preco.isEmpty || addDesejoVM.nome.isEmpty || addDesejoVM.descricao.isEmpty || addDesejoVM.link.isEmpty) {
+//                    //showingAlert = true
+//                }
+//                else {
                     // Edita o desejo
-                //addDesejoVM.updateDesejo(desejoSelecionado: desejoVM)
+                print("atualizar")
+                addDesejoVM.updateDesejo(desejoSelecionado: desejoVM)
                     
                 // Quando salva, volta para a Home
                 self.presentation.wrappedValue.dismiss()
-                }
+//                }
                 
     
             } label: {

@@ -33,9 +33,12 @@ struct EditInformationsCard: View {
             HStack() {
                 Text(LocalizedStringKey("Nome:"))
                     .font(.custom("Avenir Next", size: 18))
-                TextField(desejoVM.nome, text: $productName)
+                TextField(
+                    desejoVM.nome,
+                    text: $productName
+                )
                     .padding(5)
-                    .foregroundColor(.gray)
+                    .foregroundColor(Color("preto_primario"))
                     .font(.custom("Avenir Next", size: 16))
                     .multilineTextAlignment(.leading)
                     .background(RoundedRectangle(cornerRadius: 5).foregroundColor(.white))
@@ -55,9 +58,9 @@ struct EditInformationsCard: View {
             HStack() {
                 Text(LocalizedStringKey("Preço:"))
                     .font(.custom("Avenir Next", size: 18))
-                TextField(LocalizedStringKey("Preço do produto"), text: $productPrice)
+                TextField(String(desejoVM.preco), text: $productPrice)
                     .padding(5)
-                    .foregroundColor(.gray)
+                    .foregroundColor(Color("preto_primario"))
                     .font(.custom("Avenir Next", size: 16))
                     .multilineTextAlignment(.leading)
                     .background(RoundedRectangle(cornerRadius: 5).foregroundColor(.white))
@@ -83,9 +86,9 @@ struct EditInformationsCard: View {
             HStack() {
                 Text(LocalizedStringKey("Descrição:"))
                     .font(.custom("Avenir Next", size: 18))
-                TextField(LocalizedStringKey("Descrição do produto"), text: $productDescription)
+                TextField(desejoVM.descricao, text: $productDescription)
                     .padding(5)
-                    .foregroundColor(.gray)
+                    .foregroundColor(Color("preto_primario"))
                     .font(.custom("Avenir Next", size: 16))
                     .multilineTextAlignment(.leading)
                     .background(RoundedRectangle(cornerRadius: 5).foregroundColor(.white))
@@ -104,9 +107,9 @@ struct EditInformationsCard: View {
             HStack() {
                 Text(LocalizedStringKey("Link:"))
                     .font(.custom("Avenir Next", size: 18))
-                TextField(LocalizedStringKey("Link do produto"), text: $productLink)
+                TextField(desejoVM.link, text: $productLink)
                     .padding(5)
-                    .foregroundColor(.gray)
+                    .foregroundColor(Color("preto_primario"))
                     .font(.custom("Avenir Next", size: 16))
                     .multilineTextAlignment(.leading)
                     .background(RoundedRectangle(cornerRadius: 5).foregroundColor(.white))
