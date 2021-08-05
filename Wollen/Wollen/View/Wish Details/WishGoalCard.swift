@@ -42,24 +42,24 @@ struct WishGoalCard: View {
     
     var body: some View {
         let formattedGoalValue = String(format: "%.2f", goalValue)
-        VStack (alignment: .center, spacing: nil, content: {
+        VStack (alignment: .leading, spacing: nil, content: {
             HStack {
                 Text(LocalizedStringKey("Meta"))
                     .bold()
                     .font(.custom("Avenir Next", size: 22))
-                    .padding()
+//                    .padding()
                 Spacer()
-            }
+            } .padding(.bottom)
             // Meta cumprida
             if accomplished {
                 Text(LocalizedStringKey("Cumprida"))
                     .bold()
                     .font(.custom("Avenir Next", size: 22))
                     .foregroundColor(Color(categoryColor))
-                    .padding(.bottom)
+//                    .padding(.bottom)
                 Text(LocalizedStringKey("Parabéns 🎉\n Você merece!"))
-                    .padding(.vertical)
-                    .padding(.bottom, 20)
+//                    .padding(.vertical)
+//                    .padding(.bottom, 20)
                     .font(.custom("Avenir Next", size: 18))
                     .multilineTextAlignment(.center)
                     .fixedSize(horizontal: false, vertical: true)
@@ -103,10 +103,11 @@ struct WishGoalCard: View {
                             .fixedSize(horizontal: false, vertical: true)
                     //}
                 }
+
             }
             
         })
-        .padding(15)
+        .padding()
         .background(Color(red: 248/256, green: 248/256, blue: 248/256))
         .cornerRadius(10)
         .shadow(color: Color.gray.opacity(0.4), radius: 5)
@@ -229,6 +230,7 @@ struct WishGoalCard: View {
         self.textoMetaPorPeriodo = Text("R$ \(String(format: "%.2f", goalValue))\n\(perString)")
         
         return "R$ \(String(format: "%.2f", goalValue))\n\(perString)"
+
     }
 }
 

@@ -29,8 +29,9 @@ struct WishGraphCard: View {
                     .foregroundColor(Color("systemMint"))
                     .rotationEffect(Angle(degrees: 270.0))
                     .animation(.linear)
-                Text(String(format: "%.0f %%", min(self.progress, 1.0)*100.0))
-                    .font(.custom("Avenir Next", size: 35))
+                Text(String(format: "%.0f%%", min(self.progress, 1.0)*100.0))
+                    .font(.custom("Avenir Next", size: 30))
+//                    .font(.custom("Avenir Next", size: 35))
                     .bold()
             }
             .padding(5)
@@ -40,9 +41,9 @@ struct WishGraphCard: View {
                 let money = Text(LocalizedStringKey("R$"))
                     Text("\(money) \(formattedSavedMoney) /")
                     .bold()
-                    .font(.custom("Avenir Next", size: 25))
+                    .font(.custom("Avenir Next", size: 20))
                 Text("\(formattedGoalMoney)")
-                    .font(.custom("Avenir Next", size: 25))
+                    .font(.custom("Avenir Next", size: 20))
             }
         })
         .padding(20)

@@ -25,8 +25,8 @@ struct ContentView: View {
             if verticalSizeClass == .regular && horizontalSizeClass == .compact {
                 // iPhone Portrait or iPad 1/3 split view for Multitasking for instance
                 VStack {
-                    LinksCard()
-                    DescriptionCard()
+//                    LinksCard()
+//                    DescriptionCard()
                 }
             }
             if verticalSizeClass == .compact && horizontalSizeClass == .compact {
@@ -40,8 +40,8 @@ struct ContentView: View {
                         .frame(minWidth: 0, idealWidth: 240, maxWidth: 240, minHeight: 0, idealHeight: 100, maxHeight: .infinity, alignment: .center)
                     VStack {
                         MyWishesCards()
-                        DescriptionCard()
-                        LinksCard()
+//                        DescriptionCard()
+//                        LinksCard()
                     }
                     .padding(20)
                     .background(Color(red: 0.98, green: 0.98, blue: 0.98, opacity: 1.0))

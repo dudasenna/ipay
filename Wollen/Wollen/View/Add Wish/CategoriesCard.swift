@@ -57,7 +57,8 @@ struct CategoriesCard: View {
                 }.padding()
             }
             .padding()
-            VStack(alignment: .leading) {
+            HStack () {
+                Spacer()
                 NavigationLink(
                     destination:
                         NewCategory(),
@@ -73,7 +74,7 @@ struct CategoriesCard: View {
                     .shadow(color: Color.gray.opacity(0.4), radius: 5)
             }
 //            .padding(10)
-            .padding(.leading,160)
+//            .padding(.leading, 160)
         }
         .padding(15)
         .background(Color(red: 248/256, green: 248/256, blue: 248/256))

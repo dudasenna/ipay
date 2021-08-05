@@ -11,6 +11,12 @@ struct DescriptionCard: View {
     
     @StateObject private var updateDesejoVM = UpdateDesejoViewModel()
     
+    init(desejoVM: DesejoViewModel) {
+        self.desejoVM = desejoVM
+    }
+    
+    var desejoVM: DesejoViewModel
+    
     @State var descriptionText: String = "Texto do usuário"
     
     var body: some View {
@@ -23,7 +29,7 @@ struct DescriptionCard: View {
                 .padding()
             
             // DESCRIÇÃO
-            Text(descriptionText)
+            Text(desejoVM.descricao)
         
                 .font(.custom("Avenir Next", size: 18))
 //                .multilineTextAlignment(.center)
@@ -42,7 +48,10 @@ struct DescriptionCard: View {
 
 struct DescriptionCard_Previews: PreviewProvider {
     static var previews: some View {
-        DescriptionCard()
+//        DescriptionCard()
+        let desejo = Desejo()
+        let desejoVM = DesejoViewModel(desejo: desejo)
+        DescriptionCard(desejoVM: desejoVM)
             .previewLayout(.sizeThatFits)
             .padding()
             .cornerRadius(10)

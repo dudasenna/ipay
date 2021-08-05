@@ -13,7 +13,7 @@ struct GalleryCard: View {
         self.desejoVM = desejoVM
     }
     
-    @ObservedObject var listaMidiasVM = ListaMidiasViewModel()
+    @StateObject var listaMidiasVM = ListaMidiasViewModel()
     var desejoVM: DesejoViewModel
     
     var body: some View {
@@ -42,7 +42,7 @@ struct GalleryCard: View {
             .cornerRadius(10)
             .shadow(color: Color.gray.opacity(0.4), radius: 5)
         }.onAppear() {
-            self.listaMidiasVM.getMidiasFromDesejo(desejo: self.desejoVM)
+            listaMidiasVM.getMidiasFromDesejo(desejo: desejoVM)
         }
         
     }
@@ -64,6 +64,7 @@ struct GalleryCard_Previews: PreviewProvider {
         let listaMidiasVM = ListaMidiasViewModel()
         let desejo = Desejo()
         let desejoVM = DesejoViewModel(desejo: desejo)
+
         GalleryCard(desejoVM: desejoVM)
             .previewLayout(.sizeThatFits)
             .padding()

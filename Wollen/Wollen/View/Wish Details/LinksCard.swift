@@ -14,6 +14,12 @@ struct LinksCard: View {
     private var adaptiveLayout = [GridItem(.adaptive(minimum: 150))]
     private var flexibleLayout = [GridItem(.flexible()), GridItem(.flexible())]
     
+    init(desejoVM: DesejoViewModel) {
+        self.desejoVM = desejoVM
+    }
+    
+    var desejoVM: DesejoViewModel
+    
     var body: some View {
         VStack(alignment: .leading) {
             
@@ -24,19 +30,19 @@ struct LinksCard: View {
             
             // LINKS
             ScrollView(.vertical, showsIndicators: false) {
-                LazyVGrid (columns: adaptiveLayout, alignment: .center, spacing: 0){
-                    ForEach (0..<links.count) { link in
-                        Link(linkName[link], destination: URL(string: links[link])!)
-                            .font(.custom("Avenir Next", size: 18))
-            //                .multilineTextAlignment(.center)
-                            .fixedSize(horizontal: false, vertical: true)
-                            .padding(.horizontal)
-                            .padding(.bottom)
-                            
-                    }
-                }
+                //                LazyVGrid (columns: adaptiveLayout, alignment: .center, spacing: 0){
+                //                    ForEach (0..<links.count) { link in
+                //                        Link(linkName[link], destination: URL(string: links[link])!)
+                //                            .font(.custom("Avenir Next", size: 18))
+                Link(desejoVM.link, destination: URL(string: desejoVM.link) ?? URL(string: "www.apple.com")!)
+                    .font(.custom("Avenir Next", size: 18))
+                    //                .multilineTextAlignment(.center)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .padding(.horizontal)
+                    .padding(.bottom)
+                
+                //                    }
             }
-            
         }
         .padding(15)
         .frame(minWidth: 250, idealWidth: 500, maxWidth: 500, minHeight: 120, idealHeight: 120, maxHeight: 150, alignment: .leading)
@@ -44,11 +50,15 @@ struct LinksCard: View {
         .cornerRadius(10)
         .shadow(color: Color.gray.opacity(0.4), radius: 5)
     }
+   
 }
+
 
 struct LinksCard_Previews: PreviewProvider {
     static var previews: some View {
-        LinksCard()
+
+        let desejoVM = DesejoViewModel(desejo: Desejo(context: CoreDataManager.shared.viewContext))
+        LinksCard(desejoVM: desejoVM)
             .previewLayout(.sizeThatFits)
             .padding()
             .cornerRadius(10)
