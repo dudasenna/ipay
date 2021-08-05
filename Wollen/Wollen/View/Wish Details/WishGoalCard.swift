@@ -11,16 +11,32 @@ struct WishGoalCard: View {
     
     init(desejoVM: DesejoViewModel) {
         self.desejoVM = desejoVM
+        let meta = desejoVM.desejo.meta!
+        self.goalValue = meta.valorMeta
+        self.actualValue = meta.valorAtual
+        self.goalType = meta.tipo!
+        self.price = desejoVM.desejo.preco
+        self.goalPeriod = meta.frequencia!
+        self.timeToFinishGoal()
+        self.convertGoalPeriod()
+        //self.listaMetasVM.getMetaFromDesejo(desejo: desejoVM)
+        
     }
     
-    @ObservedObject var ListaMetasVM = ListaMetasViewModel()
+    @ObservedObject var listaMetasVM = ListaMetasViewModel()
     var desejoVM: DesejoViewModel
     
-    var categoryColor = "systemPurple"
-    var goalValue = 50.0
+    var categoryColor = "systemMint"
     var goalTime = 4
-    var goalPeriod = "Semanas"
-    var accomplished = false
+    var goalPeriod = "semanas"
+    var goalValue = 50.0
+    var goalType = "Por valor"
+    var actualValue = 0.0
+    var price = 200.0
+    @State private var accomplished = false
+    @State private var timeToText = ""
+    @State private var periodToText = Text("")
+    let pub = NotificationCenter.default.publisher(for: NSNotification.Name("atualiza_valor_atual"))
     
     var body: some View {
         let formattedGoalValue = String(format: "%.2f", goalValue)
@@ -57,9 +73,8 @@ struct WishGoalCard: View {
                     .font(.custom("Avenir Next", size: 22))
                     .foregroundColor(Color("systemMint"))
                     .padding(.bottom)
-               let meta = Text(LocalizedStringKey("Se você continuar neste ritmo, você completará a meta daqui a"))
-                
-                Text("\(meta) \(goalTime) \(goalPeriod).")
+                let meta = Text(LocalizedStringKey("Se você continuar neste ritmo, você completará a meta daqui a"))
+                Text("\(meta) \(timeToText) \(periodToText).")
                     
                     .padding(.vertical)
                     .font(.custom("Avenir Next", size: 18))
@@ -74,8 +89,32 @@ struct WishGoalCard: View {
         .shadow(color: Color.gray.opacity(0.4), radius: 5)
         .frame(minWidth: 0, idealWidth: 250, maxWidth: 250, minHeight: 0, idealHeight: 250, maxHeight: 250, alignment: .center)
         .onAppear() {
-            self.ListaMetasVM.getMetaFromDesejo(desejo: self.desejoVM)
+            self.listaMetasVM.getMetaFromDesejo(desejo: self.desejoVM)
+            timeToFinishGoal()
+            convertGoalPeriod()
         }
+        .onReceive(self.pub) { _ in
+            listaMetasVM.getMetaFromDesejo(desejo: desejoVM)
+            timeToFinishGoal()
+            convertGoalPeriod()
+        }
+    }
+    
+    func timeToFinishGoal() {
+        let time = self.price / self.actualValue
+        if time < 1 {
+            self.accomplished = true
+        }
+        self.timeToText = String(format: "%.0f", time)
+        //self.timeToText = "\(time)"
+    }
+    
+    func convertGoalPeriod() {
+        var period = "semanas"
+        if self.goalPeriod == "mensal" {
+            period = "meses"
+        }
+        self.periodToText = Text(LocalizedStringKey(period))
     }
 }
 
