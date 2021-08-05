@@ -29,14 +29,15 @@ struct WishGoalCard: View {
     var categoryColor = "systemMint"
     var goalTime = 4
     var goalPeriod = "semanas"
-    var goalValue = 50.0
     var goalType = "Por valor"
     var actualValue = 0.0
     var price = 200.0
+    @State private var goalValue = 50.0
     @State private var accomplished = false
     @State private var timeToText = ""
     @State private var periodToText = Text("")
     @State private var limitDate = ""
+    @State private var textoMetaPorPeriodo = Text("")
     let pub = NotificationCenter.default.publisher(for: NSNotification.Name("atualiza_valor_atual"))
     
     var body: some View {
@@ -87,20 +88,20 @@ struct WishGoalCard: View {
                 }
                 else {
                     
-                    Text("R$ 10.00")
+                    self.textoMetaPorPeriodo
                         .bold()
                         .font(.custom("Avenir Next", size: 22))
                         .foregroundColor(Color("systemMint"))
                         //.padding(.bottom)
                     
-                    ScrollView(.vertical) {
+                    //ScrollView(.vertical) {
                         let meta = Text(LocalizedStringKey("Para você conseguir completar a meta até "))
                         Text("\(meta) \(self.limitDate).")
                             .padding(.vertical)
                             .font(.custom("Avenir Next", size: 18))
                             .multilineTextAlignment(.leading)
                             .fixedSize(horizontal: false, vertical: true)
-                    }
+                    //}
                 }
             }
             
@@ -115,11 +116,17 @@ struct WishGoalCard: View {
             timeToFinishGoal()
             convertGoalPeriod()
             self.limitDate = getLimitDate()
+            if self.listaMetasVM.meta!.tipo == "Por período" {
+                self.getValuePerFrequency()
+            }
         }
         .onReceive(self.pub) { _ in
             listaMetasVM.getMetaFromDesejo(desejo: desejoVM)
             timeToFinishGoal()
             convertGoalPeriod()
+            if self.listaMetasVM.meta!.tipo == "Por período" {
+                self.getValuePerFrequency()
+            }
         }
     }
     
@@ -141,9 +148,6 @@ struct WishGoalCard: View {
     }
     
     func getLimitDate() -> String {
-        // Aqui vai retornar a data limite
-        // Com base na duração
-        
         let meta = self.listaMetasVM.meta!
         var seconds: Double = 0
         
@@ -161,16 +165,64 @@ struct WishGoalCard: View {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let dateString = dateFormatter.string(from: limitDate)
-        print(dateString)
         
         return dateString
+    }
+    
+    func getLimitDate() -> Date {
+        let meta = self.listaMetasVM.meta!
+        var seconds: Double = 0
+        
+        if meta.duracao2 == "semanas" {
+            seconds = WeeksToSeconds(Double(meta.duracao))
+        } else if meta.duracao2 == "meses" {
+            seconds = MonthsToSeconds(Double(meta.duracao))
+        } else { // anos
+            seconds = YearsToSeconds(Double(meta.duracao))
+        }
+        
+        var limitDate = Date()
+        limitDate.addTimeInterval(TimeInterval(seconds))
+        
+        return limitDate
     }
     
     func getValuePerFrequency() -> String {
         // Aqui vai retornar quanto o usuário tem que economizar
         // vai precisar usar a data limite, valor atual e alor da meta
         // além da frequência
-        return "R$ 10.00 por semana"
+        
+        let meta = self.listaMetasVM.meta!
+        
+        var durationWeeks: Double = Double(meta.duracao)
+        
+        let currentDate: Date = Date()
+        let limitDate: Date = getLimitDate()
+        
+        //durationWeeks = limitDate - currentDate
+        let distanceSeconds = currentDate.distance(to: limitDate)
+        let distanceWeeks = distanceSeconds / 604800
+        durationWeeks = distanceWeeks
+        
+        let goalValuePerWeek = (self.desejoVM.desejo.preco - meta.valorAtual) / durationWeeks
+        
+        var perString = ""
+        
+        if meta.frequencia == "semanal" {
+            self.goalValue = goalValuePerWeek
+            perString = "por semana"
+        } else {
+            // Valor da meta por mês
+            self.goalValue = goalValuePerWeek * 4
+            perString = "por mês"
+        }
+        
+        print("R$ \(String(format: "%.2f", goalValue))\n\(perString)")
+        
+        // Atualiza variavel que mostra o texto
+        self.textoMetaPorPeriodo = Text("R$ \(String(format: "%.2f", goalValue))\n\(perString)")
+        
+        return "R$ \(String(format: "%.2f", goalValue))\n\(perString)"
     }
 }
 
