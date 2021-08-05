@@ -29,6 +29,7 @@ class AddDesejoViewModel: ObservableObject {
     @Published var valorAtual: String = ""
     @Published var valorMeta: String = ""
     @Published var tipo: String = "Por valor"
+    @Published var dataCriacao: Date = Date()
     
     // Atributos da Mídia
     @Published var imagensMidia = [UIImage]()
@@ -59,6 +60,7 @@ class AddDesejoViewModel: ObservableObject {
         meta.valorAtual = Double(valorAtual) ?? 0.0
         meta.valorMeta = Double(valorMeta) ?? 0.0
         meta.tipo = tipo
+        meta.dataCriacao = dataCriacao
         desejo.meta =  meta
         
         // Verifica se o array de imagem está vazio, e se estiver, adiciona uma imagem padrão
@@ -106,6 +108,7 @@ class AddDesejoViewModel: ObservableObject {
             meta.valorAtual = Double(valorAtual) ?? 0.0
             meta.valorMeta = Double(valorMeta) ?? 0.0
             meta.tipo = tipo
+            meta.dataCriacao = dataCriacao
             desejo.meta = meta
             
             // Verifica se o array de imagem está vazio, e se estiver, adiciona uma imagem padrão

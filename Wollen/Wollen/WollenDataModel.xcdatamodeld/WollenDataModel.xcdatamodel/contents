@@ -16,6 +16,7 @@
         <relationship name="meta" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Meta" inverseName="desejo" inverseEntity="Meta"/>
     </entity>
     <entity name="Meta" representedClassName="Meta" syncable="YES" codeGenerationType="class">
+        <attribute name="dataCriacao" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="duracao" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="duracao2" optional="YES" attributeType="String"/>
         <attribute name="frequencia" optional="YES" attributeType="String"/>
@@ -31,7 +32,7 @@
     <elements>
         <element name="Categoria" positionX="-54" positionY="-9" width="128" height="74"/>
         <element name="Desejo" positionX="-63" positionY="-18" width="128" height="149"/>
-        <element name="Meta" positionX="-36" positionY="9" width="128" height="104"/>
+        <element name="Meta" positionX="-36" positionY="9" width="128" height="149"/>
         <element name="Midia" positionX="-45" positionY="45" width="128" height="59"/>
     </elements>
 </model>

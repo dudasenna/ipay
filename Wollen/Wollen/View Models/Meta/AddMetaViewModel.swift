@@ -18,6 +18,7 @@ class AddMetaViewModel: ObservableObject {
     var valorAtual: String = ""
     var valorMeta: String = ""
     var tipo: String = ""
+    var dataCriacao: Date = Date()
     
     // Adicionar uma meta a um desejo existente
     func addMetaToDesejo(desejoId: NSManagedObjectID) {
@@ -35,6 +36,7 @@ class AddMetaViewModel: ObservableObject {
             meta.valorMeta = Double(valorMeta) ?? 0.0
             meta.desejo = desejo
             meta.tipo = tipo
+            meta.dataCriacao = dataCriacao
             
             manager.save()
             print("Salvou a meta!")
@@ -71,6 +73,7 @@ class AddMetaViewModel: ObservableObject {
         meta.valorAtual = Double(valorAtual) ?? 0.0
         meta.valorMeta = Double(valorMeta) ?? 0.0
         meta.tipo = tipo
+        meta.dataCriacao = dataCriacao
         
         manager.save()
         print("Salvou a meta!")
