@@ -36,6 +36,7 @@ struct WishGoalCard: View {
     @State private var accomplished = false
     @State private var timeToText = ""
     @State private var periodToText = Text("")
+    @State private var limitDate = ""
     let pub = NotificationCenter.default.publisher(for: NSNotification.Name("atualiza_valor_atual"))
     
     var body: some View {
@@ -64,22 +65,43 @@ struct WishGoalCard: View {
             }
             // Meta ainda não cumprida
             else {
-                let valorMeta = Text(LocalizedStringKey("R$"))
+
+                if self.goalType == "Por valor" {
                     
-                Text("\(valorMeta) \(formattedGoalValue) / \(goalPeriod)")
+                    let valorMeta = Text(LocalizedStringKey("R$"))
+                        
+                    Text("\(valorMeta) \(formattedGoalValue) / \(goalPeriod)")
+                        
+                        
+                        .bold()
+                        .font(.custom("Avenir Next", size: 22))
+                        .foregroundColor(Color("systemMint"))
+                        .padding(.bottom)
+                    let meta = Text(LocalizedStringKey("Se você continuar neste ritmo, você completará a meta daqui a"))
+                    Text("\(meta) \(timeToText) \(periodToText).")
+                        
+                        .padding(.vertical)
+                        .font(.custom("Avenir Next", size: 18))
+                        .multilineTextAlignment(.leading)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+                else {
                     
+                    Text("R$ 10.00")
+                        .bold()
+                        .font(.custom("Avenir Next", size: 22))
+                        .foregroundColor(Color("systemMint"))
+                        //.padding(.bottom)
                     
-                    .bold()
-                    .font(.custom("Avenir Next", size: 22))
-                    .foregroundColor(Color("systemMint"))
-                    .padding(.bottom)
-                let meta = Text(LocalizedStringKey("Se você continuar neste ritmo, você completará a meta daqui a"))
-                Text("\(meta) \(timeToText) \(periodToText).")
-                    
-                    .padding(.vertical)
-                    .font(.custom("Avenir Next", size: 18))
-                    .multilineTextAlignment(.leading)
-                    .fixedSize(horizontal: false, vertical: true)
+                    ScrollView(.vertical) {
+                        let meta = Text(LocalizedStringKey("Para você conseguir completar a meta até "))
+                        Text("\(meta) \(self.limitDate).")
+                            .padding(.vertical)
+                            .font(.custom("Avenir Next", size: 18))
+                            .multilineTextAlignment(.leading)
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
+                }
             }
             
         })
@@ -92,6 +114,7 @@ struct WishGoalCard: View {
             self.listaMetasVM.getMetaFromDesejo(desejo: self.desejoVM)
             timeToFinishGoal()
             convertGoalPeriod()
+            self.limitDate = getLimitDate()
         }
         .onReceive(self.pub) { _ in
             listaMetasVM.getMetaFromDesejo(desejo: desejoVM)
@@ -115,6 +138,39 @@ struct WishGoalCard: View {
             period = "meses"
         }
         self.periodToText = Text(LocalizedStringKey(period))
+    }
+    
+    func getLimitDate() -> String {
+        // Aqui vai retornar a data limite
+        // Com base na duração
+        
+        let meta = self.listaMetasVM.meta!
+        var seconds: Double = 0
+        
+        if meta.duracao2 == "semanas" {
+            seconds = WeeksToSeconds(Double(meta.duracao))
+        } else if meta.duracao2 == "meses" {
+            seconds = MonthsToSeconds(Double(meta.duracao))
+        } else { // anos
+            seconds = YearsToSeconds(Double(meta.duracao))
+        }
+        
+        var limitDate = Date()
+        limitDate.addTimeInterval(TimeInterval(seconds))
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let dateString = dateFormatter.string(from: limitDate)
+        print(dateString)
+        
+        return dateString
+    }
+    
+    func getValuePerFrequency() -> String {
+        // Aqui vai retornar quanto o usuário tem que economizar
+        // vai precisar usar a data limite, valor atual e alor da meta
+        // além da frequência
+        return "R$ 10.00 por semana"
     }
 }
 

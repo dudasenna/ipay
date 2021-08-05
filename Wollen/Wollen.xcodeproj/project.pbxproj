@@ -59,6 +59,7 @@
 		BE078A2926AF3426009087BF /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE078A2826AF3426009087BF /* CoreDataManager.swift */; };
 		BE167E67269CDD9C009E94C5 /* GoalCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE167E66269CDD9C009E94C5 /* GoalCard.swift */; };
 		BE17DB7F26A650740051966C /* GalleryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE17DB7E26A650740051966C /* GalleryCard.swift */; };
+		BE3BDBA326BC3C9C0014F128 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3BDBA226BC3C9C0014F128 /* Constants.swift */; };
 		BE5FAE4F269E880A006E54A6 /* CardSaveMoney.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5FAE4E269E880A006E54A6 /* CardSaveMoney.swift */; };
 		BEF330E626B88E0100A6091F /* InformationPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF330E526B88E0100A6091F /* InformationPopup.swift */; };
 		BEF78B952698D85700181907 /* WollenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF78B942698D85700181907 /* WollenApp.swift */; };
@@ -122,6 +123,7 @@
 		BE078A2826AF3426009087BF /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		BE167E66269CDD9C009E94C5 /* GoalCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCard.swift; sourceTree = "<group>"; };
 		BE17DB7E26A650740051966C /* GalleryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCard.swift; sourceTree = "<group>"; };
+		BE3BDBA226BC3C9C0014F128 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BE5FAE4E269E880A006E54A6 /* CardSaveMoney.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSaveMoney.swift; sourceTree = "<group>"; };
 		BEF330E526B88E0100A6091F /* InformationPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationPopup.swift; sourceTree = "<group>"; };
 		BEF78B912698D85700181907 /* Wollen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wollen.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -326,6 +328,7 @@
 				BEF78BA22698D85900181907 /* Info.plist */,
 				BEF78B9A2698D85900181907 /* Preview Content */,
 				BE078A2826AF3426009087BF /* CoreDataManager.swift */,
+				BE3BDBA226BC3C9C0014F128 /* Constants.swift */,
 			);
 			path = Wollen;
 			sourceTree = "<group>";
@@ -448,6 +451,7 @@
 				7DD0C25026BB048000061945 /* DetalhesDesejo.swift in Sources */,
 				7D6F2EC726A704DF00EC8ADC /* AddCategoriaViewModel.swift in Sources */,
 				66A642DA26B9BD6A00A3EB6E /* DetailsCards.swift in Sources */,
+				BE3BDBA326BC3C9C0014F128 /* Constants.swift in Sources */,
 				BEF78B972698D85700181907 /* ContentView.swift in Sources */,
 				7D9C5A7426A9F68600FAF19C /* AddDesejoCompleto.swift in Sources */,
 				7D9C5A7D26AB548200FAF19C /* DesejoViewModel.swift in Sources */,
