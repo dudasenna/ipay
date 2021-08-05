@@ -13,6 +13,9 @@ struct AddWishCards: View {
     @Environment(\.presentationMode) var presentation
     @State private var showingAlert = false
     
+    @Environment(\.verticalSizeClass) var verticalSizeClass: UserInterfaceSizeClass?
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
+    
     var body: some View {
         
         VStack (alignment: .center, spacing: 30) {
@@ -35,15 +38,61 @@ struct AddWishCards: View {
                     })
             }
             
-            HStack (alignment: .top, spacing: 30) {
-                InformationsCard(addDesejoVM: addDesejoVM)
-                CategoriesCard(addDesejoVM: addDesejoVM)
-            }
+//            HStack (alignment: .top, spacing: 30) {
+//                InformationsCard(addDesejoVM: addDesejoVM)
+//                CategoriesCard(addDesejoVM: addDesejoVM)
+//            }
+//
+//            HStack (alignment: .top, spacing: 30) {
+//
+//                ImageCard(addDesejoVM: addDesejoVM)
+//                GoalCard(desejo: addDesejoVM)
+//            }
             
-            HStack (alignment: .top, spacing: 30) {
-
-                ImageCard(addDesejoVM: addDesejoVM)
-                GoalCard(desejo: addDesejoVM)
+            Group {
+                if verticalSizeClass == .regular && horizontalSizeClass == .compact {
+                    // iPhone Portrait or iPad 1/3 split view for Multitasking for instance
+                    ScrollView {
+                        VStack (alignment: .center, spacing: 30){
+                            InformationsCard(addDesejoVM: addDesejoVM)
+                            CategoriesCard(addDesejoVM: addDesejoVM)
+                            ImageCard(addDesejoVM: addDesejoVM)
+                            GoalCard(desejo: addDesejoVM)
+                        }
+                    }
+                }
+                if verticalSizeClass == .compact && horizontalSizeClass == .compact {
+                    // some "standard" iPhone Landscape (iPhone SE, X, XS, 7, 8, ...)
+                    ScrollView {
+                        VStack (alignment: .center, spacing: 30){
+                            InformationsCard(addDesejoVM: addDesejoVM)
+                            CategoriesCard(addDesejoVM: addDesejoVM)
+                            ImageCard(addDesejoVM: addDesejoVM)
+                            GoalCard(desejo: addDesejoVM)
+                        }
+                    }
+                } else if verticalSizeClass == .compact && horizontalSizeClass == .regular {
+                    // some "bigger" iPhone Landscape (iPhone Xs Max, 6s Plus, 7 Plus, 8 Plus, ...)
+                    ScrollView {
+                        VStack (alignment: .center, spacing: 30){
+                            InformationsCard(addDesejoVM: addDesejoVM)
+                            CategoriesCard(addDesejoVM: addDesejoVM)
+                            ImageCard(addDesejoVM: addDesejoVM)
+                            GoalCard(desejo: addDesejoVM)
+                        }
+                    }
+                } else if verticalSizeClass == .regular && horizontalSizeClass == .regular {
+                    // macOS or iPad without split view - no Multitasking
+                    HStack (alignment: .top, spacing: 30) {
+                        InformationsCard(addDesejoVM: addDesejoVM)
+                        CategoriesCard(addDesejoVM: addDesejoVM)
+                    }
+                    
+                    HStack (alignment: .top, spacing: 30) {
+                        ImageCard(addDesejoVM: addDesejoVM)
+                        GoalCard(desejo: addDesejoVM)
+                    }
+                }
             }
             
             
