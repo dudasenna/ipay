@@ -15,6 +15,8 @@ struct MyWishCard: View {
     let desejoVM: DesejoViewModel
     @StateObject private var listaMidiasVM = ListaMidiasViewModel()
     
+    @ObservedObject var listaMetasVM = ListaMetasViewModel()
+    
     var body: some View {
         VStack(alignment: .leading, spacing: nil, content: {
             
@@ -31,6 +33,13 @@ struct MyWishCard: View {
                 .padding(.bottom, 5)
 
         })
+        .onAppear() {
+            self.listaMetasVM.getMetaFromDesejo(desejo: desejoVM)
+            let savedMoney = desejoVM.desejo.meta?.valorAtual
+            let goalMoney = desejoVM.preco
+            self.downloadAmount = Float(savedMoney! / goalMoney)
+        }
+        
         .padding(10)
         .background(Color(red: 248/256, green: 248/256, blue: 248/256))
         .cornerRadius(10)
