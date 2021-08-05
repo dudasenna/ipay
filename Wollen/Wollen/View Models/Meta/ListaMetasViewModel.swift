@@ -16,9 +16,7 @@ class ListaMetasViewModel: ObservableObject {
     func getMetaFromDesejo(desejo: DesejoViewModel) {
         let desejo =  CoreDataManager.shared.getDesejoById(id: desejo.id)
         if let desejo = desejo {
-            DispatchQueue.main.async {
-                self.meta = MetaViewModel(meta: desejo.meta!)
-            }
+            self.meta = MetaViewModel(meta: desejo.meta!)
         }
     }
     
