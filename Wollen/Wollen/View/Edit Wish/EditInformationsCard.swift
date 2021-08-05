@@ -52,7 +52,9 @@ struct EditInformationsCard: View {
                 
             }
             .padding(10)
-            
+            .onAppear() {
+                self.productName =  desejoVM.nome
+            }
             // PREÇO
             
             HStack() {

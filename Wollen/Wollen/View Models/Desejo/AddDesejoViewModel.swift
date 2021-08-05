@@ -145,6 +145,7 @@ class AddDesejoViewModel: ObservableObject {
             desejo.preco = Double(preco) ?? 0.0
            
             // Categoria
+            // TO DO precisa pegar o id da categoria pra atualizar uma categoria especifica
             desejo.categoria?.nome = nomeCategoria
             desejo.categoria?.cor = cor
             
