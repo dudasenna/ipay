@@ -39,6 +39,10 @@ struct MetaViewModel {
     var tipo: String {
         return meta.tipo ?? "Por valor"
     }
+    
+    var dataCriacao: Date {
+        return meta.dataCriacao!
+    }
 
     var progresso: Double {
         if meta.valorMeta != 0.0 {
