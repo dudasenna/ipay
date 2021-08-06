@@ -66,4 +66,6 @@
 "Não" = "No";
 "Deseja salvar este valor?" = "Do you want to save this value?";
 "Confirmar" = "Confirm";
-
+"R$" = "$";
+"por semana" = "per week";
+"por mês" = "per month";

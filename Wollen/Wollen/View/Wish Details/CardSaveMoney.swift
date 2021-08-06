@@ -9,13 +9,13 @@ import SwiftUI
 import Combine
 
 struct CardSaveMoney: View {
-
+    
     // init(goal value: Float, desejo: DesejoViewModel) {
     //     self.goalValue = value
     //     self.valueTextField = String("R$ \(value)")
     //     self.desejoVM = desejo
     // }
-
+    
     init(goal value: Float, desejo: DesejoViewModel) {
         self.goalValue = value
         //self.valueTextField = String("R$ \(value)")
@@ -23,7 +23,7 @@ struct CardSaveMoney: View {
         self.valueTextField = ("\(textAux) \(value)")
         self.desejoVM = desejo
     }
-
+    
     @StateObject private var updateDesejoVM = UpdateDesejoViewModel()
     @StateObject private var listaMetasVM = ListaMetasViewModel()
     @State private var valueTextField: String
@@ -49,6 +49,7 @@ struct CardSaveMoney: View {
                 Spacer()
                 
                 // Text field:
+                
                 TextField(String(valuePlaceholder), text: $valuePlaceholder)
                     .foregroundColor(.gray)
                     .font(.body)
@@ -73,7 +74,7 @@ struct CardSaveMoney: View {
                     }
                 }
                 .foregroundColor(Color(UIColor(named: "preto_primario")!))
-                            .font(.custom("Avenir Next", size: 18).bold())
+                .font(.custom("Avenir Next", size: 18).bold())
                 .padding(.horizontal)
                 .background(RoundedRectangle(cornerRadius: 5))
                 .foregroundColor(Color(UIColor(named: "systemMint")!))
@@ -82,6 +83,7 @@ struct CardSaveMoney: View {
                         title: Text(LocalizedStringKey("Deseja salvar este valor?")),
                         message: Text("\nR$ \(self.valueTextField)"),
                         primaryButton: .cancel(Text(LocalizedStringKey("Cancelar"))),
+                        
                         secondaryButton: .default(
                             Text(LocalizedStringKey("Confirmar")),
                             action: {
