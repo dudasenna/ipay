@@ -83,7 +83,7 @@ struct CardSaveMoney: View {
                 .alert(isPresented: $showPopup) {
                     Alert(
                         title: Text(LocalizedStringKey("Deseja salvar este valor?")),
-                        message: Text("\nR$ \(self.valueTextField)"),
+                        message: Text("\n \(NSLocalizedString("R$", comment: "")) \(self.valueTextField)"),
                         primaryButton: .cancel(Text(LocalizedStringKey("Cancelar"))),
                         
                         secondaryButton: .default(
