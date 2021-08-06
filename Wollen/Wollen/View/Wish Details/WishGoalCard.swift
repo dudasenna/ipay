@@ -73,7 +73,8 @@ struct WishGoalCard: View {
                     
                     let valorMeta = Text(LocalizedStringKey("R$"))
                         
-                    Text("\(valorMeta) \(formattedGoalValue) / \(goalPeriod)")
+                    let traduz = Text(LocalizedStringKey(goalPeriod))
+                    Text("\(valorMeta) \(formattedGoalValue) / \(traduz)")
                         
                         
                         .bold()
@@ -82,6 +83,7 @@ struct WishGoalCard: View {
                         .padding(.bottom)
                     let meta = Text(LocalizedStringKey("Se você continuar neste ritmo, você completará a meta daqui a"))
                     Text("\(meta) \(timeToText) \(periodToText).")
+                        .minimumScaleFactor(0.2)
                         
                         .padding(.vertical)
                         .font(.custom("Avenir Next", size: 18))
@@ -229,7 +231,8 @@ struct WishGoalCard: View {
         print("R$ \(String(format: "%.2f", goalValue))\n\(perString)")
         
         // Atualiza variavel que mostra o texto
-        self.textoMetaPorPeriodo = Text("R$ \(String(format: "%.2f", goalValue))\n\(perString)")
+        let traduz = Text(LocalizedStringKey("R$"))
+        self.textoMetaPorPeriodo = Text("\(traduz) \(String(format: "%.2f", goalValue))\n\(perString)")
         
         return "R$ \(String(format: "%.2f", goalValue))\n\(perString)"
 

@@ -49,6 +49,7 @@ struct CardSaveMoney: View {
                 Spacer()
                 
                 // Text field:
+                
                 TextField(String(valuePlaceholder), text: $valuePlaceholder)
                     .foregroundColor(.gray)
                     .font(.body)
@@ -78,9 +79,10 @@ struct CardSaveMoney: View {
                 .background(RoundedRectangle(cornerRadius: 5))
                 .foregroundColor(Color(UIColor(named: "systemMint")!))
                 .alert(isPresented: $showPopup) {
-                    Alert(
+                    let traduz = Text(LocalizedStringKey("R$"))
+                    return Alert(
                         title: Text("Deseja salvar este valor?"),
-                        message: Text("\nR$ \(self.valueTextField)"),
+                        message: Text("\n\(traduz) \(self.valueTextField)"),
                         primaryButton: .cancel(Text("Cancelar")),
                         secondaryButton: .default(
                             Text("Confirmar"),
