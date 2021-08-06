@@ -22,6 +22,7 @@ struct CardSaveMoney: View {
         let textAux = NSLocalizedString("R$", comment: "")
         self.valueTextField = ("\(textAux) \(value)")
         self.desejoVM = desejo
+        self.valuePlaceholder = ("\(textAux) \(value)")
     }
     
     @StateObject private var updateDesejoVM = UpdateDesejoViewModel()
@@ -29,7 +30,7 @@ struct CardSaveMoney: View {
     @State private var valueTextField: String
     @State private var showPopup: Bool = false
     @State private var showSheet = false
-    @State private var valuePlaceholder = "R$ 50.0"
+    @State private var valuePlaceholder: String
     var goalValue: Float = 0
     var maxWidth = UIScreen().bounds.width
     let desejoVM: DesejoViewModel
@@ -63,7 +64,8 @@ struct CardSaveMoney: View {
                         let filtered = valueFiltering(newValue)
                         if filtered != newValue {
                             self.valueTextField = String("\(filtered)")
-                            self.valuePlaceholder = "R$ \(self.valueTextField)"
+                            let textAux = NSLocalizedString("R$", comment: "")
+                            self.valuePlaceholder = "\(textAux) \(self.valueTextField)"
                         }
                     }
                 
