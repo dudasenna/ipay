@@ -52,7 +52,7 @@ struct CardSaveMoney: View {
                 // Text field:
                 
                 TextField(String(valuePlaceholder), text: $valuePlaceholder)
-                    .foregroundColor(.gray)
+                    .foregroundColor(Color("preto_primario"))
                     .font(.body)
                     .padding(.horizontal)
                     .multilineTextAlignment(.leading)

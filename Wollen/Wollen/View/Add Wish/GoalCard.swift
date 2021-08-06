@@ -62,6 +62,7 @@ struct GoalCard: View {
                 }
             }
             .pickerStyle(SegmentedPickerStyle())
+            .foregroundColor(Color("preto_primario"))
             .padding()
             .fixedSize(horizontal: false, vertical: false)
             .onChange(of: goalBy) { _ in
@@ -83,7 +84,7 @@ struct GoalCard: View {
                 Picker(selection: $frequency,
                        label:
                         Text(frequency.rawValue)
-                        .foregroundColor(.gray)
+                        .foregroundColor(Color("preto_primario"))
                         .padding(5)
                         .padding(.horizontal)
                         .background(RoundedRectangle(cornerRadius: 5).foregroundColor(.white))
@@ -119,7 +120,7 @@ struct GoalCard: View {
                         text: $valuePlaceholder
                     )
                     .padding(5)
-                    .foregroundColor(.gray)
+                    .foregroundColor(Color("preto_primario"))
                     .font(.custom("Avenir Next", size: 16))
                     .multilineTextAlignment(.leading)
                     .background(RoundedRectangle(cornerRadius: 5).foregroundColor(.white))
@@ -151,7 +152,7 @@ struct GoalCard: View {
                     // Picker duplo
                     Picker(selection: $quantityDuration,
                            label: Text("\(quantityDuration)").foregroundColor(.gray)
-                            .foregroundColor(.gray)
+                            .foregroundColor(Color("preto_primario"))
                             .font(.custom("Avenir Next", size: 16))
                             .padding(5)
                             .padding(.horizontal)
@@ -172,7 +173,7 @@ struct GoalCard: View {
                     
                     Picker(selection: $duration,
                            label: Text(duration.rawValue)
-                            .foregroundColor(.gray)
+                            .foregroundColor(Color("preto_primario"))
                             .font(.custom("Avenir Next", size: 16))
                             .padding(5)
                             .padding(.horizontal)
@@ -198,6 +199,10 @@ struct GoalCard: View {
         .cornerRadius(10)
         .fixedSize(horizontal: false, vertical: false)
         .shadow(color: Color.gray.opacity(0.4), radius: 5)
+        .onAppear() {
+            self.desejo.valorMeta = valuePlaceholder
+            self.desejo.tipo = "Por valor"
+        }
     } // body
     
     /// Função responsável por filtar o valor do text field

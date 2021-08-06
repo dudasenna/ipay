@@ -23,7 +23,7 @@ struct NewCategory : View {
                 .font(.custom("Avenir Next", size: 22))
                 .foregroundColor(.black)
             TextField(LocalizedStringKey("Nome da categoria"), text: $addCategoriaVM.nome)
-                .foregroundColor(.black)
+                .foregroundColor(Color("preto_primario"))
                 .padding(5)
                 .font(.custom("Avenir Next", size: 16))
                 .multilineTextAlignment(.leading)
