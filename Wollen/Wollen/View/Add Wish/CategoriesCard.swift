@@ -57,21 +57,22 @@ struct CategoriesCard: View {
                 }.padding()
             }
             .padding()
-            HStack () {
+            HStack (alignment: .center) {
                 Spacer()
                 NavigationLink(
                     destination:
                         NewCategory(),
                     label: {
-                        Text(LocalizedStringKey("Outra"))
+                        Text(LocalizedStringKey("Nova categoria"))
                             .foregroundColor(Color(UIColor(named: "preto_primario")!))
-                            .font(.custom("Avenir Next", size: 18))
+                            .font(.custom("Avenir Next", size: 18)).bold()
                             .padding(5)
                     })
                     .padding(5)
                     .background(Color(UIColor(named: "systemMint")!))
                     .cornerRadius(10)
                     .shadow(color: Color.gray.opacity(0.4), radius: 5)
+                Spacer()
             }
 //            .padding(10)
 //            .padding(.leading, 160)

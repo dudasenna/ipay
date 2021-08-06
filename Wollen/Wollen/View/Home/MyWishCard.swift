@@ -37,7 +37,7 @@ struct MyWishCard: View {
             self.listaMetasVM.getMetaFromDesejo(desejo: desejoVM)
             let savedMoney = desejoVM.desejo.meta?.valorAtual
             let goalMoney = desejoVM.preco
-            self.downloadAmount = Float(savedMoney! / goalMoney)
+            self.downloadAmount = Float(savedMoney ?? 0 / goalMoney)
         }
         
         .padding(10)
