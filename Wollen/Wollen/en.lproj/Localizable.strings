@@ -64,3 +64,6 @@
 "Tem certeza que deseja deletar este desejo? Esta ação não poderá ser desfeita." = "Are you sure you want to delete this wish? This action cannot be undone.";
 "Sim" = "Yes";
 "Não" = "No";
+"Deseja salvar este valor?" = "Do you want to save this value?";
+"Confirmar" = "Confirm";
+

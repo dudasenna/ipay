@@ -79,11 +79,11 @@ struct CardSaveMoney: View {
                 .foregroundColor(Color(UIColor(named: "systemMint")!))
                 .alert(isPresented: $showPopup) {
                     Alert(
-                        title: Text("Deseja salvar este valor?"),
+                        title: Text(LocalizedStringKey("Deseja salvar este valor?")),
                         message: Text("\nR$ \(self.valueTextField)"),
-                        primaryButton: .cancel(Text("Cancelar")),
+                        primaryButton: .cancel(Text(LocalizedStringKey("Cancelar"))),
                         secondaryButton: .default(
-                            Text("Confirmar"),
+                            Text(LocalizedStringKey("Confirmar")),
                             action: {
                                 self.updateDesejoVM.updateValorAtual(desejo: desejoVM, valor: valueTextField)
                                 self.valueTextField = String("R$ \(self.goalValue)")
