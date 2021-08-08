@@ -22,7 +22,7 @@ struct MyWishCard: View {
             
             let image = listaMidiasVM.getImageFromMidia(midia: desejoVM.midiaVM)
             Image(uiImage: image)
-            //Image(uiImage: UIImage(named: "teste")!)
+                //Image(uiImage: UIImage(named: "teste")!)
                 .resizable()
                 .frame(minWidth: 0, idealWidth: 220, maxWidth: 220, minHeight: 0, idealHeight: 130, maxHeight: 130, alignment: .center)
                 .scaledToFit()
@@ -31,13 +31,17 @@ struct MyWishCard: View {
                 .font(.custom("Avenir Next", size: 16))
             ProgressBar(value: $downloadAmount, desejoVM: desejoVM).frame(minWidth: 0, idealWidth: 220, maxWidth: 220, minHeight: 0, idealHeight: 20, maxHeight: 20, alignment: .center)
                 .padding(.bottom, 5)
-
+            
         })
         .onAppear() {
             self.listaMetasVM.getMetaFromDesejo(desejo: desejoVM)
             let savedMoney = desejoVM.desejo.meta?.valorAtual
             let goalMoney = desejoVM.preco
-            self.downloadAmount = Float(savedMoney ?? 0 / goalMoney)
+            let meta = desejoVM.desejo.meta
+            if meta != nil {
+                self.downloadAmount = Float(savedMoney! / goalMoney)
+            }
+            
         }
         
         .padding(10)
