@@ -60,6 +60,8 @@ struct ImageCard : View {
                         Image(uiImage: data)
                             .renderingMode(.original)
                             .resizable()
+                            .scaledToFill()
+                            .clipped()
                             .frame(width: 120, height: 89)
                             .cornerRadius(6)
                     }

@@ -49,8 +49,16 @@ struct DetailsCards: View {
                             .bold()
                             .font(.custom("Avenir Next", size: 30))
                         
-                        Text(desejoVM.desejo.categoria?.nome ?? "")
-                            .font(.custom("Avenir Next", size: 18))
+                        NavigationLink(
+                            destination: HomeCategoryView(categoriaVM: desejoVM.categoriaVM),
+                            label: {
+                                Text(desejoVM.desejo.categoria?.nome ?? "")
+                                    .font(.custom("Avenir Next", size: 18))
+                                    .foregroundColor(Color("preto_primario"))
+                            }
+                        )
+//                        Text(desejoVM.desejo.categoria?.nome ?? "")
+//                            .font(.custom("Avenir Next", size: 18))
                     }
                 }
                 

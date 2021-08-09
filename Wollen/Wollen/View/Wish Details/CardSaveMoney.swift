@@ -53,7 +53,7 @@ struct CardSaveMoney: View {
                 
                 TextField(String(valuePlaceholder), text: $valuePlaceholder)
                     .foregroundColor(Color("preto_primario"))
-                    .font(.body)
+                    .font(.custom("Avenir Next", size: 16))
                     .padding(.horizontal)
                     .multilineTextAlignment(.leading)
                     .background(RoundedRectangle(cornerRadius: 5).foregroundColor(.white))
@@ -77,9 +77,12 @@ struct CardSaveMoney: View {
                 }
                 .foregroundColor(Color(UIColor(named: "preto_primario")!))
                 .font(.custom("Avenir Next", size: 18).bold())
-                .padding(.horizontal)
-                .background(RoundedRectangle(cornerRadius: 5))
-                .foregroundColor(Color(UIColor(named: "systemMint")!))
+//                .padding(.horizontal)
+//                .background(RoundedRectangle(cornerRadius: 5))
+//                .foregroundColor(Color(UIColor(named: "systemMint")!))
+                .padding(10)
+                .background(Color(UIColor(named: "systemMint")!))
+                .cornerRadius(10)
                 .alert(isPresented: $showPopup) {
                     Alert(
                         title: Text(LocalizedStringKey("Deseja salvar este valor?")),

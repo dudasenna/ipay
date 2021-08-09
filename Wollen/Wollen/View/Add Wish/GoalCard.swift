@@ -151,7 +151,7 @@ struct GoalCard: View {
                     
                     // Picker duplo
                     Picker(selection: $quantityDuration,
-                           label: Text("\(quantityDuration)").foregroundColor(.gray)
+                           label: Text("\(quantityDuration)")
                             .foregroundColor(Color("preto_primario"))
                             .font(.custom("Avenir Next", size: 16))
                             .padding(5)

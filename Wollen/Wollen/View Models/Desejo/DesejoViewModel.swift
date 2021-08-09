@@ -39,4 +39,8 @@ struct DesejoViewModel {
         return MidiaViewModel(midia: midias[0])
     }
     
+    var categoriaVM: CategoriaViewModel {
+        return CategoriaViewModel(categoria: desejo.categoria ?? Categoria())
+    }
+    
 }
