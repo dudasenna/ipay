@@ -88,7 +88,8 @@ struct AddWishCards: View {
             Button {
                 //addDesejoVM.addDesejo()
                 // Caso tenha alguma informação faltando, não salva
-                if(addDesejoVM.cor.isEmpty || addDesejoVM.preco.isEmpty || addDesejoVM.nome.isEmpty || addDesejoVM.descricao.isEmpty || addDesejoVM.link.isEmpty || (addDesejoVM.tipo == "Por valor" && (addDesejoVM.frequencia.isEmpty || addDesejoVM.valorMeta.isEmpty)) || (addDesejoVM.tipo == "Por período" && (addDesejoVM.frequencia.isEmpty || addDesejoVM.duracao == 0 || addDesejoVM.duracao2.isEmpty))) {
+                if(addDesejoVM.cor.isEmpty || addDesejoVM.preco.isEmpty || addDesejoVM.nome.isEmpty || //addDesejoVM.descricao.isEmpty ||
+                    addDesejoVM.link.isEmpty || (addDesejoVM.tipo == "Por valor" && (addDesejoVM.frequencia.isEmpty || addDesejoVM.valorMeta.isEmpty)) || (addDesejoVM.tipo == "Por período" && (addDesejoVM.frequencia.isEmpty || addDesejoVM.duracao == 0 || addDesejoVM.duracao2.isEmpty))) {
                         showingAlert = true
                     
                 }
