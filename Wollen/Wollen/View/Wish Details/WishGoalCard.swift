@@ -49,7 +49,7 @@ struct WishGoalCard: View {
                 Text(LocalizedStringKey("Meta"))
                     .bold()
                     .font(.custom("Avenir Next", size: 22))
-//                    .padding()
+                //                    .padding()
                 Spacer()
             } .padding(.bottom)
             // Meta cumprida
@@ -58,21 +58,21 @@ struct WishGoalCard: View {
                     .bold()
                     .font(.custom("Avenir Next", size: 22))
                     .foregroundColor(Color(categoryColor))
-//                    .padding(.bottom)
+                //                    .padding(.bottom)
                 Text(LocalizedStringKey("Parabéns 🎉\n Você merece!"))
-//                    .padding(.vertical)
-//                    .padding(.bottom, 20)
+                    //                    .padding(.vertical)
+                    //                    .padding(.bottom, 20)
                     .font(.custom("Avenir Next", size: 18))
                     .multilineTextAlignment(.center)
                     .fixedSize(horizontal: false, vertical: true)
             }
             // Meta ainda não cumprida
             else {
-
+                
                 if self.goalType == "Por valor" {
                     
                     let valorMeta = Text(LocalizedStringKey("R$"))
-                        
+                    
                     let traduz = Text(LocalizedStringKey(goalPeriod))
                     Text("\(valorMeta) \(formattedGoalValue) / \(traduz)")
                         
@@ -96,18 +96,18 @@ struct WishGoalCard: View {
                         .bold()
                         .font(.custom("Avenir Next", size: 22))
                         .foregroundColor(Color("systemMint"))
-                        //.padding(.bottom)
+                    //.padding(.bottom)
                     
                     //ScrollView(.vertical) {
-                        let meta = Text(LocalizedStringKey("Para você conseguir completar a meta até "))
-                        Text("\(meta) \(self.limitDate).")
-                            .padding(.vertical)
-                            .font(.custom("Avenir Next", size: 18))
-                            .multilineTextAlignment(.leading)
-                            .fixedSize(horizontal: false, vertical: true)
+                    let meta = Text(LocalizedStringKey("Para você conseguir completar a meta até "))
+                    Text("\(meta) \(self.limitDate).")
+                        .padding(.vertical)
+                        .font(.custom("Avenir Next", size: 18))
+                        .multilineTextAlignment(.leading)
+                        .fixedSize(horizontal: false, vertical: true)
                     //}
                 }
-
+                
             }
             
         })
@@ -121,23 +121,29 @@ struct WishGoalCard: View {
             timeToFinishGoal()
             convertGoalPeriod()
             self.limitDate = getLimitDate()
-            if self.listaMetasVM.meta!.tipo == "Por período" {
-                self.getValuePerFrequency()
+            if let meta = self.listaMetasVM.meta {
+                if meta.tipo == "Por período" {
+                    self.getValuePerFrequency()
+                }
+                if meta.valorAtual >= self.desejoVM.preco {
+                    self.accomplished = true
+                }
             }
-            if self.listaMetasVM.meta!.valorAtual >= self.desejoVM.preco {
-                self.accomplished = true
-            }
+
         }
         .onReceive(self.pub) { _ in
             listaMetasVM.getMetaFromDesejo(desejo: desejoVM)
             timeToFinishGoal()
             convertGoalPeriod()
-            if self.listaMetasVM.meta!.tipo == "Por período" {
-                self.getValuePerFrequency()
+            if let meta = self.listaMetasVM.meta {
+                if meta.tipo == "Por período" {
+                    self.getValuePerFrequency()
+                }
+                if meta.valorAtual >= self.desejoVM.preco {
+                    self.accomplished = true
+                }
             }
-            if self.listaMetasVM.meta!.valorAtual >= self.desejoVM.preco {
-                self.accomplished = true
-            }
+
         }
     }
     
@@ -235,7 +241,7 @@ struct WishGoalCard: View {
         self.textoMetaPorPeriodo = Text("\(traduz) \(String(format: "%.2f", goalValue))\n\(perString)")
         
         return "R$ \(String(format: "%.2f", goalValue))\n\(perString)"
-
+        
     }
 }
 

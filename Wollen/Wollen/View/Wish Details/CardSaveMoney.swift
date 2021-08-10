@@ -16,21 +16,24 @@ struct CardSaveMoney: View {
     //     self.desejoVM = desejo
     // }
     
-    init(goal value: Float, desejo: DesejoViewModel) {
-        self.goalValue = value
-        //self.valueTextField = String("R$ \(value)")
-        let textAux = NSLocalizedString("R$", comment: "")
-        self.valueTextField = ("\(textAux) \(value)")
-        self.desejoVM = desejo
-        self.valuePlaceholder = ("\(textAux) \(value)")
-    }
+    init(desejo: DesejoViewModel) {
+            var valorMeta: Float = 0.0
+            if let valor = desejo.desejo.meta?.valorMeta {
+                valorMeta = Float(valor)
+            }
+            self.goalValue = valorMeta
+            let textAux = NSLocalizedString("R$", comment: "")
+            self.valueTextField = ("(valorMeta)")
+            self.desejoVM = desejo
+            self.valuePlaceholder = ("(textAux) (valorMeta)")
+        }
     
     @StateObject private var updateDesejoVM = UpdateDesejoViewModel()
     @StateObject private var listaMetasVM = ListaMetasViewModel()
     @State private var valueTextField: String
     @State private var showPopup: Bool = false
     @State private var showSheet = false
-    @State private var valuePlaceholder: String
+    @State private var valuePlaceholder: String = ""
     var goalValue: Float = 0
     var maxWidth = UIScreen().bounds.width
     let desejoVM: DesejoViewModel
@@ -109,6 +112,10 @@ struct CardSaveMoney: View {
         .cornerRadius(10)
         .fixedSize(horizontal: false, vertical: false)
         .shadow(color: Color.gray.opacity(0.4), radius: 5)
+        .onAppear() {
+            let textAux = NSLocalizedString("R$", comment: "")
+            self.valuePlaceholder = ("\(textAux) 50")
+        }
     }
     
     /// Função responsável por filtar o valor do text field
@@ -125,6 +132,6 @@ struct CardSaveMoney: View {
 struct CardSaveMoney_Previews: PreviewProvider {
     static var previews: some View {
         let desejoVM = DesejoViewModel(desejo: Desejo(context: CoreDataManager.shared.viewContext))
-        CardSaveMoney(goal: 50, desejo: desejoVM).previewLayout(.sizeThatFits)
+        CardSaveMoney(desejo: desejoVM).previewLayout(.sizeThatFits)
     }
 }

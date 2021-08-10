@@ -38,17 +38,6 @@ struct AddWishCards: View {
                     })
             }
             
-//            HStack (alignment: .top, spacing: 30) {
-//                InformationsCard(addDesejoVM: addDesejoVM)
-//                CategoriesCard(addDesejoVM: addDesejoVM)
-//            }
-//
-//            HStack (alignment: .top, spacing: 30) {
-//
-//                ImageCard(addDesejoVM: addDesejoVM)
-//                GoalCard(desejo: addDesejoVM)
-//            }
-            
             Group {
                 if verticalSizeClass == .regular && horizontalSizeClass == .compact {
                     // iPhone Portrait or iPad 1/3 split view for Multitasking for instance
@@ -117,9 +106,8 @@ struct AddWishCards: View {
                     .font(.custom("Avenir Next", size: 18).bold())
                     .padding(5)
             }
-            //.disabled(addDesejoVM.cor.isEmpty)
             .alert(isPresented: $showingAlert) {
-                Alert(title: Text(LocalizedStringKey("Information missing")), message: Text(LocalizedStringKey("Please make sure you have defined the details of your wish")), dismissButton: .default(Text("OK")))
+                Alert(title: Text(LocalizedStringKey("Informações não encontradas")), message: Text(LocalizedStringKey("Por favor defina os detalhes do seu desejo")), dismissButton: .default(Text("OK")))
             }
             .padding(5)
             .background(Color(UIColor(named: "systemMint")!))

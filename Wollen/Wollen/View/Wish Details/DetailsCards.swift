@@ -143,7 +143,7 @@ struct DetailsCards: View {
                     // iPhone Portrait or iPad 1/3 split view for Multitasking for instance
                     ScrollView {
                         VStack (alignment: .center, spacing:50) {
-                            CardSaveMoney(goal: 50, desejo: desejoVM)
+                            CardSaveMoney(desejo: desejoVM)
                                 .frame(minWidth: 100, idealWidth: 502, maxWidth: 515, minHeight: 100, idealHeight: 150, maxHeight: 155, alignment: .leading)
                             WishGoalCard(desejoVM: desejoVM)
                             WishGraphCard(desejoVM: desejoVM)
@@ -158,7 +158,7 @@ struct DetailsCards: View {
                     // some "standard" iPhone Landscape (iPhone SE, X, XS, 7, 8, ...)
                     ScrollView {
                         VStack (alignment: .center, spacing:50) {
-                            CardSaveMoney(goal: 50, desejo: desejoVM)
+                            CardSaveMoney(desejo: desejoVM)
                                 .frame(minWidth: 100, idealWidth: 502, maxWidth: 515, minHeight: 100, idealHeight: 150, maxHeight: 155, alignment: .leading)
                             WishGoalCard(desejoVM: desejoVM)
                             WishGraphCard(desejoVM: desejoVM)
@@ -172,7 +172,7 @@ struct DetailsCards: View {
                     // some "bigger" iPhone Landscape (iPhone Xs Max, 6s Plus, 7 Plus, 8 Plus, ...)
                     ScrollView {
                         VStack (alignment: .center, spacing:50) {
-                            CardSaveMoney(goal: 50, desejo: desejoVM)
+                            CardSaveMoney(desejo: desejoVM)
                                 .frame(minWidth: 100, idealWidth: 502, maxWidth: 515, minHeight: 100, idealHeight: 150, maxHeight: 155, alignment: .leading)
                             WishGoalCard(desejoVM: desejoVM)
                             WishGraphCard(desejoVM: desejoVM)
@@ -187,7 +187,7 @@ struct DetailsCards: View {
                     HStack (alignment: .top, spacing:30){
                         ScrollView{
                             VStack(alignment: .leading, spacing:50){
-                                CardSaveMoney(goal: 50, desejo: desejoVM)
+                                CardSaveMoney(desejo: desejoVM)
                                     .frame(minWidth: 100, idealWidth: 502, maxWidth: 515, minHeight: 100, idealHeight: 150, maxHeight: 155, alignment: .leading)
                                 HStack (alignment: .center, spacing:20) {
                                     WishGoalCard(desejoVM: desejoVM)
